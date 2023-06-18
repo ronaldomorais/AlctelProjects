@@ -1,0 +1,220 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Migracao_PaaeJava_PaaeWeb">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="(local)\sqlexpress:sa">
+          <Created>2023-01-04T19:00:21.4099303-03:00</Created>
+          <Type>SQL</Type>
+          <Server>(local)\sqlexpress</Server>
+          <UserName>sa</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName />
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="1 - Populando Tabelas.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>1 - Populando Tabelas.sql</FullPath>
+        </FileNode>
+        <FileNode Name="2 - Adaptacoes_Iniciais.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>2 - Adaptacoes_Iniciais.sql</FullPath>
+        </FileNode>
+        <FileNode Name="3 - Configuracao_Relatorios.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>3 - Configuracao_Relatorios.sql</FullPath>
+        </FileNode>
+        <FileNode Name="4 - Configuracao_Relatorios_Colunas.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>4 - Configuracao_Relatorios_Colunas.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Funcao_Agentes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Funcao_Agentes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Funcao_Grupos.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Funcao_Grupos.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Funcao_Login.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Funcao_Login.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Funcao_Pausas.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Funcao_Pausas.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Funcao_R_122_STAT_RES.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Funcao_R_122_STAT_RES.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Funcao_R_123_STAT_RES.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Funcao_R_123_STAT_RES.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Funcao_R_ALC_CL_DAY.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Funcao_R_ALC_CL_DAY.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Funcao_R_ALC_CL_HOUR.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Funcao_R_ALC_CL_HOUR.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Funcao_R_ALC_QUEUE_DAY.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Funcao_R_ALC_QUEUE_DAY.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Funcao_R_ALC_QUEUE_HOUR.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Funcao_R_ALC_QUEUE_HOUR.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Relatorio_Abandonadas.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Relatorio_Abandonadas.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Relatorio_Alc_BancoAlfa_sp_relatorioFilaDetalhada.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Relatorio_Alc_BancoAlfa_sp_relatorioFilaDetalhada.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Relatorio_Campanha.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Relatorio_Campanha.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Relatorio_CampanhaRegistros.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Relatorio_CampanhaRegistros.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Relatorio_DiarioAgentes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Relatorio_DiarioAgentes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Relatorio_Filas.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Relatorio_Filas.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Relatorio_Login.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Relatorio_Login.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Relatorio_Pausas.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Relatorio_Pausas.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Relatorio_SLADiaAtivo.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Relatorio_SLADiaAtivo.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Relatorio_SlaDiaAtivoAgentes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Relatorio_SlaDiaAtivoAgentes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Relatorio_SlaDiaReceptivo_SlaSemanaReceptivo.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Relatorio_SlaDiaReceptivo_SlaSemanaReceptivo.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Relatorio_SlaDiaReceptivoAgente_SlaSemanaDiaReceptivoAgente.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Relatorio_SlaDiaReceptivoAgente_SlaSemanaDiaReceptivoAgente.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Relatorio_SlaHoraAtivo.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Relatorio_SlaHoraAtivo.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Relatorio_SlaHoraAtivoAgente.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Relatorio_SlaHoraAtivoAgente.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Relatorio_SlaHoraReceptivo.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Relatorio_SlaHoraReceptivo.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Relatorio_SlaHoraReceptivoAgente.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Relatorio_SlaHoraReceptivoAgente.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Relatorio_SlaSemanaAtivoAgentes.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Relatorio_SlaSemanaAtivoAgentes.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Relatorio_TempoAbandonoAtendimento.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\sqlexpress:False:sa</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\sqlexpress</AssociatedConnSrvName>
+          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <FullPath>Relatorio_TempoAbandonoAtendimento.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

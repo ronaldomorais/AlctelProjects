@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="PAAE_Utils">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="10.219.41.12:gensql">
+          <Created>2022-11-16T08:33:54.7623975-03:00</Created>
+          <Type>SQL</Type>
+          <Server>10.219.41.12</Server>
+          <UserName>gensql</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="10.50.5.38:gensql">
+          <Created>2023-03-13T14:20:52.6221398-03:00</Created>
+          <Type>SQL</Type>
+          <Server>10.50.5.38</Server>
+          <UserName>gensql</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="172.20.1.38:gensql">
+          <Created>2022-11-10T22:07:16.3560901-03:00</Created>
+          <Type>SQL</Type>
+          <Server>172.20.1.38</Server>
+          <UserName>gensql</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="172.31.250.124:Genesys">
+          <Created>2023-03-13T13:46:20.7220134-03:00</Created>
+          <Type>SQL</Type>
+          <Server>172.31.250.124</Server>
+          <UserName>Genesys</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="Cadastro_AgentesPAAE.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:172.20.1.38:False:gensql</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>172.20.1.38</AssociatedConnSrvName>
+          <AssociatedConnUserName>gensql</AssociatedConnUserName>
+          <FullPath>Cadastro_AgentesPAAE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="CadastroSitesPAAE.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:172.20.1.38:False:gensql</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>172.20.1.38</AssociatedConnSrvName>
+          <AssociatedConnUserName>gensql</AssociatedConnUserName>
+          <FullPath>CadastroSitesPAAE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="CadastroUsuarioPAAE.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:172.31.250.124:False:Genesys</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>172.31.250.124</AssociatedConnSrvName>
+          <AssociatedConnUserName>Genesys</AssociatedConnUserName>
+          <FullPath>CadastroUsuarioPAAE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="InserirTabulacao.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:10.50.5.38:False:gensql</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>10.50.5.38</AssociatedConnSrvName>
+          <AssociatedConnUserName>gensql</AssociatedConnUserName>
+          <FullPath>InserirTabulacao.sql</FullPath>
+        </FileNode>
+        <FileNode Name="MudancaSkillsMOVIDA.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:10.219.41.12:False:gensql</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>10.219.41.12</AssociatedConnSrvName>
+          <AssociatedConnUserName>gensql</AssociatedConnUserName>
+          <FullPath>MudancaSkillsMOVIDA.sql</FullPath>
+        </FileNode>
+        <FileNode Name="RemoveChatsPresosNaFila.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:10.50.5.38:False:gensql</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>10.50.5.38</AssociatedConnSrvName>
+          <AssociatedConnUserName>gensql</AssociatedConnUserName>
+          <FullPath>RemoveChatsPresosNaFila.sql</FullPath>
+        </FileNode>
+        <FileNode Name="ResetSenhaPAAE.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:172.20.1.38:False:gensql</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>172.20.1.38</AssociatedConnSrvName>
+          <AssociatedConnUserName>gensql</AssociatedConnUserName>
+          <FullPath>ResetSenhaPAAE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UsuarioSiteRelacionamento.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:172.20.1.38:False:gensql</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>172.20.1.38</AssociatedConnSrvName>
+          <AssociatedConnUserName>gensql</AssociatedConnUserName>
+          <FullPath>UsuarioSiteRelacionamento.sql</FullPath>
+        </FileNode>
+        <FileNode Name="XML - Example.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:10.219.41.12:False:gensql</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>10.219.41.12</AssociatedConnSrvName>
+          <AssociatedConnUserName>gensql</AssociatedConnUserName>
+          <FullPath>XML - Example.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# SQL Server Management Studio Solution File, Format Version 18.00
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "PAAE_Utils", "PAAE_Utils\PAAE_Utils.ssmssqlproj", "{92F0FDE5-B63C-41E0-B80B-1139C0AA4174}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Default|Default = Default|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92F0FDE5-B63C-41E0-B80B-1139C0AA4174}.Default|Default.ActiveCfg = Default
+		{317456CC-7957-4C33-A5AE-F713D38EF6D8}.Default|Default.ActiveCfg = Default
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BBCFF824-A9ED-48EB-BC55-BF3E648D2446}
+	EndGlobalSection
+EndGlobal

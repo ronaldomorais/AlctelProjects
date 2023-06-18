@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="AgenteData">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="172.31.250.124:Genesys">
+          <Created>2022-12-23T12:10:58.0769863-03:00</Created>
+          <Type>SQL</Type>
+          <Server>172.31.250.124</Server>
+          <UserName>Genesys</UserName>
+          <Authentication>SQL</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName />
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="1 - FN_AlcAgentesInfo_ICON.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:172.31.250.124:False:Genesys</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>172.31.250.124</AssociatedConnSrvName>
+          <AssociatedConnUserName>Genesys</AssociatedConnUserName>
+          <FullPath>1 - FN_AlcAgentesInfo_ICON.sql</FullPath>
+        </FileNode>
+        <FileNode Name="2 - FN_AlcAgentesInfo_ICON_EXAMPLE.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:172.31.250.124:False:Genesys</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>172.31.250.124</AssociatedConnSrvName>
+          <AssociatedConnUserName>Genesys</AssociatedConnUserName>
+          <FullPath>2 - FN_AlcAgentesInfo_ICON_EXAMPLE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="3 - FN_AlcAgentesInfo_CTI.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:172.31.250.124:False:Genesys</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>172.31.250.124</AssociatedConnSrvName>
+          <AssociatedConnUserName>Genesys</AssociatedConnUserName>
+          <FullPath>3 - FN_AlcAgentesInfo_CTI.sql</FullPath>
+        </FileNode>
+        <FileNode Name="4 - FN_AlcAgentesInfo_CTI_EXAMPLE.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:172.31.250.124:False:Genesys</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>172.31.250.124</AssociatedConnSrvName>
+          <AssociatedConnUserName>Genesys</AssociatedConnUserName>
+          <FullPath>4 - FN_AlcAgentesInfo_CTI_EXAMPLE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="5 - FN_AlcChamadasInfo_CTI.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:172.31.250.124:False:Genesys</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>172.31.250.124</AssociatedConnSrvName>
+          <AssociatedConnUserName>Genesys</AssociatedConnUserName>
+          <FullPath>5 - FN_AlcChamadasInfo_CTI.sql</FullPath>
+        </FileNode>
+        <FileNode Name="5 - FN_AlcChamadasInfo_CTI_V2.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>5 - FN_AlcChamadasInfo_CTI_V2.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items>
+        <FileNode Name="1 - Dados de Conexao.txt">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>1 - Dados de Conexao.txt</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>
