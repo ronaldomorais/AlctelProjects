@@ -1,3 +1,0 @@
-IP do cluster: 172.31.250.124
-Usuário: genesys
-Senha: KwT9QZQ#qs3@ijwZ
