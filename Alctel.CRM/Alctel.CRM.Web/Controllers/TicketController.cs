@@ -586,7 +586,7 @@ public class TicketController : Controller
     //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public async Task<IActionResult> GenesysInteractionEvent(string nomeFila = "", string conversastionid = "", string email = "", string cpf = "", string protocolo = "", string navegacao = "", string emailCliente = "", string protocolo_pai = "", bool reload = false, bool cancel = false, bool tickedSaved = false)
     {
-        _logHelperService.LogMessage($"[{conversastionid}] nomeFila: {nomeFila}, conversastionid: {conversastionid}, email: {email}, cpf: {cpf}, protocolo: {protocolo}, navegacao: {navegacao}, emailCliente: {emailCliente}, cancel: {cancel}");
+        _logHelperService.LogMessage($"[{conversastionid}] nomeFila: {nomeFila}, conversastionid: {conversastionid}, email: {email}, cpf: {cpf}, protocolo: {protocolo}, navegacao: {navegacao}, emailCliente: {emailCliente}, protocolo_pai: {protocolo_pai}, cancel: {cancel}");
 
         string physicalPath = _hostingEnvironment.WebRootPath;
         string baseUrl = _configService.GetBaseUrl(physicalPath);
@@ -798,6 +798,7 @@ public class TicketController : Controller
             {
                 ticketModel.ParentTicket = ongoingInteraction.ParentTicket;
                 ongoingInteraction.AutoSaveData.ParentTicket = ongoingInteraction.ParentTicket;
+                _logHelperService.LogMessage($"[{conversastionid}] Associado protocolo_pai: {ticketModel.ParentTicket}");
             }
 
 

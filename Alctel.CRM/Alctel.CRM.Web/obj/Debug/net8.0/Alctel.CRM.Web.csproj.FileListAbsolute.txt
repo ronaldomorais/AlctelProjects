@@ -383,3 +383,4 @@ D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.Web\obj\Debug\net8.0\refint\A
 D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.Web\obj\Debug\net8.0\Alctel.CRM.Web.pdb
 D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.Web\obj\Debug\net8.0\Alctel.CRM.Web.genruntimeconfig.cache
 D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.Web\obj\Debug\net8.0\ref\Alctel.CRM.Web.dll
+D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.Web\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
