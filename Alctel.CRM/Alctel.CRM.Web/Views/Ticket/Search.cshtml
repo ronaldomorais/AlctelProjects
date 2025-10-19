@@ -1,4 +1,5 @@
-﻿@{
+﻿@using System.Globalization
+@{
 	var itemcounter = 1;
 	// var profileSession = Context.Session.GetString("Profile");
 	// string profile = string.Empty;
@@ -178,7 +179,7 @@
 							<td>@item.CustomerFullName</td>
 							<td>@item.Protocol</td>
 							@* <td>@item.ParentProtocol</td> *@
-							<td>@item.ProtocolDate.ToString("dd/MM/yyyy HH:mm")</td>
+							<td>@item.ProtocolDate.ToString("dd/MM/yyyy HH:mm", new CultureInfo("pt-br"))</td>
 							<td>@item.ProtocolType</td>
 							@* <td>@item.DemandType</td> *@
 							<td>@item.TicketCriticality</td>
@@ -199,13 +200,18 @@
 									</button>
 								</form> *@
 
-								@if (item.User != null && item.User.ToUpper() == username.ToUpper())
+								@if (item.TicketStatus != null && item.TicketStatus.ToUpper() != "FINALIZADO")
 								{
-									if (profile.ToUpper() != "MONITOR")
+									@if (item.User != null && item.User.ToUpper() == username.ToUpper())
 									{
-										<a href="@baseUrl/Ticket/Edit/?id=@item.Id">Editar</a>
+										if (profile.ToUpper() != "MONITOR")
+										{
+											<a href="@baseUrl/Ticket/Edit/?id=@item.Id">Editar</a>
+										}
 									}
 								}
+
+
 							</td>
 							<td>
 								@* 								<form method="get" asp-action="Delete">
@@ -231,47 +237,52 @@
 									   data-bs-target="#associateTicketModel" onclick="associateTicketToMe.Methods.Submit(@item.Id)">Gerenciar</a>
 								} *@
 
-								@if (profile.ToUpper() == "ADMINISTRADOR")
+								@if (item.TicketStatus != null && item.TicketStatus.ToUpper() != "FINALIZADO")
 								{
-									@if (string.IsNullOrEmpty(item.User))
+									@if (profile.ToUpper() == "ADMINISTRADOR")
 									{
 										<a href="#" data-bs-toggle="modal"
-										   data-bs-target="#associateTicketModel" onclick="associateTicketToMe.Methods.LoadScreen(@item.Id, '@item.User')">Atribuir</a>
+										   data-bs-target="#associateTicketModel" onclick="associateTicketToMe.Methods.LoadScreen(@item.Id, '@item.User')">
+											Atribuir
+										</a>
+										@* 									@if (string.IsNullOrEmpty(item.User))
+									{
+										<a href="#" data-bs-toggle="modal"
+										data-bs-target="#associateTicketModel" onclick="associateTicketToMe.Methods.LoadScreen(@item.Id, '@item.User')">Atribuir</a>
 									}
 									else if (item.User.ToUpper() != username.ToUpper())
 									{
 										<a href="#" data-bs-toggle="modal"
 										   data-bs-target="#associateTicketModel" onclick="associateTicketToMe.Methods.LoadScreen(@item.Id, '@item.User')">Atribuir</a>
+									} *@
 									}
-								}
-								else if (profile.ToUpper() == "MONITOR")
-								{
-									<a href="@baseUrl/Ticket/ViewTicket/?id=@item.Id">Visualizar</a>
-								}
-								else
-								{
-									if (string.IsNullOrEmpty(item.User))
+									else if (profile.ToUpper() == "MONITOR")
 									{
-										@if (userServiceLevel == "2" || userServiceLevel == "3" || userServiceLevel == "4")
-										{
-											<a href="#" data-bs-toggle="modal"
-											   data-bs-target="#associateTicketModel" onclick="associateTicketToMe.Methods.LoadScreen(@item.Id, '@item.User')">
-												Atribuir
-											</a>
-										}
-										else
-										{
-											<a href="@baseUrl/Ticket/ViewTicket/?id=@item.Id">Visualizar</a>
-										}
+										<a href="@baseUrl/Ticket/ViewTicket/?id=@item.Id">Visualizar</a>
 									}
 									else
 									{
-										@if (item.User != null && item.User.ToUpper() != username.ToUpper())
+										if (string.IsNullOrEmpty(item.User))
 										{
-											<a href="@baseUrl/Ticket/ViewTicket/?id=@item.Id">Visualizar</a>
+											<a href="#" data-bs-toggle="modal"
+											   data-bs-target="#associateTicketModel" onclick="associateTicketToMe.Methods.LoadScreen(@item.Id, '@item.User')">Atribuir</a>
+										}
+										else
+										{
+											@if (item.User != null && item.User.ToUpper() != username.ToUpper())
+											{
+												<a href="@baseUrl/Ticket/ViewTicket/?id=@item.Id">Visualizar</a>
+											}
 										}
 									}
 								}
+								else
+								{
+									<a href="@baseUrl/Ticket/ViewTicket/?id=@item.Id">Visualizar</a>
+								}
+
+
+
 							</td>
 						</tr>
 

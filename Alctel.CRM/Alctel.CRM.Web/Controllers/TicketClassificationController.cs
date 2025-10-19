@@ -10,9 +10,6 @@ class SelectIOptions
     public string? Name { get; set; }
 }
 
-
-
-
 public class TicketClassificationController : Controller
 {
     private List<SelectIOptions> selectIOptions = new List<SelectIOptions>();

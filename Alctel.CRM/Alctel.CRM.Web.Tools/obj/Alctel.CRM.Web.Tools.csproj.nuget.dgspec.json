@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Web.Tools\\Alctel.CRM.Web.Tools.csproj": {}
+    "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web.Tools\\Alctel.CRM.Web.Tools.csproj": {}
   },
   "projects": {
-    "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Web.Tools\\Alctel.CRM.Web.Tools.csproj": {
+    "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web.Tools\\Alctel.CRM.Web.Tools.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Web.Tools\\Alctel.CRM.Web.Tools.csproj",
+        "projectUniqueName": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web.Tools\\Alctel.CRM.Web.Tools.csproj",
         "projectName": "Alctel.CRM.Web.Tools",
-        "projectPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Web.Tools\\Alctel.CRM.Web.Tools.csproj",
+        "projectPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web.Tools\\Alctel.CRM.Web.Tools.csproj",
         "packagesPath": "C:\\Users\\RonaldoMorais\\.nuget\\packages\\",
-        "outputPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Web.Tools\\obj\\",
+        "outputPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web.Tools\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -93,6 +93,11 @@
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
         }
       }
     }

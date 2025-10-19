@@ -2357,11 +2357,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Web\\Alctel.CRM.Web.csproj",
+      "projectUniqueName": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Alctel.CRM.Web.csproj",
       "projectName": "Alctel.CRM.Web",
-      "projectPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Web\\Alctel.CRM.Web.csproj",
+      "projectPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Alctel.CRM.Web.csproj",
       "packagesPath": "C:\\Users\\RonaldoMorais\\.nuget\\packages\\",
-      "outputPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Web\\obj\\publish\\win-x64\\",
+      "outputPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\obj\\publish\\win-x64\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2383,11 +2383,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Business\\Alctel.CRM.Business.csproj": {
-              "projectPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Business\\Alctel.CRM.Business.csproj"
+            "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Business\\Alctel.CRM.Business.csproj": {
+              "projectPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Business\\Alctel.CRM.Business.csproj"
             },
-            "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.GenesysCloudAPI\\Alctel.CRM.GenesysCloudAPI.csproj": {
-              "projectPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.GenesysCloudAPI\\Alctel.CRM.GenesysCloudAPI.csproj"
+            "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.GenesysCloudAPI\\Alctel.CRM.GenesysCloudAPI.csproj": {
+              "projectPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.GenesysCloudAPI\\Alctel.CRM.GenesysCloudAPI.csproj"
             }
           }
         }

@@ -49,3 +49,16 @@ D:\Dev\Alctel\ALCTEL_VSS_0001\Alctel.CRM_20251009_2226\Alctel.CRM\Alctel.CRM.Gen
 D:\Dev\Alctel\ALCTEL_VSS_0001\Alctel.CRM_20251009_2226\Alctel.CRM\Alctel.CRM.GenesysCloudAPI\obj\Debug\net8.0\refint\Alctel.CRM.GenesysCloudAPI.dll
 D:\Dev\Alctel\ALCTEL_VSS_0001\Alctel.CRM_20251009_2226\Alctel.CRM\Alctel.CRM.GenesysCloudAPI\obj\Debug\net8.0\Alctel.CRM.GenesysCloudAPI.pdb
 D:\Dev\Alctel\ALCTEL_VSS_0001\Alctel.CRM_20251009_2226\Alctel.CRM\Alctel.CRM.GenesysCloudAPI\obj\Debug\net8.0\ref\Alctel.CRM.GenesysCloudAPI.dll
+D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.GenesysCloudAPI\bin\Debug\net8.0\Alctel.CRM.GenesysCloudAPI.deps.json
+D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.GenesysCloudAPI\bin\Debug\net8.0\Alctel.CRM.GenesysCloudAPI.dll
+D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.GenesysCloudAPI\bin\Debug\net8.0\Alctel.CRM.GenesysCloudAPI.pdb
+D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.GenesysCloudAPI\obj\Debug\net8.0\Alctel.CRM.GenesysCloudAPI.csproj.AssemblyReference.cache
+D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.GenesysCloudAPI\obj\Debug\net8.0\Alctel.CRM.GenesysCloudAPI.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.GenesysCloudAPI\obj\Debug\net8.0\Alctel.CRM.GenesysCloudAPI.AssemblyInfoInputs.cache
+D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.GenesysCloudAPI\obj\Debug\net8.0\Alctel.CRM.GenesysCloudAPI.AssemblyInfo.cs
+D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.GenesysCloudAPI\obj\Debug\net8.0\Alctel.CRM.GenesysCloudAPI.csproj.CoreCompileInputs.cache
+D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.GenesysCloudAPI\obj\Debug\net8.0\Alctel.CRM.GenesysCloudAPI.sourcelink.json
+D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.GenesysCloudAPI\obj\Debug\net8.0\Alctel.CRM.GenesysCloudAPI.dll
+D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.GenesysCloudAPI\obj\Debug\net8.0\refint\Alctel.CRM.GenesysCloudAPI.dll
+D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.GenesysCloudAPI\obj\Debug\net8.0\Alctel.CRM.GenesysCloudAPI.pdb
+D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.GenesysCloudAPI\obj\Debug\net8.0\ref\Alctel.CRM.GenesysCloudAPI.dll

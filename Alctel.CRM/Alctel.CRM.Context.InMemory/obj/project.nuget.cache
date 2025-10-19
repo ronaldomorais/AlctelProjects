@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4iIcpcWDN3g=",
+  "dgSpecHash": "++fipTueKYQ=",
   "success": true,
-  "projectFilePath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\Alctel.CRM.Context.InMemory.csproj",
+  "projectFilePath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\Alctel.CRM.Context.InMemory.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\RonaldoMorais\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\RonaldoMorais\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",

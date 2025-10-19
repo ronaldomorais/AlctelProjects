@@ -322,7 +322,7 @@ public class UserController : Controller
                     logController.Id = model.Id;
                     logController.Module = MODULE_NAME;
                     logController.Section = username == null ? string.Empty : username;
-                    logController.Field = "Fila GT";
+                    logController.Field = "Nível Atendimento";
                     logController.Value = queueGTName;
                     logController.UserId = userid != null ? Int64.Parse(userid) : 0;
                     logController.Action = "Editar";

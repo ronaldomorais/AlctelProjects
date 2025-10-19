@@ -1,4 +1,5 @@
-﻿@model Alctel.CRM.Web.Models.TicketModel
+﻿@using System.Globalization
+@model Alctel.CRM.Web.Models.TicketModel
 
 @{
 	string? ticketMessage = (string)ViewBag.TicketMessage;
@@ -672,7 +673,7 @@
 									<td>@Model.Customer.FirstName</td>
 									<td>@item.Protocol</td>
 									@* <td>@item.ProtocolDate.ToString("dd/MM/yyyy")</td> *@
-									<td>@item.ProtocolDate</td>
+									<td>@item.ProtocolDate.ToString("dd/MM/yyyy HH:mm", new CultureInfo("pt-br"))</td>
 									@* <td>Pai</td> *@
 									@* <td>Demanda</td> *@
 									@* <td>Alta</td> *@

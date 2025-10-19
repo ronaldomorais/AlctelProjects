@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\Alctel.CRM.Context.InMemory.csproj": {}
+    "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\Alctel.CRM.Context.InMemory.csproj": {}
   },
   "projects": {
-    "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\Alctel.CRM.Context.InMemory.csproj": {
+    "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\Alctel.CRM.Context.InMemory.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\Alctel.CRM.Context.InMemory.csproj",
+        "projectUniqueName": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\Alctel.CRM.Context.InMemory.csproj",
         "projectName": "Alctel.CRM.Context.InMemory",
-        "projectPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\Alctel.CRM.Context.InMemory.csproj",
+        "projectPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\Alctel.CRM.Context.InMemory.csproj",
         "packagesPath": "C:\\Users\\RonaldoMorais\\.nuget\\packages\\",
-        "outputPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\obj\\",
+        "outputPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -79,6 +79,11 @@
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
         }
       }
     }

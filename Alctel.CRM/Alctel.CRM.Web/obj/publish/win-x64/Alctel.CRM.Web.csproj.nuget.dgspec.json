@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Web\\Alctel.CRM.Web.csproj": {}
+    "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Alctel.CRM.Web.csproj": {}
   },
   "projects": {
-    "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.API\\Alctel.CRM.API.csproj": {
+    "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.API\\Alctel.CRM.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.API\\Alctel.CRM.API.csproj",
+        "projectUniqueName": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.API\\Alctel.CRM.API.csproj",
         "projectName": "Alctel.CRM.API",
-        "projectPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.API\\Alctel.CRM.API.csproj",
+        "projectPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.API\\Alctel.CRM.API.csproj",
         "packagesPath": "C:\\Users\\RonaldoMorais\\.nuget\\packages\\",
-        "outputPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.API\\obj\\",
+        "outputPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,8 +33,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Web.Tools\\Alctel.CRM.Web.Tools.csproj": {
-                "projectPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Web.Tools\\Alctel.CRM.Web.Tools.csproj"
+              "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web.Tools\\Alctel.CRM.Web.Tools.csproj": {
+                "projectPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web.Tools\\Alctel.CRM.Web.Tools.csproj"
               }
             }
           }
@@ -89,14 +89,14 @@
         }
       }
     },
-    "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Business\\Alctel.CRM.Business.csproj": {
+    "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Business\\Alctel.CRM.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Business\\Alctel.CRM.Business.csproj",
+        "projectUniqueName": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Business\\Alctel.CRM.Business.csproj",
         "projectName": "Alctel.CRM.Business",
-        "projectPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Business\\Alctel.CRM.Business.csproj",
+        "projectPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Business\\Alctel.CRM.Business.csproj",
         "packagesPath": "C:\\Users\\RonaldoMorais\\.nuget\\packages\\",
-        "outputPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Business\\obj\\",
+        "outputPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Business\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -118,11 +118,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.API\\Alctel.CRM.API.csproj": {
-                "projectPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.API\\Alctel.CRM.API.csproj"
+              "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.API\\Alctel.CRM.API.csproj": {
+                "projectPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.API\\Alctel.CRM.API.csproj"
               },
-              "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\Alctel.CRM.Context.InMemory.csproj": {
-                "projectPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\Alctel.CRM.Context.InMemory.csproj"
+              "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\Alctel.CRM.Context.InMemory.csproj": {
+                "projectPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\Alctel.CRM.Context.InMemory.csproj"
               }
             }
           }
@@ -167,14 +167,14 @@
         }
       }
     },
-    "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\Alctel.CRM.Context.InMemory.csproj": {
+    "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\Alctel.CRM.Context.InMemory.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\Alctel.CRM.Context.InMemory.csproj",
+        "projectUniqueName": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\Alctel.CRM.Context.InMemory.csproj",
         "projectName": "Alctel.CRM.Context.InMemory",
-        "projectPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\Alctel.CRM.Context.InMemory.csproj",
+        "projectPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\Alctel.CRM.Context.InMemory.csproj",
         "packagesPath": "C:\\Users\\RonaldoMorais\\.nuget\\packages\\",
-        "outputPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\obj\\",
+        "outputPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Context.InMemory\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -250,14 +250,14 @@
         }
       }
     },
-    "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.GenesysCloudAPI\\Alctel.CRM.GenesysCloudAPI.csproj": {
+    "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.GenesysCloudAPI\\Alctel.CRM.GenesysCloudAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.GenesysCloudAPI\\Alctel.CRM.GenesysCloudAPI.csproj",
+        "projectUniqueName": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.GenesysCloudAPI\\Alctel.CRM.GenesysCloudAPI.csproj",
         "projectName": "Alctel.CRM.GenesysCloudAPI",
-        "projectPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.GenesysCloudAPI\\Alctel.CRM.GenesysCloudAPI.csproj",
+        "projectPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.GenesysCloudAPI\\Alctel.CRM.GenesysCloudAPI.csproj",
         "packagesPath": "C:\\Users\\RonaldoMorais\\.nuget\\packages\\",
-        "outputPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.GenesysCloudAPI\\obj\\",
+        "outputPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.GenesysCloudAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -331,14 +331,14 @@
         }
       }
     },
-    "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Web.Tools\\Alctel.CRM.Web.Tools.csproj": {
+    "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web.Tools\\Alctel.CRM.Web.Tools.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Web.Tools\\Alctel.CRM.Web.Tools.csproj",
+        "projectUniqueName": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web.Tools\\Alctel.CRM.Web.Tools.csproj",
         "projectName": "Alctel.CRM.Web.Tools",
-        "projectPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Web.Tools\\Alctel.CRM.Web.Tools.csproj",
+        "projectPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web.Tools\\Alctel.CRM.Web.Tools.csproj",
         "packagesPath": "C:\\Users\\RonaldoMorais\\.nuget\\packages\\",
-        "outputPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Web.Tools\\obj\\",
+        "outputPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web.Tools\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -428,14 +428,14 @@
         }
       }
     },
-    "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Web\\Alctel.CRM.Web.csproj": {
+    "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Alctel.CRM.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Web\\Alctel.CRM.Web.csproj",
+        "projectUniqueName": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Alctel.CRM.Web.csproj",
         "projectName": "Alctel.CRM.Web",
-        "projectPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Web\\Alctel.CRM.Web.csproj",
+        "projectPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Alctel.CRM.Web.csproj",
         "packagesPath": "C:\\Users\\RonaldoMorais\\.nuget\\packages\\",
-        "outputPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Web\\obj\\publish\\win-x64\\",
+        "outputPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\obj\\publish\\win-x64\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -457,11 +457,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Business\\Alctel.CRM.Business.csproj": {
-                "projectPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.Business\\Alctel.CRM.Business.csproj"
+              "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Business\\Alctel.CRM.Business.csproj": {
+                "projectPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Business\\Alctel.CRM.Business.csproj"
               },
-              "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.GenesysCloudAPI\\Alctel.CRM.GenesysCloudAPI.csproj": {
-                "projectPath": "D:\\Dev\\Alctel\\ALCTEL_VSS_0001\\Alctel.CRM\\Alctel.CRM.GenesysCloudAPI\\Alctel.CRM.GenesysCloudAPI.csproj"
+              "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.GenesysCloudAPI\\Alctel.CRM.GenesysCloudAPI.csproj": {
+                "projectPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.GenesysCloudAPI\\Alctel.CRM.GenesysCloudAPI.csproj"
               }
             }
           }
