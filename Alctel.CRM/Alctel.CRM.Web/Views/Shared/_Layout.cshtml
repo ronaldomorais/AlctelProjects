@@ -1,0 +1,440 @@
+﻿@using Microsoft.AspNetCore.Html
+@using System.Text
+@using System.Security.Claims
+@functions {
+	public class MenuItem
+	{
+		public string Id { get; set; } = string.Empty;
+		public string? ControllerName { get; set; }
+		public string? MenuName { get; set; }
+		public string? ModuleName { get; set; }
+		public string? ClassLinkValue { get; set; }
+		public bool HasSubMenu { get; set; }
+		public List<MenuItem>? Submenuitem { get; set; }
+		public string Href { get; set; } = string.Empty;
+	}
+
+	public List<MenuItem> GetMainMenusItems(ClaimsPrincipal User)
+	{
+		List<MenuItem> menuItemsCollection = new List<MenuItem>();
+
+		string? isAuthenticatedValue = Context.Session.GetString("isAuthenticated");
+
+		if (isAuthenticatedValue != null && isAuthenticatedValue == "true")
+		{
+
+			// var modules = User.FindFirstValue("Module");
+			// var modules = "Home,Customer,User,Ticket,ServiceUnit,Area,ServiceLevel,DemandType,Configuration,ClassificationList,ReasonList,ClassificationTree";
+
+			string? modules = Context.Session.GetString("Module");
+			string? baseUrl = Context.Session.GetString("BaseUrl");
+			baseUrl = baseUrl ?? string.Empty;
+
+			if (modules != null)
+			{
+				var customerItem = new MenuItem
+				{
+					Id = "customerMenuId",
+					ControllerName = "Customer",
+					MenuName = "Cliente",
+					ModuleName = "clientes",
+					// ClassLinkValue = "nav-link text-dark click-event-detect",
+					ClassLinkValue = "nav-link text-dark",
+					HasSubMenu = false,
+					Href = $"{baseUrl}/Customer/Index"
+				};
+
+				if (modules.Contains(customerItem.ControllerName))
+				{
+					menuItemsCollection.Add(customerItem);
+				}
+
+				var userItem = new MenuItem
+				{
+					Id = "userMenuId",
+					ControllerName = "User",
+					MenuName = "Usuário",
+					ModuleName = "usuarios",
+					// ClassLinkValue = "nav-link text-dark click-event-detect",
+					ClassLinkValue = "nav-link text-dark",
+					HasSubMenu = false,
+					Href = $"{baseUrl}/User/Index"
+				};
+
+				if (modules.Contains(userItem.ControllerName))
+				{
+					menuItemsCollection.Add(userItem);
+				}
+
+				var ticketItem = new MenuItem
+				{
+					Id = "ticketMenuId",
+					ControllerName = "Ticket",
+					MenuName = "Chamado",
+					ModuleName = "chamados",
+					// ClassLinkValue = "nav-link text-dark click-event-detect",
+					ClassLinkValue = "nav-link text-dark",
+					HasSubMenu = false,
+					Href = $"{baseUrl}/Ticket/Index"
+				};
+
+				if (modules.Contains(ticketItem.ControllerName))
+				{
+					menuItemsCollection.Add(ticketItem);
+				}
+
+				var configurationItem = new MenuItem
+				{
+					ControllerName = "Configuration",
+					MenuName = "Configurações",
+					ModuleName = "configuracoes",
+					// ClassLinkValue = "nav-link dropdown-toggle click-event-detect",
+					ClassLinkValue = "nav-link dropdown-toggle",
+					HasSubMenu = true,
+					Submenuitem = new List<MenuItem>()
+				};
+
+				if (modules.Contains(configurationItem.ControllerName))
+				{
+					configurationItem.Submenuitem.AddRange(GetConfigurationMenuItems(modules, baseUrl));
+					menuItemsCollection.Add(configurationItem);
+				}
+			}
+
+		}
+
+		return menuItemsCollection;
+	}
+
+	public List<MenuItem> GetConfigurationMenuItems(string modules, string baseUrl = "")
+	{
+		List<MenuItem> menuItemsCollection = new List<MenuItem>();
+
+		// var accessProfileItem = new MenuItem
+		// {
+		// 	ControllerName = "AccessProfile",
+		// 	MenuName = "Perfil de Acesso",
+		// 	ModuleName = "",
+		// 	ClassLinkValue = "dropdown-item",
+		// 	HasSubMenu = false
+		// };
+
+		// if (modules.Contains(accessProfileItem.ControllerName))
+		// {
+		// 	menuItemsCollection.Add(accessProfileItem);
+		// }
+
+		// var serviceUnitItem = new MenuItem
+		// {
+		// 	Id = "serviceUnitMenuId",
+		// 	ControllerName = "ServiceUnit",
+		// 	MenuName = "Unidade de Atendimento",
+		// 	ModuleName = "unidades",
+		// 	ClassLinkValue = "dropdown-item click-event-detect",
+		// 	HasSubMenu = false
+		// };
+
+		// if (modules.Contains(serviceUnitItem.ControllerName))
+		// {
+		// 	menuItemsCollection.Add(serviceUnitItem);
+		// }
+
+		// var areaItem = new MenuItem
+		// {
+		// 	Id = "areaMenuId",
+		// 	ControllerName = "Area",
+		// 	MenuName = "Área",
+		// 	ModuleName = "areas",
+		// 	ClassLinkValue = "dropdown-item click-event-detect",
+		// 	HasSubMenu = false
+		// };
+
+		// if (modules.Contains(areaItem.ControllerName))
+		// {
+		// 	menuItemsCollection.Add(areaItem);
+		// }
+
+		// var serviceLevelItem = new MenuItem
+		// {
+		// 	Id = "serviceLevelMenuId",
+		// 	ControllerName = "ServiceLevel",
+		// 	MenuName = "Nível de Atendimento",
+		// 	ModuleName = "nivel_atendimento",
+		// 	ClassLinkValue = "dropdown-item click-event-detect",
+		// 	HasSubMenu = false
+		// };
+
+		// if (modules.Contains(serviceLevelItem.ControllerName))
+		// {
+		// 	menuItemsCollection.Add(serviceLevelItem);
+		// }
+
+		// var demandTypeItem = new MenuItem
+		// {
+		// 	Id = "demandTypeMenuId",
+		// 	ControllerName = "DemandType",
+		// 	MenuName = "Tipo de Demanda",
+		// 	ModuleName = "motivo_demanda",
+		// 	ClassLinkValue = "dropdown-item click-event-detect",
+		// 	HasSubMenu = false
+		// };
+
+		// if (modules.Contains(demandTypeItem.ControllerName))
+		// {
+		// 	menuItemsCollection.Add(demandTypeItem);
+		// }
+
+		var classificationItem = new MenuItem
+		{
+			ControllerName = null,
+			MenuName = "Classificação",
+			ModuleName = "classificacao",
+			// ClassLinkValue = "dropdown-item click-event-detect",
+			ClassLinkValue = "dropdown-item",
+			HasSubMenu = true,
+			Submenuitem = new List<MenuItem>()
+		};
+
+		classificationItem.Submenuitem.AddRange(GetClassificationMenuItems(modules));
+		menuItemsCollection.Add(classificationItem);
+
+		var slaAlertItem = new MenuItem
+		{
+			ControllerName = "SlaAlert",
+			MenuName = "SLA/Alertas",
+			ModuleName = "sla_alertas",
+			// ClassLinkValue = "dropdown-item click-event-detect",
+			ClassLinkValue = "dropdown-item",
+			HasSubMenu = false,
+			Href = $"{baseUrl}/Sla/Index"
+
+		};
+
+		if (modules.Contains(slaAlertItem.ControllerName))
+		{
+			menuItemsCollection.Add(slaAlertItem);
+		}
+
+		return menuItemsCollection.OrderBy(o => o.MenuName).ToList();
+	}
+
+	public List<MenuItem> GetClassificationMenuItems(string modules, string baseUrl = "")
+	{
+		List<MenuItem> menuItemsCollection = new List<MenuItem>();
+
+		var classificationListItem = new MenuItem
+		{
+			Id = "classificationListMenuId",
+			ControllerName = "ClassificationList",
+			MenuName = "Lista de Classificação",
+			ModuleName = "lista_classificacao",
+			// ClassLinkValue = "dropdown-item click-event-detect",
+			ClassLinkValue = "dropdown-item",
+			HasSubMenu = false,
+			Href = $"{baseUrl}/ClassificationList/Index"
+		};
+
+		if (modules.Contains(classificationListItem.ControllerName))
+		{
+			menuItemsCollection.Add(classificationListItem);
+		}
+
+		var reasonListItem = new MenuItem
+		{
+			Id = "classificationTreeMenuId",
+			ControllerName = "ClassificationTree",
+			MenuName = "Árvore de Classificação",
+			ModuleName = "arvore_classificacao",
+			// ClassLinkValue = "dropdown-item click-event-detect",
+			ClassLinkValue = "dropdown-item",
+			HasSubMenu = false,
+			Href = $"{baseUrl}/ClassificationTree/Index"
+		};
+
+		if (modules.Contains(reasonListItem.ControllerName))
+		{
+			menuItemsCollection.Add(reasonListItem);
+		}
+
+		return menuItemsCollection.OrderBy(o => o.MenuName).ToList();
+	}
+}
+
+@{
+	string conversationid = string.IsNullOrEmpty(ViewBag.ConversationId) ? string.Empty : ViewBag.ConversationId;
+	var mainMenuItems = GetMainMenusItems(User);
+	string? username = Context.Session.GetString("Username");
+	string? useremail = Context.Session.GetString("LoginUser");
+
+	username = username ?? string.Empty;
+	useremail = useremail ?? string.Empty;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>CRM</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet">
+	<link href="https://cdn.datatables.net/2.3.3/css/dataTables.dataTables.min.css" />
+	<link href="~/css/select2totree.css" rel="stylesheet">
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/Alctel.CRM.Web.styles.css" asp-append-version="true" />
+</head>
+<body>
+	<header class="sticky-lg-top">
+		<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+			<div class="container-fluid">
+				<div class="navbar-collapse d-sm-inline-flex justify-content-between">
+
+					<ul class="navbar-nav flex-grow-1">
+
+						@if (mainMenuItems != null && mainMenuItems.Any())
+						{
+							@foreach (var item in mainMenuItems)
+							{
+								if (item.HasSubMenu == false)
+								{
+									<li class="nav-item">
+@* 										<a id="@item.Id" class="@item.ClassLinkValue" asp-area="" asp-controller="@item.ControllerName" asp-action="Index">@item.MenuName</a> *@
+										<a id="@item.Id" class="@item.ClassLinkValue" href="@item.Href">@item.MenuName</a>
+
+									</li>
+								}
+								else
+								{
+									<li class="nav-item dropdown">
+										<a class="@item.ClassLinkValue" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+											@item.MenuName
+										</a>
+
+										@if (item.Submenuitem != null && item.Submenuitem.Any())
+										{
+											<ul class="dropdown-menu">
+												@foreach (var subitem in item.Submenuitem)
+												{
+													@if (subitem.HasSubMenu == false)
+													{
+
+														<li><a id="@subitem.Id" class="@subitem.ClassLinkValue" asp-area="" asp-controller="@subitem.ControllerName" asp-action="Index" style="color: #666666 !important;">@subitem.MenuName</a></li>
+													}
+													else
+													{
+														@if (subitem.Submenuitem != null && subitem.Submenuitem.Any())
+														{
+															<li>
+																<a class="@subitem.ClassLinkValue" href="#" style="color: #666666 !important;">
+																	@subitem.MenuName &raquo;
+																</a>
+																<ul class="dropdown-menu dropdown-submenu">
+																	@foreach (var subitem2 in subitem.Submenuitem)
+																	{
+																		<li>
+@* 																			<a id="@subitem2.Id" class="@subitem2.ClassLinkValue" asp-area="" asp-controller="@subitem2.ControllerName" asp-action="Index" style="color: #666666 !important;">
+																				@subitem2.MenuName
+																			</a> *@
+																			<a id="@subitem2.Id" class="@subitem2.ClassLinkValue" href="@subitem2.Href" style="color: #666666 !important;">
+																				@subitem2.MenuName
+																			</a>
+																		</li>
+																	}
+
+																</ul>
+															</li>
+														}
+													}
+												}
+											</ul>
+										}
+
+									</li>
+								}
+							}
+
+							<li id="OnInteractionAlert" class="nav-item" style="margin-left:200px; display: none; background-color:red;">
+								<a id="OnInteractionLink" class="nav-link text-dark" href="#">
+									Retornar Interação em Atendimento
+@*   									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+										<path style="fill: red" fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877zM15.854.146a.5.5 0 0 1 0 .708L11.707 5H14.5a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 1 0v2.793L15.146.146a.5.5 0 0 1 .708 0" />
+									</svg>  *@
+								</a>
+							</li>
+						}
+
+
+
+
+
+						@* 		<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index">Cliente</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">Usuário</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Ticket" asp-action="Index">Chamado</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								Configurações
+							</a>
+							<ul class="dropdown-menu">
+
+								<li><a class="dropdown-item" asp-area="" asp-controller="Area" asp-action="Index" style="color: #666666 !important;">Área</a></li>
+
+								<li>
+									<a class="dropdown-item" href="#" style="color: #666666 !important;">
+										Classificação &raquo;
+									</a>
+									<ul class="dropdown-menu dropdown-submenu">
+										<li>
+											<a class="dropdown-item" asp-area="" asp-controller="ClassificationList" asp-action="Index" style="color: #666666 !important;">Lista de Classificação</a>
+										</li>
+
+										<li>
+											<a class="dropdown-item" asp-area="" asp-controller="ClassificationTree" asp-action="Index" style="color: #666666 !important;">Árvore de Classificação</a>
+										</li>
+									</ul>
+								</li>
+
+								<li><a class="dropdown-item" asp-area="" asp-controller="ServiceLevel" asp-action="Index" style="color: #666666 !important;">Nível de Atendimento</a></li>
+
+								<li><a class="dropdown-item" asp-area="" asp-controller="SlaAlert" asp-action="Index" style="color: #666666 !important;">SLA/Alertas</a></li>
+
+								<li><a class="dropdown-item" asp-area="" asp-controller="DemandType" asp-action="Index" style="color: #666666 !important;">Tipo de Demanda</a></li>
+
+								<li><a class="dropdown-item" asp-area="" asp-controller="ServiceUnit" asp-action="Index" style="color: #666666 !important;">Unidade de Atendimento</a></li>
+
+
+
+
+							</ul>
+						</li> *@
+					</ul>
+
+				</div>
+				<div><p style="color: #666666 !important;">@username</p></div>
+			</div>
+		</nav>
+	</header>
+	<div class="container-fluid">
+		<main role="main" class="pb-3">
+			<div>
+				<input id="userEmailId" type="hidden" value="@useremail" />
+			</div>
+			@RenderBody()
+		</main>
+	</div>
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.datatables.net/2.3.3/js/dataTables.min.js"></script>
+	<script src="https://sdk-cdn.mypurecloud.com/javascript/229.1.0/purecloud-platform-client-v2.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+	<script src="~/js/select2totree.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿@model Alctel.CRM.Web.Models.UserModel
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person-fill"
+                 viewBox="0 0 16 16">
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+            </svg>
+            <button class="btn btn-title-style" type="button" data-toggle="collapse" data-bs-toggle="collapse"
+                    data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                Criar Usuário
+            </button>
+        </h5>
+    </div>
+
+    <div class="card card-body">
+
+        <form method="post" asp-action="Create">
+            <div class="row smal mb-3">
+                <div class="alert-validation" role="alert" asp-validation-summary="All"></div>
+            </div>
+            <div class="row smal mb-3">
+                <div class="col-sm-6">
+                    <label asp-for="@Model.Fullname">Nome Completo:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <div>
+                            <input class="standard-input" type="text" asp-for="@Model.Fullname" aria-label="Fullname"
+                                   aria-describedby="basic-addon2" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <label asp-for="@Model.Email">Email:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <div>
+                            <input class="standard-input" type="text" asp-for="@Model.Email" aria-label="Email"
+                                   aria-describedby="basic-addon2" />
+                        </div>
+                    </div>
+                </div>                
+            </div>
+
+                 
+            <button type="submit" class="btn btn-style">Salvar</button>
+            <button type="button" class="btn btn-style cancel-form">Cancelar</button>
+        </form>
+
+
+    </div>
+
+
+</div>

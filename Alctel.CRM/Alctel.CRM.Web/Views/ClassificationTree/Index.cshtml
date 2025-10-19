@@ -1,0 +1,591 @@
+﻿@{
+	bool showMessageResult = false;
+	var showMessage = ViewBag.ShowMessage;
+	string message = "";
+
+	if (showMessage != null && showMessage == "TRUE")
+	{
+		showMessageResult = true;
+
+		if (ViewBag.Message != null)
+		{
+			message = (string)ViewBag.Message;
+		}
+
+	}
+}
+
+@model Alctel.CRM.Web.Models.ClassificationTreeModel;
+
+<div class="card">
+	<div class="card-header">
+
+		<div class="row">
+			<div class="row">
+				<div class="col-sm-6">
+
+
+					<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+						<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z" />
+					</svg>
+					<label class="label-title">Árvore de Classificação</label>
+
+
+				</div>
+
+				<div class="col-sm-6">
+					@* 				<a class="btn btn-title-style" asp-area="" asp-controller="ClassificationTree" asp-action="Create" title="Criar Área" type="_self">
+						<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-plus-circle" viewBox="0 0 16 16">
+							<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+							<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+						</svg>
+					</a> *@
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+
+
+	<div class="card-body">
+		<div class="row">
+			<div class="col-sm-9">
+			</div>
+			<div class="col-sm-3">
+				@if (showMessageResult)
+				{
+					<div class="alert alert-danger alert-dismissible alert-small fade show" role="alert" id="userFilterMessage">
+						@message
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+				}
+			</div>
+		</div>
+		<form method="post" asp-action="Edit">
+			<div class="row smal mb-3">
+				<div class="col-sm-3">
+					@if (Model.ClassificationDemandOptions != null)
+					{
+						<label asp-for="@Model.ClassificationDemandId">Demanda:</label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<select asp-for="@Model.ClassificationDemandId" asp-items="@Model.ClassificationDemandOptions">
+									<option>Opções</option>
+								</select>
+							</div>
+						</div>
+					}
+				</div>
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.ClassificationDemandTypeId">Tipo:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<select asp-for="@Model.ClassificationDemandTypeId">
+								<option>Opções</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-2">
+					<div class="row">
+						<label asp-for="@Model.ClassificationReasonId">Motivo:</label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<select asp-for="@Model.ClassificationReasonId">
+									<option>Opções</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<label asp-for="@Model.ClassificationReasonListItemId">Itens da Lista:</label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<select asp-for="@Model.ClassificationReasonListItemId">
+									<option>Opções</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-2">
+					<div class="row">
+						<label asp-for="@Model.ClassificationSubmotive01Id">SubMotivo 1:</label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<select asp-for="@Model.ClassificationSubmotive01Id">
+									<option>Opções</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<label asp-for="@Model.ClassificationSubmotive01ListItemId">Itens da Lista:</label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<select asp-for="@Model.ClassificationSubmotive01ListItemId">
+									<option>Opções</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-2">
+					<div class="row">
+						<label asp-for="@Model.ClassificationSubmotive02Id">SubMotivo 2:</label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<select asp-for="@Model.ClassificationSubmotive02Id">
+									<option>Opções</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<label asp-for="@Model.ClassificationSubmotive02ListItemId">Itens da Lista:</label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<select asp-for="@Model.ClassificationSubmotive02ListItemId">
+									<option>Opções</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<button type="submit" class="btn btn-style">Salvar</button>
+			<button type="button" class="btn btn-style cancel-form">Cancelar</button>
+		</form>
+
+
+
+
+	</div>
+</div>
+
+
+@section Scripts {
+	<script>
+		$(function(){
+			classification.Init.Demand()
+			classification.Init.Type()
+			classification.Init.Reason()
+			classification.Init.ClassificationList()
+			classification.Init.Submotive01()
+			classification.Init.Submotive01ListItem()
+			classification.Init.Submotive02()
+			classification.Init.Submotive02ListItem()
+			classification.Load.Demand()
+			classification.Events.Demand()
+			classification.Events.Type()
+			classification.Events.Reason()
+			classification.Events.ClassificationSubmotive01()
+			classification.Events.ClassificationSubmotive02()
+			// classification.Load.Type()
+		})
+
+
+		var classification = {
+			Init: {
+				Demand: function() {
+					$("#ClassificationDemandId").select2ToTree({
+						// treeData: {
+						//     dataArr:mydata
+						// },
+						// maximumSelectionLength: 3,
+						placeholder: "Opções...",
+					});
+				},
+
+				Type: function() {
+					$("#ClassificationDemandTypeId").select2ToTree({
+						// treeData: {
+						//     dataArr:mydata
+						// },
+						// maximumSelectionLength: 3,
+						placeholder: "Opções...",
+					});
+				},
+
+				Reason: function() {
+					$("#ClassificationReasonId").select2ToTree({
+						// treeData: {
+						//     dataArr:mydata
+						// },
+						// maximumSelectionLength: 3,
+						placeholder: "Opções...",
+					});
+				},
+
+				ClassificationList: function() {
+					$("#ClassificationReasonListItemId").select2ToTree({
+						// treeData: {
+						//     dataArr:mydata
+						// },
+						// maximumSelectionLength: 3,
+						placeholder: "Opções...",
+					});
+				},
+
+				Submotive01: function() {
+					$("#ClassificationSubmotive01Id").select2ToTree({
+						// treeData: {
+						//     dataArr:mydata
+						// },
+						// maximumSelectionLength: 3,
+						placeholder: "Opções...",
+					});
+				},
+
+				Submotive01ListItem: function() {
+					$("#ClassificationSubmotive01ListItemId").select2ToTree({
+						// treeData: {
+						//     dataArr:mydata
+						// },
+						// maximumSelectionLength: 3,
+						placeholder: "Opções...",
+					});
+				},
+
+				Submotive02: function() {
+					$("#ClassificationSubmotive02Id").select2ToTree({
+						// treeData: {
+						//     dataArr:mydata
+						// },
+						// maximumSelectionLength: 3,
+						placeholder: "Opções...",
+					});
+				},
+
+				Submotive02ListItem: function() {
+					$("#ClassificationSubmotive02ListItemId").select2ToTree({
+						// treeData: {
+						//     dataArr:mydata
+						// },
+						// maximumSelectionLength: 3,
+						placeholder: "Opções...",
+					});
+				},
+			},
+
+			Load: {
+				Demand: function() {
+					const url = window.location.href.replace("ClassificationTree", 'ClassificationDemand/GetClassificationDemandList')
+
+					$.get(url, function(data, status) {
+						// console.log(data)
+					})
+				},
+
+				Type: function(demandid, callback) {
+					const url = window.location.href.replace("ClassificationTree", `ClassificationDemandType/GetClassificationDemandTypeList/${demandid}`)
+
+					$.get(url, function(data, status) {
+						if (status === 'success') {
+							callback(data)
+						}
+					})
+				},
+
+				Reason: function(typeid, callback) {
+					const url = window.location.href.replace("ClassificationTree", `ClassificationListItems/GetClassificationReasonList/${typeid}`)
+
+					$.get(url, function(data, status) {
+						if (status === 'success') {
+							callback(data)
+						}
+					})
+				},
+
+				ReasonList: function(listid, callback) {
+					const url = window.location.href.replace("ClassificationTree", `ClassificationListItems/GetClassificationListItemsActive/${listid}`)
+
+					$.get(url, function(data, status) {
+						if (status === 'success') {
+							callback(data)
+						}
+					})
+				},
+
+				Submotive01: function(reasonid, callback) {
+					const url = window.location.href.replace("ClassificationTree", `ClassificationListItems/ClassificationReasonChildren/${reasonid}`)
+
+					$.get(url, function(data, status) {
+						if (status === 'success') {
+							callback(data)
+						}
+					})
+				},
+
+				Submotive01ReasonsList: function(listid, callback) {
+					const url = window.location.href.replace("ClassificationTree", `ClassificationListItems/GetClassificationListItemsActive/${listid}`)
+					
+					$.get(url, function(data, status) {
+						if (status === 'success') {
+							callback(data)
+						}
+					})
+				},
+
+				Submotive02: function(reasonid, callback) {
+					const url = window.location.href.replace("ClassificationTree", `ClassificationListItems/ClassificationReasonChildren/${reasonid}`)
+
+					$.get(url, function(data, status) {
+						if (status === 'success') {
+							callback(data)
+						}
+					})
+				},
+
+				Submotive02ReasonsList: function(listid, callback) {
+					const url = window.location.href.replace("ClassificationTree", `ClassificationListItems/GetClassificationListItemsActive/${listid}`)
+					
+					$.get(url, function(data, status) {
+						if (status === 'success') {
+							callback(data)
+						}
+					})
+				},
+			},
+
+			Events: {
+				Demand: function() {
+					$('#ClassificationDemandId').on('change', function() {
+
+						// $('#ClassificationDemandId').empty()
+						$('#ClassificationDemandTypeId').empty()
+						$('#ClassificationReasonId').empty()
+						$('#ClassificationReasonListItemId').empty()
+						$('#ClassificationSubmotive01Id').empty()
+						$('#ClassificationSubmotive01ListItemId').empty()
+						$('#ClassificationSubmotive02Id').empty()
+						$('#ClassificationSubmotive02ListItemId').empty()
+
+						var selectedValue = $(this).val();
+						classification.Load.Type(selectedValue, classification.Callback.LoadTypeOptionsCb)
+					})
+				},
+
+				Type: function() {
+					$('#ClassificationDemandTypeId').on('change', function() {
+
+						$('#ClassificationReasonId').empty()
+						$('#ClassificationReasonListItemId').empty()
+						$('#ClassificationSubmotive01Id').empty()
+						$('#ClassificationSubmotive01ListItemId').empty()
+						$('#ClassificationSubmotive02Id').empty()
+						$('#ClassificationSubmotive02ListItemId').empty()
+
+						var selectedValue = $(this).val();
+						classification.Load.Reason(selectedValue, classification.Callback.LoadReasonsOptionsCb)
+					})
+				},
+
+				Reason: function() {
+					$("#ClassificationReasonId").on('change', function() {
+
+						$('#ClassificationReasonListItemId').empty()
+						$('#ClassificationSubmotive01Id').empty()
+						$('#ClassificationSubmotive01ListItemId').empty()
+						$('#ClassificationSubmotive02Id').empty()
+						$('#ClassificationSubmotive02ListItemId').empty()
+
+						var selectedValue = $(this).val();
+						var values = selectedValue.split(":")
+						var reasonid = values[0]
+						var listid = values[1]
+
+						classification.Load.Submotive01ReasonsList(listid, classification.Callback.LoadClassificationListOptionsCb)
+
+						classification.Load.Submotive01(reasonid, classification.Callback.LoadClassificationSubmotive01Cb)
+					})
+				},
+
+				ClassificationSubmotive01: function() {
+					$("#ClassificationSubmotive01Id").on('change', function() {
+
+						var selectedValue = $(this).val();
+						var values = selectedValue.split(":")
+						var reasonid = values[0]
+						var listid = values[1]
+
+						classification.Load.Submotive01ReasonsList(listid, classification.Callback.LoadClassificationSubmotive01ListItemCb)
+
+						classification.Load.Submotive02(reasonid, classification.Callback.LoadClassificationSubmotive02Cb)
+					})
+				},
+
+				ClassificationSubmotive02: function() {
+					$("#ClassificationSubmotive02Id").on('change', function() {
+
+						var selectedValue = $(this).val();
+						var values = selectedValue.split(":")
+						var reasonid = values[0]
+						var listid = values[1]
+
+						classification.Load.Submotive02ReasonsList(listid, classification.Callback.LoadClassificationSubmotive02ListItemCb)
+
+						// classification.Load.Submotive02(reasonid, classification.Callback.LoadClassificationSubmotive02Cb)
+					})
+				}
+			},
+
+			Callback: {
+				LoadTypeOptionsCb: function(types) {
+
+					$('#ClassificationDemandTypeId').append(
+						$('<option>', {
+							value: '',
+							text: 'Opções',
+						})
+					)
+
+					$.each(types, function (index, value) {
+						if (value.active) {
+							$('#ClassificationDemandTypeId').append(
+								$('<option>', {
+									value: value.id,
+									text: value.name,
+								})
+							)
+						}
+					})
+				},
+
+				LoadReasonsOptionsCb: function(reasons) {
+					
+					$('#ClassificationReasonId').append(
+						$('<option>', {
+							value: '',
+							text: 'Opções',
+						})
+					)
+
+					$.each(reasons, function (index, value) {
+						if (value.active) {
+							$('#ClassificationReasonId').append(
+								$('<option>', {
+									// value: value.id,
+									value: `${value.id}:${value.classificationListReasonId}`,
+									text: value.name,
+								})
+							)
+						}
+					})
+				},
+
+				LoadClassificationListOptionsCb: function(reasons) {
+
+					$('#ClassificationReasonListItemId').append(
+						$('<option>', {
+							value: '',
+							text: 'Opções',
+						})
+					)
+
+					$.each(reasons, function (index, value) {
+						if (value.active) {
+							$('#ClassificationReasonListItemId').append(
+								$('<option>', {
+									value: value.id,
+									text: value.name,
+								})
+							)
+						}
+					})
+				},
+
+				LoadClassificationSubmotive01Cb: function(reasons) {
+
+					$('#ClassificationSubmotive01Id').append(
+						$('<option>', {
+							value: '',
+							text: 'Opções',
+						})
+					)
+
+					$.each(reasons, function (index, value) {
+						if (value.active) {
+							$('#ClassificationSubmotive01Id').append(
+								$('<option>', {
+									value: `${value.id}:${value.classificationListReasonId}`,
+									text: value.name,
+								})
+							)
+						}
+					})
+				},
+
+				LoadClassificationSubmotive01ListItemCb: function(reasons) {
+
+					$('#ClassificationSubmotive01ListItemId').append(
+						$('<option>', {
+							value: '',
+							text: 'Opções',
+						})
+					)
+
+					$.each(reasons, function (index, value) {
+						if (value.active) {
+							$('#ClassificationSubmotive01ListItemId').append(
+								$('<option>', {
+									value: value.id,
+									text: value.name,
+								})
+							)
+						}
+					})
+				},
+
+				LoadClassificationSubmotive02Cb: function(reasons) {
+
+					$('#ClassificationSubmotive02Id').append(
+						$('<option>', {
+							value: '',
+							text: 'Opções',
+						})
+					)
+
+					$.each(reasons, function (index, value) {
+						if (value.active) {
+							$('#ClassificationSubmotive02Id').append(
+								$('<option>', {
+									value: `${value.id}:${value.classificationListReasonId}`,
+									text: value.name,
+								})
+							)
+						}
+					})
+				},
+
+				LoadClassificationSubmotive02ListItemCb: function(reasons) {
+
+					$('#ClassificationSubmotive02ListItemId').append(
+						$('<option>', {
+							value: '',
+							text: 'Opções',
+						})
+					)
+
+					$.each(reasons, function (index, value) {
+						if (value.active) {
+							$('#ClassificationSubmotive02ListItemId').append(
+								$('<option>', {
+									value: value.id,
+									text: value.name,
+								})
+							)
+						}
+					})
+				},
+			}
+		}
+	</script>
+}

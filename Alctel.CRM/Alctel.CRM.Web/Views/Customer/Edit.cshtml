@@ -1,0 +1,374 @@
+﻿@model Alctel.CRM.Web.Models.CustomerModel
+
+@{
+	int itemcounter = 1;
+	string? baseUrl = ViewBag.BaseUrl;
+
+	baseUrl = baseUrl == null ? string.Empty : baseUrl;
+}
+
+<div class="card">
+	<div class="card-header">
+		<h5 class="mb-0">
+			<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+				<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z" />
+			</svg>
+			<button class="btn btn-title-style" type="button" data-toggle="collapse" data-bs-toggle="collapse"
+					data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+				Editar Cliente
+			</button>
+		</h5>
+	</div>
+
+	<div class="card card-body">
+
+		<form method="post" asp-action="Edit">
+			<div class="row smal mb-3">
+				<div class="alert-validation" role="alert" asp-validation-summary="All"></div>
+			</div>
+
+			<div class="row smal mb-3">
+				<div class="col-sm-3">
+					<label asp-for="@Model.FirstName">Nome:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.FirstName" aria-label="FirstName"
+								   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.LastName">Sobrenome:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.LastName" aria-label="LastName"
+								   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.SocialAffectionateName">Nome Social/Afetivo:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.SocialAffectionateName"
+								   aria-label="SocialAffectionateName" aria-describedby="basic-addon2" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.Cpf">CPF:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.Cpf" aria-label="Cpf" aria-describedby="basic-addon2" maxlength="14" oninput="tools.HelpMethods.FormatField('###.###.###-##',this)" readonly style="background-color:#E2E8F0;" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row smal mb-3">
+				<div class="col-sm-3">
+					<label asp-for="@Model.PhoneNumber1">Telefone 1:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="tel" asp-for="@Model.PhoneNumber1" aria-label="PhoneNumber"
+								   aria-describedby="basic-addon2" oninput="tools.HelpMethods.FormatField('(##)_#####-####',this)" maxlength="15" readonly style="background-color:#E2E8F0;">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.PhoneNumber2">Telefone 2:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="tel" asp-for="@Model.PhoneNumber2" aria-label="PhoneNumber1"
+								   aria-describedby="basic-addon2" oninput="tools.HelpMethods.FormatField('(##)_#####-####',this)" maxlength="15">
+						</div>
+					</div>
+				</div>
+
+				@* 				<div class="col-sm-3">
+					<label asp-for="@Model.MobilePhone">Contato WhatsApp:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="tel" asp-for="@Model.MobilePhone" aria-label="MobilePhone"
+								   aria-describedby="basic-addon2" oninput="tools.HelpMethods.FormatField('(##)_#####-####',this)" maxlength="15">
+						</div>
+					</div>
+				</div> *@
+				<div class="col-sm-3">
+					<label asp-for="@Model.Email1">Email 1:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="email" asp-for="@Model.Email1" aria-label="Email1"
+								   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<label asp-for="@Model.Email2">Email 2:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="email" asp-for="@Model.Email2" aria-label="Email2"
+								   aria-describedby="basic-addon2">
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row smal mb-3">
+				<div class="col-sm-3">
+					<label asp-for="@Model.CompanyName">Nome da Empresa:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.CompanyName" aria-label="CompanyName"
+								   aria-describedby="basic-addon2">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.Cnpj">CNPJ:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.Cnpj" aria-label="Cnpj"
+								   aria-describedby="basic-addon2" oninput="tools.HelpMethods.FormatField('##.###.###/####-##',this)" maxlength="18">
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.PhoneNumberCompany">Telefone Corporativo:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="tel" asp-for="@Model.PhoneNumberCompany" aria-label="PhoneNumber2"
+								   aria-describedby="basic-addon2" oninput="tools.HelpMethods.FormatField('(##)_#####-####',this)" maxlength="15">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					@* 					<label asp-for="@Model.Category">Categoria:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.Category" aria-label="Category"
+								   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;">
+						</div>
+					</div> *@
+				</div>
+
+			</div>
+
+
+			<div class="row smal mb-3">
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.Category">Categoria:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.Category" aria-label="Category"
+								   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.SubCategory">Subcategoria:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.SubCategory" aria-label="SubCategory"
+								   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.Registration">Matrícula:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.Registration" aria-label="Registration"
+								   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					@* 					<label asp-for="@Model.ExtraField01">Campo 1:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.ExtraField01" aria-label="ExtraField01"
+								   aria-describedby="basic-addon2" />
+						</div>
+					</div> *@
+				</div>
+
+				@* 				<div class="col-sm-3">
+					<label asp-for="@Model.CreatedOn">Data de Criação:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="date" asp-for="@Model.CreatedOn" aria-label="CreatedOn"
+								   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;">
+						</div>
+					</div>
+				</div> *@
+
+			</div>
+
+			@* 	<div class="row smal mb-3">
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.ExtraField01">Campo 1:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.ExtraField01" aria-label="ExtraField01"
+								   aria-describedby="basic-addon2" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.ExtraField02">Campo 2:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.ExtraField02" aria-label="ExtraField02"
+								   aria-describedby="basic-addon2" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.ExtraField03">Campo 3:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.ExtraField03" aria-label="ExtraField03"
+								   aria-describedby="basic-addon2" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+
+				</div>
+
+			</div> *@
+
+			<input type="hidden" asp-for="@Model.Id" value="@Model.Id" />
+			<input type="hidden" asp-for="@Model.CustomerDataToCompareIfChanged.SocialAffectionateName" value="@Model.CustomerDataToCompareIfChanged.SocialAffectionateName" />
+			<input type="hidden" asp-for="@Model.CustomerDataToCompareIfChanged.PhoneNumber2" value="@Model.CustomerDataToCompareIfChanged.PhoneNumber2" />
+			<input type="hidden" asp-for="@Model.CustomerDataToCompareIfChanged.Email2" value="@Model.CustomerDataToCompareIfChanged.Email2" />
+			<input type="hidden" asp-for="@Model.CustomerDataToCompareIfChanged.Cnpj" value="@Model.CustomerDataToCompareIfChanged.Cnpj" />
+			<input type="hidden" asp-for="@Model.CustomerDataToCompareIfChanged.CompanyName" value="@Model.CustomerDataToCompareIfChanged.CompanyName" />
+			<input type="hidden" asp-for="@Model.CustomerDataToCompareIfChanged.PhoneNumberCompany" value="@Model.CustomerDataToCompareIfChanged.PhoneNumberCompany" />
+			<input type="hidden" asp-for="@Model.CustomerDataToCompareIfChanged.ExtraField01" value="@Model.CustomerDataToCompareIfChanged.ExtraField01" />
+			<input type="hidden" asp-for="@Model.CustomerDataToCompareIfChanged.ExtraField02" value="@Model.CustomerDataToCompareIfChanged.ExtraField02" />
+			<input type="hidden" asp-for="@Model.CustomerDataToCompareIfChanged.ExtraField03" value="@Model.CustomerDataToCompareIfChanged.ExtraField03" />
+
+			<button type="submit" class="btn btn-style">Salvar</button>
+			@* <button type="button" class="btn btn-style cancel-form">Cancelar</button> *@
+			<a class="btn btn-style" href="@baseUrl/Customer/Index">Cancelar</a>
+			<input type="submit" style="display: none;" />
+		</form>
+
+
+		@if (Model.Logs != null && Model.Logs.Any())
+		{
+			<table class="table table-striped table-sm" style="margin-top: 50px;background-color: #f2f2f2;">
+				<thead>
+					<tr>
+						<th scope="col"></th>
+						<th scope="col">Data</th>
+						<th scope="col">Hora</th>
+						<th scope="col">Objeto</th>
+						<th scope="col">Módulo</th>
+						<th scope="col">Usuário</th>
+						<th scope="col">Campo</th>
+						<th scope="col">Valor Anterior</th>
+						<th scope="col">Ação</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model.Logs)
+					{
+						<tr>
+							<td>Log de Controle: </td>
+							<td>@item.LogEvent.ToString("dd/MM/yyyy")</td>
+							<td>@item.LogEvent.ToString("HH:mm")</td>
+							<td>@item.User</td>
+							<td>@item.Module</td>
+							<td>@item.Section</td>
+							<td>@item.Field</td>
+							<td>@item.Value</td>
+							<td>@item.Action</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		}
+
+
+		<div class="card-body">
+			<table class="table table-striped table-sm"
+				   style="margin-top: 50px;background-color: #f2f2f2;">
+				<thead>
+					<tr style="color: #666666 !important; font-weight: bold;">
+						<th>#</th>
+						<th scope="col">Cliente</th>
+						<th scope="col">Protocolo</th>
+						<th scope="col">Data do Protocolo</th>
+						@* <th scope="col">Tipo de Protocolo</th> *@
+						@* <th scope="col">Tipo de Demanda</th> *@
+						@* <th scope="col">Criticidade</th> *@
+						@* <th scope="col">Status</th> *@
+						@* <th scope="col">SLA</th> *@
+						@* <th scope="col">Fila GT</th> *@
+						<th scope="col">Fila Genesys</th>
+						@* <th scope="col">Termômetro</th> *@
+						@* <th scope="col">Usuário</th> *@
+						<th></th>
+						<th style="display:none;">Id do Chamado</th>
+					</tr>
+				</thead>
+				<tbody>
+					@if (Model.TicketCustomer != null && Model.TicketCustomer.Count > 0)
+					{
+						@foreach (var item in Model.TicketCustomer)
+						{
+							@* 							<tr class="journey-link"
+								onclick="tools.HelpMethods.CallTicketFromCustomerScreen(@item.Id)"> *@
+							<tr>
+								<td>@itemcounter</td>
+								<td>@item.CustomerFullName</td>
+								<td>@item.Protocol</td>
+								@* <td>@item.ProtocolDate.ToString("dd/MM/yyyy")</td> *@
+								<td>@item.ProtocolDate</td>
+								@* <td>Pai</td> *@
+								@* <td>Demanda</td> *@
+								@* <td>Alta</td> *@
+								@* <td>Finalizado</td> *@
+								@* <td>1 hora</td> *@
+								@* <td>Nível 2</td> *@
+								<td>@item.QueueGenesys</td>
+								@* <td>Integração</td> *@
+								@* <td>Gisele</td> *@
+								<td><a href="@baseUrl/Ticket/Edit/?id=@item.Id">Editar</a></td>
+								<td style="display:none;">@item.Id</td>
+							</tr>
+
+							itemcounter = itemcounter + 1;
+						}
+
+					}
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+
+
+</div>

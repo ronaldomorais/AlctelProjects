@@ -1,0 +1,15 @@
+D:\Dev\Alctel\ALCTEL_VSS_0001\Alctel.CRM\Alctel.CRM.Context.InMemory\bin\Release\net8.0\Alctel.CRM.Context.InMemory.deps.json
+D:\Dev\Alctel\ALCTEL_VSS_0001\Alctel.CRM\Alctel.CRM.Context.InMemory\bin\Release\net8.0\Alctel.CRM.Context.InMemory.dll
+D:\Dev\Alctel\ALCTEL_VSS_0001\Alctel.CRM\Alctel.CRM.Context.InMemory\bin\Release\net8.0\Alctel.CRM.Context.InMemory.pdb
+D:\Dev\Alctel\ALCTEL_VSS_0001\Alctel.CRM\Alctel.CRM.Context.InMemory\obj\Release\net8.0\Alctel.CRM.Context.InMemory.csproj.AssemblyReference.cache
+D:\Dev\Alctel\ALCTEL_VSS_0001\Alctel.CRM\Alctel.CRM.Context.InMemory\obj\Release\net8.0\Alctel.CRM.Context.InMemory.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dev\Alctel\ALCTEL_VSS_0001\Alctel.CRM\Alctel.CRM.Context.InMemory\obj\Release\net8.0\Alctel.CRM.Context.InMemory.AssemblyInfoInputs.cache
+D:\Dev\Alctel\ALCTEL_VSS_0001\Alctel.CRM\Alctel.CRM.Context.InMemory\obj\Release\net8.0\Alctel.CRM.Context.InMemory.AssemblyInfo.cs
+D:\Dev\Alctel\ALCTEL_VSS_0001\Alctel.CRM\Alctel.CRM.Context.InMemory\obj\Release\net8.0\Alctel.CRM.Context.InMemory.csproj.CoreCompileInputs.cache
+D:\Dev\Alctel\ALCTEL_VSS_0001\Alctel.CRM\Alctel.CRM.Context.InMemory\obj\Release\net8.0\Alctel.CRM.Context.InMemory.sourcelink.json
+D:\Dev\Alctel\ALCTEL_VSS_0001\Alctel.CRM\Alctel.CRM.Context.InMemory\obj\Release\net8.0\Alctel.CRM.Context.InMemory.dll
+D:\Dev\Alctel\ALCTEL_VSS_0001\Alctel.CRM\Alctel.CRM.Context.InMemory\obj\Release\net8.0\refint\Alctel.CRM.Context.InMemory.dll
+D:\Dev\Alctel\ALCTEL_VSS_0001\Alctel.CRM\Alctel.CRM.Context.InMemory\obj\Release\net8.0\Alctel.CRM.Context.InMemory.pdb
+D:\Dev\Alctel\ALCTEL_VSS_0001\Alctel.CRM\Alctel.CRM.Context.InMemory\obj\Release\net8.0\ref\Alctel.CRM.Context.InMemory.dll
+D:\Dev\Alctel\ALCTEL_VSS_0001\Alctel.CRM\Alctel.CRM.Context.InMemory\bin\Release\net8.0\Alctel.CRM.Context.InMemory.runtimeconfig.json
+D:\Dev\Alctel\ALCTEL_VSS_0001\Alctel.CRM\Alctel.CRM.Context.InMemory\obj\Release\net8.0\Alctel.CRM.Context.InMemory.genruntimeconfig.cache

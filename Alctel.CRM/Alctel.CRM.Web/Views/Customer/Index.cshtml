@@ -1,0 +1,273 @@
+﻿@{
+	var itemcounter = ViewBag.StartIndex;
+
+	if (itemcounter == null)
+	{
+		itemcounter = 1;
+	}
+
+	List<int> previousFirstPages = (List<int>)ViewBag.PreviousFirstPages;
+	List<int> nextLastPages = (List<int>)ViewBag.NextLastPages;
+	string? baseUrl = ViewBag.BaseUrl;
+
+	baseUrl = baseUrl == null ? string.Empty : baseUrl;
+}
+
+@model List<Alctel.CRM.Web.Models.CustomerModel>
+
+<div class="card">
+	<div class="card-header">
+		<div class="row">
+			<div class="col-sm-9">
+			</div>
+			<div class="col-sm-3">
+				@if (ViewBag.AlertFilter == "SHOW")
+				{
+					<div class="alert alert-danger alert-dismissible alert-small fade show" role="alert" id="userFilterMessage">
+						Necessário preencher todos os campos da Pesquisa
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+				}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+
+				@* <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-people-fill" viewBox="0 0 16 16">
+                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                </svg>                             *@
+
+
+				<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+					<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z" />
+				</svg>
+				<label class="label-title">Lista de Clientes</label>
+				@* <button class="btn btn-style" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                Lista de Clientes
+            </button> *@
+
+			</div>
+
+			<div class="col-sm-3">
+				<a href="@baseUrl/Customer/Create">Novo</a>
+				<input type="submit" style="display: none;" />
+@* 				<a class="btn btn-link" asp-area="" asp-controller="Customer" asp-action="Create" title="Criar Usuário" type="_self">Novo
+					<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+                    </svg>      
+					<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-plus-circle" viewBox="0 0 16 16">
+						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+						<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+					</svg>
+				</a> *@
+			</div>
+
+			<div class="col-sm-3">
+				@* 				<div style="display: inline-block;">
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" aria-label="CreatedOn"
+								   aria-describedby="basic-addon2" readonly style="border-radius: 7px;">
+						</div>
+					</div>
+				</div> *@
+				<div style="display: inline-block;">
+					<form method="post" asp-action="Search">
+						<div style="display: inline-block;">
+							<select id="searchCustomerType" name="searchCustomerType" aria-label="Perfil">
+								<option selected>Tipo Filtro&nbsp;&nbsp;</option>
+								<option value="nome_completo">Nome</option>
+								<option value="email_principal">Email</option>
+								<option value="cpf">Cpf</option>
+								<option value="telefone_principal">Telefone</option>
+								<option value="cnpj">CNPJ</option>
+								<option value="matricula">Matrícula</option>
+							</select>
+						</div>
+						<div style="display: inline-block;">
+							<div class="input-group input-group-sm mb-3">
+								<div>
+									<input name="searchCustomerText" id="searchCustomerText" class="standard-input" type="text" aria-label="Search" value=""
+										   aria-describedby="basic-addon2" style="border-radius: 7px;" minlength="3" autocomplete="off">
+								</div>
+							</div>
+						</div>
+						<div style="display: inline-block;">
+@* 							<svg id="searchUser" xmlns="http://www.w3.org/2000/svg" class="bi bi-search" viewBox="0 0 16 16">
+								<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+							</svg>
+ *@
+							<button type="submit" class="btn btn-style">Pesquisar</button>
+
+						</div>
+
+						<input type="submit" style="display: none;" />
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</div>	
+
+	<div class="card-body table-responsive">
+		<table class="table table-striped table-sm" id="customerDataTable">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Nome</th>
+					@* <th scope="col">Nome Social</th> *@
+					<th scope="col">CPF</th>
+					<th scope="col">Email 1</th>
+					@* 					<th scope="col">Email 2</th>
+					<th scope="col">Telefone</th>
+					<th scope="col">WhatsApp</th>
+					<th scope="col">CNPJ</th>
+					<th scope="col">Nome da Empresa</th>
+					<th scope="col">Telefone 1</th>
+					<th scope="col">Telefone 2</th>
+					<th scope="col">Categoria</th>
+					<th scope="col">SubCategoria</th>
+					<th scope="col">Matrícula</th>
+					<th scope="col">Data de Criação</th>
+ *@					<th scope="col"></th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+
+				@if (Model != null && Model.Any())
+				{
+					@foreach (var item in Model)
+					{
+						<tr>
+							<th scope="row">@itemcounter</th>
+							<td>@string.Concat(item.FirstName, item.LastName)</td>
+							@* <td>@item.SocialAffectionateName</td> *@
+							<td>@item.Cpf</td>
+							<td>@item.Email1</td>
+							@* 							<td>@item.Email2</td>
+							<td>@item.PhoneNumber</td>
+							<td>@item.MobilePhone</td>
+							<td>@item.Cnpj</td>
+							<td>@item.CompanyName</td>
+							<td>@item.PhoneNumber1</td>
+							<td>@item.PhoneNumber2</td>
+							<td>@item.Category</td>
+							<td>@item.SubCategory</td>
+							<td>@item.Registration</td>
+							<td>@item.CreatedOn.ToString("dd/MM/yyyy")</td>
+ *@							<td align="right">
+@* 								<form method="get" asp-action="Edit">
+									<input type="hidden" name="id" value=@item.Id />
+									<button type="submit" class="btn btn-style">
+										<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+											<path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z" />
+										</svg>
+									</button>
+								</form> *@
+								<a href="@baseUrl/Customer/Edit/?id=@item.Id">Editar</a>
+
+							</td>
+							<td>
+								@*                                 <form method="get" asp-action="Delete">
+                                    <input type="hidden" name="id" value=@item.Id />
+                                    <button type="submit" class="btn btn-style">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-trash3" viewBox="0 0 16 16">
+                                        <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+                                        </svg>
+                                    </button>                                    
+                                </form>  *@                               
+																		                            </td>
+						</tr>
+
+						{ itemcounter = itemcounter + 1; }
+					}
+				}
+
+			</tbody>
+		</table>
+		@if (ViewBag.ShowPageControl)
+		{
+			<div style="text-align: center;">
+				Página @ViewBag.CurrentPage
+			</div>
+		}
+	</div>
+
+
+	@if (ViewBag.ShowPageControl)
+	{
+		<div>
+			<span>@ViewBag.InfoPage</span>
+		</div>
+		<div style="display:flex; align-items:flex-start;">
+
+			<div>
+				<form method="get" asp-action="Index" id="PreviousPage">
+					<input class="btnpagecontrol" type="submit" name="PreviousPage" value="&lsaquo; Anterior" />
+					<input type="hidden" name="currentpage" id="currentpage" value="@ViewBag.PreviousPage" />
+				</form>
+			</div>
+
+			<div>
+				<form method="get" asp-action="Index" id="PreviousNPage">
+					<input class="btnpagecontrol" type="submit" name="PreviousNPage" value="&lsaquo;&lsaquo;" />
+					<input type="hidden" name="currentpage" id="currentpage" value="@ViewBag.PreviousNPage" />
+				</form>
+			</div>
+
+			<div>
+				<form method="get" asp-action="Index" id="FirstPage">
+					<input class="btnpagecontrol" type="submit" name="FirstPage" value="1" />
+					<input type="hidden" name="currentpage" id="currentpage" value="@ViewBag.FirstPage" />
+				</form>
+			</div>
+
+			<div>
+				...
+			</div>
+
+			@if (previousFirstPages != null && previousFirstPages.Any())
+			{
+				@foreach (var pagenumber in previousFirstPages)
+				{
+					<div>
+						<form method="get" asp-action="Index" id="@pagenumber">
+							<input class="btnpagecontrol" type="submit" name="@pagenumber" value="@pagenumber" />
+							<input type="hidden" name="currentpage" id="currentpage" value="@pagenumber" />
+						</form>
+					</div>
+				}
+			}
+
+			<div>
+				...
+			</div>
+
+			<div>
+				<form method="get" asp-action="Index" id="LastPage">
+					<input class="btnpagecontrol" type="submit" name="LastPage" value="@ViewBag.LastPage" />
+					<input type="hidden" name="currentpage" id="currentpage" value="@ViewBag.LastPage" />
+				</form>
+			</div>
+
+			<div>
+				<form method="get" asp-action="Index" id="NextNPage">
+					<input class="btnpagecontrol" type="submit" name="NextNPage" value="&rsaquo;&rsaquo;" />
+					<input type="hidden" name="currentpage" id="currentpage" value="@ViewBag.NextNPage" />
+				</form>
+			</div>
+
+			<div>
+				<form method="get" asp-action="Index" id="NextPage">
+					<input class="btnpagecontrol" type="submit" name="NextPage" value="Próximo &rsaquo;" />
+					<input type="hidden" name="currentpage" id="currentpage" value="@ViewBag.NextPage" />
+				</form>
+			</div>
+
+
+		</div>
+	}
+
+
+</div>

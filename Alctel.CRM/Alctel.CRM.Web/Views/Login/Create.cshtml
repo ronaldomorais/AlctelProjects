@@ -1,0 +1,132 @@
+﻿@model Alctel.CRM.Web.Models.LoginModel
+
+<div class="card">
+	<div class="card-header">
+		<h5 class="mb-0">
+			<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person-video3" viewBox="0 0 16 16">
+				<path d="M14 9.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0m-6 5.7c0 .8.8.8.8.8h6.4s.8 0 .8-.8-.8-3.2-4-3.2-4 2.4-4 3.2" />
+				<path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h5.243c.122-.326.295-.668.526-1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v7.81c.353.23.656.496.91.783Q16 12.312 16 12V4a2 2 0 0 0-2-2z" />
+			</svg>
+			<button class="btn btn-title-style" type="button" data-toggle="collapse" data-bs-toggle="collapse"
+					data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+				Login
+			</button>
+		</h5>
+	</div>
+
+	<div class="card card-body">
+
+		<form method="post" asp-action="Create">
+			<div class="row smal mb-3">
+				<div class="alert-validation" role="alert" asp-validation-summary="All"></div>
+			</div>
+			<div class="row smal mb-3">
+				<div class="col-sm-2">
+					<label asp-for="@Model.Username">Usuário:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.Username" aria-label="Username"
+								   aria-describedby="basic-addon2" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-1">
+				</div>
+				<div class="col-sm-9"></div>
+			</div>
+
+			<div class="row smal mb-3">
+				<div class="col-sm-2">
+					<label asp-for="@Model.Password">Senha:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="password" asp-for="@Model.Password" aria-label="Password"
+								   aria-describedby="basic-addon2" />
+						</div>
+					</div>
+
+
+				</div>
+				<div class="col-sm-1">
+					<label></label>
+					<div class="form-check" style="margin-left:0px; padding-left:0px;">
+						@* <input class="form-check-input" type="checkbox" value="" id="showPwdId"> *@
+
+						<label class="form-check-label" for="showPwdId" id="showPwdId">
+							<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-eye-fill" viewBox="0 0 16 16" display="none" id="openeyeId">
+								<path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+								<path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
+							</svg>
+
+							<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-eye-slash-fill" viewBox="0 0 16 16" id="closedeyeId">
+								<path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z" />
+								<path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z" />
+							</svg>
+						</label>
+					</div>
+
+				</div>
+				<div class="col-sm-9"></div>
+			</div>
+
+
+			<button type="submit" class="btn btn-style">Entrar</button>
+
+
+		</form>
+
+
+@* 		<form method="get" asp-action="Logout">
+			<button type="submit" class="btn btn-style">Logout</button>
+		</form> *@
+
+	</div>
+
+
+</div>
+
+@section Scripts {
+	<script>
+		$(function () {
+
+			// genesysCloud.Events.OnLoginImplicit()
+			// autologin()
+
+		})
+
+		function autologin() {
+			// const username = 'gisele.pinheiro@alctel.com.br'
+			// const username = 'gisele.alctel@gmail.com'
+			// const username = 'teste2@sescmg.com.br'
+			const username = 'ronaldo.morais@alctel.com.br'
+			let href = window.location.href;
+			const redirecturl = href.replace("/Create", "/ImplicitLogin")
+
+			$.post(redirecturl, { Username: username, Password: '1234' },
+				function (data, status) {
+					let isAuthenticated = false;
+					console.log(data)
+					if (status === "success") {
+						if (data !== undefined) {
+							isAuthenticated = data.isAuthenticated
+
+
+
+							if (isAuthenticated) {
+								// alert(href.replace("Login/Create", `Home/Index`))
+								window.location.href = href.replace("Login/Create", `Home/Index`)
+							}
+						}
+					}
+
+					if (isAuthenticated == false) {
+						alert('Falha de login')
+					}
+				},
+				null,
+				"json"
+			);
+
+		}
+	</script>
+}

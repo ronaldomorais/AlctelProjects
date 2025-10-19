@@ -1,0 +1,947 @@
+﻿@model Alctel.CRM.Web.Models.TicketModel
+
+@{
+	var profileSession = Context.Session.GetString("Profile");
+	string profile = string.Empty;
+
+	if (profileSession != null)
+	{
+		profile = profileSession;
+	}
+
+	string? ticketMessage = (string)ViewBag.TicketMessage;
+
+	string? baseUrl = ViewBag.BaseUrl;
+
+	baseUrl = baseUrl == null ? string.Empty : baseUrl;
+}
+
+<div class="card">
+	<div class="card-header">
+		<h5 class="mb-0">
+			@* <form method="get" asp-action="Add"> *@
+			<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+				<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z" />
+			</svg>
+			<button class="btn btn-title-style" type="button" data-toggle="collapse"
+					data-bs-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+				Em Atendimento (Fora da Fila)
+			</button>
+
+			@* </form> *@
+		</h5>
+	</div>
+
+	<div class="card card-body">
+
+		<form method="post" asp-action="Edit" enctype="multipart/form-data">
+			<div class="row smal mb-3">
+
+				@if (string.IsNullOrEmpty(ticketMessage) == false)
+				{
+					@if (ticketMessage.Contains("Erro"))
+					{
+						<div class="alert alert-danger" role="alert">
+							@ticketMessage
+						</div>
+					}
+					else
+					{
+						<div class="alert alert-success" role="alert">
+							@ticketMessage
+						</div>
+					}
+				}
+				@* <div class="alert-validation" role="alert" asp-validation-summary="All"></div> *@
+			</div>
+			<input type="hidden" asp-for="@Model.Customer.Id" />
+			<input type="hidden" asp-for="@Model.ConversationId" />
+			<input type="hidden" asp-for="@Model.TicketDataToCompareIfChanged.Id" value="@Model.TicketDataToCompareIfChanged.Id" />
+			<input type="hidden" asp-for="@Model.TicketDataToCompareIfChanged.QueueGTId" value="@Model.TicketDataToCompareIfChanged.QueueGTId" />
+			<input type="hidden" asp-for="@Model.TicketDataToCompareIfChanged.QueueGT" value="@Model.TicketDataToCompareIfChanged.QueueGT" />
+			<input type="hidden" asp-for="@Model.TicketDataToCompareIfChanged.AnySolution" value="@Model.TicketDataToCompareIfChanged.AnySolution" />
+			<input type="hidden" asp-for="@Model.TicketDataToCompareIfChanged.TicketStatusId" value="@Model.TicketDataToCompareIfChanged.TicketStatusId" />
+			<input type="hidden" asp-for="@Model.TicketDataToCompareIfChanged.TicketStatus" value="@Model.TicketDataToCompareIfChanged.TicketStatus" />
+			<input type="hidden" asp-for="@Model.TicketDataToCompareIfChanged.TicketCriticalityId" value="@Model.TicketDataToCompareIfChanged.TicketCriticalityId" />
+			<input type="hidden" asp-for="@Model.TicketDataToCompareIfChanged.TicketCriticality" value="@Model.TicketDataToCompareIfChanged.TicketCriticality" />
+			<input type="hidden" asp-for="@Model.TicketDataToCompareIfChanged.DemandObservation" value="@Model.TicketDataToCompareIfChanged.DemandObservation" />
+			@* 			<input type="hidden" asp-for="@Model.TicketDataToCompareIfChanged.DemandTypeId" value="@Model.TicketDataToCompareIfChanged.DemandTypeId" />
+			<input type="hidden" asp-for="@Model.TicketDataToCompareIfChanged.DemandType" value="@Model.TicketDataToCompareIfChanged.DemandType" /> *@
+
+			@if (string.IsNullOrEmpty(Model.ParentProtocol) == false)
+			{
+				<div class="row smal mb-3">
+					<div class="col-sm-4">
+						<label asp-for="@Model.ParentProtocol"></label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<input class="standard-input" type="text" asp-for="@Model.ParentProtocol"
+									   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+							</div>
+						</div>
+					</div>
+				</div>
+
+			}
+
+			<div class="row smal mb-3">
+				<div class="col-sm-4">
+					<label asp-for="@Model.Customer.FirstName">Nome:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.Customer.FirstName"
+								   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+						</div>
+					</div>
+				</div>
+				@* 
+								<div class="col-sm-3">
+									<label asp-for="@Model.Customer.LastName"></label>
+									<div class="input-group input-group-sm mb-3">
+										<div>
+											<input class="standard-input" type="text" asp-for="@Model.Customer.LastName" aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+										</div>
+									</div>
+								</div> *@
+
+				<div class="col-sm-4">
+					<label asp-for="@Model.Customer.SocialAffectionateName">Nome Social/Afetivo:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text"
+								   asp-for="@Model.Customer.SocialAffectionateName"
+								   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<label asp-for="@Model.Customer.Cpf"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.Customer.Cpf"
+								   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row smal mb-3">
+				<div class="col-sm-4">
+					<label asp-for="@Model.Protocol"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.Protocol"
+								   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<label asp-for="@Model.CustomerNavigation"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.CustomerNavigation"
+								   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<label asp-for="@Model.QueueGenesys"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.QueueGenesys"
+								   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row smal mb-3">
+
+
+				<div class="col-sm-4">
+					<label asp-for="@Model.QueueGTId"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							@* 							<select asp-for="@Model.QueueGTId"
+									asp-items="@Model.QueueGTOptions">
+							</select> *@
+							<input class="standard-input" type="text" asp-for="@Model.QueueGT"
+								   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+						</div>
+					</div>
+				</div>
+
+				@* 				<div class="col-sm-4">
+					<label asp-for="@Model.DemandTypeId"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<select asp-for="@Model.DemandTypeId"
+									asp-items="@Model.DemandTypeOptions">
+							</select>
+						</div>
+					</div>
+				</div> *@
+
+				<div class="col-sm-4">
+					<label asp-for="@Model.TicketCriticalityId"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<select class="ticket_init" asp-for="@Model.TicketCriticalityId"
+									asp-items="@Model.TicketCriticalityOptions">
+							</select>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="row smal mb-3">
+
+				<div class="col-sm-4">
+					<label asp-for="@Model.ProtocolDate"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="date" asp-for="@Model.ProtocolDate"
+								   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<label asp-for="@Model.SlaSystemRole"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.SlaSystemRole"
+								   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<label asp-for="@Model.Sla"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.Sla"
+								   aria-describedby="basic-addon2" />
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+
+			<div class="row smal mb-3">
+
+				<div class="col-sm-4">
+					<label asp-for="@Model.Thermometer"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.Thermometer"
+								   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-sm-4">
+					<label asp-for="@Model.TicketStatusId"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<select class="ticket_init" asp-for="@Model.TicketStatusId"
+									asp-items="@Model.TicketStatusOptions">
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<label asp-for="@Model.AnySolution"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<select class="ticket_init" asp-for="@Model.AnySolution"
+									asp-items="@Model.AnySolutionOptions">
+							</select>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="row smal mb-3">
+				@if (string.IsNullOrEmpty(Model.DemandInformation) == false)
+				{
+					<div class="col-sm-12" style="width: 99%;">
+						<label asp-for="@Model.DemandInformation"></label>
+						<input type="hidden" asp-for="@Model.DemandInformation" />
+						<div class="col-sm-12" style="border: 1px solid #ccc;">
+							<a href="@Model.DemandInformation" target="_blank" rel="noopener noreferrer">Email</a>
+						</div>
+					</div>
+				}
+			</div>
+
+			<div class="row smal mb-3">
+
+				<div class="col-sm-12">
+					<label asp-for="@Model.DemandObservation"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<textarea asp-for="@Model.DemandObservation" rows="8" style="width:99%;" placeholder="Digite aqui">
+																	</textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="row smal mb-3">
+				<h5 class="mb-0">
+					<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+						<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z" />
+					</svg>
+					<button class="btn btn-title-style" type="button" data-toggle="collapse"
+							data-bs-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
+							aria-controls="collapseOne">
+						Classificação
+					</button>
+				</h5>
+			</div>
+
+			<div class="row smal mb-3">
+				<div class="col-sm-3">
+					@if (Model.ClassificationTree.ClassificationDemandOptions != null)
+					{
+						<label asp-for="@Model.ClassificationTree.ClassificationDemandId">Demanda:</label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<select class="ticket_init ticket_classification" asp-for="@Model.ClassificationTree.ClassificationDemandId"
+										asp-items="@Model.ClassificationTree.ClassificationDemandOptions">
+									<option>Opções</option>
+								</select>
+							</div>
+						</div>
+					}
+				</div>
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.ClassificationTree.ClassificationDemandTypeId">Tipo:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<select class="ticket_init ticket_classification ticket_types" asp-for="@Model.ClassificationTree.ClassificationDemandTypeId" asp-items="@Model.ClassificationTree.ClassificationDemandTypeOptions">
+								<option>Opções</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-2">
+					<div class="row">
+						<label asp-for="@Model.ClassificationTree.ClassificationReasonId">Motivo:</label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<select class="ticket_init ticket_classification ticket_reasons" asp-for="@Model.ClassificationTree.ClassificationReasonId" asp-items="@Model.ClassificationTree.ClassificationReasonOptions">
+									<option>Opções</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<label asp-for="@Model.ClassificationTree.ClassificationReasonListItemId">
+							Itens da
+							Lista:
+						</label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<select class="ticket_init ticket_classification ticket_reasons_listitem" asp-for="@Model.ClassificationTree.ClassificationReasonListItemId" asp-items="@Model.ClassificationTree.ClassificationReasonListItemOptions">
+									<option>Opções</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-2">
+					<div class="row">
+						<label asp-for="@Model.ClassificationTree.ClassificationSubmotive01Id">
+							SubMotivo
+							1:
+						</label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<select class="ticket_init ticket_classification ticket_submotive01" asp-for="@Model.ClassificationTree.ClassificationSubmotive01Id" asp-items="@Model.ClassificationTree.ClassificationSubmotive01Options">
+									<option>Opções</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<label asp-for="@Model.ClassificationTree.ClassificationSubmotive01ListItemId">
+							Itens da
+							Lista:
+						</label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<select class="ticket_init ticket_classification ticket_submotive01list" asp-for="@Model.ClassificationTree.ClassificationSubmotive01ListItemId" asp-items="@Model.ClassificationTree.ClassificationSubmotive01ListItemOptions">
+									<option>Opções</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-2">
+					<div class="row">
+						<label asp-for="@Model.ClassificationTree.ClassificationSubmotive02Id">
+							SubMotivo
+							2:
+						</label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<select class="ticket_init ticket_classification ticket_submotive02" asp-for="@Model.ClassificationTree.ClassificationSubmotive02Id" asp-items="@Model.ClassificationTree.ClassificationSubmotive02Options">
+									<option>Opções</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<label asp-for="@Model.ClassificationTree.ClassificationSubmotive02ListItemId">
+							Itens da
+							Lista:
+						</label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<select class="ticket_init ticket_classification ticket_submotive02list" asp-for="@Model.ClassificationTree.ClassificationSubmotive02ListItemId" asp-items="@Model.ClassificationTree.ClassificationSubmotive02ListItemOptions">
+									<option>Opções</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row smal mb-3">
+				<div class="col-sm-1">
+					<h5 class="mb-0">
+						<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person-lines-fill"
+							 viewBox="0 0 16 16">
+							<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z" />
+						</svg>
+						<button class="btn btn-title-style" type="button" data-toggle="collapse"
+								data-bs-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
+								aria-controls="collapseOne">
+							Anexos
+						</button>
+					</h5>
+				</div>
+				<div class="col-sm-2">
+				</div>
+			</div>
+
+			<div class="row smal mb-3">
+				@if (Model.Attachments != null && Model.Attachments.Count > 0)
+				{
+					@foreach (var attachment in Model.Attachments)
+					{
+						<p>
+							<a href="@attachment.FilePath" target="_blank">@attachment.Filename</a>
+						</p>
+					}
+				}
+			</div>
+
+			<div class="row smal mb-3">
+				<div class="custom-file" style="margin-bottom: 20px;">
+					<div id="fileInputsContainer" class="custom-file" style="margin-bottom: 20px;">
+						<input type="file" asp-for="@Model.Files" multiple style="display: none;" />
+						<label class="custom-file-input" asp-for="@Model.Files"
+							   style="background-color:#e2e6ee; color:#666666; font-weight:bold; padding:5px; border-radius: 5px;">Anexar</label>
+					</div>
+					@* 					<input type="file" id="files" name="files[]" multiple style="display: none;" />
+					<label class="custom-file-input" for="files"
+						   style="background-color:#e2e6ee; color:#666666; font-weight:bold; padding:5px; border-radius: 5px;">Anexar</label>
+ *@				</div>
+			</div>
+			<div class="row smal mb-3" style="margin-bottom:5px;">
+				<div id="filelist" style="display: inline">
+				</div>
+			</div>
+
+			<input type="hidden" asp-for="@Model.Id" value="@Model.Id" />
+
+			@* 			@if (profile.ToUpper() == "ADMINISTRADOR")
+			{ *@
+			<button type="submit" class="btn btn-style">Salvar</button>
+			@* <button type="button" class="btn btn-style">Vincular</button> *@
+			@* <button type="button" class="btn btn-style">Criar</button> *@
+			@* <button type="button" class="btn btn-style">Finalizar</button> *@
+			@* <button type="button" class="btn btn-style">Transferir</button> *@
+			@* <button type="button" class="btn btn-style cancel-form">Cancelar</button> *@
+			<a class="btn btn-style" href="@baseUrl/Ticket/Index">Cancelar</a>
+			<input type="submit" style="display: none;" />
+			@* } *@
+		</form>
+
+
+		@if (Model.Logs != null && Model.Logs.Any())
+		{
+			<table class="table table-striped table-sm" style="margin-top: 50px;background-color: #f2f2f2;">
+				<thead>
+					<tr>
+						<th scope="col"></th>
+						<th scope="col">Data</th>
+						<th scope="col">Hora</th>
+						<th scope="col">Objeto</th>
+						<th scope="col">Módulo</th>
+						<th scope="col">Usuário</th>
+						<th scope="col">Campo</th>
+						<th scope="col">Valor Anterior</th>
+						<th scope="col">Ação</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model.Logs)
+					{
+						<tr>
+							<td>Log de Controle: </td>
+							<td>@item.LogEvent.ToString("dd/MM/yyyy")</td>
+							<td>@item.LogEvent.ToString("HH:mm")</td>
+							<td>@item.User</td>
+							<td>@item.Module</td>
+							<td>@item.Section</td>
+							<td>@item.Field</td>
+							<td>@item.Value</td>
+							<td>@item.Action</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		}
+	</div>
+
+
+</div>
+
+
+@section Scripts {
+	<script>
+		$(function () {
+			classification.Init.Demand()
+			classification.Init.Type()
+			classification.Init.Reason()
+			classification.Init.ClassificationList()
+			classification.Init.Submotive01()
+			classification.Init.Submotive01ListItem()
+			classification.Init.Submotive02()
+			classification.Init.Submotive02ListItem()
+			classification.Load.Demand()
+			classification.Events.Demand()
+			classification.Events.Type()
+			classification.Events.Reason()
+			classification.Events.ClassificationSubmotive01()
+			classification.Events.ClassificationSubmotive02()
+			// classification.Load.Type()
+		})
+
+
+		var classification = {
+			Init: {
+				Demand: function () {
+					$("#ClassificationDemandId").select2ToTree({
+						// treeData: {
+						//     dataArr:mydata
+						// },
+						// maximumSelectionLength: 3,
+						placeholder: "Opções...",
+					});
+				},
+
+				Type: function () {
+					$("#ClassificationDemandTypeId").select2ToTree({
+						// treeData: {
+						//     dataArr:mydata
+						// },
+						// maximumSelectionLength: 3,
+						placeholder: "Opções...",
+					});
+				},
+
+				Reason: function () {
+					$("#ClassificationReasonId").select2ToTree({
+						// treeData: {
+						//     dataArr:mydata
+						// },
+						// maximumSelectionLength: 3,
+						placeholder: "Opções...",
+					});
+				},
+
+				ClassificationList: function () {
+					$("#ClassificationReasonListItemId").select2ToTree({
+						// treeData: {
+						//     dataArr:mydata
+						// },
+						// maximumSelectionLength: 3,
+						placeholder: "Opções...",
+					});
+				},
+
+				Submotive01: function () {
+					$("#ClassificationSubmotive01Id").select2ToTree({
+						// treeData: {
+						//     dataArr:mydata
+						// },
+						// maximumSelectionLength: 3,
+						placeholder: "Opções...",
+					});
+				},
+
+				Submotive01ListItem: function () {
+					$("#ClassificationSubmotive01ListItemId").select2ToTree({
+						// treeData: {
+						//     dataArr:mydata
+						// },
+						// maximumSelectionLength: 3,
+						placeholder: "Opções...",
+					});
+				},
+
+				Submotive02: function () {
+					$("#ClassificationSubmotive02Id").select2ToTree({
+						// treeData: {
+						//     dataArr:mydata
+						// },
+						// maximumSelectionLength: 3,
+						placeholder: "Opções...",
+					});
+				},
+
+				Submotive02ListItem: function () {
+					$("#ClassificationSubmotive02ListItemId").select2ToTree({
+						// treeData: {
+						//     dataArr:mydata
+						// },
+						// maximumSelectionLength: 3,
+						placeholder: "Opções...",
+					});
+				},
+			},
+
+			Load: {
+				Demand: function () {
+					const url = window.location.href.replace("ClassificationTree", 'ClassificationDemand/GetClassificationDemandList')
+
+					$.get(url, function (data, status) {
+						// console.log(data)
+					})
+				},
+
+				Type: function (demandid, callback) {
+					const url = window.location.href.replace("ClassificationTree", `ClassificationDemandType/GetClassificationDemandTypeList/${demandid}`)
+
+					$.get(url, function (data, status) {
+						if (status === 'success') {
+							callback(data)
+						}
+					})
+				},
+
+				Reason: function (typeid, callback) {
+					const url = window.location.href.replace("ClassificationTree", `ClassificationListItems/GetClassificationReasonList/${typeid}`)
+
+					$.get(url, function (data, status) {
+						if (status === 'success') {
+							callback(data)
+						}
+					})
+				},
+
+				ReasonList: function (listid, callback) {
+					const url = window.location.href.replace("ClassificationTree", `ClassificationListItems/GetClassificationListItemsActive/${listid}`)
+
+					$.get(url, function (data, status) {
+						if (status === 'success') {
+							callback(data)
+						}
+					})
+				},
+
+				Submotive01: function (reasonid, callback) {
+					const url = window.location.href.replace("ClassificationTree", `ClassificationListItems/ClassificationReasonChildren/${reasonid}`)
+
+					$.get(url, function (data, status) {
+						if (status === 'success') {
+							callback(data)
+						}
+					})
+				},
+
+				Submotive01ReasonsList: function (listid, callback) {
+					const url = window.location.href.replace("ClassificationTree", `ClassificationListItems/GetClassificationListItemsActive/${listid}`)
+
+					$.get(url, function (data, status) {
+						if (status === 'success') {
+							callback(data)
+						}
+					})
+				},
+
+				Submotive02: function (reasonid, callback) {
+					const url = window.location.href.replace("ClassificationTree", `ClassificationListItems/ClassificationReasonChildren/${reasonid}`)
+
+					$.get(url, function (data, status) {
+						if (status === 'success') {
+							callback(data)
+						}
+					})
+				},
+
+				Submotive02ReasonsList: function (listid, callback) {
+					const url = window.location.href.replace("ClassificationTree", `ClassificationListItems/GetClassificationListItemsActive/${listid}`)
+
+					$.get(url, function (data, status) {
+						if (status === 'success') {
+							callback(data)
+						}
+					})
+				},
+			},
+
+			Events: {
+				Demand: function () {
+					$('#ClassificationDemandId').on('change', function () {
+
+						// $('#ClassificationDemandId').empty()
+						$('#ClassificationDemandTypeId').empty()
+						$('#ClassificationReasonId').empty()
+						$('#ClassificationReasonListItemId').empty()
+						$('#ClassificationSubmotive01Id').empty()
+						$('#ClassificationSubmotive01ListItemId').empty()
+						$('#ClassificationSubmotive02Id').empty()
+						$('#ClassificationSubmotive02ListItemId').empty()
+
+						var selectedValue = $(this).val();
+						classification.Load.Type(selectedValue, classification.Callback.LoadTypeOptionsCb)
+					})
+				},
+
+				Type: function () {
+					$('#ClassificationDemandTypeId').on('change', function () {
+
+						$('#ClassificationReasonId').empty()
+						$('#ClassificationReasonListItemId').empty()
+						$('#ClassificationSubmotive01Id').empty()
+						$('#ClassificationSubmotive01ListItemId').empty()
+						$('#ClassificationSubmotive02Id').empty()
+						$('#ClassificationSubmotive02ListItemId').empty()
+
+						var selectedValue = $(this).val();
+						classification.Load.Reason(selectedValue, classification.Callback.LoadReasonsOptionsCb)
+					})
+				},
+
+				Reason: function () {
+					$("#ClassificationReasonId").on('change', function () {
+
+						$('#ClassificationReasonListItemId').empty()
+						$('#ClassificationSubmotive01Id').empty()
+						$('#ClassificationSubmotive01ListItemId').empty()
+						$('#ClassificationSubmotive02Id').empty()
+						$('#ClassificationSubmotive02ListItemId').empty()
+
+						var selectedValue = $(this).val();
+						var values = selectedValue.split(":")
+						var reasonid = values[0]
+						var listid = values[1]
+
+						classification.Load.Submotive01ReasonsList(listid, classification.Callback.LoadClassificationListOptionsCb)
+
+						classification.Load.Submotive01(reasonid, classification.Callback.LoadClassificationSubmotive01Cb)
+					})
+				},
+
+				ClassificationSubmotive01: function () {
+					$("#ClassificationSubmotive01Id").on('change', function () {
+
+						var selectedValue = $(this).val();
+						var values = selectedValue.split(":")
+						var reasonid = values[0]
+						var listid = values[1]
+
+						classification.Load.Submotive01ReasonsList(listid, classification.Callback.LoadClassificationSubmotive01ListItemCb)
+
+						classification.Load.Submotive02(reasonid, classification.Callback.LoadClassificationSubmotive02Cb)
+					})
+				},
+
+				ClassificationSubmotive02: function () {
+					$("#ClassificationSubmotive02Id").on('change', function () {
+
+						var selectedValue = $(this).val();
+						var values = selectedValue.split(":")
+						var reasonid = values[0]
+						var listid = values[1]
+
+						classification.Load.Submotive02ReasonsList(listid, classification.Callback.LoadClassificationSubmotive02ListItemCb)
+
+						// classification.Load.Submotive02(reasonid, classification.Callback.LoadClassificationSubmotive02Cb)
+					})
+				}
+			},
+
+			Callback: {
+				LoadTypeOptionsCb: function (types) {
+
+					$('#ClassificationDemandTypeId').append(
+						$('<option>', {
+							value: '',
+							text: 'Opções',
+						})
+					)
+
+					$.each(types, function (index, value) {
+						if (value.active) {
+							$('#ClassificationDemandTypeId').append(
+								$('<option>', {
+									value: value.id,
+									text: value.name,
+								})
+							)
+						}
+					})
+				},
+
+				LoadReasonsOptionsCb: function (reasons) {
+
+					$('#ClassificationReasonId').append(
+						$('<option>', {
+							value: '',
+							text: 'Opções',
+						})
+					)
+
+					$.each(reasons, function (index, value) {
+						if (value.active) {
+							$('#ClassificationReasonId').append(
+								$('<option>', {
+									// value: value.id,
+									value: `${value.id}:${value.classificationListReasonId}`,
+									text: value.name,
+								})
+							)
+						}
+					})
+				},
+
+				LoadClassificationListOptionsCb: function (reasons) {
+
+					$('#ClassificationReasonListItemId').append(
+						$('<option>', {
+							value: '',
+							text: 'Opções',
+						})
+					)
+
+					$.each(reasons, function (index, value) {
+						if (value.active) {
+							$('#ClassificationReasonListItemId').append(
+								$('<option>', {
+									value: value.id,
+									text: value.name,
+								})
+							)
+						}
+					})
+				},
+
+				LoadClassificationSubmotive01Cb: function (reasons) {
+
+					$('#ClassificationSubmotive01Id').append(
+						$('<option>', {
+							value: '',
+							text: 'Opções',
+						})
+					)
+
+					$.each(reasons, function (index, value) {
+						if (value.active) {
+							$('#ClassificationSubmotive01Id').append(
+								$('<option>', {
+									value: `${value.id}:${value.classificationListReasonId}`,
+									text: value.name,
+								})
+							)
+						}
+					})
+				},
+
+				LoadClassificationSubmotive01ListItemCb: function (reasons) {
+
+					$('#ClassificationSubmotive01ListItemId').append(
+						$('<option>', {
+							value: '',
+							text: 'Opções',
+						})
+					)
+
+					$.each(reasons, function (index, value) {
+						if (value.active) {
+							$('#ClassificationSubmotive01ListItemId').append(
+								$('<option>', {
+									value: value.id,
+									text: value.name,
+								})
+							)
+						}
+					})
+				},
+
+				LoadClassificationSubmotive02Cb: function (reasons) {
+
+					$('#ClassificationSubmotive02Id').append(
+						$('<option>', {
+							value: '',
+							text: 'Opções',
+						})
+					)
+
+					$.each(reasons, function (index, value) {
+						if (value.active) {
+							$('#ClassificationSubmotive02Id').append(
+								$('<option>', {
+									value: `${value.id}:${value.classificationListReasonId}`,
+									text: value.name,
+								})
+							)
+						}
+					})
+				},
+
+				LoadClassificationSubmotive02ListItemCb: function (reasons) {
+
+					$('#ClassificationSubmotive02ListItemId').append(
+						$('<option>', {
+							value: '',
+							text: 'Opções',
+						})
+					)
+
+					$.each(reasons, function (index, value) {
+						if (value.active) {
+							$('#ClassificationSubmotive02ListItemId').append(
+								$('<option>', {
+									value: value.id,
+									text: value.name,
+								})
+							)
+						}
+					})
+				},
+			}
+		}
+	</script>
+}

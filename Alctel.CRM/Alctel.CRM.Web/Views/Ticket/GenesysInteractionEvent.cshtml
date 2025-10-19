@@ -1,0 +1,826 @@
+﻿@model Alctel.CRM.Web.Models.TicketModel
+
+@{
+	string? ticketMessage = (string)ViewBag.TicketMessage;
+	int itemcounter = 1;
+	string button_save_status = string.Empty;
+	string button_transfer_status = string.Empty;
+	string div_class_readonly = Model.TicketSaved ? "div-readonly" : string.Empty;
+
+	string? baseUrl = ViewBag.BaseUrl;
+
+	baseUrl = baseUrl == null ? string.Empty : baseUrl;
+}
+
+<div class="card">
+	<div class="card-header">
+		<h5 class="mb-0">
+			<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+				<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z" />
+			</svg>
+			<button class="btn btn-title-style" type="button" data-toggle="collapse" data-bs-toggle="collapse"
+					data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+				Em Atendimento (Dentro da Fila)
+			</button>
+		</h5>
+	</div>
+
+
+	<div class="card card-body">
+
+		<div class="row smal mb-3">
+			@if (string.IsNullOrEmpty(ticketMessage) == false)
+			{
+				@if (ticketMessage.Contains("Erro"))
+				{
+					<div class="alert alert-danger" role="alert">
+						@ticketMessage
+					</div>
+				}
+				else
+				{
+					@if (ticketMessage.Contains("Aviso"))
+					{
+						<div class="alert alert-warning" role="alert">
+							@ticketMessage
+						</div>
+					}
+					else
+					{
+						<div class="alert alert-success" role="alert">
+							@ticketMessage
+						</div>
+					}
+				}
+			}
+			<div class="alert-validation" role="alert" asp-validation-summary="All"></div>
+		</div>
+
+
+		<div class="row">
+			<form method="post" asp-action="GenesysInteractionEvent" enctype="multipart/form-data">
+				<input type="hidden" asp-for="@Model.Customer.Id" />
+				<input type="hidden" asp-for="@Model.ConversationId" />
+				<input type="hidden" asp-for="@Model.ParentTicket" />
+				<input type="hidden" asp-for="@Model.TicketSaved" />
+				<input type="hidden" asp-for="@Model.User" />
+
+				<div class="row smal mb-3">
+					<div class="col-sm-4">
+						<label asp-for="@Model.Customer.FirstName">Nome:</label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<input class="standard-input" type="text" asp-for="@Model.Customer.FirstName"
+									   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<label asp-for="@Model.Customer.SocialAffectionateName">Nome Social/Afetivo:</label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<input class="standard-input" type="text"
+									   asp-for="@Model.Customer.SocialAffectionateName" aria-describedby="basic-addon2"
+									   readonly style="background-color:#E2E8F0;" />
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<label asp-for="@Model.Customer.Cpf"></label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<input class="standard-input" type="text" asp-for="@Model.Customer.Cpf"
+									   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row smal mb-3">
+					<div class="col-sm-4">
+						<label asp-for="@Model.Protocol"></label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<input class="standard-input" type="text" asp-for="@Model.Protocol"
+									   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<label asp-for="@Model.CustomerNavigation"></label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<input class="standard-input" type="text" asp-for="@Model.CustomerNavigation"
+									   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<label asp-for="@Model.QueueGenesys"></label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<input class="standard-input" type="text" asp-for="@Model.QueueGenesys"
+									   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="row smal mb-3">
+
+
+					<div class="col-sm-4">
+						<label asp-for="@Model.QueueGT"></label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								@* 								<select class="ticket_init" asp-for="@Model.QueueGT"
+										asp-items="@Model.QueueGTOptions" onchange="alert('teste')">
+								</select> *@
+								<input class="standard-input" type="text" asp-for="@Model.QueueGT"
+									   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+							</div>
+						</div>
+					</div>
+					@* 					<div class="col-sm-4">
+						<label asp-for="@Model.DemandTypeId"></label>
+						<div class="input-group input-group-sm mb-3 @div_class_readonly">
+							<div>
+								<select class="ticket_init" asp-for="@Model.DemandTypeId"
+										asp-items="@Model.DemandTypeOptions">
+								</select>
+							</div>
+						</div>
+					</div>
+ *@
+					<div class="col-sm-4">
+						<label asp-for="@Model.TicketCriticalityId"></label>
+						<div class="input-group input-group-sm mb-3 @div_class_readonly">
+							<div>
+								<select class="ticket_init" asp-for="@Model.TicketCriticalityId"
+										asp-items="@Model.TicketCriticalityOptions">
+								</select>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="row smal mb-3">
+
+					<div class="col-sm-4">
+						<label asp-for="@Model.TicketDate"></label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<input class="standard-input" type="date" asp-for="@Model.TicketDate"
+									   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<label asp-for="@Model.SlaSystemRole"></label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<input class="standard-input" type="text" asp-for="@Model.SlaSystemRole"
+									   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<label asp-for="@Model.Sla"></label>
+						<div class="input-group input-group-sm mb-3 @div_class_readonly">
+							<div>
+								<input class="standard-input" type="text" asp-for="@Model.Sla"
+									   aria-describedby="basic-addon2" />
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+
+				<div class="row smal mb-3">
+
+					<div class="col-sm-4">
+						<label asp-for="@Model.Thermometer"></label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<input class="standard-input" type="text" asp-for="@Model.Thermometer"
+									   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-sm-4">
+						<label asp-for="@Model.TicketStatusId"></label>
+						<div class="input-group input-group-sm mb-3 @div_class_readonly">
+							<div>
+								<select class="ticket_init" asp-for="@Model.TicketStatusId"
+										asp-items="@Model.TicketStatusOptions">
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<label asp-for="@Model.AnySolution"></label>
+						<div class="input-group input-group-sm mb-3 @div_class_readonly">
+							<div>
+								<select class="ticket_init" asp-for="@Model.AnySolution"
+										asp-items="@Model.AnySolutionOptions">
+								</select>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="row smal mb-3">
+					@if (string.IsNullOrEmpty(Model.DemandInformation) == false)
+					{
+						<div class="col-sm-6">
+							<label asp-for="@Model.DemandInformation"></label>
+							<input type="hidden" asp-for="@Model.DemandInformation" />
+							<div class="col-sm-12" style="border: 1px solid #ccc;">
+								<a href="@Model.DemandInformation" target="_blank">Email</a>
+							</div>
+						</div>
+					}
+				</div>
+
+				<div class="row smal mb-3">
+
+					<div class="col-sm-12">
+						<label asp-for="@Model.DemandObservation"></label>
+						<div class="input-group input-group-sm mb-3 @div_class_readonly">
+							<div>
+								<textarea asp-for="@Model.DemandObservation" rows="8" style="width:99%;" placeholder="Digite aqui">
+								</textarea>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div style="border: 1px solid #ccc; padding-left: 10px;">
+					<div class="row smal mb-3" style="margin-top: 10px;">
+						<div class="col-sm-2" style="width:9%;">
+							<h5 class="mb-0">
+								<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+									<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z" />
+								</svg>
+								<button class="btn btn-title-style" type="button" data-toggle="collapse"
+										data-bs-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
+										aria-controls="collapseOne">
+									Classificação
+								</button>
+							</h5>
+						</div>
+
+@* 						<div class="col-sm-4">
+							<button type="button" class="btn btn-style" data-bs-toggle="modal" data-bs-target="#ticketClassificationModal" onclick="ticketClassification.Events.OnAddClassificationClicked();">
+								Adicionar
+							</button>
+						</div> *@
+
+					</div>
+
+			@* 		<div id="ticketClassificationDivId" class="row smal mb-3" style="margin:10px;">
+						<div id="ticketClassificationMessage" class="alert alert-warning" role="alert" style="display:none;">
+							Classificação máxima permitida 6
+						</div>
+						<table id="ticketClassificationTableId" class="table table-striped table-sm"
+							   style="margin-top: 50px;background-color: #f2f2f2;">
+							<thead>
+								<tr style="color: #666666 !important; font-weight: bold;">
+									<th scope="col">Manifestação</th>
+									<th scope="col">Unidade</th>
+									<th scope="col">Serviço</th>
+									<th scope="col">Motivo 1</th>
+									<th scope="col">Motivo 2</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								@if (Model.TicketClassification != null && Model.TicketClassification.Count > 0)
+								{
+									for (int c = 0; c < Model.TicketClassification.Count; c++)
+									{										
+										<tr>
+											<td>
+												<input type="hidden" name="TicketClassification[@c].ManifestationTypeId" value="@Model.TicketClassification[@c].ManifestationTypeId" />
+												<input type="hidden" name="TicketClassification[@c].ManifestationTypeName" value="@Model.TicketClassification[@c].ManifestationTypeName" />
+												@Model.TicketClassification[@c].ManifestationTypeName
+											</td>
+											<td>
+												<input type="hidden" name="TicketClassification[@c].ServiceUnitId" value="@Model.TicketClassification[@c].ServiceUnitId" />
+												<input type="hidden" name="TicketClassification[@c].ServiceUnitName" value="@Model.TicketClassification[@c].ServiceUnitName" />
+
+												@Model.TicketClassification[@c].ServiceUnitName
+											</td>
+											<td>
+												<input type="hidden" name="TicketClassification[@c].ServiceId" value="@Model.TicketClassification[@c].ServiceId" />
+												<input type="hidden" name="TicketClassification[@c].ServiceName" value="@Model.TicketClassification[@c].ServiceName" />
+
+												@Model.TicketClassification[@c].ServiceName
+											</td>
+											<td>
+												<input type="hidden" name="TicketClassification[@c].Reason01Id" value="@Model.TicketClassification[@c].Reason01Id" />
+												<input type="hidden" name="TicketClassification[@c].Reason01Name" value="@Model.TicketClassification[@c].Reason01Name" />
+
+												@Model.TicketClassification[@c].Reason01Name
+											</td>
+											<td>
+												<input type="hidden" name="TicketClassification[@c].Reason02Id" value="@Model.TicketClassification[@c].Reason02Id" />
+												<input type="hidden" name="TicketClassification[@c].Reason02Name" value="@Model.TicketClassification[@c].Reason02Name" />
+
+												@Model.TicketClassification[@c].Reason02Name
+											</td>
+										</tr>
+									}
+								}
+
+							</tbody>
+						</table>
+					</div> *@
+
+				</div>
+
+
+				@* 			<div class="row smal mb-3">
+					<div class="col-sm-3">
+						@if (Model.ClassificationTree.ClassificationDemandOptions != null)
+						{
+							<label asp-for="@Model.ClassificationTree.ClassificationDemandId">Demanda:</label>
+							<div class="input-group input-group-sm mb-3 @div_class_readonly">
+								<div>
+									<select class="ticket_init ticket_classification"
+											asp-for="@Model.ClassificationTree.ClassificationDemandId"
+											asp-items="@Model.ClassificationTree.ClassificationDemandOptions">
+										<option>Opções</option>
+									</select>
+								</div>
+							</div>
+						}
+					</div>
+
+					<div class="col-sm-3">
+						<label asp-for="@Model.ClassificationTree.ClassificationDemandTypeId">Tipo:</label>
+						<div class="input-group input-group-sm mb-3 @div_class_readonly">
+							<div>
+								<select class="ticket_init ticket_classification ticket_types"
+										asp-for="@Model.ClassificationTree.ClassificationDemandTypeId">
+									<option>Opções</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-2">
+						<div class="row">
+							<label asp-for="@Model.ClassificationTree.ClassificationReasonId">Motivo:</label>
+							<div class="input-group input-group-sm mb-3 @div_class_readonly">
+								<div>
+									<select class="ticket_init ticket_classification ticket_reasons"
+											asp-for="@Model.ClassificationTree.ClassificationReasonId">
+										<option>Opções</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<label asp-for="@Model.ClassificationTree.ClassificationReasonListItemId">
+								Itens da
+								Lista:
+							</label>
+							<div class="input-group input-group-sm mb-3 @div_class_readonly">
+								<div>
+									<select class="ticket_init ticket_classification ticket_reasons_listitem"
+											asp-for="@Model.ClassificationTree.ClassificationReasonListItemId">
+										<option>Opções</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-2">
+						<div class="row">
+							<label asp-for="@Model.ClassificationTree.ClassificationSubmotive01Id">
+								SubMotivo
+								1:
+							</label>
+							<div class="input-group input-group-sm mb-3 @div_class_readonly">
+								<div>
+									<select class="ticket_init ticket_classification ticket_submotive01"
+											asp-for="@Model.ClassificationTree.ClassificationSubmotive01Id">
+										<option>Opções</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<label asp-for="@Model.ClassificationTree.ClassificationSubmotive01ListItemId">
+								Itens da
+								Lista:
+							</label>
+							<div class="input-group input-group-sm mb-3 @div_class_readonly">
+								<div>
+									<select class="ticket_init ticket_classification ticket_submotive01list"
+											asp-for="@Model.ClassificationTree.ClassificationSubmotive01ListItemId">
+										<option>Opções</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-2">
+						<div class="row">
+							<label asp-for="@Model.ClassificationTree.ClassificationSubmotive02Id">
+								SubMotivo
+								2:
+							</label>
+							<div class="input-group input-group-sm mb-3 @div_class_readonly">
+								<div>
+									<select class="ticket_init ticket_classification ticket_submotive02"
+											asp-for="@Model.ClassificationTree.ClassificationSubmotive02Id">
+										<option>Opções</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<label asp-for="@Model.ClassificationTree.ClassificationSubmotive02ListItemId">
+								Itens da
+								Lista:
+							</label>
+							<div class="input-group input-group-sm mb-3 @div_class_readonly">
+								<div>
+									<select class="ticket_init ticket_classification ticket_submotive02list"
+											asp-for="@Model.ClassificationTree.ClassificationSubmotive02ListItemId">
+										<option>Opções</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+ *@
+
+				<div style="border: 1px solid #ccc; padding-left: 10px;">
+					<div class="row smal mb-3">
+						<div class="col-sm-1">
+							<h5 class="mb-0">
+								<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+									<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z" />
+								</svg>
+								@if (Model.TicketSaved == false)
+								{
+									<button class="btn btn-title-style" type="button" data-toggle="collapse"
+											data-bs-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
+											aria-controls="collapseOne">
+										Anexos
+									</button>
+								}
+							</h5>
+						</div>
+						<div class="row smal mb-3">
+							@if (Model.Attachments != null && Model.Attachments.Count > 0)
+							{
+								@foreach (var attachment in Model.Attachments)
+								{
+									<p>
+										<a href="@attachment.FilePath" target="_blank">@attachment.Filename</a>
+									</p>
+								}
+							}
+						</div>
+						<div class="col-sm-6">
+							<div id="attachmentMessageId" class="alert alert-warning" role="alert" style="display:none;">
+							</div>
+						</div>
+					</div>
+
+					<div class="row smal mb-3 @div_class_readonly">
+						<div id="fileInputsContainer" class="custom-file" style="margin-bottom: 20px;">
+							<input type="file" asp-for="@Model.Files" multiple style="display: none;" />
+							<label class="custom-file-input" asp-for="@Model.Files"
+								   style="background-color:#e2e6ee; color:#666666; font-weight:bold; padding:5px; border-radius: 5px;">Anexar</label>
+						</div>
+					</div>
+					<div class="row smal mb-3" style="margin-bottom:5px;">
+						<div id="filelist" style="display: inline">
+						</div>
+					</div>
+				</div>
+
+
+				<input type="hidden" asp-for="@Model.Id" value="@Model.Id" />
+				<input type="hidden" asp-for="@Model.ProtocolType" value="@Model.ProtocolType" />
+
+				@if (Model.TicketSaved)
+				{
+					button_save_status = "disabled";
+				}
+				else
+				{
+					button_save_status = string.Empty;
+				}
+
+				@if (Model.TicketInTransfering)
+				{
+					button_transfer_status = "disabled";
+				}
+				else
+				{
+					if (Model.TicketSaved)
+					{
+						button_transfer_status = string.Empty;
+					}
+					else
+					{
+						button_transfer_status = "disabled";
+					}
+				}
+
+
+
+				<div class="row smal mb-3">
+					<div id="transferSuccessMessage" class="alert alert-success" role="alert" style="display:none">
+						Chamado Transferido com Sucesso!
+					</div>
+					<div id="transferErrorMessage" class="alert alert-danger" role="alert" style="display:none">
+						Erro Transferido Chamado!
+					</div>
+				</div>
+
+
+				<button type="submit" class="btn btn-style ticket-save" @button_save_status>Salvar</button>
+				<button id="requestTransfer" type="button" class="btn btn-style" data-bs-toggle="modal"
+						data-bs-target="#transferModal" onclick="tools.Events.OnTransferModelOpen(@Model.Id, @Model.Protocol, @Model.User)" @button_transfer_status>
+					Transferir
+				</button>
+
+				@* 				<button type="button" class="btn btn-style" data-bs-toggle="modal"
+						data-bs-target="#transferModal" onclick="tools.Events.OnTransferModelOpen(@Model.Id, @Model.Protocol, @Model.User)" >
+					Transferir
+				</button> *@
+
+				@* 				<a href="?nomeFila=&conversastionid=@Model.ConversationId&email=@Model.User&cpf=&protocolo=&navegacao=&reload=false&cancel=true"
+				   class="btn btn-style" role="button">Cancelar</a> *@
+
+				<a href="@baseUrl/Ticket/GenesysInteractionEvent/?nomeFila=&conversastionid=@Model.ConversationId&email=@Model.User&cpf=&protocolo=&navegacao=&reload=false&cancel=true"
+				   class="btn btn-style" role="button">Cancelar</a>
+			</form>
+
+		</div>
+
+		<br />
+		<div class="card">
+			<div class="card-header">
+				<div class="row">
+					<div class="col-sm-6">
+						<h5 class="mb-0">
+							<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+								<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z" />
+							</svg>
+							<button class="btn btn-title-style" type="button" data-toggle="collapse"
+									data-bs-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
+									aria-controls="collapseOne">
+								Histórico/Jornada
+							</button>
+						</h5>
+					</div>
+
+					<div class="col-sm-3">
+					</div>
+
+					<div class="col-sm-3">
+						@* <form method="post" asp-action="Index">
+											<div style="display: inline-block;">
+												<select id="searchTicketType" name="searchTicketType" aria-label="Perfil">
+													<option selected>Tipo Filtro&nbsp;&nbsp;</option>
+													<option value="nome_completo">Cliente</option>
+													<option value="email">Data</option>
+													<option value="area">Protocolo</option>
+													<option value="area">Usuário</option>
+												</select>
+											</div>
+											<div style="display: inline-block;">
+												<div class="input-group input-group-sm mb-3">
+													<div>
+														<input name="searchTicketText" id="searchTicketText"
+															   class="standard-input" type="text" aria-label="Search" value=""
+															   aria-describedby="basic-addon2" style="border-radius: 7px;"
+															   minlength="3" autocomplete="off" />
+													</div>
+												</div>
+											</div>
+											<div style="display: inline-block;">
+												<svg id="searchUser" xmlns="http://www.w3.org/2000/svg" class="bi bi-search"
+													 viewBox="0 0 16 16">
+													<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+												</svg>
+											</div>
+
+											<input type="submit" style="display: none;" />
+										</form> *@
+					</div>
+				</div>
+
+				<div class="row" id="alertInfoId" style="display:none;">
+				</div>
+			</div>
+
+			<div class="card-body @div_class_readonly">
+				<table id="journeyTable" class="table table-striped table-sm"
+					   style="margin-top: 50px;background-color: #f2f2f2;">
+					<thead>
+						<tr style="color: #666666 !important; font-weight: bold;">
+							<th>#</th>
+							<th scope="col">Cliente</th>
+							<th scope="col">Protocolo</th>
+							<th scope="col">Data do Protocolo</th>
+							@* <th scope="col">Tipo de Protocolo</th> *@
+							@* <th scope="col">Tipo de Demanda</th> *@
+							@* <th scope="col">Criticidade</th> *@
+							@* <th scope="col">Status</th> *@
+							@* <th scope="col">SLA</th> *@
+							@* <th scope="col">Fila GT</th> *@
+							<th scope="col">Fila Genesys</th>
+							@* <th scope="col">Termômetro</th> *@
+							@* <th scope="col">Usuário</th> *@
+							<th style="display:none;">Id do Chamado</th>
+						</tr>
+					</thead>
+					<tbody>
+						@if (Model.TicketCustomer != null && Model.TicketCustomer.Count > 0)
+						{
+							@foreach (var item in Model.TicketCustomer)
+							{
+								<tr class="journey-link"
+									onclick="tools.Events.OnJourneyLine(@item.Id, @Model.Protocol, @Model.Id)">
+									<td>@itemcounter</td>
+									<td>@Model.Customer.FirstName</td>
+									<td>@item.Protocol</td>
+									@* <td>@item.ProtocolDate.ToString("dd/MM/yyyy")</td> *@
+									<td>@item.ProtocolDate</td>
+									@* <td>Pai</td> *@
+									@* <td>Demanda</td> *@
+									@* <td>Alta</td> *@
+									@* <td>Finalizado</td> *@
+									@* <td>1 hora</td> *@
+									@* <td>Nível 2</td> *@
+									<td>@item.QueueGenesys</td>
+									@* <td>Integração</td> *@
+									@* <td>Gisele</td> *@
+									<td style="display:none;">@item.Id</td>
+								</tr>
+
+								itemcounter = itemcounter + 1;
+							}
+
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+
+
+		@* @if (Model.Logs != null && Model.Logs.Any())
+		{
+			<table class="table table-striped table-sm" style="margin-top: 50px;background-color: #f2f2f2;">
+				<thead>
+					<tr>
+						<th scope="col"></th>
+						<th scope="col">Data</th>
+						<th scope="col">Hora</th>
+						<th scope="col">Objeto</th>
+						<th scope="col">Módulo</th>
+						<th scope="col">Usuário</th>
+						<th scope="col">Campo</th>
+						<th scope="col">Valor Anterior</th>
+						<th scope="col">Ação</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model.Logs)
+					{
+						<tr>
+							<td>Log de Controle: </td>
+							<td>@item.LogEvent.ToString("dd/MM/yyyy")</td>
+							<td>@item.LogEvent.ToString("HH:mm")</td>
+							<td>@item.User</td>
+							<td>@item.Module</td>
+							<td>@item.Section</td>
+							<td>@item.Field</td>
+							<td>@item.Value</td>
+							<td>@item.Action</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		} *@
+	</div>
+
+
+	<button id="journeyBtnId" type="button" class="btn btn-primary" data-bs-toggle="modal"
+			data-bs-target="#journeyModal" hidden>
+	</button>
+
+	<div class="modal fade" id="journeyModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+		 aria-labelledby="journeyModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="journeyModalLabel">Histórico</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div id="bindTicketBody" class="modal-body">
+
+					@* @await Html.PartialAsync("_Journey.cshtml", Model); *@
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="transferModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+		 aria-labelledby="transferModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="transferModalLabel">Transferência</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div id="transferTicketOpenId" class="modal-body">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="modal fade" id="ticketClassificationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+		 aria-labelledby="ticketClassificationModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="ticketClassificationModalLabel">Classificação</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div id="ticketClassificationOpenId" class="modal-body">
+				</div>
+				<div class="modal-footer">
+					<button id="btnTicketClassificationClose" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	@* 	<button id="alertBtnModalId" type="button" class="btn btn-primary" data-bs-toggle="modal"
+			data-bs-target="#alertModal" hidden>
+	</button>
+
+	<div class="modal fade" id="alertModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+		 aria-labelledby="alertModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="alertModalLabel">Mensagem</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div id="alertModalBody" class="modal-body">
+
+		
+
+				</div>
+
+			</div>
+		</div>
+	</div> *@
+
+</div>
+
+@section Scripts {
+	<script src="~/js/ticket.js"></script>
+	<script src="~/js/ticketClassification.js"></script>
+}

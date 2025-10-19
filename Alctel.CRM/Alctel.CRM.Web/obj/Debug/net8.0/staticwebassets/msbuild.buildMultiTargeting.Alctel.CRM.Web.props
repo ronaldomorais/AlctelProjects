@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Alctel.CRM.Web.props" />
+</Project>

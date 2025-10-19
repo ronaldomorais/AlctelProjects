@@ -1,0 +1,217 @@
+﻿@model Alctel.CRM.Web.Models.UserModel
+
+@{
+	string? baseUrl = ViewBag.BaseUrl;
+
+	baseUrl = baseUrl == null ? string.Empty : baseUrl;
+}
+
+<div class="card">
+	<div class="card-header">
+		<h5 class="mb-0">
+			<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person-fill"
+				 viewBox="0 0 16 16">
+				<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+			</svg>
+			<button class="btn btn-title-style" type="button" data-toggle="collapse" data-bs-toggle="collapse"
+					data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+				Editar Usuário
+			</button>
+		</h5>
+	</div>
+
+	<div class="card card-body">
+
+		<form method="post" asp-action="Edit">
+			<div class="row smal mb-3">
+				<div class="alert-validation" role="alert" asp-validation-summary="All"></div>
+			</div>
+			<div class="row small mb-3">
+				<div class="col-sm-4">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" asp-for="@Model.Active" disabled>
+						<label class="form-check-label" asp-for="@Model.Active">
+							Ativo
+						</label>
+
+						<input type="hidden" asp-for="@Model.Active" />
+					</div>
+				</div>
+
+
+			</div>
+			<div class="row smal mb-3">
+
+				<div class="col-sm-4">
+					<label asp-for="@Model.Fullname">Nome Completo:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.Fullname" aria-label="Fullname"
+								   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<label asp-for="@Model.Email">Email:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.Email" aria-label="Email"
+								   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<label asp-for="@Model.Unit">Unidade:</label>
+					<select asp-for="@Model.Unit" asp-items="@Model.UnitServiceOptions">
+						<option value=""></option>
+					</select>
+					@*                     <select aria-label="Unidades">
+                        <option selected>Escolha Unidade</option>
+                        <option value="1">Central de Atendimento</option>
+                        <option value="2">Sesc Juiz de Fora</option>
+                        <option value="3">Sesc Uberaba</option>
+                        <option value="4">Gerência de Unidades Móveis</option>
+                        <option value="5">Sesc Lavras</option>
+                        <option value="6">Sesc Uberlândia</option>
+                        <option value="7">Hotel Sesc Ouro Preto</option>
+                        <option value="8">Sesc Mercado das Flores</option>
+                        <option value="9">Sesc Varginha</option>
+                        <option value="10">Marketing</option>
+                        <option value="11">Sesc Montes Claros</option>
+                        <option value="12">Sesc Venda Nova</option>
+                        <option value="13">Ouvidoria</option>
+                        <option value="14">Sesc Palladium</option>
+                        <option value="15">Sesc Agência de Turismo</option>
+                        <option value="16">Sesc Paracatu</option>
+                        <option value="17">Sesc Almenara</option>
+                        <option value="18">Sesc Patos de Minas</option>
+                        <option value="19">Sesc Araxá</option>
+                        <option value="20">Sesc Poços de Caldas</option>
+                        <option value="21">Sesc Carlos Prates</option>
+                        <option value="22">Sesc Pouso Alegre</option>
+                        <option value="23">Sesc Cataguases</option>
+                        <option value="24">Sesc Santos Dumont</option>
+                        <option value="25">Sesc Centro de Excelência em Saúde</option>
+                        <option value="26">Sesc Santa Luzia</option>
+                        <option value="27">Sesc Contagem</option>
+                        <option value="28">Sesc Santa Quitéria</option>
+                        <option value="29">Sesc Floresta</option>
+                        <option value="30">Sesc São Lourenço</option>
+                        <option value="31">Sesc Governador Valadares</option>
+                        <option value="32">Sesc Sete Lagoas</option>
+                        <option value="33">Sesc Januária</option>
+                        <option value="34">Sesc Tupinambás</option>
+                    </select> *@
+				</div>
+
+			</div>
+
+			<div class="row smal mb-3">
+				<div class="col-sm-4">
+					<label asp-for="@Model.Area">Área:</label>
+					<select asp-for="@Model.Area" asp-items="@Model.AreaOptions">
+						<option value=""></option>
+					</select>
+					@*                     <select aria-label="Area">
+                        <option selected>Escolha a Área</option>
+                        <option value="1">Área Internas</option>
+                        <option value="2">Financeiro</option>
+                        <option value="3">Inteligência de dados</option>
+                        <option value="2">Monitoria</option>
+                        <option value="2">Operacional</option>
+                        <option value="2">Supervisão</option>
+                        <option value="2">Suporte</option>
+                    </select> *@
+				</div>
+				<div class="col-sm-4">
+					<label asp-for="@Model.AccessProfile">Perfil:</label>
+					<select asp-for="@Model.AccessProfile" asp-items="@Model.AccessProfileOptions">
+						<option value=""></option>
+					</select>
+					@*                     <select aria-label="Perfil">
+                        <option selected>Escolha o Perfil</option>
+                        <option value="1">Administrador</option>
+                        <option value="2">Agente</option>
+                        <option value="3">Assistente</option>
+                        <option value="2">Monitor</option>
+                        <option value="2">Supervisor</option>
+                    </select> *@
+				</div>
+				<div class="col-sm-4">
+					<label asp-for="@Model.QueueGTId">Nível de Atendimento:</label>
+					<select asp-for="@Model.QueueGTId" asp-items="@Model.QueueGTOptions">
+						<option value=""></option>
+					</select>
+					@*                     <select aria-label="Perfil">
+                        <option selected>Escolha o Perfil</option>
+                        <option value="1">Administrador</option>
+                        <option value="2">Agente</option>
+                        <option value="3">Assistente</option>
+                        <option value="2">Monitor</option>
+                        <option value="2">Supervisor</option>
+                    </select> *@
+				</div>
+			</div>
+
+			<input type="hidden" asp-for="@Model.Id" value="@Model.Id" />
+			<input type="hidden" asp-for="@Model.GenesysId" value="@Model.GenesysId" />
+			<input type="hidden" asp-for="@Model.UserDataToCompareIfChanged.Active" value="@Model.UserDataToCompareIfChanged.Active" />
+			<input type="hidden" asp-for="@Model.UserDataToCompareIfChanged.Area" value="@Model.UserDataToCompareIfChanged.Area" />
+			<input type="hidden" asp-for="@Model.UserDataToCompareIfChanged.Unit" value="@Model.UserDataToCompareIfChanged.Unit" />
+			<input type="hidden" asp-for="@Model.UserDataToCompareIfChanged.AccessProfile" value="@Model.UserDataToCompareIfChanged.AccessProfile" />
+			<input type="hidden" asp-for="@Model.UserDataToCompareIfChanged.QueueGTId" value="@Model.UserDataToCompareIfChanged.QueueGTId" />
+
+			<button type="submit" class="btn btn-style">Salvar</button>
+			@* <button type="button" class="btn btn-style cancel-form">Cancelar</button> *@
+			<a class="btn btn-style" href="@baseUrl/User/Index">Cancelar</a>
+			<input type="submit" style="display: none;" />
+		</form>
+
+
+
+		@if (Model.Logs != null && Model.Logs.Any())
+		{
+			<table class="table table-striped table-sm" style="margin-top: 50px;background-color: #f2f2f2;">
+				<thead>
+					<tr>
+						<th scope="col"></th>
+						<th scope="col">Data</th>
+						<th scope="col">Hora</th>
+						<th scope="col">Objeto</th>
+						<th scope="col">Módulo</th>
+						<th scope="col">Usuário</th>
+						<th scope="col">Campo</th>
+						<th scope="col">Valor Anterior</th>
+						<th scope="col">Ação</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					@if (Model.Logs != null && Model.Logs.Any())
+					{
+						@foreach (var item in Model.Logs)
+						{
+							<tr>
+								<td>Log de Controle: </td>
+								<td>@item.LogEvent.ToString("dd/MM/yyyy")</td>
+								<td>@item.LogEvent.ToString("HH:mm")</td>
+								<td>@item.User</td>
+								<td>@item.Module</td>
+								<td>@item.Section</td>
+								<td>@item.Field</td>
+								<td>@item.Value</td>
+								<td>@item.Action</td>
+							</tr>
+						}
+					}
+				</tbody>
+			</table>
+		}
+
+
+	</div>
+
+
+</div>

@@ -1,0 +1,176 @@
+html {
+  font-size: 14px;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+/* @media (min-width: 576px) {
+  html {
+    font-size: 14px;
+  }
+} */
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+
+table {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 12px; 
+}
+
+svg {
+  width: 20px;
+  height: 20px;
+  fill: #666666;
+}
+
+.alert-validation {
+  color: red;
+  font-weight: bold;
+}
+
+.standard-input {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  /* min-width: 50%;  */
+  width: 97%;
+  /* field-sizing:content;  */
+}
+
+.standard-textarea {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  width: 97%;
+  /* min-width: 100%;  */
+}
+
+.div-table {
+  width: 38%;
+  display: table;
+  padding-left: 2px;
+}
+
+.div-table-row {
+  display: table-row;
+}
+
+.div-table-cell {
+  display: table-cell;
+  padding: 5px;
+}
+
+.btn-title-style {
+  color:#666666;
+  font-weight: bold;
+}
+
+
+.btn-style {
+  color:#666666;
+  /* background-color:#d7dce5; */
+  background-color:#e2e6ee;
+  font-weight: bold;
+}
+
+.input-group {
+  display: inline;
+}
+
+.label-title {
+  color:#666666; 
+  font-weight: bold;
+  margin: 5px;
+}
+
+select {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  width: 97%;
+  height: 50%;
+  /* min-width: 100%; 
+  field-sizing: content; */
+}
+
+textarea {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.navbar {
+  background-color: #33383d !important;
+
+}
+
+.navbar a {
+  color: #9baab8 !important;
+}
+
+a:active {
+  color: #fff !important;
+}
+
+.card-header {
+  background-color: #F6F6F6 !important;
+  margin-bottom: 2px;;
+}
+
+
+
+.dropdown-menu li {
+    position: relative;
+}
+
+.dropdown-menu .dropdown-submenu {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: -7px;
+}
+
+.dropdown-menu .dropdown-submenu-left {
+    right: 100%;
+    left: auto;
+}
+
+.dropdown-menu > li:hover > .dropdown-submenu {
+    display: block;
+}
+
+/*DataTable*/
+.dt-input {
+    margin-left: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#journeyTable tr:hover {
+    color:blue;
+}
+
+.div-readonly {
+    opacity: 0.6;
+    /*background-color: #E2E8F0;*/
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.pagecontrollink {
+    border: 1px solid #ccc; /* Sets width, style, and color */
+    border-radius: 5px; /* Rounds the corners */
+    /*padding: 10px 20px;*/ /* Adds spacing inside the button */
+    /*background-color: white;*/ /* Sets background color */
+    /*color: blue;*/ /* Sets text color */
+}

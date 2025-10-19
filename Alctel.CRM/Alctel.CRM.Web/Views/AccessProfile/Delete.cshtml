@@ -1,0 +1,55 @@
+@model Alctel.CRM.Web.Models.AccessProfileModel
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-universal-access" viewBox="0 0 16 16">
+                <path d="M9.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0M6 5.5l-4.535-.442A.531.531 0 0 1 1.531 4H14.47a.531.531 0 0 1 .066 1.058L10 5.5V9l.452 6.42a.535.535 0 0 1-1.053.174L8.243 9.97c-.064-.252-.422-.252-.486 0l-1.156 5.624a.535.535 0 0 1-1.053-.174L6 9z"/>
+            </svg> 
+            <button class="btn btn-title-style" type="button" data-toggle="collapse" data-bs-toggle="collapse"
+                    data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                Deseja Realmente Excluir o Perfil de Acesso?
+            </button>
+        </h5>
+    </div>
+
+    <div class="card card-body">
+
+        <form method="post" asp-action="Delete">
+            <div class="row smal mb-3">
+                <div class="alert-validation" role="alert" asp-validation-summary="All"></div>
+            </div>
+            <div class="row smal mb-3">
+                <div class="col-sm-4">
+                    <label asp-for="@Model.Name">Nome:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <div>
+                            <input class="standard-input" type="text" asp-for="@Model.Name" aria-label="Name"
+                                   aria-describedby="basic-addon2" readonly />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <label asp-for="@Model.Description">Descrição:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <div>
+                            <input class="standard-input" type="text" asp-for="@Model.Description" aria-label="Description"
+                                   aria-describedby="basic-addon2" readonly />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <input type="hidden" asp-for="@Model.Id" value="@Model.Id" />
+
+            <button type="submit" class="btn btn-style">Excluir</button>
+            <button type="button" class="btn btn-style cancel-form">Cancelar</button>
+        </form>
+
+
+    </div>
+
+
+</div>

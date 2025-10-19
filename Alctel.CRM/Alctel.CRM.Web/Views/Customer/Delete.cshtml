@@ -1,0 +1,206 @@
+@model Alctel.CRM.Web.Models.CustomerModel
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+                <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z"/>
+            </svg>
+            <button class="btn btn-title-style" type="button" data-toggle="collapse" data-bs-toggle="collapse"
+                    data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                Deseja Realmente Excluir o Cliente?
+            </button>
+        </h5>
+    </div>
+
+    <div class="card card-body">
+
+        <form method="post" asp-action="Delete">
+            <div class="row smal mb-3">
+                <div class="alert-validation" role="alert" asp-validation-summary="All"></div>
+            </div>
+
+			<div class="row smal mb-3">
+				<div class="col-sm-3">
+					<label asp-for="@Model.FirstName">Nome:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.FirstName" aria-label="FirstName"
+								   aria-describedby="basic-addon2" readonly />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.LastName">Sobrenome:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.LastName" aria-label="LastName"
+								   aria-describedby="basic-addon2" readonly />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.SocialAffectionateName">Nome Social/Afetivo:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.SocialAffectionateName"
+								   aria-label="SocialAffectionateName" aria-describedby="basic-addon2" readonly />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.Cpf">CPF:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.Cpf" aria-label="Cpf"
+								   aria-describedby="basic-addon2" readonly />
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row smal mb-3">
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.PhoneNumber1">Telefone:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="tel" asp-for="@Model.PhoneNumber1" aria-label="PhoneNumber"
+								   aria-describedby="basic-addon2" readonly />
+						</div>
+					</div>
+				</div>
+
+@* 				<div class="col-sm-3">
+					<label asp-for="@Model.MobilePhone">Contato WhatsApp:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="tel" asp-for="@Model.MobilePhone" aria-label="MobilePhone"
+								   aria-describedby="basic-addon2" readonly />
+						</div>
+					</div>
+				</div> *@
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.Email1">Email 1:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="email" asp-for="@Model.Email1" aria-label="Email1"
+								   aria-describedby="basic-addon2" readonly />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.Email2">Email 2:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="email" asp-for="@Model.Email2" aria-label="Email2"
+								   aria-describedby="basic-addon2" readonly />
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row smal mb-3">
+				<div class="col-sm-3">
+					<label asp-for="@Model.CompanyName">Nome da Empresa:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.CompanyName" aria-label="CompanyName"
+								   aria-describedby="basic-addon2" readonly />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.Cnpj">CNPJ:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.Cnpj" aria-label="Cnpj"
+								   aria-describedby="basic-addon2" readonly />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.PhoneNumber2">Telefone 1:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="tel" asp-for="@Model.PhoneNumber2" aria-label="PhoneNumber1"
+								   aria-describedby="basic-addon2" readonly />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.PhoneNumberCompany">Telefone 2:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="tel" asp-for="@Model.PhoneNumberCompany" aria-label="PhoneNumber2"
+								   aria-describedby="basic-addon2" readonly />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row smal mb-3">
+				<div class="col-sm-3">
+					<label asp-for="@Model.Category">Categoria:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.Category" aria-label="Category"
+								   aria-describedby="basic-addon2" readonly />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.SubCategory">Sub-Categoria:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.SubCategory" aria-label="SubCategory"
+								   aria-describedby="basic-addon2" readonly />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.Registration">Matrícula:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.Registration" aria-label="Registration"
+								   aria-describedby="basic-addon2" readonly />
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<label asp-for="@Model.CreatedOn">Data de Criação:</label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="date" asp-for="@Model.CreatedOn" aria-label="CreatedOn"
+								   aria-describedby="basic-addon2" readonly />
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+
+            <input type="hidden" asp-for="@Model.Id" value="@Model.Id" />
+
+            <button type="submit" class="btn btn-style">Excluir</button>
+            <button type="button" class="btn btn-style cancel-form">Cancelar</button>
+        </form>
+
+
+    </div>
+
+
+</div>

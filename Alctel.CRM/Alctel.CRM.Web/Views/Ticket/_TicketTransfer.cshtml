@@ -1,0 +1,142 @@
+﻿
+@model Alctel.CRM.Web.Models.TicketTransferModel;
+
+@{
+	string? baseUrl = ViewBag.BaseUrl;
+	baseUrl = baseUrl == null ? string.Empty : baseUrl;
+}
+
+<div class="card">
+	<div class="card-header">
+		<h5 class="mb-0">
+			@* <form method="get" asp-action="Add"> *@
+			<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+				<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z" />
+			</svg>
+			<button type="submit" class="btn btn-title-style" data-toggle="collapse"
+					data-bs-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+				Protocolo: @Model.Protocol
+			</button>
+
+			@* </form> *@
+		</h5>
+	</div>
+
+	<div class="card card-body">
+		@* <form id="ticketTransferForm" method="post" action="@baseUrl/TicketTransfer/SendTransfer"> *@
+
+			<input type="hidden" asp-for="@Model.TicketId" value="@Model.TicketId" />
+			<input type="hidden" asp-for="@Model.UserId" value="@Model.UserId" />
+			<input type="hidden" asp-for="@Model.ListId" value="@Model.ListId" />
+			<input type="hidden" asp-for="@Model.QueueGT" value="@Model.QueueGT" />
+
+			<div class="row smal mb-3">
+				<div class="col-sm-12">
+					<label asp-for="@Model.TransferReason"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.TransferReason"
+								   aria-describedby="basic-addon2" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row smal mb-3">
+				<div class="col-sm-4">
+					<label asp-for="@Model.TransferQueueGTId"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<select class="ticket_init" asp-for="@Model.TransferQueueGTId"
+									asp-items="@Model.TransferQueueGTOptions">
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div id="transferServiceUnitDivId" class="col-sm-4" style="display:none">
+					<label asp-for="@Model.TransferServiceUnitId"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<select class="ticket_init" asp-for="@Model.TransferServiceUnitId" asp-items="@Model.TransferQueueGTOptions">
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div id="transferAreaDivId" class="col-sm-4" style="display:none">
+					<label asp-for="@Model.TransferAreaId"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<select class="ticket_init" asp-for="@Model.TransferAreaId" asp-items="@Model.TransferQueueGTOptions">
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div id="transferDemandTypeDivId" class="col-sm-4" style="display:none">
+					<label asp-for="@Model.TransferDemandTypeId"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<select class="ticket_init" asp-for="@Model.TransferDemandTypeId" asp-items="@Model.TransferQueueGTOptions">
+							</select>
+						</div>
+						@* <input id="transferFormId" type="hidden" value="0" /> *@
+					</div>
+				</div>
+			</div>
+
+			<div id="transferDemandObservationDivId" class="row smal mb-3" style="display:none">
+				<div class="col-sm-12">
+					<label asp-for="@Model.TransferDemandObservation"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<textarea asp-for="@Model.TransferDemandObservation" rows="15" style="width:99%;"
+									  placeholder="Digite aqui">
+							</textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		<button id="buttonTransferModal" type="button" onclick="tools.Events.OnTransferSubmit()" class="btn btn-style" data-bs-dismiss="modal" disabled>Transferir</button>
+			@* <button type="button" class="btn btn-style" data-bs-dismiss="modal">Cancelar</button> *@
+
+		@* </form> *@
+
+
+		@* 	@if (Model.Logs != null && Model.Logs.Any())
+		{
+			<table class="table table-striped table-sm" style="margin-top: 50px;background-color: #f2f2f2;">
+				<thead>
+					<tr>
+						<th scope="col"></th>
+						<th scope="col">Data</th>
+						<th scope="col">Hora</th>
+						<th scope="col">Objeto</th>
+						<th scope="col">Módulo</th>
+						<th scope="col">Usuário</th>
+						<th scope="col">Campo</th>
+						<th scope="col">Valor Anterior</th>
+						<th scope="col">Ação</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model.Logs)
+					{
+						<tr>
+							<td>Log de Controle: </td>
+							<td>@item.LogEvent.ToString("dd/MM/yyyy")</td>
+							<td>@item.LogEvent.ToString("HH:mm")</td>
+							<td>@item.User</td>
+							<td>@item.Module</td>
+							<td>@item.Section</td>
+							<td>@item.Field</td>
+							<td>@item.Value</td>
+							<td>@item.Action</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		} *@
+	</div>
+</div>
