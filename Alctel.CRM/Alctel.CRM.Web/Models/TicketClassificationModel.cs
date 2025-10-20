@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using System.ComponentModel;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Alctel.CRM.Web.Models;
 
 public class TicketClassificationModel
 {
+    [DisplayName("Manifestação")]
     public Int64 ManifestationTypeId { get; set; }
     public string? ManifestationTypeName { get; set; }
     public List<SelectListItem> ManifestationTypeOptions { get; set; } = new List<SelectListItem>();

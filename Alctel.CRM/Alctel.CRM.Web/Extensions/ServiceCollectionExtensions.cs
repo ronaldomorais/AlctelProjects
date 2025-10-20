@@ -217,6 +217,9 @@ public static class ServiceCollectionsExtensions
         builder.Services.AddScoped<IClassificationListItemsAPIRepository, ClassificationListItemsAPIRepository>();
         builder.Services.AddScoped<IClassificationListItemsService, ClassificationListItemsService>();
 
+        builder.Services.AddScoped<ITicketClassificationAPIRepository, TicketClassificationAPIRepository>();
+        builder.Services.AddScoped<ITicketClassificationService, TicketClassificationService>();
+
         return builder;
     }
 

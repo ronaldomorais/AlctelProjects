@@ -136,5 +136,8 @@ public class MapConfigProfile : Profile
 
         CreateMap<TicketAgentStatusAPI, TicketStatusModel>();
         CreateMap<TicketAssistentStatusAPI, TicketStatusModel>();
+
+        CreateMap<TicketClassificationListItemsAPI, TicketClassificationListItemsModel>();
+        CreateMap<TicketClassificationListItemsModel, TicketClassificationListItemsAPI>();
     }
 }

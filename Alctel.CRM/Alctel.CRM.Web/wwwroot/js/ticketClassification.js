@@ -1,13 +1,59 @@
 ﻿$(function () {
-    
+    ticketClassification.Init.select2ToTree();
 });
 
 
 var ticketClassification = {
+    Init: {
+        select2ToTree: function () {
+            const selectsArray = ['Listname', 'ListItemName'];
+
+            Array.from(selectsArray).forEach(item => {
+
+                $(`#${item}`).select2ToTree({
+                    placeholder: "Opções...",
+                });
+
+            });
+
+        },
+    },
+
     Events: {
+
+        OnTicketClassificationListChanged: function () {
+            var selectedValue = $('#Listname').val();
+
+            $.get(`${origin_url}/TicketClassification/TicketClassificationListItemsIndex/?id=${selectedValue}`, function (data, success) {
+                if (success === 'success') {
+                    if (data != null) {
+                        console.log(data);
+
+                        $('#ticketClassificationListItemsId').html(data);
+
+                        //$('#ListItemName').append(
+                        //    $('<option>', {
+                        //        value: "0",
+                        //        text: "Opções",
+                        //    })
+                        //)
+
+                        //$.each(data, function (index, value) {
+                        //    $('#ListItemName').append(
+                        //        $('<option>', {
+                        //            value: value.listItemId,
+                        //            text: value.name,
+                        //        })
+                        //    )
+                        //})
+                    }
+                }
+            });
+        },
+
         OnAddClassificationClicked: function () {
             $.get(`${origin_url}/TicketClassification/ScreenPopup`, function (data, success) {
-                
+
                 if (success === 'success') {
                     $('#ticketClassificationOpenId').html(data);
                 }
@@ -15,7 +61,7 @@ var ticketClassification = {
         },
 
         OnManifestationTypeChanged: function () {
-            var selectedValue = $('#ManifestationTypeId').val(); 
+            var selectedValue = $('#ManifestationTypeId').val();
 
             $('#ServiceUnitId').val("0");
             $('#ServiceId').val("0");

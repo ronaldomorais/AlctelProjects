@@ -168,7 +168,7 @@ public class LoginController : Controller
                             switch (profile.ToUpper())
                             {
                                 case "ADMINISTRADOR":
-                                    HttpContext.Session.SetString("Module", "Home,Customer,User,Ticket,ServiceUnit,Area,ServiceLevel,DemandType,Configuration,ClassificationList,ReasonList,ClassificationTree,TicketAssignment");
+                                    HttpContext.Session.SetString("Module", "Home,Customer,User,Ticket,ServiceUnit,Area,ServiceLevel,DemandType,Configuration,ClassificationList,ReasonList,ClassificationTree,TicketAssignment,TicketClassification");
                                     break;
                                 case "AGENTE":
                                     HttpContext.Session.SetString("Module", "Home,Customer,Ticket,TicketAssignment");
@@ -256,16 +256,16 @@ public class LoginController : Controller
                             switch (profile.ToUpper())
                             {
                                 case "ADMINISTRADOR":
-                                    HttpContext.Session.SetString("Module", "Home,Customer,User,Ticket,ServiceUnit,Area,ServiceLevel,DemandType,Configuration,ClassificationList,ReasonList,ClassificationTree,TicketAssignment");
+                                    HttpContext.Session.SetString("Module", "Home,Customer,User,Ticket,ServiceUnit,Area,ServiceLevel,DemandType,Configuration,ClassificationList,ReasonList,ClassificationTree,TicketAssignment,TicketClassification");
                                     break;
                                 case "AGENTE":
-                                    HttpContext.Session.SetString("Module", "Home,Customer,Ticket");
+                                    HttpContext.Session.SetString("Module", "Home,Customer,Ticket,TicketAssignment");
                                     break;
                                 case "ASSISTENTE":
-                                    HttpContext.Session.SetString("Module", "Home,Customer,Ticket");
+                                    HttpContext.Session.SetString("Module", "Home,Customer,Ticket,TicketAssignment");
                                     break;
                                 case "MONITOR":
-                                    HttpContext.Session.SetString("Module", "Home,Customer,Ticket");
+                                    HttpContext.Session.SetString("Module", "Home,Customer,Ticket,TicketAssignment");
                                     break;
                             }
 

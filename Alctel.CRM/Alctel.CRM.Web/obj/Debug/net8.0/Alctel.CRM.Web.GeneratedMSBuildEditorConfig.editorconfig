@@ -228,8 +228,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlja2V0QXNzaWdubWVudFxUaWNrZXRNYW5hZ2VtZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Dev/Alctel/AlctelProjects/Alctel.CRM/Alctel.CRM.Web/Views/TicketClassification/ConfigurationListIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlja2V0Q2xhc3NpZmljYXRpb25cQ29uZmlndXJhdGlvbkxpc3RJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Dev/Alctel/AlctelProjects/Alctel.CRM/Alctel.CRM.Web/Views/TicketClassification/ScreenPopup.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlja2V0Q2xhc3NpZmljYXRpb25cU2NyZWVuUG9wdXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Dev/Alctel/AlctelProjects/Alctel.CRM/Alctel.CRM.Web/Views/TicketClassification/TicketClassificationListItemsIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlja2V0Q2xhc3NpZmljYXRpb25cVGlja2V0Q2xhc3NpZmljYXRpb25MaXN0SXRlbXNJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Dev/Alctel/AlctelProjects/Alctel.CRM/Alctel.CRM.Web/Views/Ticket/Create.cshtml]
