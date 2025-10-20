@@ -313,7 +313,10 @@ public class TicketAPIRepository : ITicketAPIRepository
             var url = _configuration.GetSection("MiddlewareTicketControl:url").Value;
             var username = _configuration.GetSection("MiddlewareTicketControl:username").Value;
             var password = _configuration.GetSection("MiddlewareTicketControl:password").Value;
-            var path = _configuration.GetSection("MiddlewareTicketControl:paths:ticketqueuegt").Value;
+            //var path = _configuration.GetSection("MiddlewareTicketControl:paths:ticketqueuegt").Value;
+            var path = _configuration.GetSection("MiddlewareTicketControl:paths:tickettransferqueuegtlist").Value;
+
+            
 
             ApiContext<List<TicketQueueGTAPI>> apiContext = new ApiContext<List<TicketQueueGTAPI>>();
 
