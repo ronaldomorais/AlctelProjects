@@ -5,7 +5,8 @@
 	{
 		itemcounter = 1;
 	}
-
+	string? baseUrl = Context.Session.GetString("BaseUrl");
+	baseUrl = baseUrl == null ? string.Empty : baseUrl;
 }
 
 @model Alctel.CRM.Web.Models.TicketClassificationConfigListModel
@@ -42,6 +43,11 @@
             </button> *@
 
 			</div>
+			<div class="col-sm-3">
+				<button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#ticketClassificationListModal">
+					Nova Lista
+				</button>
+			</div>
 		</div>
 
 	</div>
@@ -55,18 +61,60 @@
 				<select asp-for="@Model.Listname" asp-items="@Model.ListOptions" onchange="ticketClassification.Events.OnTicketClassificationListChanged();">
 				</select>
 			</div>
+
+			<div class="col-sm-3">
+
+			</div>
 		</div>
 
 		<div id="ticketClassificationListItemsId" class="row">
-@* 			<div class="col-sm-3">
-				<label asp-for="@Model.ListItemName"></label>
-				<input type="hidden" asp-for="@Model.ListItemId" />
-				<select asp-for="@Model.ListItemName" asp-items="@Model.ListItemOptions">
-				</select>
-			</div> *@
 
 		</div>
 
+	</div>
+
+
+	<div class="modal fade" id="ticketClassificationListModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+		 aria-labelledby="ticketClassificationListModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5">Classificação Adicionar Lista</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="card">
+						<div class="card-header">
+
+							<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+								<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z" />
+							</svg>
+							<label class="label-title">Adicionar nova lista</label>
+
+						</div>
+
+						<div class="card-body">
+							<div class="row">
+								<form method="post" action="@baseUrl/TicketClassification/CreateList">
+									<div class="form-control-sm">
+										<label for="listNameId">Nome da Lista:</label>
+										<input class="standard-input" type="text" id="listNameId" name="listNameId" required/>
+
+									</div>
+									<div style="margin-left: 8px;">
+										<button type="submit" class="btn btn-style">Criar</button>
+									</div>
+								</form>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+				</div>
+			</div>
+		</div>
 	</div>
 
 </div>

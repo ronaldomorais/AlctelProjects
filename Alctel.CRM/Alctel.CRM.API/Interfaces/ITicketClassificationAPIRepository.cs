@@ -12,4 +12,8 @@ public interface ITicketClassificationAPIRepository
     Task<APIResponse<List<TicketClassificationManifestationType>>> GetTicketClassificationManifestationTypeAPIAsync();
     Task<APIResponse<List<TicketClassificationListAPI>>> GetTicketClassificationListAPIAsync();
     Task<APIResponse<List<TicketClassificationListItemsAPI>>> GetTicketClassificationListItemsAPIAsync(Int64 id);
+    Task<APIResponse<int>> InsertTicketClassificationListAPIAsync(string data);
+    Task<APIResponse<TicketClassificationListItemAPI>> GetTicketClassificationListItemAPIAsync(Int64 id);
+    Task<APIResponse<int>> UpdateTicketClassificationListItemAPIAsync(Int64 id, bool status);
+    Task<APIResponse<int>> InsertTicketClassificationListItemAPIAsync(Int64 listId, string data);
 }

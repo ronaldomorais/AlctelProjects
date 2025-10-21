@@ -7,6 +7,7 @@ using Alctel.CRM.API.Entities;
 using Alctel.CRM.API.Interfaces;
 using Alctel.CRM.API.Repositories;
 using Alctel.CRM.Business.Interfaces;
+using Alctel.CRM.Context.InMemory.Entities;
 
 namespace Alctel.CRM.Business.Services;
 
@@ -85,5 +86,88 @@ public class TicketClassificationService : ITicketClassificationService
         }
 
         return new List<TicketClassificationListItemsAPI>();
+    }
+
+    public async Task<int> InsertTicketClassificationListAsync(string data)
+    {
+        try
+        {
+            var apiResponse = await _ticketClassificationAPIRepository.InsertTicketClassificationListAPIAsync(data);
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                return apiResponse.Response;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return -1;
+    }
+
+    public async Task<TicketClassificationListItemAPI> GetTicketClassificationListItemAsync(Int64 id)
+    {
+        try
+        {
+            var apiResponse = await _ticketClassificationAPIRepository.GetTicketClassificationListItemAPIAsync(id);
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                if (apiResponse.Response != null)
+                {
+                    return apiResponse.Response;
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return new TicketClassificationListItemAPI();
+    }
+
+
+    public async Task<int> UpdateTicketClassificationListItemAsync(Int64 id, bool status)
+    {
+        try
+        {
+            var apiResponse = await _ticketClassificationAPIRepository.UpdateTicketClassificationListItemAPIAsync(id, status);
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                return apiResponse.Response;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return 0;
+    }
+
+    public async Task<int> InsertTicketClassificationListitemAsync(Int64 listId, string data)
+    {
+        try
+        {
+            var apiResponse = await _ticketClassificationAPIRepository.InsertTicketClassificationListItemAPIAsync(listId, data);
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                return apiResponse.Response;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return -1;
     }
 }

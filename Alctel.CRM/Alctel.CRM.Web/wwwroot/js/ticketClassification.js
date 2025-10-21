@@ -51,6 +51,34 @@ var ticketClassification = {
             });
         },
 
+        OnTicketClassificationListItemEdit: function (id) {
+            $.get(`${origin_url}/TicketClassification/EditListItem/?id=${id}`, function (data, success) {
+                if (success === 'success') {
+                    if (data != null) {
+                        console.log(data);
+
+                        $('#ticketClassificationListItemsId').html(data);
+
+                        //$('#ListItemName').append(
+                        //    $('<option>', {
+                        //        value: "0",
+                        //        text: "Opções",
+                        //    })
+                        //)
+
+                        //$.each(data, function (index, value) {
+                        //    $('#ListItemName').append(
+                        //        $('<option>', {
+                        //            value: value.listItemId,
+                        //            text: value.name,
+                        //        })
+                        //    )
+                        //})
+                    }
+                }
+            });
+        },
+
         OnAddClassificationClicked: function () {
             $.get(`${origin_url}/TicketClassification/ScreenPopup`, function (data, success) {
 

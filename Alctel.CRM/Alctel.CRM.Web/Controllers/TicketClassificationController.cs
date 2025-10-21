@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Alctel.CRM.API.Entities;
 using Alctel.CRM.Business.Interfaces;
 using Alctel.CRM.Business.Services;
+using Alctel.CRM.Context.InMemory.Entities;
 using Alctel.CRM.Web.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -18,18 +19,20 @@ class SelectIOptions
 
 public class TicketClassificationController : Controller
 {
+    private const string MODULE_NAME = "classificacao";
     private readonly IMapper _mapper;
     private List<SelectIOptions> selectIOptions = new List<SelectIOptions>();
     private readonly ILoginService _loginService;
     private readonly ITicketClassificationService _ticketClassificationService;
+    private readonly ILogControllerService _logControllerService;
 
-    public TicketClassificationController(IMapper mapper, ILoginService loginService, ITicketClassificationService ticketClassificationService)
+    public TicketClassificationController(IMapper mapper, ILoginService loginService, ITicketClassificationService ticketClassificationService, ILogControllerService logControllerService)
     {
         selectIOptions.Add(new SelectIOptions
-            {
-                Id = 1,
-                Name = "Opção 01"
-            });
+        {
+            Id = 1,
+            Name = "Opção 01"
+        });
 
         selectIOptions.Add(new SelectIOptions
         {
@@ -46,6 +49,7 @@ public class TicketClassificationController : Controller
         _loginService = loginService;
         _ticketClassificationService = ticketClassificationService;
         _mapper = mapper;
+        _logControllerService = logControllerService;
     }
 
     [HttpGet]
@@ -83,38 +87,143 @@ public class TicketClassificationController : Controller
 
             if (listitem != null)
             {
+                ViewBag.ListId = id.ToString();
                 var model = _mapper.Map<List<TicketClassificationListItemsModel>>(listitem);
                 return View(model);
             }
         }
-        catch (Exception ex) 
+        catch (Exception ex)
         { }
 
         return View();
     }
 
+    [HttpPost]
+    public async Task<IActionResult> CreateList(string listNameId)
+    {
+        try
+        {
+            int ret = await _ticketClassificationService.InsertTicketClassificationListAsync(listNameId);
+
+            if (ret > 0)
+            {
+                var username = HttpContext.Session.GetString("Username");
+                var userid = HttpContext.Session.GetString("UserId");
+
+                LogController logController = new LogController();
+                logController.Id = ret;
+                logController.Module = MODULE_NAME;
+                logController.Section = username == null ? string.Empty : username;
+                logController.Field = "Todos";
+                logController.Value = "Todos";
+                logController.UserId = userid != null ? Int64.Parse(userid) : 0;
+                logController.Action = "Criar";
+
+                await _logControllerService.InsertLogAPIAsync(logController);
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
+
+        return RedirectToAction("ConfigurationListIndex");
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateListItem(Int64 listId, string listItemName)
+    {
+        try
+        {
+            int ret = await _ticketClassificationService.InsertTicketClassificationListitemAsync(listId, listItemName);
+
+            if (ret > 0)
+            {
+                var username = HttpContext.Session.GetString("Username");
+                var userid = HttpContext.Session.GetString("UserId");
+
+                LogController logController = new LogController();
+                logController.Id = ret;
+                logController.Module = MODULE_NAME;
+                logController.Section = username == null ? string.Empty : username;
+                logController.Field = "Todos";
+                logController.Value = "Todos";
+                logController.UserId = userid != null ? Int64.Parse(userid) : 0;
+                logController.Action = "Criar";
+
+                await _logControllerService.InsertLogAPIAsync(logController);
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
+
+        return RedirectToAction("ConfigurationListIndex");
+    }
+
+
     [HttpGet]
-    public async Task<IActionResult> Edit(string id)
+    public async Task<IActionResult> EditListItem(int id)
     {
         if (IsAuthenticated() == false)
         {
             return RedirectToAction("Create", "Login");
         }
 
-        ////var data = await _areaService.GetAreaAPIAsync(long.Parse(id));
+        var item = await _ticketClassificationService.GetTicketClassificationListItemAsync(id);
 
-        ////if (data != null)
-        ////{
-        ////    var model = _mapper.Map<TicketClassificationListItemsModel>(data);
+        if (item != null)
+        {
+            var model = _mapper.Map<TicketClassificationListItemModel>(item);
 
-        ////    model.AreaDataToCompareIfChanged = new AreaDataToCompareIfChangedLog();
-        ////    model.AreaDataToCompareIfChanged.Id = model.Id;
-        ////    model.AreaDataToCompareIfChanged.Active = model.Active;
-
-        ////    return View(model);
-        ////}
+            model.ListItemDataToCompareIfChanged = new ListItemDataToCompareIfChangedLog();
+            model.ListItemDataToCompareIfChanged.Id = model.Id;
+            model.ListItemDataToCompareIfChanged.Active = model.Active;
+            return View(model);
+        }
 
         return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> EditListItem([FromForm] TicketClassificationListItemModel model)
+    {
+        try
+        {
+            if (IsAuthenticated() == false)
+            {
+                return RedirectToAction("Create", "Login");
+            }
+
+            var ret = await _ticketClassificationService.UpdateTicketClassificationListItemAsync(model.ListItemId, model.Active);
+
+            if (ret > 0)
+            {
+                var username = HttpContext.Session.GetString("Username");
+                var userid = HttpContext.Session.GetString("UserId");
+
+                if (model.Active != model.ListItemDataToCompareIfChanged.Active)
+                {
+                    LogController logController = new LogController();
+                    logController.Id = model.Id;
+                    logController.Module = MODULE_NAME;
+                    logController.Section = username == null ? string.Empty : username;
+                    logController.Field = "Ativar/Desativar";
+                    logController.Value = model.ListItemDataToCompareIfChanged.Active ? "Ativado" : "Desativado";
+                    logController.UserId = userid != null ? Int64.Parse(userid) : 0;
+                    logController.Action = "Editar";
+
+                    await _logControllerService.InsertLogAPIAsync(logController);
+                }
+            }
+        }
+        catch (Exception ex)
+        { }
+
+        //return RedirectToAction("EditListItem", new { id = model.ListItemId });
+        return RedirectToAction("ConfigurationListIndex");
+
     }
 
     [HttpGet]
