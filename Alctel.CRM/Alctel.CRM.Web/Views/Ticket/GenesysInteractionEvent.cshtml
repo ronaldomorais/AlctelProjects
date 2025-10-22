@@ -163,7 +163,7 @@
 						<div class="input-group input-group-sm mb-3 @div_class_readonly">
 							<div>
 								<select class="ticket_init" asp-for="@Model.TicketCriticalityId"
-										asp-items="@Model.TicketCriticalityOptions">
+										asp-items="@Model.TicketCriticalityOptions" onchange="ticketClassification.Events.OnTicketCriticalityChanged()">
 								</select>
 							</div>
 						</div>

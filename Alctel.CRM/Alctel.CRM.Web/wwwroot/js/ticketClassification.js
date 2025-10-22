@@ -1,16 +1,19 @@
 ﻿$(function () {
     ticketClassification.Init.select2ToTree();
+    ticketClassification.Events.OnTicketCriticalityChanged();
 });
 
 
 var ticketClassification = {
     Init: {
         select2ToTree: function () {
-            const selectsArray = ['Listname', 'ListItemName'];
+            console.log('teste')
+            const selectsArray = ['ManifestationTypeId', 'ServiceUnitId', 'ServiceId', 'Reason01Id', 'Reason02Id', 'TicketCriticalityId'];
 
             Array.from(selectsArray).forEach(item => {
 
                 $(`#${item}`).select2ToTree({
+                    //dropdownParent: $('#ticketClassificationModal'),
                     placeholder: "Opções...",
                 });
 
@@ -20,6 +23,21 @@ var ticketClassification = {
     },
 
     Events: {
+        OnTicketCriticalityChanged: function () {
+            const selectedValue = $('#TicketCriticalityId option:selected').text();
+
+            switch (selectedValue.toUpperCase()) {
+                case "ALTA":
+                    $('#TicketCriticalityId').siblings('.select2-container').css('border', '3px solid red');
+                    break;
+                case "MÉDIA":
+                    $('#TicketCriticalityId').siblings('.select2-container').css('border', '3px solid yellow');
+                    break;
+                case "BAIXA":
+                    $('#TicketCriticalityId').siblings('.select2-container').css('border', '3px solid green');
+                    break;
+            }
+        },
 
         OnTicketClassificationListChanged: function () {
             var selectedValue = $('#Listname').val();
@@ -84,6 +102,7 @@ var ticketClassification = {
 
                 if (success === 'success') {
                     $('#ticketClassificationOpenId').html(data);
+                    ticketClassification.Init.select2ToTree();
                 }
             });
         },
@@ -101,6 +120,8 @@ var ticketClassification = {
             $('#reason01DivId').hide();
             $('#reason02DivId').hide();
 
+            $('#btnAddClassificationId').prop('disabled', true); 
+
             if (selectedValue != "0") {
                 $('#serviceUnitDivId').show();
             }
@@ -117,6 +138,8 @@ var ticketClassification = {
             $('#reason01DivId').hide();
             $('#reason02DivId').hide();
 
+            $('#btnAddClassificationId').prop('disabled', true); 
+
             if (selectedValue != "0") {
                 $('#serviceDivId').show();
             }
@@ -130,9 +153,11 @@ var ticketClassification = {
 
             $('#reason01DivId').hide();
             $('#reason02DivId').hide();
+            $('#btnAddClassificationId').prop('disabled', true); 
 
             if (selectedValue != "0") {
                 $('#reason01DivId').show();
+                $('#btnAddClassificationId').prop('disabled', false); 
             }
         },
 
@@ -162,21 +187,21 @@ var ticketClassification = {
 
 
             const manifestationTypeId = $('#ManifestationTypeId').val();
-            const manifestationTypeName = $('#ManifestationTypeId option:selected').text();
+            let manifestationTypeName = $('#ManifestationTypeId option:selected').text();
 
             const serviceUnitId = $('#ServiceUnitId').val();
-            const serviceUnitName = $('#ServiceUnitId option:selected').text();
+            let serviceUnitName = $('#ServiceUnitId option:selected').text();
 
             const serviceId = $('#ServiceId').val();
-            const serviceName = $('#ServiceId option:selected').text();
+            let serviceName = $('#ServiceId option:selected').text();
 
             const reason01Id = $('#Reason01Id').val();
-            const reason01Name = $('#Reason01Id option:selected').text();
+            let reason01Name = $('#Reason01Id option:selected').text();
 
             const reason02Id = $('#Reason02Id').val();
-            const reason02Name = $('#Reason02Id option:selected').text();
+            let reason02Name = $('#Reason02Id option:selected').text();
 
-            console.log(manifestationTypeId, manifestationTypeName)
+            console.log(manifestationTypeName, serviceUnitName, serviceName, reason01Name, reason02Name);
             if (manifestationTypeName === 'Opções') {
                 $('#btnTicketClassificationClose').trigger('click');
                 return;

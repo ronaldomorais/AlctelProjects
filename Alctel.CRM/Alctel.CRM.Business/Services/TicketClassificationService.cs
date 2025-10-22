@@ -19,7 +19,7 @@ public class TicketClassificationService : ITicketClassificationService
         _ticketClassificationAPIRepository = ticketClassificationAPIRepository;
     }
 
-    public async Task<List<TicketClassificationManifestationType>> GetTicketClassificationManifestationTypeAPIAsync()
+    public async Task<List<TicketClassificationManifestationTypeAPI>> GetTicketClassificationManifestationTypeAPIAsync()
     {
         try
         {
@@ -39,7 +39,7 @@ public class TicketClassificationService : ITicketClassificationService
             Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
         }
 
-        return new List<TicketClassificationManifestationType>();
+        return new List<TicketClassificationManifestationTypeAPI>();
     }
 
     public async Task<List<TicketClassificationListAPI>> GetTicketClassificationListAsync()
@@ -170,4 +170,71 @@ public class TicketClassificationService : ITicketClassificationService
 
         return -1;
     }
+
+    public async Task<int> InsertTicketClassificationManifestationTypeAsync(string data)
+    {
+        try
+        {
+            var apiResponse = await _ticketClassificationAPIRepository.InsertTicketClassificationManifestationTypeAPIAsync(data);
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                return apiResponse.Response;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return -1;
+    }
+
+    public async Task<List<TicketClassificationProgramAPI>> GetTicketClassificationProgramAsync()
+    {
+        try
+        {
+            var apiResponse = await _ticketClassificationAPIRepository.GetTicketClassificationProgramAPIAsync();
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                if (apiResponse.Response != null)
+                {
+                    return apiResponse.Response;
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return new List<TicketClassificationProgramAPI>();
+    }
+
+    public async Task<List<TicketClassificationReasonListAPI>> GetTicketClassificationReasonListAsync()
+    {
+        try
+        {
+            var apiResponse = await _ticketClassificationAPIRepository.GetTicketClassificationReasonListAPIAsync();
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                if (apiResponse.Response != null)
+                {
+                    return apiResponse.Response;
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return new List<TicketClassificationReasonListAPI>();
+    }
+    
 }

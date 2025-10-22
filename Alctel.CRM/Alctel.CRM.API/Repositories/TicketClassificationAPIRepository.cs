@@ -21,9 +21,9 @@ public class TicketClassificationAPIRepository : ITicketClassificationAPIReposit
         _configuration = configuration;
     }
 
-    public async Task<APIResponse<List<TicketClassificationManifestationType>>> GetTicketClassificationManifestationTypeAPIAsync()
+    public async Task<APIResponse<List<TicketClassificationManifestationTypeAPI>>> GetTicketClassificationManifestationTypeAPIAsync()
     {
-        APIResponse<List<TicketClassificationManifestationType>> apiResponse = new APIResponse<List<TicketClassificationManifestationType>>();
+        APIResponse<List<TicketClassificationManifestationTypeAPI>> apiResponse = new APIResponse<List<TicketClassificationManifestationTypeAPI>>();
         try
         {
             var url = _configuration.GetSection("MiddlewareTicketControl:url").Value;
@@ -31,7 +31,7 @@ public class TicketClassificationAPIRepository : ITicketClassificationAPIReposit
             var password = _configuration.GetSection("MiddlewareTicketControl:password").Value;
             var path = _configuration.GetSection("MiddlewareTicketControl:paths:ticketclassificationmanifestationtype").Value;
 
-            ApiContext<List<TicketClassificationManifestationType>> apiContext = new ApiContext<List<TicketClassificationManifestationType>>();
+            ApiContext<List<TicketClassificationManifestationTypeAPI>> apiContext = new ApiContext<List<TicketClassificationManifestationTypeAPI>>();
 
             if (url != null && username != null && password != null)
             {
@@ -209,6 +209,87 @@ public class TicketClassificationAPIRepository : ITicketClassificationAPIReposit
             if (url != null && username != null && password != null)
             {
                 apiResponse = await apiContext.PostBasicAuthAPIAsync(url, username, password, path, json);
+            }
+        }
+        catch (Exception ex)
+        {
+            apiResponse.IsSuccessStatusCode = false;
+            apiResponse.AdditionalMessage = ex.Message;
+            apiResponse.StatusCode = System.Net.HttpStatusCode.InternalServerError;
+        }
+
+        return apiResponse;
+    }
+
+    public async Task<APIResponse<int>> InsertTicketClassificationManifestationTypeAPIAsync(string data)
+    {
+        APIResponse<int> apiResponse = new APIResponse<int>();
+        try
+        {
+            var url = _configuration.GetSection("MiddlewareTicketControl:url").Value;
+            var username = _configuration.GetSection("MiddlewareTicketControl:username").Value;
+            var password = _configuration.GetSection("MiddlewareTicketControl:password").Value;
+            var path = _configuration.GetSection("MiddlewareTicketControl:paths:ticketclassificationmanifestationtypeinsert").Value;
+
+            ApiContext<int> apiContext = new ApiContext<int>();
+
+            if (url != null && username != null && password != null)
+            {
+                apiResponse = await apiContext.PostBasicAuthAPIAsync(url, username, password, path, JsonConvert.SerializeObject(data));
+            }
+        }
+        catch (Exception ex)
+        {
+            apiResponse.IsSuccessStatusCode = false;
+            apiResponse.AdditionalMessage = ex.Message;
+            apiResponse.StatusCode = System.Net.HttpStatusCode.InternalServerError;
+        }
+
+        return apiResponse;
+    }
+
+    public async Task<APIResponse<List<TicketClassificationProgramAPI>>> GetTicketClassificationProgramAPIAsync()
+    {
+        APIResponse<List<TicketClassificationProgramAPI>> apiResponse = new APIResponse<List<TicketClassificationProgramAPI>>();
+        try
+        {
+            var url = _configuration.GetSection("MiddlewareTicketControl:url").Value;
+            var username = _configuration.GetSection("MiddlewareTicketControl:username").Value;
+            var password = _configuration.GetSection("MiddlewareTicketControl:password").Value;
+            var path = _configuration.GetSection("MiddlewareTicketControl:paths:ticketclassificationprogramlist").Value;
+
+            ApiContext<List<TicketClassificationProgramAPI>> apiContext = new ApiContext<List<TicketClassificationProgramAPI>>();
+
+            if (url != null && username != null && password != null)
+            {
+                apiResponse = await apiContext.PostBasicAuthAPIAsync(url, username, password, path);
+            }
+        }
+        catch (Exception ex)
+        {
+            apiResponse.IsSuccessStatusCode = false;
+            apiResponse.AdditionalMessage = ex.Message;
+            apiResponse.StatusCode = System.Net.HttpStatusCode.InternalServerError;
+        }
+
+        return apiResponse;
+    }
+
+    public async Task<APIResponse<List<TicketClassificationReasonListAPI>>> GetTicketClassificationReasonListAPIAsync()
+    {
+        APIResponse<List<TicketClassificationReasonListAPI>> apiResponse = new APIResponse<List<TicketClassificationReasonListAPI>>();
+        try
+        {
+            var url = _configuration.GetSection("MiddlewareTicketControl:url").Value;
+            var username = _configuration.GetSection("MiddlewareTicketControl:username").Value;
+            var password = _configuration.GetSection("MiddlewareTicketControl:password").Value;
+            var path = _configuration.GetSection("MiddlewareTicketControl:paths:ticketclassificationreasonlist").Value;
+
+            ApiContext<List<TicketClassificationReasonListAPI>> apiContext = new ApiContext<List<TicketClassificationReasonListAPI>>();
+
+            if (url != null && username != null && password != null)
+            {
+                apiResponse = await apiContext.PostBasicAuthAPIAsync(url, username, password, path);
             }
         }
         catch (Exception ex)

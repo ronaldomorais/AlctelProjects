@@ -7,6 +7,11 @@
 	}
 	string? baseUrl = Context.Session.GetString("BaseUrl");
 	baseUrl = baseUrl == null ? string.Empty : baseUrl;
+
+	string screenMessage = ViewBag.ScreenMessage;
+
+	screenMessage = screenMessage ?? string.Empty;
+
 }
 
 @model Alctel.CRM.Web.Models.TicketClassificationConfigListModel
@@ -14,15 +19,25 @@
 <div class="card">
 	<div class="card-header">
 		<div class="row">
-			<div class="col-sm-9">
-			</div>
-			<div class="col-sm-3">
-				@if (ViewBag.AlertFilter == "SHOW")
+			<div class="col-sm-12">
+				@if (string.IsNullOrEmpty(screenMessage) == false)
 				{
-					<div class="alert alert-danger alert-dismissible alert-small fade show" role="alert" id="userFilterMessage">
-						Necessário preencher todos os campos da Pesquisa
-						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-					</div>
+					@if (screenMessage.Contains("ERRO"))
+					{
+						<div class="alert alert-danger alert-dismissible alert-small fade show" role="alert" id="userFilterMessage">
+							@screenMessage
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+
+					}
+					else
+					{
+						<div class="alert alert-success alert-dismissible alert-small fade show" role="alert" id="userFilterMessage">
+							@screenMessage
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+
+					}
 				}
 			</div>
 		</div>

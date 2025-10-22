@@ -1972,7 +1972,7 @@ $(function () {
 
     sessionHandler.Methods.RemoveConversationDataDisconnected();
     //sessionHandler.Methods.CreateLinkRestoreInteractionScreen();
-
+    
     urlManager.Methods.LoadConversationIdInUrl();
     fileHelper.Methods.ReloadAttachedFiles();
 });

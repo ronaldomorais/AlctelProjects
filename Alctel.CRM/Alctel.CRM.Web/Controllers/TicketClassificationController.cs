@@ -19,14 +19,15 @@ class SelectIOptions
 
 public class TicketClassificationController : Controller
 {
-    private const string MODULE_NAME = "classificacao";
+    private const string MODULE_NAME = "lista_item";
     private readonly IMapper _mapper;
     private List<SelectIOptions> selectIOptions = new List<SelectIOptions>();
     private readonly ILoginService _loginService;
     private readonly ITicketClassificationService _ticketClassificationService;
     private readonly ILogControllerService _logControllerService;
+    private readonly IServiceUnitService _serviceUnitService;
 
-    public TicketClassificationController(IMapper mapper, ILoginService loginService, ITicketClassificationService ticketClassificationService, ILogControllerService logControllerService)
+    public TicketClassificationController(IMapper mapper, ILoginService loginService, ITicketClassificationService ticketClassificationService, ILogControllerService logControllerService, IServiceUnitService serviceUnitService)
     {
         selectIOptions.Add(new SelectIOptions
         {
@@ -50,180 +51,287 @@ public class TicketClassificationController : Controller
         _ticketClassificationService = ticketClassificationService;
         _mapper = mapper;
         _logControllerService = logControllerService;
+        _serviceUnitService = serviceUnitService;
     }
 
+    //[HttpGet]
+    //public async Task<IActionResult> ConfigurationListIndex()
+    //{
+    //    try
+    //    {
+    //        if (IsAuthenticated() == false)
+    //        {
+    //            return RedirectToAction("Create", "Login");
+    //        }
+
+    //        TicketClassificationConfigListModel model = new TicketClassificationConfigListModel();
+    //        await LoadClassificationListOptions(model);
+
+    //        if (TempData["ScreenMessage"] != null)
+    //        {
+    //            ViewBag.ScreenMessage = TempData["ScreenMessage"];
+    //            TempData["ScreenMessage"] = null;
+    //        }
+
+    //        return View(model);
+    //    }
+    //    catch (Exception ex)
+    //    { }
+
+    //    return View();
+    //}
+
+    //[HttpGet]
+    //public async Task<IActionResult> TicketClassificationListItemsIndex(Int64 id)
+    //{
+    //    try
+    //    {
+    //        if (IsAuthenticated() == false)
+    //        {
+    //            return RedirectToAction("Create", "Login");
+    //        }
+
+    //        var listitem = await _ticketClassificationService.GetTicketClassificationListItemsAsync(id);
+
+    //        if (listitem != null)
+    //        {
+    //            ViewBag.ListId = id.ToString();
+    //            var model = _mapper.Map<List<TicketClassificationListItemsModel>>(listitem);
+    //            return View(model);
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    { }
+
+    //    return View();
+    //}
+
+    //[HttpPost]
+    //public async Task<IActionResult> CreateList(string listNameId)
+    //{
+    //    try
+    //    {
+    //        int ret = await _ticketClassificationService.InsertTicketClassificationListAsync(listNameId);
+
+    //        if (ret > 0)
+    //        {
+    //            var username = HttpContext.Session.GetString("Username");
+    //            var userid = HttpContext.Session.GetString("UserId");
+
+    //            LogController logController = new LogController();
+    //            logController.Id = ret;
+    //            logController.Module = MODULE_NAME;
+    //            logController.Section = username == null ? string.Empty : username;
+    //            logController.Field = "Todos";
+    //            logController.Value = "Todos";
+    //            logController.UserId = userid != null ? Int64.Parse(userid) : 0;
+    //            logController.Action = "Criar";
+
+    //            await _logControllerService.InsertLogAPIAsync(logController);
+
+    //            TempData["ScreenMessage"] = $"Lista {listNameId} criada com sucesso.";
+    //        }
+    //        else
+    //        {
+    //            TempData["ScreenMessage"] = $"ERRO: criando lista {listNameId}.";
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        TempData["ScreenMessage"] = $"ERRO: criando item {listNameId}.";
+    //    }
+
+    //    return RedirectToAction("ConfigurationListIndex");
+    //}
+
+    //[HttpPost]
+    //public async Task<IActionResult> CreateListItem(Int64 listId, string listItemName)
+    //{
+    //    try
+    //    {
+    //        int ret = await _ticketClassificationService.InsertTicketClassificationListitemAsync(listId, listItemName);
+
+    //        if (ret > 0)
+    //        {
+    //            var username = HttpContext.Session.GetString("Username");
+    //            var userid = HttpContext.Session.GetString("UserId");
+
+    //            LogController logController = new LogController();
+    //            logController.Id = ret;
+    //            logController.Module = MODULE_NAME;
+    //            logController.Section = username == null ? string.Empty : username;
+    //            logController.Field = "Todos";
+    //            logController.Value = "Todos";
+    //            logController.UserId = userid != null ? Int64.Parse(userid) : 0;
+    //            logController.Action = "Criar";
+
+    //            await _logControllerService.InsertLogAPIAsync(logController);
+
+    //            TempData["ScreenMessage"] = $"Item {listItemName} criado com sucesso.";
+    //        }
+    //        else
+    //        {
+    //            TempData["ScreenMessage"] = $"ERRO: criando item {listItemName}.";
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        TempData["ScreenMessage"] = $"ERRO: criando item {listItemName}.";
+    //    }
+
+    //    return RedirectToAction("ConfigurationListIndex");
+    //}
+
+
+    //[HttpGet]
+    //public async Task<IActionResult> EditListItem(int id)
+    //{
+    //    if (IsAuthenticated() == false)
+    //    {
+    //        return RedirectToAction("Create", "Login");
+    //    }
+
+    //    var item = await _ticketClassificationService.GetTicketClassificationListItemAsync(id);
+
+    //    if (item != null)
+    //    {
+    //        var model = _mapper.Map<TicketClassificationListItemModel>(item);
+
+    //        model.ListItemDataToCompareIfChanged = new ListItemDataToCompareIfChangedLog();
+    //        model.ListItemDataToCompareIfChanged.Id = model.Id;
+    //        model.ListItemDataToCompareIfChanged.Active = model.Active;
+    //        return View(model);
+    //    }
+
+    //    return View();
+    //}
+
+    //[HttpPost]
+    //public async Task<IActionResult> EditListItem([FromForm] TicketClassificationListItemModel model)
+    //{
+    //    try
+    //    {
+    //        if (IsAuthenticated() == false)
+    //        {
+    //            return RedirectToAction("Create", "Login");
+    //        }
+
+    //        var ret = await _ticketClassificationService.UpdateTicketClassificationListItemAsync(model.ListItemId, model.Active);
+
+    //        if (ret > 0)
+    //        {
+    //            var username = HttpContext.Session.GetString("Username");
+    //            var userid = HttpContext.Session.GetString("UserId");
+
+    //            if (model.Active != model.ListItemDataToCompareIfChanged.Active)
+    //            {
+    //                LogController logController = new LogController();
+    //                logController.Id = model.ListItemId;
+    //                logController.Module = MODULE_NAME;
+    //                logController.Section = username == null ? string.Empty : username;
+    //                logController.Field = "Ativar/Desativar";
+    //                logController.Value = model.ListItemDataToCompareIfChanged.Active ? "Ativado" : "Desativado";
+    //                logController.UserId = userid != null ? Int64.Parse(userid) : 0;
+    //                logController.Action = "Editar";
+
+    //                await _logControllerService.InsertLogAPIAsync(logController);
+
+    //                TempData["ScreenMessage"] = $"Item atualizado com sucesso.";
+    //            }
+    //            else
+    //            {
+    //                TempData["ScreenMessage"] = $"ERRO: atualizado item.";
+    //            }
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        TempData["ScreenMessage"] = $"ERRO: atualizado item.";
+    //    }
+
+    //    //return RedirectToAction("EditListItem", new { id = model.ListItemId });
+    //    return RedirectToAction("ConfigurationListIndex");
+
+    //}
+
+    //[HttpGet]
+    //public async Task<IActionResult> ConfigurationClassificationIndex()
+    //{
+    //    try
+    //    {
+
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //    }
+
+    //    return View();
+    //}
+
+    //[HttpGet]
+    //public async Task<IActionResult> TicketClassificationCreate()
+    //{
+    //    try
+    //    {
+
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //    }
+
+    //    return View();
+    //}
+
     [HttpGet]
-    public async Task<IActionResult> ConfigurationListIndex()
+    public async Task<IActionResult> Index()
     {
         try
         {
-            if (IsAuthenticated() == false)
-            {
-                return RedirectToAction("Create", "Login");
-            }
-
-            TicketClassificationConfigListModel model = new TicketClassificationConfigListModel();
-            await LoadClassificationListOptions(model);
+            TicketClassificationModel model = new TicketClassificationModel();
+            await LoadManifestationTypeOptions(model);
+            //await LoadServiceUnitOptions(model);
+            await LoadProgramOptions(model);
 
             return View(model);
         }
         catch (Exception ex)
-        { }
+        {
+        }
 
         return View();
     }
 
     [HttpGet]
-    public async Task<IActionResult> TicketClassificationListItemsIndex(Int64 id)
+    public async Task<IActionResult> Create()
     {
         try
         {
-            if (IsAuthenticated() == false)
-            {
-                return RedirectToAction("Create", "Login");
-            }
-
-            var listitem = await _ticketClassificationService.GetTicketClassificationListItemsAsync(id);
-
-            if (listitem != null)
-            {
-                ViewBag.ListId = id.ToString();
-                var model = _mapper.Map<List<TicketClassificationListItemsModel>>(listitem);
-                return View(model);
-            }
-        }
-        catch (Exception ex)
-        { }
-
-        return View();
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> CreateList(string listNameId)
-    {
-        try
-        {
-            int ret = await _ticketClassificationService.InsertTicketClassificationListAsync(listNameId);
-
-            if (ret > 0)
-            {
-                var username = HttpContext.Session.GetString("Username");
-                var userid = HttpContext.Session.GetString("UserId");
-
-                LogController logController = new LogController();
-                logController.Id = ret;
-                logController.Module = MODULE_NAME;
-                logController.Section = username == null ? string.Empty : username;
-                logController.Field = "Todos";
-                logController.Value = "Todos";
-                logController.UserId = userid != null ? Int64.Parse(userid) : 0;
-                logController.Action = "Criar";
-
-                await _logControllerService.InsertLogAPIAsync(logController);
-            }
-        }
-        catch (Exception ex)
-        {
-
-        }
-
-        return RedirectToAction("ConfigurationListIndex");
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> CreateListItem(Int64 listId, string listItemName)
-    {
-        try
-        {
-            int ret = await _ticketClassificationService.InsertTicketClassificationListitemAsync(listId, listItemName);
-
-            if (ret > 0)
-            {
-                var username = HttpContext.Session.GetString("Username");
-                var userid = HttpContext.Session.GetString("UserId");
-
-                LogController logController = new LogController();
-                logController.Id = ret;
-                logController.Module = MODULE_NAME;
-                logController.Section = username == null ? string.Empty : username;
-                logController.Field = "Todos";
-                logController.Value = "Todos";
-                logController.UserId = userid != null ? Int64.Parse(userid) : 0;
-                logController.Action = "Criar";
-
-                await _logControllerService.InsertLogAPIAsync(logController);
-            }
-        }
-        catch (Exception ex)
-        {
-
-        }
-
-        return RedirectToAction("ConfigurationListIndex");
-    }
-
-
-    [HttpGet]
-    public async Task<IActionResult> EditListItem(int id)
-    {
-        if (IsAuthenticated() == false)
-        {
-            return RedirectToAction("Create", "Login");
-        }
-
-        var item = await _ticketClassificationService.GetTicketClassificationListItemAsync(id);
-
-        if (item != null)
-        {
-            var model = _mapper.Map<TicketClassificationListItemModel>(item);
-
-            model.ListItemDataToCompareIfChanged = new ListItemDataToCompareIfChangedLog();
-            model.ListItemDataToCompareIfChanged.Id = model.Id;
-            model.ListItemDataToCompareIfChanged.Active = model.Active;
+            TicketClassificationModel model = new TicketClassificationModel();
+            await LoadManifestationTypeOptions(model);
+            //await LoadServiceUnitOptions(model);
+            await LoadProgramOptions(model);
+            await LoadReason01Options(model);
+            await LoadReason02Options(model);
             return View(model);
         }
+        catch (Exception ex)
+        {
+        }
 
         return View();
     }
 
     [HttpPost]
-    public async Task<IActionResult> EditListItem([FromForm] TicketClassificationListItemModel model)
+    public async Task<IActionResult> Create([FromForm] TicketClassificationModel model)
     {
         try
         {
-            if (IsAuthenticated() == false)
-            {
-                return RedirectToAction("Create", "Login");
-            }
-
-            var ret = await _ticketClassificationService.UpdateTicketClassificationListItemAsync(model.ListItemId, model.Active);
-
-            if (ret > 0)
-            {
-                var username = HttpContext.Session.GetString("Username");
-                var userid = HttpContext.Session.GetString("UserId");
-
-                if (model.Active != model.ListItemDataToCompareIfChanged.Active)
-                {
-                    LogController logController = new LogController();
-                    logController.Id = model.Id;
-                    logController.Module = MODULE_NAME;
-                    logController.Section = username == null ? string.Empty : username;
-                    logController.Field = "Ativar/Desativar";
-                    logController.Value = model.ListItemDataToCompareIfChanged.Active ? "Ativado" : "Desativado";
-                    logController.UserId = userid != null ? Int64.Parse(userid) : 0;
-                    logController.Action = "Editar";
-
-                    await _logControllerService.InsertLogAPIAsync(logController);
-                }
-            }
         }
         catch (Exception ex)
-        { }
+        {
+        }
 
-        //return RedirectToAction("EditListItem", new { id = model.ListItemId });
-        return RedirectToAction("ConfigurationListIndex");
-
+        return View(model);
     }
 
     [HttpGet]
@@ -231,10 +339,10 @@ public class TicketClassificationController : Controller
     {
         TicketClassificationModel model = new TicketClassificationModel();
         await LoadManifestationTypeOptions(model);
-        LoadServiceUnitOptions(model);
+        await LoadServiceUnitOptions(model);
         LoadServiceOptions(model);
-        LoadReason01Options(model);
-        LoadReason02Options(model);
+        await LoadReason01Options(model);
+        await LoadReason02Options(model);
         return View(model);
     }
 
@@ -316,31 +424,44 @@ public class TicketClassificationController : Controller
         }
     }
 
-    private void LoadServiceUnitOptions(TicketClassificationModel model, Int64 selectedItem = 0)
+    private async Task LoadServiceUnitOptions(TicketClassificationModel model, Int64 selectedItem = 0)
     {
-        bool isSelected = false;
-
-        model.ServiceUnitOptions.Add(new SelectListItem
+        try
         {
-            Value = "0",
-            Text = "Opções",
-            Selected = isSelected
-        });
+            bool isSelected = false;
 
-        foreach (var item in selectIOptions)
-        {
-            isSelected = false;
-            if (item.Id == selectedItem)
+            var list = await _serviceUnitService.GetServiceUnitActivatedListAPIAsync();
+
+            if (list != null)
             {
-                isSelected = true;
+                var serviceUnitList = _mapper.Map<List<ServiceUnitModel>>(list);
+
+                model.ServiceUnitOptions.Add(new SelectListItem
+                {
+                    Value = "0",
+                    Text = "Opções",
+                    Selected = isSelected
+                });
+
+                foreach (var item in serviceUnitList)
+                {
+                    isSelected = false;
+                    if (item.Id == selectedItem)
+                    {
+                        isSelected = true;
+                    }
+
+                    model.ServiceUnitOptions.Add(new SelectListItem
+                    {
+                        Value = item.Id.ToString(),
+                        Text = item.Name,
+                        Selected = isSelected
+                    });
+                }
             }
-
-            model.ServiceUnitOptions.Add(new SelectListItem
-            {
-                Value = item.Id.ToString(),
-                Text = item.Name,
-                Selected = isSelected
-            });
+        }
+        catch (Exception ex)
+        {
         }
     }
 
@@ -372,59 +493,126 @@ public class TicketClassificationController : Controller
         }
     }
 
-    private void LoadReason01Options(TicketClassificationModel model, Int64 selectedItem = 0)
+    private async Task LoadProgramOptions(TicketClassificationModel model, Int64 selectedItem = 0)
     {
-        bool isSelected = false;
-
-        model.Reason01Options.Add(new SelectListItem
+        try
         {
-            Value = "0",
-            Text = "Opções",
-            Selected = isSelected
-        });
+            bool isSelected = false;
 
-        foreach (var item in selectIOptions)
-        {
-            isSelected = false;
-            if (item.Id == selectedItem)
+            var list = await _ticketClassificationService.GetTicketClassificationProgramAsync();
+
+            if (list != null)
             {
-                isSelected = true;
+                var listModel = _mapper.Map<List<TicketClassificationProgramModel>>(list);
+
+                model.ProgramOptions.Add(new SelectListItem
+                {
+                    Value = "0",
+                    Text = "Opções",
+                    Selected = isSelected
+                });
+
+                foreach (var item in listModel)
+                {
+                    isSelected = false;
+                    if (item.Id == selectedItem)
+                    {
+                        isSelected = true;
+                    }
+
+                    model.ProgramOptions.Add(new SelectListItem
+                    {
+                        Value = item.Id.ToString(),
+                        Text = item.Name,
+                        Selected = isSelected
+                    });
+                }
             }
-
-            model.Reason01Options.Add(new SelectListItem
-            {
-                Value = item.Id.ToString(),
-                Text = item.Name,
-                Selected = isSelected
-            });
+        }
+        catch (Exception ex)
+        {
         }
     }
 
-    private void LoadReason02Options(TicketClassificationModel model, Int64 selectedItem = 0)
+    private async Task LoadReason01Options(TicketClassificationModel model, Int64 selectedItem = 0)
     {
-        bool isSelected = false;
-
-        model.Reason02Options.Add(new SelectListItem
+        try
         {
-            Value = "0",
-            Text = "Opções",
-            Selected = isSelected
-        });
+            bool isSelected = false;
 
-        foreach (var item in selectIOptions)
-        {
-            isSelected = false;
-            if (item.Id == selectedItem)
+            var list = await _ticketClassificationService.GetTicketClassificationReasonListAsync();
+
+            if (list != null)
             {
-                isSelected = true;
+                var listModel = _mapper.Map<List<TicketClassificationReasonListModel>>(list);
+
+                model.Reason01Options.Add(new SelectListItem
+                {
+                    Value = "0",
+                    Text = "Opções",
+                    Selected = isSelected
+                });
+
+                foreach (var item in listModel)
+                {
+                    isSelected = false;
+                    if (item.Id == selectedItem)
+                    {
+                        isSelected = true;
+                    }
+
+                    model.Reason01Options.Add(new SelectListItem
+                    {
+                        Value = item.Id.ToString(),
+                        Text = item.Name,
+                        Selected = isSelected
+                    });
+                }
             }
+        }
+        catch (Exception ex)
+        {
+        }
+    }
 
-            model.Reason02Options.Add(new SelectListItem
+    private async Task LoadReason02Options(TicketClassificationModel model, Int64 selectedItem = 0)
+    {
+        try
+        {
+            bool isSelected = false;
+
+            var list = await _ticketClassificationService.GetTicketClassificationReasonListAsync();
+
+            if (list != null)
             {
-                Value = item.Id.ToString(),
-                Text = item.Name,
-                Selected = isSelected
-            });
+                var listModel = _mapper.Map<List<TicketClassificationReasonListModel>>(list);
+
+                model.Reason02Options.Add(new SelectListItem
+                {
+                    Value = "0",
+                    Text = "Opções",
+                    Selected = isSelected
+                });
+
+                foreach (var item in listModel)
+                {
+                    isSelected = false;
+                    if (item.Id == selectedItem)
+                    {
+                        isSelected = true;
+                    }
+
+                    model.Reason02Options.Add(new SelectListItem
+                    {
+                        Value = item.Id.ToString(),
+                        Text = item.Name,
+                        Selected = isSelected
+                    });
+                }
+            }
+        }
+        catch (Exception ex)
+        {
         }
     }
 

@@ -6,6 +6,7 @@ wwwroot\js\site.js
 wwwroot\js\ticket.js
 wwwroot\js\ticketAssignment.js
 wwwroot\js\ticketClassification.js
+wwwroot\js\ticketClassificationConfig.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap.min.css

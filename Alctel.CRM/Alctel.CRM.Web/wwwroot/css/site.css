@@ -174,3 +174,11 @@ a:active {
     /*background-color: white;*/ /* Sets background color */
     /*color: blue;*/ /* Sets text color */
 }
+
+/*.select2-container--default .select2-selection--single {
+    border: 1px solid #ff0000 !important;
+}
+*/
+.select2-red-border {
+    border: 1px solid #ff0000 !important;
+}

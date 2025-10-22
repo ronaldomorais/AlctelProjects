@@ -200,20 +200,18 @@
 
 		var slaAlertItem = new MenuItem
 		{
-			ControllerName = "SlaAlert",
+			ControllerName = null,
 			MenuName = "SLA/Alertas",
 			ModuleName = "sla_alertas",
 			// ClassLinkValue = "dropdown-item click-event-detect",
 			ClassLinkValue = "dropdown-item",
-			HasSubMenu = false,
-			Href = $"{baseUrl}/Sla/Index"
-
+			HasSubMenu = true,
+			Submenuitem = new List<MenuItem>()
 		};
 
-		if (modules.Contains(slaAlertItem.ControllerName))
-		{
-			menuItemsCollection.Add(slaAlertItem);
-		}
+
+		slaAlertItem.Submenuitem.AddRange(GetSlaAlertMenuItems(modules));
+		menuItemsCollection.Add(slaAlertItem);
 
 		return menuItemsCollection.OrderBy(o => o.MenuName).ToList();
 	}
@@ -222,16 +220,33 @@
 	{
 		List<MenuItem> menuItemsCollection = new List<MenuItem>();
 
-		var classificationListItem = new MenuItem
+		var classificationManifestationType = new MenuItem
 		{
-			Id = "classificationListMenuId",
-			ControllerName = "ClassificationList",
-			MenuName = "Lista de Classificação",
+			Id = "classificationManifestationTypeId",
+			ControllerName = "TicketClassificationManifestationType",
+			MenuName = "Manifestação",
 			ModuleName = "lista_classificacao",
 			// ClassLinkValue = "dropdown-item click-event-detect",
 			ClassLinkValue = "dropdown-item",
 			HasSubMenu = false,
-			Href = $"{baseUrl}/TicketClassification/ConfigurationListIndex"
+			Href = $"{baseUrl}/TicketClassificationManifestationType/Index"
+		};
+
+		if (modules.Contains(classificationManifestationType.ControllerName))
+		{
+			menuItemsCollection.Add(classificationManifestationType);
+		}
+
+		var classificationListItem = new MenuItem
+		{
+			Id = "classificationListMenuId",
+			ControllerName = "TicketClassification",
+			MenuName = "Listas",
+			ModuleName = "lista_classificacao",
+			// ClassLinkValue = "dropdown-item click-event-detect",
+			ClassLinkValue = "dropdown-item",
+			HasSubMenu = false,
+			Href = $"{baseUrl}/TicketClassificationList/Index"
 		};
 
 		if (modules.Contains(classificationListItem.ControllerName))
@@ -241,19 +256,61 @@
 
 		var reasonListItem = new MenuItem
 		{
-			Id = "classificationTreeMenuId",
-			ControllerName = "ClassificationTree",
-			MenuName = "Árvore de Classificação",
-			ModuleName = "arvore_classificacao",
+			Id = "configurationClassificationId",
+			ControllerName = "TicketClassification",
+			MenuName = "Configuração",
+			ModuleName = "classificacao",
 			// ClassLinkValue = "dropdown-item click-event-detect",
 			ClassLinkValue = "dropdown-item",
 			HasSubMenu = false,
-			Href = $"{baseUrl}/ClassificationTree/Index"
+			Href = $"{baseUrl}/TicketClassification/Index"
 		};
 
 		if (modules.Contains(reasonListItem.ControllerName))
 		{
 			menuItemsCollection.Add(reasonListItem);
+		}
+
+		return menuItemsCollection.OrderBy(o => o.MenuName).ToList();
+	}
+
+
+	public List<MenuItem> GetSlaAlertMenuItems(string modules, string baseUrl = "")
+	{
+		List<MenuItem> menuItemsCollection = new List<MenuItem>();
+
+		var slaAlert = new MenuItem
+		{
+			Id = "alertSlaConfigId",
+			ControllerName = "SlaAlert",
+			MenuName = "Configuração",
+			ModuleName = "sla_alert_config",
+			// ClassLinkValue = "dropdown-item click-event-detect",
+			ClassLinkValue = "dropdown-item",
+			HasSubMenu = false,
+			Href = $"{baseUrl}/SlaAlert/Index"
+		};
+
+		if (modules.Contains(slaAlert.ControllerName))
+		{
+			menuItemsCollection.Add(slaAlert);
+		}
+
+		var slaAlertAgenda = new MenuItem
+		{
+			Id = "alertSlaAgendaId",
+			ControllerName = "SlaAlert",
+			MenuName = "Agenda",
+			ModuleName = "sla_alert_agenda",
+			// ClassLinkValue = "dropdown-item click-event-detect",
+			ClassLinkValue = "dropdown-item",
+			HasSubMenu = false,
+			Href = $"{baseUrl}/SlaAlert/AgendaIndex"
+		};
+
+		if (modules.Contains(slaAlertAgenda.ControllerName))
+		{
+			menuItemsCollection.Add(slaAlertAgenda);
 		}
 
 		return menuItemsCollection.OrderBy(o => o.MenuName).ToList();

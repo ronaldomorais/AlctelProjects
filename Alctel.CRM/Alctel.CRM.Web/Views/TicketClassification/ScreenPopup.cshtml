@@ -41,7 +41,7 @@
 				</div>
 			</div>
 
-			<div id="serviceDivId" class="col-sm-2" style="display:none;">
+			<div id="serviceDivId" class="col-sm-3" style="display:none;">
 				<label asp-for="@Model.ServiceId"></label>
 				<div class="input-group input-group-sm mb-3">
 					<div>
@@ -53,7 +53,7 @@
 		</div>
 
 		<div class="row smal mb-3">
-			<div id="reason01DivId" class="col-sm-2" style="display:none;">
+			<div id="reason01DivId" class="col-sm-5" style="display:none;">
 				<label asp-for="@Model.Reason01Id"></label>
 				<div class="input-group input-group-sm mb-3">
 					<div>
@@ -64,7 +64,7 @@
 			</div>
 
 
-			<div id="reason02DivId" class="col-sm-2" style="display:none;">
+			<div id="reason02DivId" class="col-sm-5" style="display:none;">
 				<label asp-for="@Model.Reason02Id"></label>
 				<div class="input-group input-group-sm mb-3">
 					<div>
@@ -75,7 +75,7 @@
 			</div>
 		</div>
 
-		<button type="button" class="btn btn-style" onclick="ticketClassification.Events.OnAddClassification();">Adicionar</button>
+		<button id="btnAddClassificationId" type="button" class="btn btn-style" onclick="ticketClassification.Events.OnAddClassification();" disabled="disabled">Adicionar</button>
 
 	</div>
 </div>

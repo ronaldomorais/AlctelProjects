@@ -137,10 +137,19 @@ public class MapConfigProfile : Profile
         CreateMap<TicketAgentStatusAPI, TicketStatusModel>();
         CreateMap<TicketAssistentStatusAPI, TicketStatusModel>();
 
+        CreateMap<TicketClassificationListModel, TicketClassificationListAPI>();
+        CreateMap<TicketClassificationListAPI, TicketClassificationListModel>();
+
         CreateMap<TicketClassificationListItemsAPI, TicketClassificationListItemsModel>();
         CreateMap<TicketClassificationListItemsModel, TicketClassificationListItemsAPI>();
 
         CreateMap<TicketClassificationListItemModel, TicketClassificationListItemAPI>();
         CreateMap<TicketClassificationListItemAPI, TicketClassificationListItemModel>();
+
+        CreateMap<TicketClassificationManifestationTypeAPI, TicketClassificationManifestationTypeModel>();
+
+        CreateMap<TicketClassificationProgramAPI, TicketClassificationProgramModel>();
+
+        CreateMap<TicketClassificationReasonListAPI, TicketClassificationReasonListModel>();
     }
 }

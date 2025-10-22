@@ -168,7 +168,7 @@ public class LoginController : Controller
                             switch (profile.ToUpper())
                             {
                                 case "ADMINISTRADOR":
-                                    HttpContext.Session.SetString("Module", "Home,Customer,User,Ticket,ServiceUnit,Area,ServiceLevel,DemandType,Configuration,ClassificationList,ReasonList,ClassificationTree,TicketAssignment,TicketClassification");
+                                    HttpContext.Session.SetString("Module", "Home,Customer,User,Ticket,ServiceUnit,Area,ServiceLevel,DemandType,Configuration,ClassificationList,ReasonList,ClassificationTree,TicketAssignment,TicketClassification,TicketClassificationList,TicketClassificationListItem,TicketClassificationManifestationType,SlaAlert");
                                     break;
                                 case "AGENTE":
                                     HttpContext.Session.SetString("Module", "Home,Customer,Ticket,TicketAssignment");
@@ -256,7 +256,7 @@ public class LoginController : Controller
                             switch (profile.ToUpper())
                             {
                                 case "ADMINISTRADOR":
-                                    HttpContext.Session.SetString("Module", "Home,Customer,User,Ticket,ServiceUnit,Area,ServiceLevel,DemandType,Configuration,ClassificationList,ReasonList,ClassificationTree,TicketAssignment,TicketClassification");
+                                    HttpContext.Session.SetString("Module", "Home,Customer,User,Ticket,ServiceUnit,Area,ServiceLevel,DemandType,Configuration,ClassificationList,ReasonList,ClassificationTree,TicketAssignment,TicketClassification,TicketClassificationList,TicketClassificationListItem,TicketClassificationManifestationType,SlaAlert");
                                     break;
                                 case "AGENTE":
                                     HttpContext.Session.SetString("Module", "Home,Customer,Ticket,TicketAssignment");

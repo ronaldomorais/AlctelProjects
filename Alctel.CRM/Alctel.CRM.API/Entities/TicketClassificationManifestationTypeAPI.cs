@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace Alctel.CRM.API.Entities;
 
-public class TicketClassificationManifestationType
+public class TicketClassificationManifestationTypeAPI
 {
     [JsonProperty("idClassificacaoTipoManifestacao")]
     public Int64 Id { get; set; }

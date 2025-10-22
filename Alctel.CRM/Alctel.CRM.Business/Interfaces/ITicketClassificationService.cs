@@ -9,11 +9,14 @@ namespace Alctel.CRM.Business.Interfaces;
 
 public interface ITicketClassificationService
 {
-    Task<List<TicketClassificationManifestationType>> GetTicketClassificationManifestationTypeAPIAsync();
+    Task<List<TicketClassificationManifestationTypeAPI>> GetTicketClassificationManifestationTypeAPIAsync();
     Task<List<TicketClassificationListAPI>> GetTicketClassificationListAsync();
     Task<List<TicketClassificationListItemsAPI>> GetTicketClassificationListItemsAsync(Int64 id);
     Task<int> InsertTicketClassificationListAsync(string data);
     Task<TicketClassificationListItemAPI> GetTicketClassificationListItemAsync(Int64 id);
     Task<int> UpdateTicketClassificationListItemAsync(Int64 id, bool status);
     Task<int> InsertTicketClassificationListitemAsync(Int64 listId, string data);
+    Task<int> InsertTicketClassificationManifestationTypeAsync(string data);
+    Task<List<TicketClassificationProgramAPI>> GetTicketClassificationProgramAsync();
+    Task<List<TicketClassificationReasonListAPI>> GetTicketClassificationReasonListAsync();
 }

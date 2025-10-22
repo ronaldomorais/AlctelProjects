@@ -426,6 +426,7 @@ var tools = {
     },
 
     Events: {
+
         OnJourneyLine: function (ticketId, childProtocol, childTicketId) {
             $.get(`${origin_url}/Ticket/BindTicket/?id=${ticketId}&childProtocol=${childProtocol}&childTicketId=${childTicketId}`, function (data, status) {
                 if (status === 'success') {
