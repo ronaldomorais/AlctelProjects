@@ -308,10 +308,11 @@ public class TicketClassificationController : Controller
         {
             TicketClassificationModel model = new TicketClassificationModel();
             await LoadManifestationTypeOptions(model);
-            //await LoadServiceUnitOptions(model);
+            await LoadServiceUnitOptions(model);
             await LoadProgramOptions(model);
-            await LoadReason01Options(model);
-            await LoadReason02Options(model);
+            //await LoadReason01Options(model);
+            //await LoadReason02Options(model);
+            await LoadListOptionsAsync(model);
             return View(model);
         }
         catch (Exception ex)
@@ -326,6 +327,46 @@ public class TicketClassificationController : Controller
     {
         try
         {
+            TicketClassificationReasonCreateModel classificationReasonModel = new TicketClassificationReasonCreateModel();
+            classificationReasonModel.ServiceName = model.ServiceName;
+            classificationReasonModel.ProgramId = model.ProgramId;
+            classificationReasonModel.ManifestationTypeId = model.ManifestationTypeId;
+
+            classificationReasonModel.ticketReason.Add(new TicketReasonCreateModel
+            {
+                Status = true,
+                ParentId = null,
+                //ListId = model.Reason01ListId,
+                //ReasonName = model.Reason01ListName
+                ListId = model.Reason01Id,
+                ReasonName = model.Reason01Name
+            });
+
+            if (model.Reason02Id != 0)
+            {
+                classificationReasonModel.ticketReason.Add(new TicketReasonCreateModel
+                {
+                    Status = true,
+                    ParentId = null,
+                    //ListId = model.Reason02ListId,
+                    //ReasonName = model.Reason02ListName
+                    ListId = model.Reason02Id,
+                    ReasonName = model.Reason02Name
+                });
+            }
+
+            var ticketClassificationReasonAPI = _mapper.Map<TicketClassificationReasonCreateAPI>(classificationReasonModel);
+
+            var ret = await _ticketClassificationService.InsertTicketClassificationReasonAsync(ticketClassificationReasonAPI);
+
+            if (ret.IsValid)
+            {
+                ViewBag.MessageInfo = "Serviço Criado Com Sucesso!";
+            }
+            else
+            {
+                ViewBag.MessageInfo = $"Erro: {ret.Value}";
+            }
         }
         catch (Exception ex)
         {
@@ -340,9 +381,9 @@ public class TicketClassificationController : Controller
         TicketClassificationModel model = new TicketClassificationModel();
         await LoadManifestationTypeOptions(model);
         await LoadServiceUnitOptions(model);
-        LoadServiceOptions(model);
-        await LoadReason01Options(model);
-        await LoadReason02Options(model);
+        //LoadServiceOptions(model);
+        //await LoadReason01Options(model);
+        //await LoadReason02Options(model);
         return View(model);
     }
 
@@ -534,6 +575,61 @@ public class TicketClassificationController : Controller
         }
     }
 
+    private async Task LoadListOptionsAsync(TicketClassificationModel model, Int64 selectedItem = 0)
+    {
+        try
+        {
+            bool isSelected = false;
+
+            var list = await _ticketClassificationService.GetTicketClassificationListAsync();
+
+            if (list != null)
+            {
+                var listModel = _mapper.Map<List<TicketClassificationListModel>>(list);
+
+                model.Reason01Options.Add(new SelectListItem
+                {
+                    Value = "0",
+                    Text = "Opções",
+                    Selected = isSelected
+                });
+
+                model.Reason02Options.Add(new SelectListItem
+                {
+                    Value = "0",
+                    Text = "Opções",
+                    Selected = isSelected
+                });
+
+                foreach (var item in listModel)
+                {
+                    isSelected = false;
+                    if (item.Id == selectedItem)
+                    {
+                        isSelected = true;
+                    }
+
+                    model.Reason01Options.Add(new SelectListItem
+                    {
+                        Value = item.Id.ToString(),
+                        Text = item.Name,
+                        Selected = isSelected
+                    });
+
+                    model.Reason02Options.Add(new SelectListItem
+                    {
+                        Value = item.Id.ToString(),
+                        Text = item.Name,
+                        Selected = isSelected
+                    });
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+        }
+    }
+
     private async Task LoadReason01Options(TicketClassificationModel model, Int64 selectedItem = 0)
     {
         try
@@ -575,45 +671,130 @@ public class TicketClassificationController : Controller
         }
     }
 
-    private async Task LoadReason02Options(TicketClassificationModel model, Int64 selectedItem = 0)
+    //private async Task LoadReason02Options(TicketClassificationModel model, Int64 selectedItem = 0)
+    //{
+    //    try
+    //    {
+    //        bool isSelected = false;
+
+    //        var list = await _ticketClassificationService.GetTicketClassificationReasonSonListAsync(3);
+
+    //        if (list != null)
+    //        {
+    //            var listModel = _mapper.Map<List<TicketClassificationReasonListModel>>(list);
+
+    //            model.Reason02Options.Add(new SelectListItem
+    //            {
+    //                Value = "0",
+    //                Text = "Opções",
+    //                Selected = isSelected
+    //            });
+
+    //            foreach (var item in listModel)
+    //            {
+    //                isSelected = false;
+    //                if (item.Id == selectedItem)
+    //                {
+    //                    isSelected = true;
+    //                }
+
+    //                model.Reason02Options.Add(new SelectListItem
+    //                {
+    //                    Value = item.Id.ToString(),
+    //                    Text = item.Name,
+    //                    Selected = isSelected
+    //                });
+    //            }
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //    }
+    //}
+
+    public async Task<JsonResult> GetTicketClassificationServiceByManifestation(Int64 id)
     {
         try
         {
-            bool isSelected = false;
-
-            var list = await _ticketClassificationService.GetTicketClassificationReasonListAsync();
+            var list = await _ticketClassificationService.GetTicketClassificationServiceByManifestationAsync(id);
 
             if (list != null)
             {
-                var listModel = _mapper.Map<List<TicketClassificationReasonListModel>>(list);
-
-                model.Reason02Options.Add(new SelectListItem
-                {
-                    Value = "0",
-                    Text = "Opções",
-                    Selected = isSelected
-                });
-
-                foreach (var item in listModel)
-                {
-                    isSelected = false;
-                    if (item.Id == selectedItem)
-                    {
-                        isSelected = true;
-                    }
-
-                    model.Reason02Options.Add(new SelectListItem
-                    {
-                        Value = item.Id.ToString(),
-                        Text = item.Name,
-                        Selected = isSelected
-                    });
-                }
+                return new JsonResult(list);
             }
         }
         catch (Exception ex)
+        { }
+
+        return new JsonResult(null);
+    }
+
+    public async Task<JsonResult> GetTicketClassificationProgramByService(Int64 id)
+    {
+        try
         {
+            var list = await _ticketClassificationService.GetTicketClassificationProgramByServiceAsync(id);
+
+            if (list != null)
+            {
+                return new JsonResult(list);
+            }
         }
+        catch (Exception ex)
+        { }
+
+        return new JsonResult(null);
+    }
+
+    public async Task<JsonResult> GetTicketClassificationReasonByManifestationService(Int64 manifestationid, Int64 serviceid)
+    {
+        try
+        {
+            var list = await _ticketClassificationService.GetTicketClassificationReasonByManifestationServiceAsync(manifestationid, serviceid);
+
+            if (list != null)
+            {
+                return new JsonResult(list);
+            }
+        }
+        catch (Exception ex)
+        { }
+
+        return new JsonResult(null);
+    }
+
+    public async Task<JsonResult> GetTicketClassificationReasonListItems(Int64 manifestationid, Int64 serviceid, Int64? parentId)
+    {
+        try
+        {
+            var list = await _ticketClassificationService.GetTicketClassificationReasonListItemsAsync(manifestationid, serviceid, parentId);
+
+            if (list != null)
+            {
+                return new JsonResult(list);
+            }
+        }
+        catch (Exception ex)
+        { }
+
+        return new JsonResult(null);
+    }
+
+    public async Task<JsonResult> GetTicketClassificationReasonSonList(Int64 id)
+    {
+        try
+        {
+            var list = await _ticketClassificationService.GetTicketClassificationReasonSonListAsync(id);
+
+            if (list != null)
+            {
+                return new JsonResult(list);
+            }
+        }
+        catch (Exception ex)
+        { }
+
+        return new JsonResult(null);
     }
 
     private bool IsAuthenticated()

@@ -108,6 +108,8 @@ public class TicketModel
 
     public ClassificationTreeModel ClassificationTree { get; set; } = new ClassificationTreeModel();
 
+    [Required]
+    [MinLength(1, ErrorMessage = "Uma classificação é necessária")]
     public List<TicketClassification> TicketClassification { get; set; } = new List<TicketClassification>();
 
     public List<TicketModel> TicketCustomer { get; set; } = new List<TicketModel>();
@@ -133,6 +135,22 @@ public class TicketDataToCompareIfChangedLog
     public string? TicketStatus { get; set; }
     public string? AnySolution { get; set; }
     public string? DemandObservation { get; set; }
+}
+
+public class TicketClassification
+{    
+    public Int64 ManifestationTypeId { get; set; }
+    public string? ManifestationTypeName { get; set; }
+    public Int64 ServiceUnitId { get; set; }
+    public string? ServiceUnitName { get; set; }
+    public Int64 ServiceId { get; set; }
+    public string? ServiceName { get; set; }
+    public Int64? Reason01Id { get; set; }
+    public string? Reason01Name { get; set; }
+    public Int64? Reason01ListId { get; set; }
+    public Int64? Reason02Id { get; set; }
+    public string? Reason02Name { get; set; }
+    public Int64? Reason02ListId { get; set; }
 }
 
 

@@ -50,6 +50,16 @@
 					</div>
 				</div>
 			</div>
+
+			<div id="programDivId" class="col-sm-3" style="display:none;">
+				<label asp-for="@Model.ProgramId"></label>
+				<div class="input-group input-group-sm mb-3">
+					<div>
+						<input asp-for="@Model.ProgramId" class="standard-input" type="hidden" />
+						<input asp-for="@Model.ProgramName" class="standard-input" type="text" readonly style="background-color:#E2E8F0;" />
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div class="row smal mb-3">
@@ -57,6 +67,8 @@
 				<label asp-for="@Model.Reason01Id"></label>
 				<div class="input-group input-group-sm mb-3">
 					<div>
+						<input type="hidden" asp-for="@Model.Reason01ListId" />
+						<input type="hidden" asp-for="@Model.Reason01ListName" />
 						<select asp-for="@Model.Reason01Id" asp-items="@Model.Reason01Options" onchange="ticketClassification.Events.OnReason01Changed();">
 						</select>
 					</div>
@@ -68,6 +80,8 @@
 				<label asp-for="@Model.Reason02Id"></label>
 				<div class="input-group input-group-sm mb-3">
 					<div>
+						<input type="hidden" asp-for="@Model.Reason02ListId" />
+						<input type="hidden" asp-for="@Model.Reason02ListName" />
 						<select asp-for="@Model.Reason02Id" asp-items="@Model.Reason02Options">
 						</select>
 					</div>

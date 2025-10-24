@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Alctel.CRM.API.Entities;
+using Alctel.CRM.Business.Model;
 
 namespace Alctel.CRM.Business.Interfaces;
 
@@ -19,4 +20,12 @@ public interface ITicketClassificationService
     Task<int> InsertTicketClassificationManifestationTypeAsync(string data);
     Task<List<TicketClassificationProgramAPI>> GetTicketClassificationProgramAsync();
     Task<List<TicketClassificationReasonListAPI>> GetTicketClassificationReasonListAsync();
+    Task<List<TicketClassificationReasonListAPI>> GetTicketClassificationReasonSonListAsync(Int64 id);
+    Task<List<TicketClassificationServiceAPI>> GetTicketClassificationServiceAsync();
+    Task<List<TicketClassificationServiceAPI>> GetTicketClassificationServiceByManifestationAsync(Int64 id);
+    Task<List<TicketClassificationProgramAPI>> GetTicketClassificationProgramByServiceAsync(Int64 id);
+    Task<List<TicketClassificationReasonAPI>> GetTicketClassificationReasonByManifestationServiceAsync(Int64 manifestationid, Int64 serviceId);
+    Task<List<TicketClassificationReasonListItemAPI>> GetTicketClassificationReasonListItemsAsync(Int64 manifestationid, Int64 serviceId, Int64? parentId);
+    Task<ResponseServiceModel> InsertTicketClassificationReasonAsync(TicketClassificationReasonCreateAPI data);
+    Task<int> InsertTicketClassificationAPIAsync(TicketClassificationAPI data);
 }

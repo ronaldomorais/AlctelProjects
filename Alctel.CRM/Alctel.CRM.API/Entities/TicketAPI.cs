@@ -100,40 +100,76 @@ public class TicketAPI
     public bool HasAttachment { get; set; }
 
     [JsonProperty("classificacaoChamado")]
-    public List<TicketClassification> TicketClassification { get; set; } = new List<TicketClassification>();
+    public List<TicketClassificationResultAPI> TicketClassificationResult { get; set; } = new List<TicketClassificationResultAPI>();
 
     [JsonProperty("logs")]
     public List<LogDataReceived>? Logs { get; set; }
 }
 
-public class TicketClassification
+public class TicketClassificationResultAPI
 {
-    //[JsonProperty("idClassificacaoDemanda")]
-    //public Int64 ClassificationDemandId { get; set; }
+    [JsonProperty("idChamado")]
+    public Int64 TicketId { get; set; }
 
-    //[JsonProperty("idClassificacaoTipo")]
-    //public Int64 ClassificationTypeId { get; set; }
-
-    //[JsonProperty("idClassificacaoMotivo")]
-    //public Int64 ClassificationReasonId { get; set; }
-
-    //[JsonProperty("idLista")]
-    //public Int64 ClassificationReasonListId { get; set; }
-
-    //[JsonProperty("idItemLista")]
-    //public Int64 ClassificationReasonListItemId { get; set; }
-
-    //[JsonProperty("ordem")]
-    //public Int64 ClassificationOrder { get; set; }
-
-    public Int64 ManifestationTypeId { get; set; }
+    [JsonProperty("nomeManifestacao")]
     public string? ManifestationTypeName { get; set; }
-    public Int64 ServiceUnitId { get; set; }
-    public string? ServiceUnitName { get; set; }
-    public Int64 ServiceId { get; set; }
+
+    [JsonProperty("nomeServico")]
     public string? ServiceName { get; set; }
-    public Int64 Reason01Id { get; set; }
-    public string? Reason01Name { get; set; }
-    public Int64 Reason02Id { get; set; }
-    public string? Reason02Name { get; set; }
+
+    [JsonProperty("nomeItemLista")]
+    public string? ListItemName { get; set; }
+
+    [JsonProperty("idUsuario")]
+    public Int64 UserId { get; set; }
+
+    [JsonProperty("ordem")]
+    public Int64 Order { get; set; }
+
+    [JsonProperty("motivos")]
+    public List<TicketClassificationReasonResultAPI> Reasons { get; set; } = new List<TicketClassificationReasonResultAPI>();
 }
+
+public class TicketClassificationReasonResultAPI
+{
+    [JsonProperty("idMotivo")]
+    public Int64 Id { get; set; }
+
+    [JsonProperty("nomeMotivo")]
+    public string? ReasonName { get; set; }
+}
+
+
+//public class TicketClassification
+//{
+//    //[JsonProperty("idClassificacaoDemanda")]
+//    //public Int64 ClassificationDemandId { get; set; }
+
+//    //[JsonProperty("idClassificacaoTipo")]
+//    //public Int64 ClassificationTypeId { get; set; }
+
+//    //[JsonProperty("idClassificacaoMotivo")]
+//    //public Int64 ClassificationReasonId { get; set; }
+
+//    //[JsonProperty("idLista")]
+//    //public Int64 ClassificationReasonListId { get; set; }
+
+//    //[JsonProperty("idItemLista")]
+//    //public Int64 ClassificationReasonListItemId { get; set; }
+
+//    //[JsonProperty("ordem")]
+//    //public Int64 ClassificationOrder { get; set; }
+
+//    public Int64 ManifestationTypeId { get; set; }
+//    public string? ManifestationTypeName { get; set; }
+//    public Int64 ServiceUnitId { get; set; }
+//    public string? ServiceUnitName { get; set; }
+//    public Int64 ServiceId { get; set; }
+//    public string? ServiceName { get; set; }
+//    public Int64? Reason01Id { get; set; }
+//    public string? Reason01Name { get; set; }
+//    public Int64? Reason01ListId { get; set; }
+//    public Int64? Reason02Id { get; set; }
+//    public string? Reason02Name { get; set; }
+//    public Int64? Reason02ListId { get; set; }
+//}

@@ -2,12 +2,35 @@
 	string? baseUrl = Context.Session.GetString("BaseUrl");
 
 	baseUrl = baseUrl == null ? string.Empty : baseUrl;
+
+	string? messageInfo = ViewBag.MessageInfo;
+	messageInfo = messageInfo ?? string.Empty;
 }
 
 @model Alctel.CRM.Web.Models.TicketClassificationModel;
 
 <div class="card">
 	<div class="card-header">
+
+		<div class="row">
+			<div class="col-sm-12">
+				@if (string.IsNullOrEmpty(messageInfo) == false)
+				{
+					@if (messageInfo.Contains("Erro"))
+					{
+						<div class="alert alert-danger" role="alert">
+							@messageInfo
+						</div>
+					}
+					else
+					{
+						<div class="alert alert-success" role="alert">
+							@messageInfo
+						</div>
+					}
+				}
+			</div>
+		</div>
 
 		<div class="row">
 			<div class="col-sm-6">

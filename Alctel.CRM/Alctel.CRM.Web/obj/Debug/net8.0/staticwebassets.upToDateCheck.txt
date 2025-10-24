@@ -3,6 +3,8 @@ wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\js\select2totree.js
 wwwroot\js\site.js
+wwwroot\js\slaAlert.js
+wwwroot\js\slaAlert_BKP.js
 wwwroot\js\ticket.js
 wwwroot\js\ticketAssignment.js
 wwwroot\js\ticketClassification.js

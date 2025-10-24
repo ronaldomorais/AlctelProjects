@@ -151,5 +151,13 @@ public class MapConfigProfile : Profile
         CreateMap<TicketClassificationProgramAPI, TicketClassificationProgramModel>();
 
         CreateMap<TicketClassificationReasonListAPI, TicketClassificationReasonListModel>();
+
+        CreateMap<TicketClassificationServiceAPI, TicketClassificationServiceModel>();
+
+        CreateMap<TicketReasonCreateModel, TicketReasonCreateAPI>();
+        CreateMap<TicketClassificationReasonCreateModel, TicketClassificationReasonCreateAPI>();
+
+        CreateMap<TicketReasonModel, TicketReasonAPI>();
+        CreateMap<TicketClassificationCreateModel, TicketClassificationAPI>();
     }
 }

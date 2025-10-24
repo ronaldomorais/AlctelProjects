@@ -7,6 +7,7 @@ using Alctel.CRM.API.Entities;
 using Alctel.CRM.API.Interfaces;
 using Alctel.CRM.API.Repositories;
 using Alctel.CRM.Business.Interfaces;
+using Alctel.CRM.Business.Model;
 using Alctel.CRM.Context.InMemory.Entities;
 
 namespace Alctel.CRM.Business.Services;
@@ -236,5 +237,196 @@ public class TicketClassificationService : ITicketClassificationService
 
         return new List<TicketClassificationReasonListAPI>();
     }
-    
+
+    public async Task<List<TicketClassificationReasonListAPI>> GetTicketClassificationReasonSonListAsync(Int64 id)
+    {
+        try
+        {
+            var apiResponse = await _ticketClassificationAPIRepository.GetTicketClassificationReasonSonListAPIAsync(id);
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                if (apiResponse.Response != null)
+                {
+                    return apiResponse.Response;
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return new List<TicketClassificationReasonListAPI>();
+    }
+
+
+    public async Task<List<TicketClassificationServiceAPI>> GetTicketClassificationServiceAsync()
+    {
+        try
+        {
+            var apiResponse = await _ticketClassificationAPIRepository.GetTicketClassificationServiceAPIAsync();
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                if (apiResponse.Response != null)
+                {
+                    return apiResponse.Response;
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return new List<TicketClassificationServiceAPI>();
+    }
+
+    public async Task<List<TicketClassificationServiceAPI>> GetTicketClassificationServiceByManifestationAsync(Int64 id)
+    {
+        try
+        {
+            var apiResponse = await _ticketClassificationAPIRepository.GetTicketClassificationServiceByManifestationAPIAsync(id);
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                if (apiResponse.Response != null)
+                {
+                    return apiResponse.Response;
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return new List<TicketClassificationServiceAPI>();
+    }
+
+    public async Task<List<TicketClassificationProgramAPI>> GetTicketClassificationProgramByServiceAsync(Int64 id)
+    {
+        try
+        {
+            var apiResponse = await _ticketClassificationAPIRepository.GetTicketClassificationProgramByServiceAPIAsync(id);
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                if (apiResponse.Response != null)
+                {
+                    return apiResponse.Response;
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return new List<TicketClassificationProgramAPI>();
+    }
+
+    public async Task<List<TicketClassificationReasonAPI>> GetTicketClassificationReasonByManifestationServiceAsync(Int64 manifestationid, Int64 serviceId)
+    {
+        try
+        {
+            var apiResponse = await _ticketClassificationAPIRepository.GetTicketClassificationReasonByManifestationServiceAPIAsync(manifestationid, serviceId);
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                if (apiResponse.Response != null)
+                {
+                    return apiResponse.Response;
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return new List<TicketClassificationReasonAPI>();
+    }
+
+    public async Task<List<TicketClassificationReasonListItemAPI>> GetTicketClassificationReasonListItemsAsync(Int64 manifestationid, Int64 serviceId, Int64? parentId)
+    {
+        try
+        {
+            var apiResponse = await _ticketClassificationAPIRepository.GetTicketClassificationReasonListItemsAPIAsync(manifestationid, serviceId, parentId);
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                if (apiResponse.Response != null)
+                {
+                    return apiResponse.Response;
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return new List<TicketClassificationReasonListItemAPI>();
+    }
+
+    public async Task<ResponseServiceModel> InsertTicketClassificationReasonAsync(TicketClassificationReasonCreateAPI data)
+    {
+        ResponseServiceModel responseServiceModel = new ResponseServiceModel();
+        try
+        {
+            var apiResponse = await _ticketClassificationAPIRepository.InsertTicketClassificationReasonAPIAsync(data);
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                responseServiceModel.Value = apiResponse.Response ?? string.Empty;
+            }
+            else
+            {
+                string additionalMessage = apiResponse.AdditionalMessage ?? string.Empty;
+
+                if (additionalMessage.Contains("uq_classificacao_servico_manifestacao_programa_nome"))
+                {
+                    responseServiceModel.Value = "Duplicidade: Já existe um serviço com esse nome. Não é permitido cadastrar serviços com o mesmo nome";
+                }
+                else
+                {
+                    responseServiceModel.Value = additionalMessage;
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return responseServiceModel;
+    }
+
+    public async Task<int> InsertTicketClassificationAPIAsync(TicketClassificationAPI data)
+    {
+        try
+        {
+            var apiResponse = await _ticketClassificationAPIRepository.InsertTicketClassificationAPIAsync(data);
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                return apiResponse.Response;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return -1;
+    }
 }

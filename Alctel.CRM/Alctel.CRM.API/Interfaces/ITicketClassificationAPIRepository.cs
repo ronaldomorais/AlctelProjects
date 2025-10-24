@@ -19,4 +19,12 @@ public interface ITicketClassificationAPIRepository
     Task<APIResponse<int>> InsertTicketClassificationManifestationTypeAPIAsync(string data);
     Task<APIResponse<List<TicketClassificationProgramAPI>>> GetTicketClassificationProgramAPIAsync();
     Task<APIResponse<List<TicketClassificationReasonListAPI>>> GetTicketClassificationReasonListAPIAsync();
+    Task<APIResponse<List<TicketClassificationReasonListAPI>>> GetTicketClassificationReasonSonListAPIAsync(Int64 id);
+    Task<APIResponse<List<TicketClassificationServiceAPI>>> GetTicketClassificationServiceAPIAsync();
+    Task<APIResponse<List<TicketClassificationServiceAPI>>> GetTicketClassificationServiceByManifestationAPIAsync(Int64 id);
+    Task<APIResponse<List<TicketClassificationProgramAPI>>> GetTicketClassificationProgramByServiceAPIAsync(Int64 id);
+    Task<APIResponse<List<TicketClassificationReasonAPI>>> GetTicketClassificationReasonByManifestationServiceAPIAsync(Int64 manifestationid, Int64 serviceId);
+    Task<APIResponse<List<TicketClassificationReasonListItemAPI>>> GetTicketClassificationReasonListItemsAPIAsync(Int64 manifestationid, Int64 serviceId, Int64? parentId);
+    Task<APIResponse<string>> InsertTicketClassificationReasonAPIAsync(TicketClassificationReasonCreateAPI data);
+    Task<APIResponse<int>> InsertTicketClassificationAPIAsync(TicketClassificationAPI data);
 }

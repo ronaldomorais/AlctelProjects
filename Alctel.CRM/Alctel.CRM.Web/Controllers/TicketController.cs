@@ -46,8 +46,9 @@ public class TicketController : Controller
     private readonly IWebHostEnvironment _hostingEnvironment;
     private readonly IConfigService _configService;
     private readonly IUserService _userService;
+    private readonly ITicketClassificationService _ticketClassificationService;
 
-    public TicketController(ILoginService loginService, ITicketService ticketService, IMapper mapper, ILogControllerService logControllerService, IClassificationDemandService classificationDemandService, ICustomerService customerService, IDemandTypeService demandTypeService, IClassificationDemandTypeService classificationDemandTypeService, IClassificationReasonService classificationReasonService, ILogHelperService logHelperService, IClassificationListItemsService classificationListItemsService, ITicketTransferService ticketTransferService, IConfiguration configuration, IWebHostEnvironment hostingEnvironment, IConfigService configService, IUserService userService)
+    public TicketController(ILoginService loginService, ITicketService ticketService, IMapper mapper, ILogControllerService logControllerService, IClassificationDemandService classificationDemandService, ICustomerService customerService, IDemandTypeService demandTypeService, IClassificationDemandTypeService classificationDemandTypeService, IClassificationReasonService classificationReasonService, ILogHelperService logHelperService, IClassificationListItemsService classificationListItemsService, ITicketTransferService ticketTransferService, IConfiguration configuration, IWebHostEnvironment hostingEnvironment, IConfigService configService, IUserService userService, ITicketClassificationService ticketClassificationService)
     {
         _loginService = loginService;
         _ticketService = ticketService;
@@ -65,6 +66,7 @@ public class TicketController : Controller
         _hostingEnvironment = hostingEnvironment;
         _configService = configService;
         _userService = userService;
+        _ticketClassificationService = ticketClassificationService;
     }
 
     [HttpGet]
@@ -214,23 +216,31 @@ public class TicketController : Controller
             {
                 model.Attachments = _mapper.Map<List<TicketAttachmentModel>>(attachments);
             }
+           
+            var ticketClassificationResult = data.TicketClassificationResult;
 
-            //if (model.TicketClassification != null && model.TicketClassification.Count > 0)
-            //{
-            //    await LoadClassificationDemandTypeOptions(model);
+            if (ticketClassificationResult != null && ticketClassificationResult.Count > 0)
+            {
+                foreach (var item in ticketClassificationResult)
+                {
+                    TicketClassification ticketClassification = new TicketClassification();
+                    ticketClassification.ManifestationTypeName = item.ManifestationTypeName;
+                    ticketClassification.ServiceName = item.ServiceName;
+                    ticketClassification.ServiceUnitName = "teste";
 
-            //    await LoadClassificationReasonOptions(model);
+                    if (item.Reasons != null && item.Reasons.Count > 0)
+                    {
+                        ticketClassification.Reason01Name = item.Reasons[0].ReasonName;
+                    }
 
-            //    await LoadClassificationReasonListItemOptions(model);
+                    if (item.Reasons != null && item.Reasons.Count > 1)
+                    {
+                        ticketClassification.Reason02Name = item.Reasons[1].ReasonName;
+                    }
 
-            //    await LoadClassificationSubmotive01Options(model);
-
-            //    await LoadClassificationSubmotive01ListItemOptions(model);
-
-            //    await LoadClassificationSubmotive02Options(model);
-
-            //    await LoadClassificationSubmotive02ListItemOptions(model);
-            //}
+                    model.TicketClassification.Add(ticketClassification);
+                }
+            }
 
             string? profile = HttpContext.Session.GetString("Profile");
             profile = profile ?? string.Empty;
@@ -289,35 +299,7 @@ public class TicketController : Controller
             var userid = HttpContext.Session.GetString("UserId");
             var data = _mapper.Map<TicketAPI>(model);
 
-            //if (model.QueueGTId == model.TicketDataToCompareIfChanged.QueueGTId)
-            //{
-            //    data.qu
-            //}
 
-            //if (model.AnySolution != model.TicketDataToCompareIfChanged.AnySolution)
-            //{
-
-            //}
-
-            //if (model.TicketStatusId != model.TicketDataToCompareIfChanged.TicketStatusId)
-            //{
-
-            //}
-
-            //if (model.TicketCriticalityId != model.TicketDataToCompareIfChanged.TicketCriticalityId)
-            //{
-
-            //}
-
-            //if (model.DemandObservation != model.TicketDataToCompareIfChanged.DemandObservation)
-            //{
-
-            //}
-
-            //if (model.DemandTypeId != model.TicketDataToCompareIfChanged.DemandTypeId)
-            //{
-
-            //}
 
             var ret = await _ticketService.UpdateTicketAPIAsync(data);
 
@@ -409,6 +391,46 @@ public class TicketController : Controller
 
                 //}
                 //return RedirectToAction("Index");
+
+                var ticketClassification = model.TicketClassification;
+
+                if (ticketClassification != null && ticketClassification.Count() > 0)
+                {
+                    int order = 0;
+                    foreach (var item in ticketClassification)
+                    {
+                        if (item.ManifestationTypeId != 0)
+                        {
+                            TicketClassificationCreateModel classificationModel = new TicketClassificationCreateModel();
+                            classificationModel.TicketId = model.Id;
+                            classificationModel.ServiceId = item.ServiceId;
+                            classificationModel.ServiceUnitId = item.ServiceUnitId;
+                            classificationModel.UserId = userid != null ? Int64.Parse(userid) : 0;
+                            classificationModel.Order = order;
+
+                            if (item.Reason01Id != null && item.Reason01Id != 0)
+                            {
+                                TicketReasonModel reason01 = new TicketReasonModel();
+                                reason01.ReasonId = item.Reason01Id.Value;
+                                reason01.ListItemId = item.Reason01ListId;
+                                classificationModel.TicketReason.Add(reason01);
+
+                                if (item.Reason02Id != null && item.Reason02Id != 0)
+                                {
+                                    TicketReasonModel reason02 = new TicketReasonModel();
+                                    reason02.ReasonId = item.Reason02Id.Value;
+                                    reason02.ListItemId = item.Reason02ListId;
+                                    classificationModel.TicketReason.Add(reason02);
+                                }
+                            }
+
+                            var classification = _mapper.Map<TicketClassificationAPI>(classificationModel);
+                            await _ticketClassificationService.InsertTicketClassificationAPIAsync(classification);
+                        }
+
+                        order++;
+                    }
+                }
                 return RedirectToAction("Edit", "Ticket", new { id = model.Id, message = "Chamado Atualizado com Sucesso!" });
             }
         }
@@ -1096,7 +1118,7 @@ public class TicketController : Controller
                             Directory.Delete(dir);
                         }
 
-                        await CreateClassification(model, conversationid);
+                        //await CreateClassification(model, conversationid);
 
                         //HttpContext.Session.Remove($"ConversationId:{conversationid}");
                         //ongoingInteractions.Remove(ongoingInteraction);
@@ -1111,6 +1133,41 @@ public class TicketController : Controller
                             }
                         }
 
+                        var ticketClassification = model.TicketClassification;
+
+                        if (ticketClassification != null && ticketClassification.Count() > 0) 
+                        {
+                            int order = 0;
+                            foreach(var item in ticketClassification)
+                            {
+                                TicketClassificationCreateModel classificationModel = new TicketClassificationCreateModel();
+                                classificationModel.TicketId = model.Id;
+                                classificationModel.ServiceId = item.ServiceId;
+                                classificationModel.ServiceUnitId = item.ServiceUnitId;
+                                classificationModel.UserId = string.IsNullOrEmpty(model.User) ? 0 : Int64.Parse(model.User);
+                                classificationModel.Order = order++;
+
+                                if (item.Reason01Id != null && item.Reason01Id != 0)
+                                {
+                                    TicketReasonModel reason01 = new TicketReasonModel();
+                                    reason01.ReasonId = item.Reason01Id.Value;
+                                    reason01.ListItemId = item.Reason01ListId;
+                                    classificationModel.TicketReason.Add(reason01);
+
+                                    if (item.Reason02Id != null && item.Reason02Id != 0)
+                                    {
+                                        TicketReasonModel reason02 = new TicketReasonModel();
+                                        reason02.ReasonId = item.Reason02Id.Value;
+                                        reason02.ListItemId = item.Reason02ListId;
+                                        classificationModel.TicketReason.Add(reason02);
+                                    }
+                                }
+
+                                var classification = _mapper.Map<TicketClassificationAPI>(classificationModel);
+                                var ret = await _ticketClassificationService.InsertTicketClassificationAPIAsync(classification);
+                            }
+                        }
+                        
                         var username = HttpContext.Session.GetString("Username");
 
                         LogController logController = new LogController();
@@ -1913,7 +1970,7 @@ public class TicketController : Controller
         try
         {
             List<SelectListItem> classificationCollection = new List<SelectListItem>();
-            var classificationDemandList = await _classificationDemandService.GetClassficationDemandListAPIAsync();
+            //var classificationDemandList = await _classificationDemandService.GetClassficationDemandListAPIAsync();
 
             //if (classificationDemandList != null && model.TicketClassification != null)
             //{

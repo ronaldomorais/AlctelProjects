@@ -228,6 +228,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2xhQWxlcnRcQWdlbmRhSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Dev/Alctel/AlctelProjects/Alctel.CRM/Alctel.CRM.Web/Views/SlaAlert/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2xhQWxlcnRcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Dev/Alctel/AlctelProjects/Alctel.CRM/Alctel.CRM.Web/Views/SlaAlert/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2xhQWxlcnRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
