@@ -266,10 +266,21 @@ public class TicketController : Controller
             }
 
             //SLA
-            int days = await _slaService.GetBusinessDays(model.ProtocolDate, DateTime.Now);
+            DateTime now = DateTime.Now;
+            int days = await _slaService.GetBusinessDays(model.ProtocolDate, now);
+
+            model.SlaSystemRole = 2;
+
+            DateTime protocolDateSla = model.ProtocolDate.AddDays(days);     
+            TimeSpan timeSpan = now - protocolDateSla;
+            double totalDays = timeSpan.TotalDays;
+
+            if (totalDays < 0)
+            {
+                days--;
+            }
 
             model.Sla = days;
-            model.SlaSystemRole = 2;
 
             if ((model.SlaSystemRole - model.Sla) <= 1)
             {

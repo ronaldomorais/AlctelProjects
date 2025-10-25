@@ -78,8 +78,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 19,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:11:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:14:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{131369f2-062d-44a2-8671-91ff31efb4f4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -90,8 +158,7 @@
               "RelativeToolTip": "Alctel.CRM.Web\\Views\\Ticket\\Edit.cshtml",
               "ViewState": "AgIAAM8AAAAAAAAAAAAmwOIAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-25T15:36:59.34Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-25T15:36:59.34Z"
             },
             {
               "$type": "Document",
@@ -103,8 +170,7 @@
               "RelativeToolTip": "Alctel.CRM.Web\\Models\\TicketModel.cs",
               "ViewState": "AgIAAEAAAAAAAAAAAAA8wDoAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-25T15:34:53.18Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-25T15:34:53.18Z"
             },
             {
               "$type": "Document",
@@ -112,9 +178,9 @@
               "Title": "TicketController.cs",
               "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Controllers\\TicketController.cs",
               "RelativeDocumentMoniker": "Alctel.CRM.Web\\Controllers\\TicketController.cs",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Controllers\\TicketController.cs",
-              "RelativeToolTip": "Alctel.CRM.Web\\Controllers\\TicketController.cs",
-              "ViewState": "AgIAAP8AAAAAAAAAAAAYwA8BAAAjAAAAAAAAAA==",
+              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Controllers\\TicketController.cs*",
+              "RelativeToolTip": "Alctel.CRM.Web\\Controllers\\TicketController.cs*",
+              "ViewState": "AgIAAAIBAAAAAAAAAAAYwBUBAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-25T13:38:19.998Z",
               "EditorCaption": ""
@@ -142,8 +208,7 @@
               "RelativeToolTip": "Alctel.CRM.Web\\wwwroot\\js\\site.js",
               "ViewState": "AgIAAJMHAAAAAAAAAAAkwBkJAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-10-25T13:53:06.936Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-25T13:53:06.936Z"
             },
             {
               "$type": "Document",
@@ -155,8 +220,7 @@
               "RelativeToolTip": "Alctel.CRM.Web\\Views\\Ticket\\GenesysInteractionEvent.cshtml",
               "ViewState": "AgIAAFcCAAAAAAAAAAAAACABAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-25T13:35:49.894Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-25T13:35:49.894Z"
             },
             {
               "$type": "Document",
@@ -168,8 +232,7 @@
               "RelativeToolTip": "Alctel.CRM.Web\\Models\\TicketClassificationModel.cs",
               "ViewState": "AgIAACsAAAAAAAAAAAA9wD0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-25T13:30:26.948Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-25T13:30:26.948Z"
             },
             {
               "$type": "Document",
@@ -181,8 +244,7 @@
               "RelativeToolTip": "Alctel.CRM.Web\\Views\\SlaAlert\\Create.cshtml",
               "ViewState": "AgIAAEEAAAAAAAAAAAAAAFsAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-25T13:30:56.976Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-25T13:30:56.976Z"
             },
             {
               "$type": "Document",
@@ -194,8 +256,7 @@
               "RelativeToolTip": "Alctel.CRM.Web\\Models\\SlaTicketCreateModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-25T13:24:10.69Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-25T13:24:10.69Z"
             },
             {
               "$type": "Document",
@@ -207,8 +268,7 @@
               "RelativeToolTip": "Alctel.CRM.API\\Entities\\SlaTicketCreateAPI.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAACAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-25T13:10:49.589Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-25T13:10:49.589Z"
             },
             {
               "$type": "Document",
@@ -245,8 +305,7 @@
               "RelativeToolTip": "Alctel.CRM.Business\\Services\\SlaService.cs",
               "ViewState": "AgIAAFgAAAAAAAAAAAAAwGgAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-24T18:48:59.452Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-24T18:48:59.452Z"
             },
             {
               "$type": "Document",
@@ -258,8 +317,7 @@
               "RelativeToolTip": "Alctel.CRM.Business\\Interfaces\\ISlaService.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAjwAoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-24T18:48:20.323Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-24T18:48:20.323Z"
             },
             {
               "$type": "Document",
@@ -271,8 +329,7 @@
               "RelativeToolTip": "Alctel.CRM.API\\Interfaces\\ISlaAPIRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-24T18:46:07.441Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-24T18:46:07.441Z"
             },
             {
               "$type": "Document",
@@ -284,8 +341,7 @@
               "RelativeToolTip": "Alctel.CRM.Web\\appsettings.json",
               "ViewState": "AgIAAGwAAAAAAAAAAAAAAIwAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-24T18:44:03.964Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-24T18:44:03.964Z"
             },
             {
               "$type": "Document",
