@@ -1,7 +1,10 @@
 ﻿@{
+	int itemcounter = 1;
 	string? baseUrl = Context.Session.GetString("BaseUrl");
 	baseUrl = baseUrl == null ? string.Empty : baseUrl;
 }
+
+@model List<Alctel.CRM.Web.Models.SlaTicketConfigModel>
 
 <div class="card">
 	<div class="card-header">
@@ -38,40 +41,36 @@
 				<table class="table table-striped table-sm">
 					<thead>
 						<tr>
+							<th>#</th>
+							<th>Chamado SLA</th>
+							<th>Manifestação</th>
+							<th>Serviço</th>
 							<th>Criticidade</th>
-							<th>Regra</th>
-							<th>Alerta</th>
-
+							<th>Motivos</th>
+							<th>SLA</th>
+							<th>Alarme</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>Baixa</td>
-							<td>
-								Protocolo: Data Criação > 5
-							</td>
-							<td>
-								Verde
-							</td>
-						</tr>
-						<tr>
-							<td>Média</td>
-							<td>
-								Protocolo: Data Criação > 10
-							</td>
-							<td>
-								Amarelo
-							</td>
-						</tr>
-						<tr>
-							<td>Média</td>
-							<td>
-								Protocolo: Data Criação > 20
-							</td>
-							<td>
-								Vermelho
-							</td>
-						</tr>
+						@if (Model != null && Model.Any())
+						{
+							@foreach (var item in Model)
+							{
+								<tr>
+									<th scope="row">@itemcounter</th>
+									<td>@item.SlaTicketId</td>
+									<td>@item.ManifestationTypeName</td>
+									<td>@item.ServiceName</td>
+									<td>@item.Criticality</td>
+									<td>@item.Reasons</td>
+									@* <td><input type="text" asp-for="@item.Sla" /></td> *@
+									<td>@item.Sla</td>
+									<td>@item.Alarm</td>
+								</tr>
+
+								{ itemcounter = itemcounter + 1; }
+							}
+						}
 					</tbody>
 				</table>
 			</div>

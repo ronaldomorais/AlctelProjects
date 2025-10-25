@@ -108,6 +108,9 @@ public class TicketAPI
 
 public class TicketClassificationResultAPI
 {
+    [JsonProperty("idChamadoClassificacao")]
+    public Int64 ClassificationId { get; set; }
+
     [JsonProperty("idChamado")]
     public Int64 TicketId { get; set; }
 
@@ -116,6 +119,12 @@ public class TicketClassificationResultAPI
 
     [JsonProperty("nomeServico")]
     public string? ServiceName { get; set; }
+
+    [JsonProperty("idItemListaUnidade")]
+    public string? ServiceUnitItemId { get; set; }
+
+    [JsonProperty("nomeUnidade")]
+    public string? ServiceUnitItemName { get; set; }
 
     [JsonProperty("nomeItemLista")]
     public string? ListItemName { get; set; }
@@ -132,6 +141,9 @@ public class TicketClassificationResultAPI
 
 public class TicketClassificationReasonResultAPI
 {
+    [JsonProperty("idChamadoClassificacao")]
+    public Int64 ClassificationId { get; set; }
+
     [JsonProperty("idMotivo")]
     public Int64 Id { get; set; }
 

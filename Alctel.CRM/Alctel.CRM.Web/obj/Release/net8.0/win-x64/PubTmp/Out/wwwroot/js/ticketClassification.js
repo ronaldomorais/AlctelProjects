@@ -1,22 +1,123 @@
 ﻿$(function () {
-    
+    ticketClassification.Init.select2ToTree();
+    ticketClassification.Events.OnTicketCriticalityChanged();
 });
 
 
 var ticketClassification = {
+    Init: {
+        select2ToTree: function () {
+            const selectsArray = ['ManifestationTypeId', 'ServiceUnitId', 'ServiceId', 'Reason01ListItemId', 'Reason02ListItemId', 'TicketCriticalityId'];
+
+            Array.from(selectsArray).forEach(item => {
+
+                if (item === 'TicketCriticalityId') {
+                    $(`#${item}`).select2ToTree({
+                        placeholder: "Opções...",
+                    });
+
+                }
+                else {
+                    $(`#${item}`).select2ToTree({
+                        dropdownParent: $('#ticketClassificationModal'),
+                        placeholder: "Opções...",
+                    });
+
+                }
+
+            });
+
+        },
+    },
+
     Events: {
+        OnTicketCriticalityChanged: function () {
+            const selectedValue = $('#TicketCriticalityId option:selected').text();
+
+            switch (selectedValue.toUpperCase()) {
+                case "ALTA":
+                    $('#TicketCriticalityId').siblings('.select2-container').css('border', '3px solid red');
+                    break;
+                case "MÉDIA":
+                    $('#TicketCriticalityId').siblings('.select2-container').css('border', '3px solid yellow');
+                    break;
+                case "BAIXA":
+                    $('#TicketCriticalityId').siblings('.select2-container').css('border', '3px solid green');
+                    break;
+            }
+        },
+
+        OnTicketClassificationListChanged: function () {
+            var selectedValue = $('#Listname').val();
+
+            $.get(`${origin_url}/TicketClassification/TicketClassificationListItemsIndex/?id=${selectedValue}`, function (data, success) {
+                if (success === 'success') {
+                    if (data != null) {
+                        console.log(data);
+
+                        $('#ticketClassificationListItemsId').html(data);
+
+                        //$('#ListItemName').append(
+                        //    $('<option>', {
+                        //        value: "0",
+                        //        text: "Opções",
+                        //    })
+                        //)
+
+                        //$.each(data, function (index, value) {
+                        //    $('#ListItemName').append(
+                        //        $('<option>', {
+                        //            value: value.listItemId,
+                        //            text: value.name,
+                        //        })
+                        //    )
+                        //})
+                    }
+                }
+            });
+        },
+
+        OnTicketClassificationListItemEdit: function (id) {
+            $.get(`${origin_url}/TicketClassification/EditListItem/?id=${id}`, function (data, success) {
+                if (success === 'success') {
+                    if (data != null) {
+                        console.log(data);
+
+                        $('#ticketClassificationListItemsId').html(data);
+
+                        //$('#ListItemName').append(
+                        //    $('<option>', {
+                        //        value: "0",
+                        //        text: "Opções",
+                        //    })
+                        //)
+
+                        //$.each(data, function (index, value) {
+                        //    $('#ListItemName').append(
+                        //        $('<option>', {
+                        //            value: value.listItemId,
+                        //            text: value.name,
+                        //        })
+                        //    )
+                        //})
+                    }
+                }
+            });
+        },
+
         OnAddClassificationClicked: function () {
             $.get(`${origin_url}/TicketClassification/ScreenPopup`, function (data, success) {
-                
+
                 if (success === 'success') {
                     $('#ticketClassificationOpenId').html(data);
+                    ticketClassification.Init.select2ToTree();
                 }
             });
         },
 
         OnManifestationTypeChanged: function () {
-            var selectedValue = $('#ManifestationTypeId').val(); 
-
+            var selectedValue = $('#ManifestationTypeId').val();
+            
             $('#ServiceUnitId').val("0");
             $('#ServiceId').val("0");
             $('#Reason01Id').val("0");
@@ -24,11 +125,44 @@ var ticketClassification = {
 
             $('#serviceUnitDivId').hide();
             $('#serviceDivId').hide();
+            $('#programDivId').hide();
             $('#reason01DivId').hide();
             $('#reason02DivId').hide();
 
+            $('#btnAddClassificationId').prop('disabled', true); 
+
+            $('#ServiceId').empty();
+
             if (selectedValue != "0") {
-                $('#serviceUnitDivId').show();
+
+                $.get(`${origin_url}/TicketClassification/GetTicketClassificationServiceByManifestation/?id=${selectedValue}`, function (data, success) {
+
+                    if (success === 'success') {
+                        if (data !== null) {
+
+                            $('#ServiceId').append(
+                                $('<option>', {
+                                    value: '',
+                                    text: 'Opções',
+                                })
+                            )
+
+                            if (data.length > 0) {
+                                $.each(data, function (index, value) {
+                                    $('#ServiceId').append(
+                                        $('<option>', {
+                                            value: value.id,
+                                            text: value.name,
+                                        })
+                                    )
+                                })
+                            }
+
+                            $('#serviceUnitDivId').show();
+                        }
+                    }
+                });
+
             }
         },
 
@@ -40,8 +174,11 @@ var ticketClassification = {
             $('#Reason02Id').val("0");
 
             $('#serviceDivId').hide();
+            $('#programDivId').hide();
             $('#reason01DivId').hide();
             $('#reason02DivId').hide();
+
+            $('#btnAddClassificationId').prop('disabled', true); 
 
             if (selectedValue != "0") {
                 $('#serviceDivId').show();
@@ -49,28 +186,117 @@ var ticketClassification = {
         },
 
         OnServiceChanged: function () {
-            var selectedValue = $('#ServiceId').val();
+            const serviceId = $('#ServiceId').val();
 
             $('#Reason01Id').val("0");
             $('#Reason02Id').val("0");
+            $('#ProgramId').val('');
+            $('#ProgramName').val('');
 
+            $('#programDivId').hide();
             $('#reason01DivId').hide();
             $('#reason02DivId').hide();
+            $('#btnAddClassificationId').prop('disabled', true); 
 
-            if (selectedValue != "0") {
-                $('#reason01DivId').show();
+            $('#Reason01ListItemId').empty();
+
+            if (serviceId != "0") {
+
+                $.get(`${origin_url}/TicketClassification/GetTicketClassificationProgramByService/?id=${serviceId}`, function (data, success) {
+
+                    if (success === 'success') {
+                        if (data !== null && data.length > 0) {
+
+                            $('#ProgramId').val(data[0].id);
+                            $('#ProgramName').val(data[0].name);
+                            $('#programDivId').show();
+
+                            const manifestationid = $('#ManifestationTypeId').val();
+
+                            $('#btnAddClassificationId').prop('disabled', false); 
+
+                            $.get(`${origin_url}/TicketClassification/GetTicketClassificationReasonListItems/?manifestationid=${manifestationid}&serviceid=${serviceId}`, function (data, success) {
+                                if (success === 'success') {
+                                    if (data !== null && data.length > 0) {
+                                        console.log(data);
+
+                                        $('#Reason01ListItemId').append(
+                                            $('<option>', {
+                                                value: '',
+                                                text: 'Opções',
+                                            })
+                                        )
+
+                                        if (data.length > 0) {
+                                            $.each(data, function (index, value) {
+                                                $('#Reason01ListItemId').append(
+                                                    $('<option>', {
+                                                        value: value.listItemId,
+                                                        text: value.listItemName,
+                                                    })
+                                                )
+                                            })
+                                        }
+
+                                        $('#Reason01Id').val(data[0].id);
+                                        $('#Reason01ListId').val(data[0].listId);
+
+                                        $('#reason01DivId').show();
+                                        $('#btnAddClassificationId').prop('disabled', false); 
+                                    }
+                                }
+                            });
+                        }
+                    }
+                });
+
             }
         },
 
         OnReason01Changed: function () {
             var selectedValue = $('#Reason01Id').val();
 
-            $('#Reason02Id').val("0");
+            $('#Reason02ListItemId').val("0");
 
             $('#reason02DivId').hide();
 
+            $('#Reason02ListItemId').empty();
+
+            const manifestationid = $('#ManifestationTypeId').val();
+            const serviceId = $('#ServiceId').val();
+            const reason01ListId = $('#Reason01ListId').val();
+            //const reason01ListId = $('#Reason01Id').val();
+
             if (selectedValue != "0") {
-                $('#reason02DivId').show();
+                $.get(`${origin_url}/TicketClassification/GetTicketClassificationReasonListItems/?manifestationid=${manifestationid}&serviceid=${serviceId}&parentId=${reason01ListId}`, function (data, success) {
+
+                    if (success === 'success') {
+                        if (data !== null && data.length > 0) {
+                            
+                            $('#Reason02ListItemId').append(
+                                $('<option>', {
+                                    value: '',
+                                    text: 'Opções',
+                                })
+                            )
+
+                            if (data.length > 0) {
+                                $.each(data, function (index, value) {
+                                    $('#Reason02ListItemId').append(
+                                        $('<option>', {
+                                            value: value.listItemId,
+                                            text: value.Name,
+                                        })
+                                    )
+                                })
+                            }
+
+                            $('#Reason02Id').val(data[0].id);
+
+                            $('#reason02DivId').show();
+                        }
+                    }
+                });
             }
         },
 
@@ -88,30 +314,61 @@ var ticketClassification = {
 
 
             const manifestationTypeId = $('#ManifestationTypeId').val();
-            const manifestationTypeName = $('#ManifestationTypeId option:selected').text();
+            let manifestationTypeName = $('#ManifestationTypeId option:selected').text();
 
             const serviceUnitId = $('#ServiceUnitId').val();
-            const serviceUnitName = $('#ServiceUnitId option:selected').text();
+            let serviceUnitName = $('#ServiceUnitId option:selected').text();
 
             const serviceId = $('#ServiceId').val();
-            const serviceName = $('#ServiceId option:selected').text();
+            let serviceName = $('#ServiceId option:selected').text();
 
-            const reason01Id = $('#Reason01Id').val();
-            const reason01Name = $('#Reason01Id option:selected').text();
+            let reason01Id = $('#Reason01Id').val();
+            let reason01ListItemName = $('#Reason01ListItemId option:selected').text();
+            let reason01ListItemId = $('#Reason01ListItemId').val();
 
-            const reason02Id = $('#Reason02Id').val();
-            const reason02Name = $('#Reason02Id option:selected').text();
+            let reason02Id = $('#Reason02Id').val();
+            let reason02ListItemName = $('#Reason02ListItemId option:selected').text();
+            let reason02ListItemId = $('#Reason02ListItemId').val();
 
-            console.log(manifestationTypeId, manifestationTypeName)
+            console.log(reason02ListItemName, reason02ListItemId)
+            
             if (manifestationTypeName === 'Opções') {
                 $('#btnTicketClassificationClose').trigger('click');
                 return;
             }
 
-            serviceUnitName = serviceUnitName === "Opções" ? '' : serviceUnitName;
-            serviceName = serviceName === "Opções" ? '' : serviceName;
-            reason01Name = reason01Name === "Opções" ? '' : reason01Name;
-            reason02Name = reason02Name === "Opções" ? '' : reason02Name;
+            if (reason01Id === null || reason01Id === undefined || reason01Id === null) {
+                reason01Id = '0';
+            }
+
+            if (reason01ListItemId === null || reason01ListItemId === undefined || reason01ListItemId === null) {
+                reason01ListItemId = '0'
+            }
+
+            if (reason02Id === null || reason02Id === undefined || reason02Id === null) {
+                reason02Id = '0';
+            }
+
+            if (reason02ListItemId === null || reason02ListItemId === undefined || reason02ListItemId === null) {
+                reason02ListItemId = '0'
+            }
+
+            if (serviceUnitName === "Opções" || serviceUnitName === undefined || serviceUnitName === null) {
+                serviceUnitName = '';
+            }
+
+            if (serviceName === "Opções" || serviceName === undefined || serviceName === null) {
+                serviceName = '';
+            }
+
+            if (reason01ListItemName === "Opções" || reason01ListItemName === undefined || reason01ListItemName === null) {
+                reason01ListItemName = '';
+            }
+
+            if (reason02ListItemName === "Opções" || reason02ListItemName === undefined || reason02ListItemName === null) {
+                reason02ListItemName = '';
+            }
+
 
             $('#ticketClassificationDivId').show();
 
@@ -135,11 +392,13 @@ var ticketClassification = {
                 </td>
                 <td>
                     <input type="hidden" name="TicketClassification[${ticketClassificationCounter}].Reason01Id" value="${reason01Id}" />                    
-                    <input type="hidden" name="TicketClassification[${ticketClassificationCounter}].Reason01Name" value="${reason01Name}" />${reason01Name}
+                    <input type="hidden" name="TicketClassification[${ticketClassificationCounter}].Reason01ListItemName" value="${reason01ListItemName}" />${reason01ListItemName}
+                    <input type="hidden" name="TicketClassification[${ticketClassificationCounter}].Reason01ListItemId" value="${reason01ListItemId}" />  
                 </td>
                 <td>
                     <input type="hidden" name="TicketClassification[${ticketClassificationCounter}].Reason02Id" value="${reason02Id}" />                     
-                    <input type="hidden" name="TicketClassification[${ticketClassificationCounter}].Reason02Name" value="${reason02Name}" /> ${reason02Name}
+                    <input type="hidden" name="TicketClassification[${ticketClassificationCounter}].Reason02ListItemName" value="${reason02ListItemName}" /> ${reason02ListItemName}
+                    <input type="hidden" name="TicketClassification[${ticketClassificationCounter}].Reason02ListItemId" value="${reason02ListItemId}" />  
                 </td>
             </tr>`
 

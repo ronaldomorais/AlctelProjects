@@ -33,6 +33,7 @@ builder.AddModuleMiddleware();
 builder.AddLogControllerMiddleware();
 builder.AddTicketServiceMiddleware();
 builder.AddGenesysCloudAPIMiddleware();
+builder.AddSlaMiddleware();
 
 var app = builder.Build();
 

@@ -1,7 +1,10 @@
 ﻿@{
+	var itemcounter = 1;
 	string? baseUrl = Context.Session.GetString("BaseUrl");
 	baseUrl = baseUrl == null ? string.Empty : baseUrl;
 }
+@using System.Globalization
+@model List<Alctel.CRM.Web.Models.SlaAlertAgendaModel>;
 
 <div class="card">
 	<div class="card-header">
@@ -29,17 +32,34 @@
 
 	</div>
 
-	<div class="card-body">
+	<div class="card-body table-responsive">
 
-		<div class="card">
-			<div class="card-header">
-			</div>
-			<div class="card-body">
-				
+		<table class="table table-striped table-sm">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Nome</th>
+					<th scope="col">Data</th>
+				</tr>
+			</thead>
+			<tbody>
 
+				@if (Model != null && Model.Any())
+				{
+					@foreach (var item in Model)
+					{
+						<tr>
+							<th scope="row">@itemcounter</th>
+							<td>@item.HolidayName</td>
+							<td>@item.HolidayDate.ToString("dd/MM/yyyy", new CultureInfo("pt-br"))</td>
+						</tr>
+						{ itemcounter = itemcounter + 1; }
 
-			</div>
-		</div>
+					}
+				}
+
+			</tbody>
+		</table>
 
 	</div>
 </div>

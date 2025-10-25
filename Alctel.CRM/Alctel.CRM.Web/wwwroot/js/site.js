@@ -7,6 +7,7 @@
 //const origin_url = 'https://localhost:7011'
 
 var attached_files = []
+let checkOnInteractionAlertInfoTimer = undefined;
 
 var tools = {
     HelpMethods: {
@@ -1831,7 +1832,6 @@ var urlManager = {
 
             const href = window.location.href;
             if (href.includes('#conversation_id=') && ticketSaved !== 'True') {
-                console.log('OK')
                 const hrefArray = href.split('#');
                 const conversationidParam = hrefArray[1];
                 const conversationid = conversationidParam.replace('conversation_id=', '')
@@ -1857,6 +1857,12 @@ var urlManager = {
                         $('#OnInteractionAlert').show()
 
                         urlManager.Events.LoadEventsForActiveConversation(conversationid_ative);
+                    }
+                    else {
+                        if (checkOnInteractionAlertInfoTimer !== undefined) {
+                            clearInterval(checkOnInteractionAlertInfoTimer);
+                            checkOnInteractionAlertInfoTimer = undefined;
+                        }
                     }
                 }
             })
@@ -1927,17 +1933,24 @@ var urlManager = {
         },
 
         CheckOnInteractionAlertInfo: function (username, conversationid) {
-            setInterval(() => {
 
-                if ($('#OnInteractionAlert').is(":hidden")) {
-                    console.log('OnInteractionAlert: hidden')
-                    urlManager.Methods.GetMyInteraction(username, conversationid);
-                }
-                else {
-                    console.log('OnInteractionAlert: visible')
-                }
+            if (checkOnInteractionAlertInfoTimer === undefined) {
+                checkOnInteractionAlertInfoTimer = setInterval(() => {
+                    const username_timer = username;
+                    const conversationid_timer = conversationid;
 
-            }, 3000);
+                    console.log('Conversation_Id', conversationid_timer);
+                    if ($('#OnInteractionAlert').is(":hidden")) {
+                        console.log('OnInteractionAlert: hidden')
+                        urlManager.Methods.GetMyInteraction(username_timer, conversationid_timer);
+                    }
+                    else {
+                        console.log('OnInteractionAlert: visible')
+                    }
+
+                }, 3000);
+
+            }
         }
     }
 }

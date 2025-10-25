@@ -1,4 +1,4 @@
-﻿@{
+﻿@{	
 	var itemcounter = ViewBag.StartIndex;
 
 	if (itemcounter == null)
@@ -37,11 +37,21 @@
 	<div class="card-body">
 
 		<div class="row" style="margin-bottom:10px;">
-
-			Index
-
+			<div class="col-sm-3">
+				<label asp-for="@Model.ManifestationTypeId"></label>
+				<div class="input-group input-group-sm mb-3">
+					<div>
+						<select asp-for="@Model.ManifestationTypeId" asp-items="@Model.ManifestationTypeOptions" onchange="ticketClassificationConfig.Events.OnManifestationTypeIndexChanged();">
+						</select>
+					</div>
+				</div>
+			</div>
  		</div>
 
+		<div class="row" style="margin-bottom:10px;">
+			<div id="classificationListId" class="col-sm-12">
+			</div>
+		</div>
 	</div>
 
 </div>

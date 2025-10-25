@@ -722,7 +722,6 @@ D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.Web\bin\Release\net8.0\win-x6
 D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.Web\bin\Release\net8.0\win-x64\hostfxr.dll
 D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.Web\bin\Release\net8.0\win-x64\hostpolicy.dll
 D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.Web\bin\Release\net8.0\win-x64\mscordaccore.dll
-D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.Web\bin\Release\net8.0\win-x64\mscordaccore_amd64_amd64_8.0.2025.41914.dll
 D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.Web\bin\Release\net8.0\win-x64\mscordbi.dll
 D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.Web\bin\Release\net8.0\win-x64\mscorrc.dll
 D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.Web\bin\Release\net8.0\win-x64\msquic.dll
@@ -764,3 +763,4 @@ D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.Web\obj\Release\net8.0\win-x6
 D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.Web\obj\Release\net8.0\win-x64\Alctel.CRM.Web.pdb
 D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.Web\obj\Release\net8.0\win-x64\Alctel.CRM.Web.genruntimeconfig.cache
 D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.Web\obj\Release\net8.0\win-x64\ref\Alctel.CRM.Web.dll
+D:\Dev\Alctel\AlctelProjects\Alctel.CRM\Alctel.CRM.Web\bin\Release\net8.0\win-x64\mscordaccore_amd64_amd64_8.0.2125.47513.dll

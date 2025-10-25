@@ -7,7 +7,7 @@
 var ticketClassification = {
     Init: {
         select2ToTree: function () {
-            const selectsArray = ['ManifestationTypeId', 'ServiceUnitId', 'ServiceId', 'Reason01Id', 'Reason02Id', 'TicketCriticalityId'];
+            const selectsArray = ['ManifestationTypeId', 'ServiceUnitId', 'ServiceId', 'Reason01ListItemId', 'Reason02ListItemId', 'TicketCriticalityId'];
 
             Array.from(selectsArray).forEach(item => {
 
@@ -198,7 +198,7 @@ var ticketClassification = {
             $('#reason02DivId').hide();
             $('#btnAddClassificationId').prop('disabled', true); 
 
-            $('#Reason01Id').empty();
+            $('#Reason01ListItemId').empty();
 
             if (serviceId != "0") {
 
@@ -220,7 +220,7 @@ var ticketClassification = {
                                     if (data !== null && data.length > 0) {
                                         console.log(data);
 
-                                        $('#Reason01Id').append(
+                                        $('#Reason01ListItemId').append(
                                             $('<option>', {
                                                 value: '',
                                                 text: 'Opções',
@@ -229,17 +229,16 @@ var ticketClassification = {
 
                                         if (data.length > 0) {
                                             $.each(data, function (index, value) {
-                                                $('#Reason01Id').append(
+                                                $('#Reason01ListItemId').append(
                                                     $('<option>', {
-                                                        value: value.id,
+                                                        value: value.listItemId,
                                                         text: value.listItemName,
                                                     })
                                                 )
                                             })
                                         }
 
-                                        console.log(data);
-                                        console.log(data[0].idLista);
+                                        $('#Reason01Id').val(data[0].id);
                                         $('#Reason01ListId').val(data[0].listId);
 
                                         $('#reason01DivId').show();
@@ -257,15 +256,16 @@ var ticketClassification = {
         OnReason01Changed: function () {
             var selectedValue = $('#Reason01Id').val();
 
-            $('#Reason02Id').val("0");
+            $('#Reason02ListItemId').val("0");
 
             $('#reason02DivId').hide();
 
-            $('#Reason02Id').empty();
+            $('#Reason02ListItemId').empty();
 
             const manifestationid = $('#ManifestationTypeId').val();
             const serviceId = $('#ServiceId').val();
             const reason01ListId = $('#Reason01ListId').val();
+            //const reason01ListId = $('#Reason01Id').val();
 
             if (selectedValue != "0") {
                 $.get(`${origin_url}/TicketClassification/GetTicketClassificationReasonListItems/?manifestationid=${manifestationid}&serviceid=${serviceId}&parentId=${reason01ListId}`, function (data, success) {
@@ -273,7 +273,7 @@ var ticketClassification = {
                     if (success === 'success') {
                         if (data !== null && data.length > 0) {
                             
-                            $('#Reason02Id').append(
+                            $('#Reason02ListItemId').append(
                                 $('<option>', {
                                     value: '',
                                     text: 'Opções',
@@ -282,16 +282,16 @@ var ticketClassification = {
 
                             if (data.length > 0) {
                                 $.each(data, function (index, value) {
-                                    $('#Reason02Id').append(
+                                    $('#Reason02ListItemId').append(
                                         $('<option>', {
-                                            value: value.Id,
+                                            value: value.listItemId,
                                             text: value.Name,
                                         })
                                     )
                                 })
                             }
 
-                            $('#Reason02ListId').val(data[0].idLista);
+                            $('#Reason02Id').val(data[0].id);
 
                             $('#reason02DivId').show();
                         }
@@ -323,41 +323,50 @@ var ticketClassification = {
             let serviceName = $('#ServiceId option:selected').text();
 
             let reason01Id = $('#Reason01Id').val();
-            let reason01Name = $('#Reason01Id option:selected').text();
-            let reason01ListId = $('#Reason01ListId').val();
+            let reason01ListItemName = $('#Reason01ListItemId option:selected').text();
+            let reason01ListItemId = $('#Reason01ListItemId').val();
 
             let reason02Id = $('#Reason02Id').val();
-            let reason02Name = $('#Reason02Id option:selected').text();
-            let reason02ListId = $('#Reason01ListId').val();
+            let reason02ListItemName = $('#Reason02ListItemId option:selected').text();
+            let reason02ListItemId = $('#Reason02ListItemId').val();
+
+            console.log(reason02ListItemName, reason02ListItemId)
             
             if (manifestationTypeName === 'Opções') {
                 $('#btnTicketClassificationClose').trigger('click');
                 return;
             }
 
-            if (reason01Id === null) {
+            if (reason01Id === null || reason01Id === undefined || reason01Id === null) {
                 reason01Id = '0';
             }
 
-            if (reason02Id === null) {
-                reason02Id = '0';
-                reason02ListId = '0'
+            if (reason01ListItemId === null || reason01ListItemId === undefined || reason01ListItemId === null) {
+                reason01ListItemId = '0'
             }
 
-            if (serviceUnitName === "Opções") {
+            if (reason02Id === null || reason02Id === undefined || reason02Id === null) {
+                reason02Id = '0';
+            }
+
+            if (reason02ListItemId === null || reason02ListItemId === undefined || reason02ListItemId === null) {
+                reason02ListItemId = '0'
+            }
+
+            if (serviceUnitName === "Opções" || serviceUnitName === undefined || serviceUnitName === null) {
                 serviceUnitName = '';
             }
 
-            if (serviceName === "Opções") {
+            if (serviceName === "Opções" || serviceName === undefined || serviceName === null) {
                 serviceName = '';
             }
 
-            if (reason01Name === "Opções") {
-                reason01Name = '';
+            if (reason01ListItemName === "Opções" || reason01ListItemName === undefined || reason01ListItemName === null) {
+                reason01ListItemName = '';
             }
 
-            if (reason02Name === "Opções") {
-                reason02Name = '';
+            if (reason02ListItemName === "Opções" || reason02ListItemName === undefined || reason02ListItemName === null) {
+                reason02ListItemName = '';
             }
 
 
@@ -383,13 +392,13 @@ var ticketClassification = {
                 </td>
                 <td>
                     <input type="hidden" name="TicketClassification[${ticketClassificationCounter}].Reason01Id" value="${reason01Id}" />                    
-                    <input type="hidden" name="TicketClassification[${ticketClassificationCounter}].Reason01Name" value="${reason01Name}" />${reason01Name}
-                    <input type="hidden" name="TicketClassification[${ticketClassificationCounter}].Reason01ListId" value="${reason01ListId}" />  
+                    <input type="hidden" name="TicketClassification[${ticketClassificationCounter}].Reason01ListItemName" value="${reason01ListItemName}" />${reason01ListItemName}
+                    <input type="hidden" name="TicketClassification[${ticketClassificationCounter}].Reason01ListItemId" value="${reason01ListItemId}" />  
                 </td>
                 <td>
                     <input type="hidden" name="TicketClassification[${ticketClassificationCounter}].Reason02Id" value="${reason02Id}" />                     
-                    <input type="hidden" name="TicketClassification[${ticketClassificationCounter}].Reason02Name" value="${reason02Name}" /> ${reason02Name}
-                    <input type="hidden" name="TicketClassification[${ticketClassificationCounter}].Reason02ListId" value="${reason02ListId}" />  
+                    <input type="hidden" name="TicketClassification[${ticketClassificationCounter}].Reason02ListItemName" value="${reason02ListItemName}" /> ${reason02ListItemName}
+                    <input type="hidden" name="TicketClassification[${ticketClassificationCounter}].Reason02ListItemId" value="${reason02ListItemId}" />  
                 </td>
             </tr>`
 

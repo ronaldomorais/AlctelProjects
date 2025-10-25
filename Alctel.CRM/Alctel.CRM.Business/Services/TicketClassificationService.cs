@@ -429,4 +429,50 @@ public class TicketClassificationService : ITicketClassificationService
 
         return -1;
     }
+
+    public async Task<List<TicketClassficationListAPI>> GetTicketClassificationByManifestationAsync(Int64 id)
+    {
+        try
+        {
+            var apiResponse = await _ticketClassificationAPIRepository.GetTicketClassificationByManifestationAPIAsync(id);
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                if (apiResponse.Response != null)
+                {
+                    return apiResponse.Response;
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return new List<TicketClassficationListAPI>();
+    }
+
+    public async Task<List<TicketClassificationUnitAPI>> GetTicketClassificationUnitListAsync(string data)
+    {
+        try
+        {
+            var apiResponse = await _ticketClassificationAPIRepository.GetTicketClassificationUnitListAPIAsync(data);
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                if (apiResponse.Response != null)
+                {
+                    return apiResponse.Response;
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return new List<TicketClassificationUnitAPI>();
+    }
 }

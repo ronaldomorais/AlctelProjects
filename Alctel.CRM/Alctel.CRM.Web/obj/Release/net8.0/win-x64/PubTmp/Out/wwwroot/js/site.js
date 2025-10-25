@@ -25,7 +25,7 @@ var tools = {
 
                 let origin = window.location.origin
                 let pathname = window.location.pathname
-                
+
                 var pathnameSplitted = pathname.split('/')
 
                 var redirectTo = "";
@@ -37,7 +37,7 @@ var tools = {
                 if (conversationid !== '') {
                     redirectTo = `${redirectTo}#conversation_id=${conversationid}`
                 }
-                
+
                 window.location.href = redirectTo
             })
         },
@@ -1686,6 +1686,119 @@ var fileHelper = {
 
 var urlManager = {
     Methods: {
+        //LoadConversationIdInUrl: function () {
+        //    const useremail = $('#userEmailId').val();
+        //    const queryString = window.location.search;
+        //    let qs_array = queryString.split('&');
+        //    let conversationid_ative = '';
+        //    const ticketSaved = $('#TicketSaved').val();
+
+        //    if (qs_array.length >= 6 && ticketSaved !== 'True') {
+        //        let interaction_info = {};
+        //        interaction_info.queueName = qs_array[0] !== undefined ? qs_array[0].replace("?nomeFila=", "") : '';
+        //        interaction_info.conversationid = qs_array[1] !== undefined ? qs_array[1].replace("conversastionid=", "") : '';
+        //        interaction_info.email = qs_array[2] !== undefined ? qs_array[2].replace("email=", "") : '';
+        //        interaction_info.cpf = qs_array[3] !== undefined ? qs_array[3].replace("cpf=", "") : '';
+        //        interaction_info.protocol = qs_array[4] !== undefined ? qs_array[4].replace("protocolo=", "") : '';
+        //        interaction_info.customerNavigation = qs_array[5] !== undefined ? qs_array[5].replace("navegacao=", "") : '';
+        //        interaction_info.customerEmail = qs_array[6] !== undefined ? qs_array[6].replace("emailCliente=", "") : '';
+        //        interaction_info.parentTicket = qs_array[7] !== undefined ? qs_array[6].replace("protocolo_pai=", "") : '';
+
+        //        if (interaction_info.conversationid !== null && interaction_info.conversationid !== 'undefined') {
+        //            conversationid_ative = interaction_info.conversationid;
+        //            const backToTicketScreenLink = `${origin_url}/Ticket/GenesysInteractionEvent/?nomeFila=${interaction_info.queueName}&conversastionid=${interaction_info.conversationid}&email=${interaction_info.email}&cpf=${interaction_info.cpf}&protocolo=${interaction_info.protocol}&navegacao=${interaction_info.customerNavigation}&emailCliente=${interaction_info.customerEmail}&protocolo_pai=${interaction_info.parentTicket}&reload=true&cancel=false`
+
+        //            $('#OnInteractionLink').attr('href', backToTicketScreenLink)
+        //            $('#OnInteractionAlert').show()
+        //        }
+        //    }
+
+        //    const href = window.location.href;
+        //    if (href.includes('#conversation_id=') && ticketSaved !== 'True') {
+        //        console.log('OK')
+        //        const hrefArray = href.split('#');
+        //        const conversationidParam = hrefArray[1];
+        //        const conversationid = conversationidParam.replace('conversation_id=', '')
+        //        const useremail = $('#userEmailId').val();
+        //        conversationid_ative = conversationid;
+
+        //        $.get(`${origin_url}/Ticket/MyInteraction/?email=${useremail}&conversationid=${conversationid}`, function (data, status) {
+        //            if (status == 'success') {
+        //                console.log(data)
+
+        //                if (data !== null) {
+        //                    //conversationid_ative = conversationid;
+        //                    const interaction_info = data;
+        //                    console.log(interaction_info.conversationId)
+        //                    const backToTicketScreenLink = `${origin_url}/Ticket/GenesysInteractionEvent/?nomeFila=${interaction_info.queueName}&conversastionid=${interaction_info.conversationId}&email=${interaction_info.userEmail}&cpf=${interaction_info.cpf}&protocolo=${interaction_info.protocol}&navegacao=${interaction_info.customerNavigation}&emailCliente=${interaction_info.customerEmail}&protocolo_pai=${interaction_info.parentTicket}&reload=true&cancel=false`
+
+        //                    $('#OnInteractionLink').attr('href', backToTicketScreenLink)
+        //                    $('#OnInteractionAlert').show()
+        //                }
+        //            }
+        //        })
+        //    }
+
+        //    if (conversationid_ative !== '') {
+        //        document.addEventListener('click', event => {
+
+        //            const tagName = event.target.tagName;
+        //            let target_href = event.target.getAttribute('href');
+
+        //            if (tagName !== 'BUTTON' && tagName !== 'LABEL' && tagName !== 'INPUT') {
+        //                if (target_href !== '#') {
+        //                    event.preventDefault();
+
+        //                    if (tagName === 'A') {
+
+        //                        console.log('target_href', target_href);
+
+        //                        if (target_href.includes('amazonaws.com') || target_href.includes('apps.sae1.pure.cloud')) {
+        //                            console.log('REDIRECT');
+        //                            window.open(target_href, "_blank");
+        //                        }
+        //                        else {
+        //                            const origin_url_array = origin_url.split('/')
+
+        //                            Array.from(origin_url_array).forEach(item => {
+        //                                if (target_href.includes(item)) {
+        //                                    target_href = target_href.replace(item, '');
+
+        //                                    if (target_href.startsWith('//')) {
+        //                                        target_href = target_href.replace('//', '/');
+        //                                    }
+        //                                }
+        //                            });
+
+        //                            const target_url = `${origin_url}${target_href}#conversation_id=${conversationid_ative}`;
+        //                            window.location.replace(target_url);
+
+
+        //                            //window.location.reload();
+        //                            //if (window.location.href.includes(target_href)) {
+        //                            //    window.location.reload();
+
+        //                            //}
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        });
+        //    }
+
+        //    $('form').submit(function (event) {
+        //        event.preventDefault();
+
+        //        let formData = $(this).serialize();
+
+        //        console.log("Form submitted:", formData);
+
+        //        const originalAction = $(this).attr('action')
+        //        $(this).attr('action', `${originalAction}#conversation_id=${conversationid_ative}`)
+        //        this.submit();
+        //    });
+
+        //}
         LoadConversationIdInUrl: function () {
             const useremail = $('#userEmailId').val();
             const queryString = window.location.search;
@@ -1710,33 +1823,48 @@ var urlManager = {
 
                     $('#OnInteractionLink').attr('href', backToTicketScreenLink)
                     $('#OnInteractionAlert').show()
+
+                    urlManager.Events.LoadEventsForActiveConversation(conversationid_ative);                    
+                    urlManager.Events.CheckOnInteractionAlertInfo(interaction_info.email, conversationid_ative);
                 }
             }
 
             const href = window.location.href;
             if (href.includes('#conversation_id=') && ticketSaved !== 'True') {
-
                 const hrefArray = href.split('#');
                 const conversationidParam = hrefArray[1];
                 const conversationid = conversationidParam.replace('conversation_id=', '')
                 const useremail = $('#userEmailId').val();
-                conversationid_ative = conversationid;
-
-                $.get(`${origin_url}/Ticket/MyInteraction/?email=${useremail}&conversationid=${conversationid}`, function (data, status) {
-                    if (status == 'success') {
-                        console.log(data)
-
-                        if (data !== null) {
-                            const interaction_info = data;
-                            console.log(interaction_info.conversationId)
-                            const backToTicketScreenLink = `${origin_url}/Ticket/GenesysInteractionEvent/?nomeFila=${interaction_info.queueName}&conversastionid=${interaction_info.conversationId}&email=${interaction_info.userEmail}&cpf=${interaction_info.cpf}&protocolo=${interaction_info.protocol}&navegacao=${interaction_info.customerNavigation}&emailCliente=${interaction_info.customerEmail}&protocolo_pai=${interaction_info.parentTicket}&reload=true&cancel=false`
-
-                            $('#OnInteractionLink').attr('href', backToTicketScreenLink)
-                            $('#OnInteractionAlert').show()
-                        }
-                    }
-                })
+                //conversationid_ative = conversationid;
+                urlManager.Methods.GetMyInteraction(useremail, conversationid);
+                //urlManager.Events.CheckOnInteractionAlertInfo(useremail, conversationid);
             }
+            urlManager.Events.CheckOnInteractionAlertInfo(useremail, conversationid);
+        },
+        GetMyInteraction: function (useremail, conversationid) {
+
+            $.get(`${origin_url}/Ticket/MyInteraction/?email=${useremail}&conversationid=${conversationid}`, function (data, status) {
+                if (status == 'success') {
+                    console.log(data)
+
+                    if (data !== null) {
+                        conversationid_ative = conversationid;
+                        const interaction_info = data;
+                        console.log(interaction_info.conversationId)
+                        const backToTicketScreenLink = `${origin_url}/Ticket/GenesysInteractionEvent/?nomeFila=${interaction_info.queueName}&conversastionid=${interaction_info.conversationId}&email=${interaction_info.userEmail}&cpf=${interaction_info.cpf}&protocolo=${interaction_info.protocol}&navegacao=${interaction_info.customerNavigation}&emailCliente=${interaction_info.customerEmail}&protocolo_pai=${interaction_info.parentTicket}&reload=true&cancel=false`
+
+                        $('#OnInteractionLink').attr('href', backToTicketScreenLink)
+                        $('#OnInteractionAlert').show()
+
+                        urlManager.Events.LoadEventsForActiveConversation(conversationid_ative);
+                    }
+                }
+            })
+        }
+    },
+    Events: {
+
+        LoadEventsForActiveConversation: function (conversationid_ative) {
 
             if (conversationid_ative !== '') {
                 document.addEventListener('click', event => {
@@ -1745,7 +1873,6 @@ var urlManager = {
                     let target_href = event.target.getAttribute('href');
 
                     if (tagName !== 'BUTTON' && tagName !== 'LABEL' && tagName !== 'INPUT') {
-
                         if (target_href !== '#') {
                             event.preventDefault();
 
@@ -1758,7 +1885,6 @@ var urlManager = {
                                     window.open(target_href, "_blank");
                                 }
                                 else {
-
                                     const origin_url_array = origin_url.split('/')
 
                                     Array.from(origin_url_array).forEach(item => {
@@ -1798,7 +1924,20 @@ var urlManager = {
                 $(this).attr('action', `${originalAction}#conversation_id=${conversationid_ative}`)
                 this.submit();
             });
+        },
 
+        CheckOnInteractionAlertInfo: function (username, conversationid) {
+            setInterval(() => {
+
+                if ($('#OnInteractionAlert').is(":hidden")) {
+                    console.log('OnInteractionAlert: hidden')
+                    urlManager.Methods.GetMyInteraction(username, conversationid);
+                }
+                else {
+                    console.log('OnInteractionAlert: visible')
+                }
+
+            }, 3000);
         }
     }
 }
@@ -1813,7 +1952,7 @@ $(function () {
     }
 
 
-    dataTablesHandler.Init.UserDataTableLoad()
+    //dataTablesHandler.Init.UserDataTableLoad()
     dataTablesHandler.Init.CustomerDataTableLoad()
     dataTablesHandler.Init.AreaDataTableLoad()
     dataTablesHandler.Init.ServiceLevelDataTableLoad()
@@ -1833,13 +1972,9 @@ $(function () {
 
     sessionHandler.Methods.RemoveConversationDataDisconnected();
     //sessionHandler.Methods.CreateLinkRestoreInteractionScreen();
-
+    
     urlManager.Methods.LoadConversationIdInUrl();
     fileHelper.Methods.ReloadAttachedFiles();
-
-    setInterval(() => {
-        urlManager.Methods.LoadConversationIdInUrl();
-    }, 5000);
 });
 
 

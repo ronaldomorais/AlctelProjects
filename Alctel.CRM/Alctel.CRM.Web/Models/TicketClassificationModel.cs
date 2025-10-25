@@ -30,16 +30,26 @@ public class TicketClassificationModel
     [DisplayName("Motivo 1")]
     public Int64 Reason01Id { get; set; }
     public string? Reason01Name { get; set; }
+
     public Int64? Reason01ListId { get; set; }
     public string? Reason01ListName { get; set; }
     public List<SelectListItem> Reason01Options { get; set; } = new List<SelectListItem>();
 
+    [DisplayName("Motivo 1")]
+    public Int64? Reason01ListItemId { get; set; }
+    public string? Reason01ListItemName { get; set; }
+
     [DisplayName("Motivo 2")]
     public Int64 Reason02Id { get; set; }
     public string? Reason02Name { get; set; }
+
     public Int64? Reason02ListId { get; set; }
     public string? Reason02ListName { get; set; }
     public List<SelectListItem> Reason02Options { get; set; } = new List<SelectListItem>();
+
+    [DisplayName("Motivo 2")]
+    public Int64? Reason02ListItemId { get; set; }
+    public string? Reason02ListItemName { get; set; }
 
     [DisplayName("Criticidade")]
     public Int64 CriticalityId { get; set; }
@@ -47,5 +57,5 @@ public class TicketClassificationModel
     public List<SelectListItem> CriticalityOptions { get; set; } = new List<SelectListItem>();
 
     [DisplayName("SLA (em dias)")]
-    public string? SlaInDays { get; set; }
+    public int SlaInDays { get; set; }
 }

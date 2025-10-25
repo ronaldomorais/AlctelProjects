@@ -257,4 +257,11 @@ public static class ServiceCollectionsExtensions
         builder.Services.AddScoped<IGenesysCloudUserMeAPIRepository, GenesysCloudUserMeAPIRepository>();
         return builder;
     }
+
+    public static WebApplicationBuilder AddSlaMiddleware(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddScoped<ISlaAPIRepository, SlaAPIRepository>();
+        builder.Services.AddScoped<ISlaService, SlaService>();
+        return builder;
+    }
 }

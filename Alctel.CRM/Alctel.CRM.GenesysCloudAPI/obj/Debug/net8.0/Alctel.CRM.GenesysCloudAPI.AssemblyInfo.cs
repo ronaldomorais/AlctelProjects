@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Alctel.CRM.GenesysCloudAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1ddf730848dd8d5741fd82475c81d7d8c42c9d87")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8fcc7a163f5a8554cd8d40bdb092148870f114af")]
 [assembly: System.Reflection.AssemblyProductAttribute("Alctel.CRM.GenesysCloudAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Alctel.CRM.GenesysCloudAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Alctel.CRM.Business")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cd5898c60f270630a3e794b7c33cb6c0ca90b3f3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8fcc7a163f5a8554cd8d40bdb092148870f114af")]
 [assembly: System.Reflection.AssemblyProductAttribute("Alctel.CRM.Business")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Alctel.CRM.Business")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

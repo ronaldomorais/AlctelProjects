@@ -56,10 +56,10 @@ public class TicketModel
     public List<SelectListItem> TicketStatusOptions { get; set; } = new List<SelectListItem>();
 
     [Display(Name = "SLA Inicial")]
-    public string? SlaSystemRole { get; set; }
+    public int SlaSystemRole { get; set; }
 
     [Display(Name = "SLA Contador")]
-    public string? Sla { get; set; }
+    public int Sla { get; set; }
 
     [Display(Name = "Nível de Atendimento")]
     public string? QueueGT { get; set; }
@@ -148,9 +148,15 @@ public class TicketClassification
     public Int64? Reason01Id { get; set; }
     public string? Reason01Name { get; set; }
     public Int64? Reason01ListId { get; set; }
+    public string? Reason01ListName { get; set; }
+    public Int64? Reason01ListItemId { get; set; }
+    public string? Reason01ListItemName { get; set; }
     public Int64? Reason02Id { get; set; }
     public string? Reason02Name { get; set; }
     public Int64? Reason02ListId { get; set; }
+    public string? Reason02ListName { get; set; }
+    public Int64? Reason02ListItemId { get; set; }
+    public string? Reason02ListItemName { get; set; }
 }
 
 

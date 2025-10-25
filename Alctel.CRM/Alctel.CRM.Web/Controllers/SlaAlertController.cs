@@ -1,4 +1,5 @@
-﻿using Alctel.CRM.Business.Interfaces;
+﻿using Alctel.CRM.API.Entities;
+using Alctel.CRM.Business.Interfaces;
 using Alctel.CRM.Business.Services;
 using Alctel.CRM.Web.Models;
 using AutoMapper;
@@ -15,17 +16,33 @@ public class SlaAlertController : Controller
     private readonly ITicketClassificationService _ticketClassificationService;
     private readonly IServiceUnitService _serviceUnitService;
     private readonly ITicketService _ticketService;
+    private readonly ISlaService _slaService;
 
-    public SlaAlertController(IMapper mapper, ITicketClassificationService ticketClassificationService, IServiceUnitService serviceUnitService, ITicketService ticketService)
+    public SlaAlertController(IMapper mapper, ITicketClassificationService ticketClassificationService, IServiceUnitService serviceUnitService, ITicketService ticketService, ISlaService slaService)
     {
         _ticketClassificationService = ticketClassificationService;
         _mapper = mapper;
         _serviceUnitService = serviceUnitService;
         _ticketService = ticketService;
+        _slaService = slaService;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
+        try
+        {
+            var list = await _slaService.GetSlaTicketConfigAsync();
+
+            if (list != null)
+            {
+                var model = _mapper.Map<List<SlaTicketConfigModel>>(list);
+                return View(model);
+            }
+        }
+        catch (Exception ex)
+        {
+        }
+
         return View();
     }
 
@@ -46,24 +63,77 @@ public class SlaAlertController : Controller
     [HttpPost]
     public async Task<IActionResult> Create(TicketClassificationModel model)
     {
+        try
+        {
+            SlaTicketCreateModel slaTicketCreateModel = new SlaTicketCreateModel();
+            slaTicketCreateModel.ManifestationTypeId = model.ManifestationTypeId;
+            slaTicketCreateModel.ServiceId = model.ServiceId;
+            slaTicketCreateModel.CriticalityId = model.CriticalityId;
+            slaTicketCreateModel.Sla = model.SlaInDays;
+        }
+        catch (Exception ex) 
+        { }
+
         return View(model);
     }
 
     [HttpGet]
-    public IActionResult AgendaIndex()
+    public async Task<IActionResult> Edit(int id)
     {
+        return View();
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> AgendaIndex()
+    {
+        try
+        {
+            var slareturn = await _slaService.GetSlaCalendarAsync();
+
+            if (slareturn != null)
+            {
+                var model = _mapper.Map<List<SlaAlertAgendaModel>>(slareturn);
+                return View(model);
+            }
+        }
+        catch (Exception ex)
+        { }
         return View();
     }
 
     [HttpGet]
     public IActionResult AgendaCreate()
     {
+
         return View();
     }
 
     [HttpPost]
-    public IActionResult AgendaCreate([FromForm] SlaAlertAgendaModel model)
+    public async Task<IActionResult> AgendaCreate([FromForm] SlaAlertAgendaModel model)
     {
+        try
+        {
+            var userid = HttpContext.Session.GetString("UserId");
+
+            if (userid != null)
+            {
+                model.UserId = Int64.Parse(userid);
+            }
+
+            var slamodel = _mapper.Map<SlaAlertAgendaAPI>(model);
+            var ret = await _slaService.InsertSlaCalendarAsync(slamodel);
+
+            if (ret > 0)
+            {
+                ViewBag.MessageInfo = "Calendário criado com sucesso!";
+            }
+            else
+            {
+                ViewBag.MessageInfo = "Erro: criando calendário";
+            }
+        }
+        catch (Exception ex)
+        { }
         return View(model);
     }
 

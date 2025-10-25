@@ -159,5 +159,17 @@ public class MapConfigProfile : Profile
 
         CreateMap<TicketReasonModel, TicketReasonAPI>();
         CreateMap<TicketClassificationCreateModel, TicketClassificationAPI>();
+
+        CreateMap<TicketClassficationListAPI, TicketClassficationListModel>();
+
+        CreateMap<TicketClassificationUnitAPI, TicketClassificationUnitModel>();
+
+        CreateMap<SlaAlertAgendaAPI, SlaAlertAgendaModel>();
+        CreateMap<SlaAlertAgendaModel, SlaAlertAgendaAPI>();
+
+        CreateMap<SlaTicketConfigAPI, SlaTicketConfigModel>();
+
+        CreateMap<SlaReasonModel, SlaReasonAPI>();
+        CreateMap<SlaTicketCreateModel, SlaTicketCreateAPI>();
     }
 }

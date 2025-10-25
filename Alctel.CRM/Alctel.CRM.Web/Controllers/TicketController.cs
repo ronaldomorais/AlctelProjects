@@ -47,8 +47,8 @@ public class TicketController : Controller
     private readonly IConfigService _configService;
     private readonly IUserService _userService;
     private readonly ITicketClassificationService _ticketClassificationService;
-
-    public TicketController(ILoginService loginService, ITicketService ticketService, IMapper mapper, ILogControllerService logControllerService, IClassificationDemandService classificationDemandService, ICustomerService customerService, IDemandTypeService demandTypeService, IClassificationDemandTypeService classificationDemandTypeService, IClassificationReasonService classificationReasonService, ILogHelperService logHelperService, IClassificationListItemsService classificationListItemsService, ITicketTransferService ticketTransferService, IConfiguration configuration, IWebHostEnvironment hostingEnvironment, IConfigService configService, IUserService userService, ITicketClassificationService ticketClassificationService)
+    private readonly ISlaService _slaService;
+    public TicketController(ILoginService loginService, ITicketService ticketService, IMapper mapper, ILogControllerService logControllerService, IClassificationDemandService classificationDemandService, ICustomerService customerService, IDemandTypeService demandTypeService, IClassificationDemandTypeService classificationDemandTypeService, IClassificationReasonService classificationReasonService, ILogHelperService logHelperService, IClassificationListItemsService classificationListItemsService, ITicketTransferService ticketTransferService, IConfiguration configuration, IWebHostEnvironment hostingEnvironment, IConfigService configService, IUserService userService, ITicketClassificationService ticketClassificationService, ISlaService slaService)
     {
         _loginService = loginService;
         _ticketService = ticketService;
@@ -67,6 +67,7 @@ public class TicketController : Controller
         _configService = configService;
         _userService = userService;
         _ticketClassificationService = ticketClassificationService;
+        _slaService = slaService;
     }
 
     [HttpGet]
@@ -142,7 +143,7 @@ public class TicketController : Controller
         model.TicketDate = DateTime.Now;
         model.ProtocolDate = DateTime.Now;
         model.ProtocolType = "Filho";
-        model.SlaSystemRole = "1";
+        //model.SlaSystemRole = "1";
 
         Random random = new Random();
         int randomNumberInRange = random.Next(1, 1000000);
@@ -216,7 +217,7 @@ public class TicketController : Controller
             {
                 model.Attachments = _mapper.Map<List<TicketAttachmentModel>>(attachments);
             }
-           
+
             var ticketClassificationResult = data.TicketClassificationResult;
 
             if (ticketClassificationResult != null && ticketClassificationResult.Count > 0)
@@ -226,7 +227,7 @@ public class TicketController : Controller
                     TicketClassification ticketClassification = new TicketClassification();
                     ticketClassification.ManifestationTypeName = item.ManifestationTypeName;
                     ticketClassification.ServiceName = item.ServiceName;
-                    ticketClassification.ServiceUnitName = "teste";
+                    ticketClassification.ServiceUnitName = item.ServiceUnitItemName;
 
                     if (item.Reasons != null && item.Reasons.Count > 0)
                     {
@@ -264,6 +265,21 @@ public class TicketController : Controller
                 ViewBag.TicketMessage = message;
             }
 
+            //SLA
+            int days = await _slaService.GetBusinessDays(model.ProtocolDate, DateTime.Now);
+
+            model.Sla = days;
+            model.SlaSystemRole = 2;
+
+            if ((model.SlaSystemRole - model.Sla) <= 1)
+            {
+                ViewBag.SLAColor = "#FF0000";
+            }
+            else
+            {
+                ViewBag.SLAColor = "#FFFFFF";
+            }
+
             return View(model);
         }
 
@@ -298,8 +314,6 @@ public class TicketController : Controller
             var username = HttpContext.Session.GetString("Username");
             var userid = HttpContext.Session.GetString("UserId");
             var data = _mapper.Map<TicketAPI>(model);
-
-
 
             var ret = await _ticketService.UpdateTicketAPIAsync(data);
 
@@ -412,14 +426,14 @@ public class TicketController : Controller
                             {
                                 TicketReasonModel reason01 = new TicketReasonModel();
                                 reason01.ReasonId = item.Reason01Id.Value;
-                                reason01.ListItemId = item.Reason01ListId;
+                                reason01.ListItemId = item.Reason01ListItemId;
                                 classificationModel.TicketReason.Add(reason01);
 
                                 if (item.Reason02Id != null && item.Reason02Id != 0)
                                 {
                                     TicketReasonModel reason02 = new TicketReasonModel();
                                     reason02.ReasonId = item.Reason02Id.Value;
-                                    reason02.ListItemId = item.Reason02ListId;
+                                    reason02.ListItemId = item.Reason02ListItemId;
                                     classificationModel.TicketReason.Add(reason02);
                                 }
                             }
@@ -641,7 +655,7 @@ public class TicketController : Controller
                 HttpContext.Session.SetString("Profile", profile);
                 HttpContext.Session.SetString("Username", username);
                 HttpContext.Session.SetString("LoginUser", loginuser);
-                HttpContext.Session.SetString("UserId", userid.ToString());                
+                HttpContext.Session.SetString("UserId", userid.ToString());
                 HttpContext.Session.SetString("BaseUrl", baseUrl);
                 //List<Claim> claims = new List<Claim>();
 
@@ -810,7 +824,7 @@ public class TicketController : Controller
             ticketModel.TicketDate = ongoingInteraction.TicketDate;
             ticketModel.ConversationId = conversastionid;
             ticketModel.CustomerNavigation = ongoingInteraction.CustomerNavigation;
-            ticketModel.SlaSystemRole = "1";
+            //ticketModel.SlaSystemRole = "1";
             ticketModel.ProtocolType = ongoingInteraction.ProtocolType;
             ticketModel.TicketDataToCompareIfChanged = new TicketDataToCompareIfChangedLog();
             ticketModel.QueueGT = "1º nível";
@@ -1135,39 +1149,44 @@ public class TicketController : Controller
 
                         var ticketClassification = model.TicketClassification;
 
-                        if (ticketClassification != null && ticketClassification.Count() > 0) 
+                        if (ticketClassification != null && ticketClassification.Count() > 0)
                         {
                             int order = 0;
-                            foreach(var item in ticketClassification)
+                            foreach (var item in ticketClassification)
                             {
-                                TicketClassificationCreateModel classificationModel = new TicketClassificationCreateModel();
-                                classificationModel.TicketId = model.Id;
-                                classificationModel.ServiceId = item.ServiceId;
-                                classificationModel.ServiceUnitId = item.ServiceUnitId;
-                                classificationModel.UserId = string.IsNullOrEmpty(model.User) ? 0 : Int64.Parse(model.User);
-                                classificationModel.Order = order++;
-
-                                if (item.Reason01Id != null && item.Reason01Id != 0)
+                                if (item.ManifestationTypeId != 0)
                                 {
-                                    TicketReasonModel reason01 = new TicketReasonModel();
-                                    reason01.ReasonId = item.Reason01Id.Value;
-                                    reason01.ListItemId = item.Reason01ListId;
-                                    classificationModel.TicketReason.Add(reason01);
+                                    TicketClassificationCreateModel classificationModel = new TicketClassificationCreateModel();
+                                    classificationModel.TicketId = model.Id;
+                                    classificationModel.ServiceId = item.ServiceId;
+                                    classificationModel.ServiceUnitId = item.ServiceUnitId;
+                                    classificationModel.UserId = string.IsNullOrEmpty(model.User) ? 0 : Int64.Parse(model.User);
+                                    classificationModel.Order = order;
 
-                                    if (item.Reason02Id != null && item.Reason02Id != 0)
+                                    if (item.Reason01Id != null && item.Reason01Id != 0)
                                     {
-                                        TicketReasonModel reason02 = new TicketReasonModel();
-                                        reason02.ReasonId = item.Reason02Id.Value;
-                                        reason02.ListItemId = item.Reason02ListId;
-                                        classificationModel.TicketReason.Add(reason02);
+                                        TicketReasonModel reason01 = new TicketReasonModel();
+                                        reason01.ReasonId = item.Reason01Id.Value;
+                                        reason01.ListItemId = item.Reason01ListItemId;
+                                        classificationModel.TicketReason.Add(reason01);
+
+                                        if (item.Reason02Id != null && item.Reason02Id != 0)
+                                        {
+                                            TicketReasonModel reason02 = new TicketReasonModel();
+                                            reason02.ReasonId = item.Reason02Id.Value;
+                                            reason02.ListItemId = item.Reason02ListItemId;
+                                            classificationModel.TicketReason.Add(reason02);
+                                        }
                                     }
+
+                                    var classification = _mapper.Map<TicketClassificationAPI>(classificationModel);
+                                    await _ticketClassificationService.InsertTicketClassificationAPIAsync(classification);
                                 }
 
-                                var classification = _mapper.Map<TicketClassificationAPI>(classificationModel);
-                                var ret = await _ticketClassificationService.InsertTicketClassificationAPIAsync(classification);
+                                order++;
                             }
                         }
-                        
+
                         var username = HttpContext.Session.GetString("Username");
 
                         LogController logController = new LogController();
@@ -2037,7 +2056,7 @@ public class TicketController : Controller
                     break;
             }
 
-            
+
 
             if (ticketStatusModel != null)
             {
@@ -2469,7 +2488,7 @@ public class TicketController : Controller
 
         try
         {
-            int lastpage = ((int)(totalitems / sizepage)) + 1;
+            int lastpage = ((int)(totalitems / sizepage));
             ViewBag.PreviousPage = (currentpage - 1) == 0 ? 1 : currentpage - 1;
             ViewBag.NextPage = (currentpage + 1) > lastpage ? lastpage : currentpage + 1;
             ViewBag.FirstPage = 1;

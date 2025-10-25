@@ -195,7 +195,7 @@
 			Submenuitem = new List<MenuItem>()
 		};
 
-		classificationItem.Submenuitem.AddRange(GetClassificationMenuItems(modules));
+		classificationItem.Submenuitem.AddRange(GetClassificationMenuItems(modules, baseUrl));
 		menuItemsCollection.Add(classificationItem);
 
 		var slaAlertItem = new MenuItem
@@ -210,7 +210,7 @@
 		};
 
 
-		slaAlertItem.Submenuitem.AddRange(GetSlaAlertMenuItems(modules));
+		slaAlertItem.Submenuitem.AddRange(GetSlaAlertMenuItems(modules, baseUrl));
 		menuItemsCollection.Add(slaAlertItem);
 
 		return menuItemsCollection.OrderBy(o => o.MenuName).ToList();

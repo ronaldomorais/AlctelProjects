@@ -27,4 +27,6 @@ public interface ITicketClassificationAPIRepository
     Task<APIResponse<List<TicketClassificationReasonListItemAPI>>> GetTicketClassificationReasonListItemsAPIAsync(Int64 manifestationid, Int64 serviceId, Int64? parentId);
     Task<APIResponse<string>> InsertTicketClassificationReasonAPIAsync(TicketClassificationReasonCreateAPI data);
     Task<APIResponse<int>> InsertTicketClassificationAPIAsync(TicketClassificationAPI data);
+    Task<APIResponse<List<TicketClassficationListAPI>>> GetTicketClassificationByManifestationAPIAsync(Int64 id);
+    Task<APIResponse<List<TicketClassificationUnitAPI>>> GetTicketClassificationUnitListAPIAsync(string data);
 }

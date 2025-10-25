@@ -4,6 +4,8 @@ namespace Alctel.CRM.Web.Models;
 
 public class SlaAlertAgendaModel
 {
+    public Int64 UserId { get; set; }
+
     [DisplayName("Nome Feriado")]
     public string? HolidayName { get; set; }
 

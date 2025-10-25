@@ -15,6 +15,9 @@ public class TicketClassificationReasonListItemAPI
     [JsonProperty("idLista")]
     public Int64 ListId { get; set; }
 
+    [JsonProperty("idListaItem")]
+    public Int64 ListItemId { get; set; }
+
     [JsonProperty("idMotivoPai")]
     public Int64? ParentId { get; set; }
 

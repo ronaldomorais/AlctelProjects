@@ -64,12 +64,13 @@
 
 		<div class="row smal mb-3">
 			<div id="reason01DivId" class="col-sm-5" style="display:none;">
-				<label asp-for="@Model.Reason01Id"></label>
+				<label asp-for="@Model.Reason01ListItemId"></label>
 				<div class="input-group input-group-sm mb-3">
 					<div>
+						<input type="hidden" asp-for="@Model.Reason01Id" />
 						<input type="hidden" asp-for="@Model.Reason01ListId" />
 						<input type="hidden" asp-for="@Model.Reason01ListName" />
-						<select asp-for="@Model.Reason01Id" asp-items="@Model.Reason01Options" onchange="ticketClassification.Events.OnReason01Changed();">
+						<select asp-for="@Model.Reason01ListItemId" onchange="ticketClassification.Events.OnReason01Changed();">
 						</select>
 					</div>
 				</div>
@@ -77,12 +78,13 @@
 
 
 			<div id="reason02DivId" class="col-sm-5" style="display:none;">
-				<label asp-for="@Model.Reason02Id"></label>
+				<label asp-for="@Model.Reason01ListItemId"></label>
 				<div class="input-group input-group-sm mb-3">
 					<div>
+						<input type="hidden" asp-for="@Model.Reason02Id" />
 						<input type="hidden" asp-for="@Model.Reason02ListId" />
 						<input type="hidden" asp-for="@Model.Reason02ListName" />
-						<select asp-for="@Model.Reason02Id" asp-items="@Model.Reason02Options">
+						<select asp-for="@Model.Reason01ListItemId">
 						</select>
 					</div>
 				</div>

@@ -20,6 +20,21 @@ var ticketClassificationConfig = {
     },
 
     Events: {
+
+        OnManifestationTypeIndexChanged: function () {
+            var selectedValue = $('#ManifestationTypeId').val();
+           
+            $.get(`${origin_url}/TicketClassification/TicketClassificationByManifestationIndex/?id=${selectedValue}`, function (data, success) {
+                if (success === 'success') {
+                    if (data != null) {
+                        console.log(data);
+
+                        $('#classificationListId').html(data);
+                    }
+                }
+            });
+        },
+
         OnManifestationTypeChanged: function () {
             var selectedValue = $('#ManifestationTypeId').val();
 

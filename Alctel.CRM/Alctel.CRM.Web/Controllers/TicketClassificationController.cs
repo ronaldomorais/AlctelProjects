@@ -290,7 +290,7 @@ public class TicketClassificationController : Controller
             TicketClassificationModel model = new TicketClassificationModel();
             await LoadManifestationTypeOptions(model);
             //await LoadServiceUnitOptions(model);
-            await LoadProgramOptions(model);
+            //await LoadProgramOptions(model);
 
             return View(model);
         }
@@ -371,6 +371,13 @@ public class TicketClassificationController : Controller
         catch (Exception ex)
         {
         }
+
+        await LoadManifestationTypeOptions(model);
+        await LoadServiceUnitOptions(model);
+        await LoadProgramOptions(model);
+        //await LoadReason01Options(model);
+        //await LoadReason02Options(model);
+        await LoadListOptionsAsync(model);
 
         return View(model);
     }
@@ -471,11 +478,13 @@ public class TicketClassificationController : Controller
         {
             bool isSelected = false;
 
-            var list = await _serviceUnitService.GetServiceUnitActivatedListAPIAsync();
+            //var list = await _serviceUnitService.GetServiceUnitActivatedListAPIAsync();
+            var list = await _ticketClassificationService.GetTicketClassificationUnitListAsync("Unidades de Atendimento");
 
             if (list != null)
             {
-                var serviceUnitList = _mapper.Map<List<ServiceUnitModel>>(list);
+                //var serviceUnitList = _mapper.Map<List<ServiceUnitModel>>(list);
+                var serviceUnitList = _mapper.Map<List<TicketClassificationUnitModel>>(list);
 
                 model.ServiceUnitOptions.Add(new SelectListItem
                 {
@@ -487,15 +496,15 @@ public class TicketClassificationController : Controller
                 foreach (var item in serviceUnitList)
                 {
                     isSelected = false;
-                    if (item.Id == selectedItem)
+                    if (item.ListItemId == selectedItem)
                     {
                         isSelected = true;
                     }
 
                     model.ServiceUnitOptions.Add(new SelectListItem
                     {
-                        Value = item.Id.ToString(),
-                        Text = item.Name,
+                        Value = item.ListItemId.ToString(),
+                        Text = item.ListItemName,
                         Selected = isSelected
                     });
                 }
@@ -795,6 +804,24 @@ public class TicketClassificationController : Controller
         { }
 
         return new JsonResult(null);
+    }
+
+    public async Task<IActionResult> TicketClassificationByManifestationIndex(Int64 id)
+    {
+        try
+        {
+            var list = await _ticketClassificationService.GetTicketClassificationByManifestationAsync(id);
+
+            if (list != null)
+            {
+                var model = _mapper.Map<List<TicketClassficationListModel>>(list);
+                return View(model);
+            }
+        }
+        catch (Exception ex)
+        { }
+
+        return View();
     }
 
     private bool IsAuthenticated()
