@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Alctel.CRM.Context.InMemory")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+56773637a9bde599abd3e424b296c7839227aff6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4dd605200c1cd8272159036695af7d8b72284d1a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Alctel.CRM.Context.InMemory")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Alctel.CRM.Context.InMemory")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

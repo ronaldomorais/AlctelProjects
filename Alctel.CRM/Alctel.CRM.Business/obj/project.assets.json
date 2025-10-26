@@ -584,6 +584,581 @@
           "bin/placeholder/Alctel.CRM.Web.Tools.dll": {}
         }
       }
+    },
+    "net8.0/win-x64": {
+      "Microsoft.EntityFrameworkCore/9.0.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Abstractions": "9.0.8",
+          "Microsoft.EntityFrameworkCore.Analyzers": "9.0.8",
+          "Microsoft.Extensions.Caching.Memory": "9.0.8",
+          "Microsoft.Extensions.Logging": "9.0.8"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.EntityFrameworkCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.EntityFrameworkCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/Microsoft.EntityFrameworkCore.props": {}
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Abstractions/9.0.8": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Analyzers/9.0.8": {
+        "type": "package"
+      },
+      "Microsoft.EntityFrameworkCore.InMemory/9.0.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "9.0.8",
+          "Microsoft.Extensions.Caching.Memory": "9.0.8",
+          "Microsoft.Extensions.Logging": "9.0.8"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.EntityFrameworkCore.InMemory.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.EntityFrameworkCore.InMemory.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.Extensions.Caching.Abstractions/9.0.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "9.0.8"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Caching.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Caching.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Caching.Memory/9.0.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Abstractions": "9.0.8",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.8",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.8",
+          "Microsoft.Extensions.Options": "9.0.8",
+          "Microsoft.Extensions.Primitives": "9.0.8"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Caching.Memory.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Caching.Memory.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration/9.0.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.8",
+          "Microsoft.Extensions.Primitives": "9.0.8"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration.Abstractions/9.0.9": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "9.0.9"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration.Binder/9.0.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.8"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.Binder.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Configuration.Binder.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/netstandard2.0/Microsoft.Extensions.Configuration.Binder.targets": {}
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection/9.0.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.8"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.DependencyInjection.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.DependencyInjection.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/9.0.9": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Diagnostics/9.0.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "9.0.8",
+          "Microsoft.Extensions.Diagnostics.Abstractions": "9.0.8",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "9.0.8"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Diagnostics.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Diagnostics.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Diagnostics.Abstractions/9.0.9": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.9",
+          "Microsoft.Extensions.Options": "9.0.9",
+          "System.Diagnostics.DiagnosticSource": "9.0.9"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Diagnostics.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Diagnostics.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Abstractions/9.0.9": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "9.0.9"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Hosting.Abstractions/9.0.9": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.9",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.9",
+          "Microsoft.Extensions.Diagnostics.Abstractions": "9.0.9",
+          "Microsoft.Extensions.FileProviders.Abstractions": "9.0.9",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.9"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Hosting.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Hosting.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Http/9.0.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.8",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.8",
+          "Microsoft.Extensions.Diagnostics": "9.0.8",
+          "Microsoft.Extensions.Logging": "9.0.8",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.8",
+          "Microsoft.Extensions.Options": "9.0.8"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Http.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Http.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Logging/9.0.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "9.0.8",
+          "Microsoft.Extensions.Logging.Abstractions": "9.0.8",
+          "Microsoft.Extensions.Options": "9.0.8"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Logging.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Logging.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Logging.Abstractions/9.0.9": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.9",
+          "System.Diagnostics.DiagnosticSource": "9.0.9"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/Microsoft.Extensions.Logging.Abstractions.targets": {}
+        }
+      },
+      "Microsoft.Extensions.Options/9.0.9": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.9",
+          "Microsoft.Extensions.Primitives": "9.0.9"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Options.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Options.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/Microsoft.Extensions.Options.targets": {}
+        }
+      },
+      "Microsoft.Extensions.Options.ConfigurationExtensions/9.0.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.8",
+          "Microsoft.Extensions.Configuration.Binder": "9.0.8",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.8",
+          "Microsoft.Extensions.Options": "9.0.8",
+          "Microsoft.Extensions.Primitives": "9.0.8"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.Primitives/9.0.9": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.Primitives.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.Primitives.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "Newtonsoft.Json/13.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Serilog/4.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Serilog.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Serilog.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/_._": {}
+        }
+      },
+      "Serilog.Extensions.Logging/9.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "9.0.0",
+          "Serilog": "4.2.0"
+        },
+        "compile": {
+          "lib/net8.0/Serilog.Extensions.Logging.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Serilog.Extensions.Logging.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Serilog.Sinks.Console/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Serilog": "4.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Serilog.Sinks.Console.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Serilog.Sinks.Console.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Serilog.Sinks.EventLog/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Serilog": "4.0.0",
+          "System.Diagnostics.EventLog": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Serilog.Sinks.EventLog.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Serilog.Sinks.EventLog.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Serilog.Sinks.File/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Serilog": "4.2.0"
+        },
+        "compile": {
+          "lib/net8.0/Serilog.Sinks.File.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Serilog.Sinks.File.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Diagnostics.DiagnosticSource/9.0.9": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/System.Diagnostics.DiagnosticSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Diagnostics.DiagnosticSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
+      "System.Diagnostics.EventLog/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/System.Diagnostics.EventLog.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/win/lib/net8.0/System.Diagnostics.EventLog.Messages.dll": {},
+          "runtimes/win/lib/net8.0/System.Diagnostics.EventLog.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "Alctel.CRM.API/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Alctel.CRM.Web.Tools": "1.0.0",
+          "Microsoft.Extensions.Http": "9.0.8",
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "compile": {
+          "bin/placeholder/Alctel.CRM.API.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Alctel.CRM.API.dll": {}
+        }
+      },
+      "Alctel.CRM.Context.InMemory/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.InMemory": "9.0.8"
+        },
+        "compile": {
+          "bin/placeholder/Alctel.CRM.Context.InMemory.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Alctel.CRM.Context.InMemory.dll": {}
+        }
+      },
+      "Alctel.CRM.Web.Tools/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.Extensions.Hosting.Abstractions": "9.0.9",
+          "Serilog": "4.3.0",
+          "Serilog.Extensions.Logging": "9.0.2",
+          "Serilog.Sinks.Console": "6.0.0",
+          "Serilog.Sinks.EventLog": "4.0.0",
+          "Serilog.Sinks.File": "7.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Alctel.CRM.Web.Tools.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Alctel.CRM.Web.Tools.dll": {}
+        }
+      }
     }
   },
   "libraries": {
@@ -1512,6 +2087,11 @@
           }
         },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+      }
+    },
+    "runtimes": {
+      "win-x64": {
+        "#import": []
       }
     }
   }

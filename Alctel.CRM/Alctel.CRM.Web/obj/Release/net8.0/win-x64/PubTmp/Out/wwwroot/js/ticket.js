@@ -177,28 +177,6 @@ var screenAutoSaveData = {
             const conversationid = screenAutoSaveData.Methods.GetConversationId();
             formData.append('ConversationId', conversationid);
 
-            //$('#ticketClassificationTableId tr').each(function () {
-            //    console.log('teste')
-            //    var secondCellValue = $(this).find('td').eq(1).text(); // eq(1) targets the second td (0-indexed)
-            //    console.log(secondCellValue);
-            //});
-
-
-            //autoSaveData.ConversationId = conversationid;
-            //autoSaveData.DemandTypeId = 0;
-            //autoSaveData.TicketCriticalityId = 0;
-            //autoSaveData.TicketStatusId = 0;
-            //autoSaveData.AnySolution = 0;
-            //autoSaveData.DemandObservation = '';
-            //autoSaveData.ParentTicket = '';
-
-            //const demandTypeId = $('#DemandTypeId').val();
-            //if (demandTypeId !== null && demandTypeId !== '') {
-            //    //autoSaveData.DemandTypeId = demandTypeId;
-            //    console.log(demandTypeId)
-            //    formData.append('DemandTypeId', demandTypeId);
-            //}
-
             const ticketCriticalityId = $('#TicketCriticalityId').val();
             if (ticketCriticalityId !== null && ticketCriticalityId !== '') {
                 //autoSaveData.TicketCriticalityId = ticketCriticalityId;
@@ -239,26 +217,26 @@ var screenAutoSaveData = {
             let autoSaveTable = $('#autoSaveTable').val();
 
             if (autoSaveTable !== '') {
-                console.log('TESTE', autoSaveTable);
-
-                //const ticketClassificationAutoSaveArray = JSON.parse(autoSaveTable);
-
-                //if (ticketClassificationAutoSaveArray.length > 0) {
-                //    Array.from(ticketClassificationAutoSaveArray).forEach(t => 
-                //    });
-                //}
-                //formData.append('TicketClassificationAutoSave', autoSaveTable);
-
                 const ticketClassificationAutoSaveArray = JSON.parse(autoSaveTable);
 
                 ticketClassificationAutoSaveArray.forEach((obj, index) => {
-                    formData.append(`TicketClassificationAutoSave[${index}]`, JSON.stringify(obj));
+                    console.log(obj);
+                    formData.append(`TicketClassification[${index}][ManifestationTypeId]`, obj.ManifestationTypeId);
+                    formData.append(`TicketClassification[${index}][ManifestationTypeName]`, obj.ManifestationTypeName);
+                    formData.append(`TicketClassification[${index}][ServiceUnitId]`, obj.ServiceUnitId);
+                    formData.append(`TicketClassification[${index}][ServiceUnitName]`, obj.ServiceUnitName);
+                    formData.append(`TicketClassification[${index}][ServiceId]`, obj.ServiceId);
+                    formData.append(`TicketClassification[${index}][ServiceName]`, obj.ServiceName);
+                    formData.append(`TicketClassification[${index}][Reason01Id]`, obj.Reason01Id);
+                    formData.append(`TicketClassification[${index}][Reason01ListItemName]`, obj.Reason01ListItemName);
+                    formData.append(`TicketClassification[${index}][Reason01ListItemId]`, obj.Reason01ListItemId);
+                    formData.append(`TicketClassification[${index}][Reason02Id]`, obj.Reason02Id);
+                    formData.append(`TicketClassification[${index}][Reason02ListItemName]`, obj.Reason02ListItemName);
+                    formData.append(`TicketClassification[${index}][Reason02ListItemId]`, obj.Reason02ListItemId);
                 });
 
-                console.log(formData);
+                console.log(formData.get('TicketClassification[0]'));
             }
-
-            //console.log(formData.get("DemandTypeId"));
 
             $.ajax({
                 type: 'POST',

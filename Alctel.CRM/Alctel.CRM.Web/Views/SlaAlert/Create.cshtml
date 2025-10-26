@@ -111,12 +111,12 @@
 
 				<div id="slaDivId" class="col-sm-3" style="display:none;">
 					<label asp-for="@Model.SlaInDays"></label>
-					<input class="standard-input" type="number" asp-for="@Model.SlaInDays" required />
+					<input class="standard-input" type="number" min="0" asp-for="@Model.SlaInDays" required />
 				</div>
 
 				<div id="alarmDivId" class="col-sm-3" style="display:none;">
 					<label asp-for="@Model.Alarm"></label>
-					<input class="standard-input" type="number" asp-for="@Model.Alarm" required />
+					<input class="standard-input" type="number" min="0" asp-for="@Model.Alarm" required />
 				</div>
 			</div>
 

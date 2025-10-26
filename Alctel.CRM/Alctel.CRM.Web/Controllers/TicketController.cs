@@ -902,8 +902,6 @@ public class TicketController : Controller
             }
 
 
-
-
             //var dir = Path.Combine(Directory.GetCurrentDirectory(), "Contents", conversastionid);
 
             //if (Directory.Exists(dir))
