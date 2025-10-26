@@ -109,9 +109,9 @@ public class SlaAPIRepository : ISlaAPIRepository
         return apiResponse;
     }
 
-    public async Task<APIResponse<int>> InsertSlaTicketConfigAPIAsync(SlaTicketCreateAPI data)
+    public async Task<APIResponse<string>> InsertSlaTicketConfigAPIAsync(SlaTicketCreateAPI data)
     {
-        APIResponse<int> apiResponse = new APIResponse<int>();
+        APIResponse<string> apiResponse = new APIResponse<string>();
         try
         {
             var url = _configuration.GetSection("MiddlewareTicketControl:url").Value;
@@ -119,7 +119,7 @@ public class SlaAPIRepository : ISlaAPIRepository
             var password = _configuration.GetSection("MiddlewareTicketControl:password").Value;
             var path = _configuration.GetSection("MiddlewareTicketControl:paths:slaticketconfiginsert").Value;
 
-            ApiContext<int> apiContext = new ApiContext<int>();
+            ApiContext<string> apiContext = new ApiContext<string>();
 
             var json = JsonConvert.SerializeObject(data);
 

@@ -269,9 +269,7 @@ public class TicketController : Controller
             DateTime now = DateTime.Now;
             int days = await _slaService.GetBusinessDays(model.ProtocolDate, now);
 
-            model.SlaSystemRole = 2;
-
-            DateTime protocolDateSla = model.ProtocolDate.AddDays(days);     
+            DateTime protocolDateSla = model.ProtocolDate.AddDays(days);
             TimeSpan timeSpan = now - protocolDateSla;
             double totalDays = timeSpan.TotalDays;
 
@@ -460,7 +458,14 @@ public class TicketController : Controller
             }
         }
 
-        ViewBag.TicketMessage = "Erro Atualizando Chamado!";
+        if (model.TicketClassification.Count == 0)
+        {
+            ViewBag.TicketMessage = "Erro Uma classificação é necessária";
+        }
+        else
+        {
+            ViewBag.TicketMessage = "Erro Atualizando Chamado!";
+        }
 
         string? profile = HttpContext.Session.GetString("Profile");
         profile = profile ?? string.Empty;
@@ -871,6 +876,31 @@ public class TicketController : Controller
             ticketModel.AnySolution = ongoingInteraction.AutoSaveData.AnySolution;
             ticketModel.DemandObservation = ongoingInteraction.AutoSaveData.DemandObservation ?? string.Empty;
             ticketModel.ParentTicket = ongoingInteraction.AutoSaveData.ParentTicket;
+
+            if (ongoingInteraction.AutoSaveData.TicketClassification != null && ongoingInteraction.AutoSaveData.TicketClassification.Count > 0)
+            {
+                var ticketClassificationResult = ongoingInteraction.AutoSaveData.TicketClassification;
+                foreach (var item in ticketClassificationResult)
+                {
+                    TicketClassification ticketClassification = new TicketClassification();
+                    ticketClassification.ManifestationTypeId = item.ManifestationTypeId;
+                    ticketClassification.ManifestationTypeName = item.ManifestationTypeName;
+                    ticketClassification.ServiceUnitId = item.ServiceUnitId;
+                    ticketClassification.ServiceUnitName = item.ServiceUnitName;
+                    ticketClassification.ServiceId = item.ServiceId;
+                    ticketClassification.ServiceName = item.ServiceName;
+                    ticketClassification.Reason01Id = item.Reason01Id;
+                    ticketClassification.Reason01ListItemName = item.Reason01ListItemName ?? string.Empty;
+                    ticketClassification.Reason01ListItemId = item.Reason01ListItemId;
+                    ticketClassification.Reason02ListItemName = item.Reason02ListItemName ?? string.Empty;
+                    ticketClassification.Reason02ListItemId = item.Reason02ListItemId;
+
+                    ticketModel.TicketClassification.Add(ticketClassification);
+                }
+
+                ViewBag.TicketClassificationJsonData = JsonConvert.SerializeObject(ticketModel.TicketClassification);
+            }
+
 
 
 
@@ -2661,6 +2691,31 @@ public class TicketController : Controller
             if (string.IsNullOrEmpty(message) == false)
             {
                 ViewBag.TicketMessage = message;
+            }
+
+            var ticketClassificationResult = data.TicketClassificationResult;
+
+            if (ticketClassificationResult != null && ticketClassificationResult.Count > 0)
+            {
+                foreach (var item in ticketClassificationResult)
+                {
+                    TicketClassification ticketClassification = new TicketClassification();
+                    ticketClassification.ManifestationTypeName = item.ManifestationTypeName;
+                    ticketClassification.ServiceName = item.ServiceName;
+                    ticketClassification.ServiceUnitName = item.ServiceUnitItemName;
+
+                    if (item.Reasons != null && item.Reasons.Count > 0)
+                    {
+                        ticketClassification.Reason01Name = item.Reasons[0].ReasonName;
+                    }
+
+                    if (item.Reasons != null && item.Reasons.Count > 1)
+                    {
+                        ticketClassification.Reason02Name = item.Reasons[1].ReasonName;
+                    }
+
+                    model.TicketClassification.Add(ticketClassification);
+                }
             }
 
             return View(model);

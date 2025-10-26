@@ -15,6 +15,7 @@ public class AutoSaveDataModel
     public List<AttachmentData> AttachmentDatas { get; set; } = new List<AttachmentData>();
     public List<Attachment> Attachments { get; set; } = new List<Attachment>();
     public List<IFormFile>? Files { get; set; }
+    public List<TicketClassificationAutoSave> TicketClassification { get; set; } = new List<TicketClassificationAutoSave>();
 }
 
 public class Attachment
@@ -32,4 +33,20 @@ public class AttachmentData
     public string? FileContent { get; set; }
     public Stream? FileStream { get; set; }
     public byte[]? FileBytes { get; set; }
+}
+
+public class TicketClassificationAutoSave
+{
+    public Int64 ManifestationTypeId { get; set; }
+    public string? ManifestationTypeName { get; set; }
+    public Int64 ServiceUnitId { get; set; }
+    public string? ServiceUnitName { get; set; }
+    public Int64 ServiceId { get; set; }
+    public string? ServiceName { get; set; }
+    public Int64 Reason01Id { get; set; }
+    public string? Reason01ListItemName { get; set; }
+    public Int64 Reason01ListItemId { get; set; }
+    public Int64 Reason02Id { get; set; }
+    public string? Reason02ListItemName { get; set; }
+    public Int64 Reason02ListItemId { get; set; }
 }

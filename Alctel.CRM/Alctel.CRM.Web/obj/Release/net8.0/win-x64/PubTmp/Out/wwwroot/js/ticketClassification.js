@@ -405,6 +405,33 @@ var ticketClassification = {
             classificationTable.append(row);
 
             $('#btnTicketClassificationClose').trigger('click');
+
+            let autoSaveTable = $('#autoSaveTable').val();
+            console.log(autoSaveTable);
+
+            let ticketClassificationAutoSaveArray = [];
+            let ticketClassificationAutoSave = {};
+            ticketClassificationAutoSave.ManifestationTypeId = manifestationTypeId;
+            ticketClassificationAutoSave.ManifestationTypeName = manifestationTypeName;
+            ticketClassificationAutoSave.ServiceUnitId = serviceUnitId;
+            ticketClassificationAutoSave.ServiceUnitName = serviceUnitName;
+            ticketClassificationAutoSave.ServiceId = serviceId;
+            ticketClassificationAutoSave.ServiceName = serviceName;
+            ticketClassificationAutoSave.Reason01Id = reason01Id;
+            ticketClassificationAutoSave.Reason01ListItemName = reason01ListItemName;
+            ticketClassificationAutoSave.Reason01ListItemId = reason01ListItemId;
+            ticketClassificationAutoSave.Reason02Id = reason02Id;
+            ticketClassificationAutoSave.Reason02ListItemName = reason02ListItemName;
+            ticketClassificationAutoSave.reason02ListItemId = reason02ListItemId;
+
+            if (autoSaveTable !== '') {
+                //console.log(autoSaveTable);
+                ticketClassificationAutoSaveArray = JSON.parse(autoSaveTable);                
+            }
+
+            ticketClassificationAutoSaveArray.push(ticketClassificationAutoSave);
+            const ticketClassificationAutoSaveArrayStr = JSON.stringify(ticketClassificationAutoSaveArray);
+            $('#autoSaveTable').val(ticketClassificationAutoSaveArrayStr);
         }
     }
 }

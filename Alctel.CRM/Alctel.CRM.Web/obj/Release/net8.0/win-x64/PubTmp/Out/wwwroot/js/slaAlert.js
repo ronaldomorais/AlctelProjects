@@ -24,6 +24,7 @@ var slaAlertConfig = {
             var selectedValue = $('#ManifestationTypeId').val();
 
             console.log(selectedValue)
+            $('#ServiceId').empty();
 
             if (selectedValue !== '0') {
                 //$('#programDivId').show();
@@ -70,10 +71,13 @@ var slaAlertConfig = {
             var serviceId = $('#ServiceId').val();
             const manifestationid = $('#ManifestationTypeId').val();
 
+            $('#Reason01Id').empty();
+
             if (serviceId !== '0') {
                 //$('#programDivId').show();
-                $('#reason01DivId').show();
+                //$('#reason01DivId').show();
                 $('#criticalityDivId').show();
+                $('#btnAddClassificationId').prop('disabled', false);
 
                 $.get(`${origin_url}/TicketClassification/GetTicketClassificationReasonListItems/?manifestationid=${manifestationid}&serviceid=${serviceId}`, function (data, success) {
                     if (success === 'success') {
@@ -103,12 +107,10 @@ var slaAlertConfig = {
                             $('#Reason01ListId').val(data[0].listId);
 
                             $('#reason01DivId').show();
-                            $('#btnAddClassificationId').prop('disabled', false);
+                            //$('#btnAddClassificationId').prop('disabled', false);
                         }
                     }
                 });
-
-
             }
             else {
                 //$('#programDivId').hide();
@@ -142,7 +144,11 @@ var slaAlertConfig = {
 
             var selectedValue = $('#Reason01Id').val();
 
+            $('#Reason02Id').empty();
+
             if (selectedValue !== '0') {
+                //$('#reason02DivId').show();
+
                 $.get(`${origin_url}/TicketClassification/GetTicketClassificationReasonListItems/?manifestationid=${manifestationid}&serviceid=${serviceId}&parentId=${reason01ListId}`, function (data, success) {
 
                     if (success === 'success') {
@@ -205,6 +211,7 @@ var slaAlertConfig = {
             }
             $('#btnSlaCreate').prop('disabled', false);
             $('#slaDivId').show();
+            $('#alarmDivId').show();
         }
     }
 }

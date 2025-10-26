@@ -58,4 +58,7 @@ public class TicketClassificationModel
 
     [DisplayName("SLA (em dias)")]
     public int SlaInDays { get; set; }
+
+    [DisplayName("Alarmar (em dias)")]
+    public int Alarm { get; set; }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Alctel.CRM.API.Entities;
 using Alctel.CRM.API.Interfaces;
 using Alctel.CRM.Business.Interfaces;
+using Alctel.CRM.Business.Model;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Alctel.CRM.Business.Services;
@@ -78,24 +79,39 @@ public class SlaService : ISlaService
         return new List<SlaTicketConfigAPI>();
     }
 
-    public async Task<int> InsertSlaTicketConfigAsync(SlaTicketCreateAPI data)
+    public async Task<ResponseServiceModel> InsertSlaTicketConfigAsync(SlaTicketCreateAPI data)
     {
+        ResponseServiceModel responseServiceModel = new ResponseServiceModel();
         try
-        {
+        {         
             var apiResponse = await _slaAPIRepository.InsertSlaTicketConfigAPIAsync(data);
+
+            responseServiceModel.IsValid = apiResponse.IsSuccessStatusCode;
 
             if (apiResponse.IsSuccessStatusCode)
             {
-                return apiResponse.Response;
+                responseServiceModel.Value = apiResponse.Response ?? string.Empty;
             }
+            else
+            {
+                string additionalMessage = apiResponse.AdditionalMessage ?? string.Empty;
 
+                if (additionalMessage.Contains("duplicate key value violates unique constraint"))
+                {
+                    responseServiceModel.Value = "Duplicidade: Já existe um sla cadastrado com esses valores.";
+                }
+                else
+                {
+                    responseServiceModel.Value = additionalMessage;
+                }
+            }
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
         }
 
-        return -1;
+        return responseServiceModel;
     }
 
     public async Task<int> GetBusinessDays(DateTime startTime, DateTime endTime)

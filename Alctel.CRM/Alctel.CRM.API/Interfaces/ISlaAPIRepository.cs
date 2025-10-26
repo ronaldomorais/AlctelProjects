@@ -12,6 +12,6 @@ public interface ISlaAPIRepository
     Task<APIResponse<int>> InsertSlaCalendarAPIAsync(SlaAlertAgendaAPI data);
     Task<APIResponse<List<SlaAlertAgendaAPI>>> GetSlaCalendarAPIAsync();
     Task<APIResponse<List<SlaTicketConfigAPI>>> GetSlaTicketConfigAPIAsync();
-    Task<APIResponse<int>> InsertSlaTicketConfigAPIAsync(SlaTicketCreateAPI data);
+    Task<APIResponse<string>> InsertSlaTicketConfigAPIAsync(SlaTicketCreateAPI data);
     Task<APIResponse<int>> GetBusinessDaysAPI(DateTime startTime, DateTime endTime);
 }

@@ -56,6 +56,7 @@ public class SlaAlertController : Controller
         //await LoadProgramOptions(model);
         //await LoadReason01Options(model);
         //await LoadReason02Options(model);
+        //await LoadListOptionsAsync(model);
         await LoadCriticityOptionsAsync(model);
         return View(model);
     }
@@ -70,9 +71,42 @@ public class SlaAlertController : Controller
             slaTicketCreateModel.ServiceId = model.ServiceId;
             slaTicketCreateModel.CriticalityId = model.CriticalityId;
             slaTicketCreateModel.Sla = model.SlaInDays;
+            slaTicketCreateModel.Alarm = model.Alarm;
+
+            if (model.Reason01Id != 0)
+            {
+                slaTicketCreateModel.SlaReasons.Add(new SlaReasonModel { ReasonId = model.Reason01Id });
+            }
+
+            if (model.Reason02Id != 0)
+            {
+                slaTicketCreateModel.SlaReasons.Add(new SlaReasonModel { ReasonId = model.Reason02Id });
+            }
+
+            var data = _mapper.Map<SlaTicketCreateAPI>(slaTicketCreateModel);
+
+            var ret = await _slaService.InsertSlaTicketConfigAsync(data);
+
+            if (ret.IsValid)
+            {
+                ViewBag.MessageInfo = "Sla criado com sucesso.";
+            }
+            else
+            {
+                ViewBag.MessageInfo = ret.Value;
+            }
         }
         catch (Exception ex) 
         { }
+
+        await LoadManifestationTypeOptions(model);
+        //await LoadServiceUnitOptions(model);
+        //await LoadServiceOptions(model);
+        //await LoadProgramOptions(model);
+        //await LoadReason01Options(model);
+        //await LoadReason02Options(model);
+        //await LoadListOptionsAsync(model);
+        await LoadCriticityOptionsAsync(model);
 
         return View(model);
     }
@@ -286,6 +320,61 @@ public class SlaAlertController : Controller
                     }
 
                     model.ProgramOptions.Add(new SelectListItem
+                    {
+                        Value = item.Id.ToString(),
+                        Text = item.Name,
+                        Selected = isSelected
+                    });
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+        }
+    }
+
+    private async Task LoadListOptionsAsync(TicketClassificationModel model, Int64 selectedItem = 0)
+    {
+        try
+        {
+            bool isSelected = false;
+
+            var list = await _ticketClassificationService.GetTicketClassificationListAsync();
+
+            if (list != null)
+            {
+                var listModel = _mapper.Map<List<TicketClassificationListModel>>(list);
+
+                model.Reason01Options.Add(new SelectListItem
+                {
+                    Value = "0",
+                    Text = "Opções",
+                    Selected = isSelected
+                });
+
+                model.Reason02Options.Add(new SelectListItem
+                {
+                    Value = "0",
+                    Text = "Opções",
+                    Selected = isSelected
+                });
+
+                foreach (var item in listModel)
+                {
+                    isSelected = false;
+                    if (item.Id == selectedItem)
+                    {
+                        isSelected = true;
+                    }
+
+                    model.Reason01Options.Add(new SelectListItem
+                    {
+                        Value = item.Id.ToString(),
+                        Text = item.Name,
+                        Selected = isSelected
+                    });
+
+                    model.Reason02Options.Add(new SelectListItem
                     {
                         Value = item.Id.ToString(),
                         Text = item.Name,

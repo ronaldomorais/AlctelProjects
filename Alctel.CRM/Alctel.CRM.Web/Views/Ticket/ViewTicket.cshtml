@@ -292,116 +292,63 @@
 				</h5>
 			</div>
 
-			<div class="row smal mb-3">
-				<div class="col-sm-3">
-					@if (Model.ClassificationTree.ClassificationDemandOptions != null)
-					{
-						<label asp-for="@Model.ClassificationTree.ClassificationDemandId">Demanda:</label>
-						<div class="input-group input-group-sm mb-3">
-							<div>
-								<select class="ticket_init ticket_classification" asp-for="@Model.ClassificationTree.ClassificationDemandId"
-										asp-items="@Model.ClassificationTree.ClassificationDemandOptions">
-									<option>Opções</option>
-								</select>
-							</div>
-						</div>
-					}
-				</div>
 
-				<div class="col-sm-3">
-					<label asp-for="@Model.ClassificationTree.ClassificationDemandTypeId">Tipo:</label>
-					<div class="input-group input-group-sm mb-3">
-						<div>
-							<select class="ticket_init ticket_classification ticket_types" asp-for="@Model.ClassificationTree.ClassificationDemandTypeId" asp-items="@Model.ClassificationTree.ClassificationDemandTypeOptions">
-								<option>Opções</option>
-							</select>
-						</div>
-					</div>
-				</div>
+			<div class="row smal mb-3" style="margin:10px;">
+				<table id="ticketClassificationTableId" class="table table-striped table-sm"
+					   style="margin-top: 50px;background-color: #f2f2f2;">
+					<thead>
+						<tr style="color: #666666 !important; font-weight: bold;">
+							<th scope="col">Manifestação</th>
+							<th scope="col">Unidade</th>
+							<th scope="col">Serviço</th>
+							<th scope="col">Motivo 1</th>
+							<th scope="col">Motivo 2</th>
+						</tr>
+					</thead>
+					<tbody>
 
-				<div class="col-sm-2">
-					<div class="row">
-						<label asp-for="@Model.ClassificationTree.ClassificationReasonId">Motivo:</label>
-						<div class="input-group input-group-sm mb-3">
-							<div>
-								<select class="ticket_init ticket_classification ticket_reasons" asp-for="@Model.ClassificationTree.ClassificationReasonId" asp-items="@Model.ClassificationTree.ClassificationReasonOptions">
-									<option>Opções</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<label asp-for="@Model.ClassificationTree.ClassificationReasonListItemId">
-							Itens da
-							Lista:
-						</label>
-						<div class="input-group input-group-sm mb-3">
-							<div>
-								<select class="ticket_init ticket_classification ticket_reasons_listitem" asp-for="@Model.ClassificationTree.ClassificationReasonListItemId" asp-items="@Model.ClassificationTree.ClassificationReasonListItemOptions">
-									<option>Opções</option>
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
+						@if (Model.TicketClassification != null && Model.TicketClassification.Count > 0)
+						{
+							for (int c = 0; c < Model.TicketClassification.Count; c++)
+							{
+								<tr>
+									<td>
+										<input type="hidden" name="TicketClassification[@c].ManifestationTypeId" value="@Model.TicketClassification[@c].ManifestationTypeId" />
+										<input type="hidden" name="TicketClassification[@c].ManifestationTypeName" value="@Model.TicketClassification[@c].ManifestationTypeName" />
+										@Model.TicketClassification[@c].ManifestationTypeName
+									</td>
+									<td>
+										<input type="hidden" name="TicketClassification[@c].ServiceUnitId" value="@Model.TicketClassification[@c].ServiceUnitId" />
+										<input type="hidden" name="TicketClassification[@c].ServiceUnitName" value="@Model.TicketClassification[@c].ServiceUnitName" />
 
-				<div class="col-sm-2">
-					<div class="row">
-						<label asp-for="@Model.ClassificationTree.ClassificationSubmotive01Id">
-							SubMotivo
-							1:
-						</label>
-						<div class="input-group input-group-sm mb-3">
-							<div>
-								<select class="ticket_init ticket_classification ticket_submotive01" asp-for="@Model.ClassificationTree.ClassificationSubmotive01Id" asp-items="@Model.ClassificationTree.ClassificationSubmotive01Options">
-									<option>Opções</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<label asp-for="@Model.ClassificationTree.ClassificationSubmotive01ListItemId">
-							Itens da
-							Lista:
-						</label>
-						<div class="input-group input-group-sm mb-3">
-							<div>
-								<select class="ticket_init ticket_classification ticket_submotive01list" asp-for="@Model.ClassificationTree.ClassificationSubmotive01ListItemId" asp-items="@Model.ClassificationTree.ClassificationSubmotive01ListItemOptions">
-									<option>Opções</option>
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
+										@Model.TicketClassification[@c].ServiceUnitName
+									</td>
+									<td>
+										<input type="hidden" name="TicketClassification[@c].ServiceId" value="@Model.TicketClassification[@c].ServiceId" />
+										<input type="hidden" name="TicketClassification[@c].ServiceName" value="@Model.TicketClassification[@c].ServiceName" />
 
-				<div class="col-sm-2">
-					<div class="row">
-						<label asp-for="@Model.ClassificationTree.ClassificationSubmotive02Id">
-							SubMotivo
-							2:
-						</label>
-						<div class="input-group input-group-sm mb-3">
-							<div>
-								<select class="ticket_init ticket_classification ticket_submotive02" asp-for="@Model.ClassificationTree.ClassificationSubmotive02Id" asp-items="@Model.ClassificationTree.ClassificationSubmotive02Options">
-									<option>Opções</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<label asp-for="@Model.ClassificationTree.ClassificationSubmotive02ListItemId">
-							Itens da
-							Lista:
-						</label>
-						<div class="input-group input-group-sm mb-3">
-							<div>
-								<select class="ticket_init ticket_classification ticket_submotive02list" asp-for="@Model.ClassificationTree.ClassificationSubmotive02ListItemId" asp-items="@Model.ClassificationTree.ClassificationSubmotive02ListItemOptions">
-									<option>Opções</option>
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
+										@Model.TicketClassification[@c].ServiceName
+									</td>
+									<td>
+										<input type="hidden" name="TicketClassification[@c].Reason01Id" value="@Model.TicketClassification[@c].Reason01Id" />
+										<input type="hidden" name="TicketClassification[@c].Reason01ListName" value="@Model.TicketClassification[@c].Reason01ListName" />
+										<input type="hidden" name="TicketClassification[@c].Reason01ListId" value="@Model.TicketClassification[@c].Reason01ListId" />
+
+										@Model.TicketClassification[@c].Reason01Name
+									</td>
+									<td>
+										<input type="hidden" name="TicketClassification[@c].Reason02Id" value="@Model.TicketClassification[@c].Reason02Id" />
+										<input type="hidden" name="TicketClassification[@c].Reason02ListName" value="@Model.TicketClassification[@c].Reason02ListName" />
+										<input type="hidden" name="TicketClassification[@c].Reason02ListId" value="@Model.TicketClassification[@c].Reason02ListId" />
+
+										@Model.TicketClassification[@c].Reason02Name
+									</td>
+								</tr>
+							}
+						}
+
+					</tbody>
+				</table>
 			</div>
 
 			<div class="row smal mb-3">

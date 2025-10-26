@@ -177,6 +177,13 @@ var screenAutoSaveData = {
             const conversationid = screenAutoSaveData.Methods.GetConversationId();
             formData.append('ConversationId', conversationid);
 
+            //$('#ticketClassificationTableId tr').each(function () {
+            //    console.log('teste')
+            //    var secondCellValue = $(this).find('td').eq(1).text(); // eq(1) targets the second td (0-indexed)
+            //    console.log(secondCellValue);
+            //});
+
+
             //autoSaveData.ConversationId = conversationid;
             //autoSaveData.DemandTypeId = 0;
             //autoSaveData.TicketCriticalityId = 0;
@@ -227,6 +234,28 @@ var screenAutoSaveData = {
                 Array.from(attached_files).forEach(file => {
                     formData.append('Files', file, file.name);
                 });
+            }
+
+            let autoSaveTable = $('#autoSaveTable').val();
+
+            if (autoSaveTable !== '') {
+                console.log('TESTE', autoSaveTable);
+
+                //const ticketClassificationAutoSaveArray = JSON.parse(autoSaveTable);
+
+                //if (ticketClassificationAutoSaveArray.length > 0) {
+                //    Array.from(ticketClassificationAutoSaveArray).forEach(t => 
+                //    });
+                //}
+                //formData.append('TicketClassificationAutoSave', autoSaveTable);
+
+                const ticketClassificationAutoSaveArray = JSON.parse(autoSaveTable);
+
+                ticketClassificationAutoSaveArray.forEach((obj, index) => {
+                    formData.append(`TicketClassificationAutoSave[${index}]`, JSON.stringify(obj));
+                });
+
+                console.log(formData);
             }
 
             //console.log(formData.get("DemandTypeId"));

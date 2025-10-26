@@ -2,12 +2,34 @@
 	string? baseUrl = Context.Session.GetString("BaseUrl");
 
 	baseUrl = baseUrl == null ? string.Empty : baseUrl;
+
+	string? messageInfo = ViewBag.MessageInfo;
+	messageInfo = messageInfo ?? string.Empty;
 }
 
 @model Alctel.CRM.Web.Models.TicketClassificationModel;
 
 <div class="card">
 	<div class="card-header">
+
+		<div class="row">
+			@if (string.IsNullOrEmpty(messageInfo) == false)
+			{
+				@if (messageInfo.Contains("Erro:"))
+				{
+					<div class="alert alert-danger" role="alert">
+						@messageInfo
+					</div>
+				}
+				else
+				{
+					<div class="alert alert-success" role="alert">
+						@messageInfo
+					</div>
+				}
+
+			}
+		</div>
 
 		<div class="row">
 			<div class="col-sm-6">
@@ -92,10 +114,14 @@
 					<input class="standard-input" type="number" asp-for="@Model.SlaInDays" required />
 				</div>
 
+				<div id="alarmDivId" class="col-sm-3" style="display:none;">
+					<label asp-for="@Model.Alarm"></label>
+					<input class="standard-input" type="number" asp-for="@Model.Alarm" required />
+				</div>
 			</div>
 
 			<button id="btnSlaCreate" type="submit" class="btn btn-style" disabled="disabled">Salvar</button>
-			<a class="btn btn-style" href="@baseUrl/TicketClassification/Index">Criar</a>
+			<a class="btn btn-style" href="@baseUrl/SlaAlert/Index">Cancelar</a>
 		</form>
 	</div>
 

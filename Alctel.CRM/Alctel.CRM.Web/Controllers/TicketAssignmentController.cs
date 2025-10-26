@@ -55,6 +55,31 @@ public class TicketAssignmentController : Controller
                 model.Attachments = _mapper.Map<List<TicketAttachmentModel>>(attachments);
             }
 
+            var ticketClassificationResult = data.TicketClassificationResult;
+
+            if (ticketClassificationResult != null && ticketClassificationResult.Count > 0)
+            {
+                foreach (var item in ticketClassificationResult)
+                {
+                    TicketClassification ticketClassification = new TicketClassification();
+                    ticketClassification.ManifestationTypeName = item.ManifestationTypeName;
+                    ticketClassification.ServiceName = item.ServiceName;
+                    ticketClassification.ServiceUnitName = item.ServiceUnitItemName;
+
+                    if (item.Reasons != null && item.Reasons.Count > 0)
+                    {
+                        ticketClassification.Reason01Name = item.Reasons[0].ReasonName;
+                    }
+
+                    if (item.Reasons != null && item.Reasons.Count > 1)
+                    {
+                        ticketClassification.Reason02Name = item.Reasons[1].ReasonName;
+                    }
+
+                    model.TicketClassification.Add(ticketClassification);
+                }
+            }
+
             await LoadListOptions(model);
 
 

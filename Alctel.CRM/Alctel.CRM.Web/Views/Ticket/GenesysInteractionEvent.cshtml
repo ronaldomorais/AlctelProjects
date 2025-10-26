@@ -11,6 +11,9 @@
 	string? baseUrl = ViewBag.BaseUrl;
 
 	baseUrl = baseUrl == null ? string.Empty : baseUrl;
+
+	string? ticketClassificationJsonData = ViewBag.TicketClassificationJsonData;
+	ticketClassificationJsonData = ticketClassificationJsonData ?? string.Empty;
 }
 
 <div class="card">
@@ -305,6 +308,10 @@
 
 					</div>
 
+					<div>
+						<input id="autoSaveTable" type="hidden" value="@ticketClassificationJsonData" />
+					</div>
+
 					<div id="ticketClassificationDivId" class="row smal mb-3" style="margin:10px;">
 						<div id="ticketClassificationMessage" class="alert alert-warning" role="alert" style="display:none;">
 							Classificação máxima permitida 6
@@ -349,14 +356,14 @@
 												<input type="hidden" name="TicketClassification[@c].Reason01ListItemName" value="@Model.TicketClassification[@c].Reason01ListItemName" />
 												<input type="hidden" name="TicketClassification[@c].Reason01ListItemId" value="@Model.TicketClassification[@c].Reason01ListItemId" />
 
-												@Model.TicketClassification[@c].Reason01Name
+												@Model.TicketClassification[@c].Reason01ListItemName
 											</td>
 											<td>
 												<input type="hidden" name="TicketClassification[@c].Reason02Id" value="@Model.TicketClassification[@c].Reason02Id" />
 												<input type="hidden" name="TicketClassification[@c].Reason02ListItemName" value="@Model.TicketClassification[@c].Reason02ListName" />
 												<input type="hidden" name="TicketClassification[@c].Reason02ListItemId" value="@Model.TicketClassification[@c].Reason02ListItemId" />
 
-												@Model.TicketClassification[@c].Reason02Name
+												@Model.TicketClassification[@c].Reason02ListItemName
 											</td>
 										</tr>
 									}
