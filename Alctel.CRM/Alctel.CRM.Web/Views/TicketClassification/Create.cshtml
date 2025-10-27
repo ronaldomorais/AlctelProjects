@@ -90,6 +90,7 @@
 				<div id="reason02DivId" class="col-sm-3" style="display:none;">
 					<label asp-for="@Model.Reason02Id"></label>
 					<input type="hidden" asp-for="@Model.Reason02Name" />
+					<input type="hidden" asp-for="@Model.Reason02ListIdParent" />
 					<select asp-for="@Model.Reason02Id" asp-items="@Model.Reason02Options" onchange="ticketClassificationConfig.Events.OnReason02Changed();">
 					</select>
 				</div>

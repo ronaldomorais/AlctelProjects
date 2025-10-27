@@ -161,10 +161,12 @@
 						</div>
 					</div>
  *@
-					<div class="col-sm-4">
+					<div class="col-sm-4" style="display:none;">
 						<label asp-for="@Model.TicketCriticalityId"></label>
 						<div class="input-group input-group-sm mb-3 @div_class_readonly">
 							<div>
+@* 								<input class="standard-input" type="date" asp-for="@Model.TicketCriticalityId"
+									   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" /> *@
 								<select class="ticket_init" asp-for="@Model.TicketCriticalityId"
 										asp-items="@Model.TicketCriticalityOptions" onchange="ticketClassification.Events.OnTicketCriticalityChanged()">
 								</select>

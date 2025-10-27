@@ -190,9 +190,28 @@
 					<label asp-for="@Model.TicketCriticalityId"></label>
 					<div class="input-group input-group-sm mb-3">
 						<div>
-							<select class="ticket_init" asp-for="@Model.TicketCriticalityId"
+							@if (Model.TicketCriticalityId == 1)
+							{
+								<input class="standard-input" type="text" asp-for="@Model.TicketCriticality"
+									   aria-describedby="basic-addon2" readonly style="background-color:lawngreen" />
+							}
+							
+							@if (Model.TicketCriticalityId == 2)
+							{
+								<input class="standard-input" type="text" asp-for="@Model.TicketCriticality"
+									   aria-describedby="basic-addon2" readonly style="background-color:yellow" />
+							}
+
+							@if (Model.TicketCriticalityId == 3)
+							{
+								<input class="standard-input" type="text" asp-for="@Model.TicketCriticality"
+									   aria-describedby="basic-addon2" readonly style="background-color:red" />
+							}
+
+
+@* 							<select class="ticket_init" asp-for="@Model.TicketCriticalityId"
 									asp-items="@Model.TicketCriticalityOptions" onchange="ticketClassification.Events.OnTicketCriticalityChanged()">
-							</select>
+							</select> *@
 						</div>
 					</div>
 				</div>
@@ -364,14 +383,14 @@
 											<input type="hidden" name="TicketClassification[@c].Reason01ListName" value="@Model.TicketClassification[@c].Reason01ListName" />
 											<input type="hidden" name="TicketClassification[@c].Reason01ListId" value="@Model.TicketClassification[@c].Reason01ListId" />
 
-											@Model.TicketClassification[@c].Reason01ListName
+											@Model.TicketClassification[@c].Reason01ListItemName
 										</td>
 										<td>
 											<input type="hidden" name="TicketClassification[@c].Reason02Id" value="@Model.TicketClassification[@c].Reason02Id" />
 											<input type="hidden" name="TicketClassification[@c].Reason02ListName" value="@Model.TicketClassification[@c].Reason02ListName" />
 											<input type="hidden" name="TicketClassification[@c].Reason02ListId" value="@Model.TicketClassification[@c].Reason02ListId" />
 
-											@Model.TicketClassification[@c].Reason02ListName
+											@Model.TicketClassification[@c].Reason02ListItemName
 										</td>
 									</tr>
 								}

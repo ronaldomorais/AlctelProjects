@@ -18,6 +18,12 @@ public class TicketClassficationListAPI
     [JsonProperty("servico")]
     public string? ServiceName { get; set; }
 
+    [JsonProperty("idservico")]
+    public string? ServiceId { get; set; }
+
+    [JsonProperty("status")]
+    public bool Active { get; set; }
+
     [JsonProperty("motivoCompleto")]
     public string? Reasons { get; set; }
 }

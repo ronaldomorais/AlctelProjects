@@ -8,5 +8,9 @@ public class TicketClassficationListModel
 
     public string? ServiceName { get; set; }
 
+    public Int64 ServiceId { get; set; }
+
     public string? Reasons { get; set; }
+
+    public bool Active { get; set; }
 }

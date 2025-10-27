@@ -347,7 +347,7 @@ public class TicketClassificationController : Controller
                 classificationReasonModel.ticketReason.Add(new TicketReasonCreateModel
                 {
                     Status = true,
-                    ParentId = null,
+                    ParentId = model.Reason02ListIdParent,
                     //ListId = model.Reason02ListId,
                     //ReasonName = model.Reason02ListName
                     ListId = model.Reason02Id,
@@ -729,7 +729,8 @@ public class TicketClassificationController : Controller
 
             if (list != null)
             {
-                return new JsonResult(list);
+                var activelist = list.Where(_ => _.Active).ToList();
+                return new JsonResult(activelist);
             }
         }
         catch (Exception ex)
@@ -822,6 +823,24 @@ public class TicketClassificationController : Controller
         { }
 
         return View();
+    }
+
+    public async Task<JsonResult> UpdateTicketClassification(Int64 serviceId, bool active)
+    {
+        try
+        {
+            var ticketClassificationUpdate = new TicketClassificationUpdateAPI();
+            ticketClassificationUpdate.ServiceId = serviceId;
+            ticketClassificationUpdate.Active = active;
+
+            var list = await _ticketClassificationService.UpdateTicketClassificationAsync(ticketClassificationUpdate);
+
+            return new JsonResult(list);
+        }
+        catch (Exception ex)
+        { }
+
+        return new JsonResult(null);
     }
 
     private bool IsAuthenticated()

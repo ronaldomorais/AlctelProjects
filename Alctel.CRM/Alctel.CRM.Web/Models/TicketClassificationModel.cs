@@ -50,6 +50,7 @@ public class TicketClassificationModel
     [DisplayName("Motivo 2")]
     public Int64? Reason02ListItemId { get; set; }
     public string? Reason02ListItemName { get; set; }
+    public Int64? Reason02ListIdParent { get; set; }
 
     [DisplayName("Criticidade")]
     public Int64 CriticalityId { get; set; }

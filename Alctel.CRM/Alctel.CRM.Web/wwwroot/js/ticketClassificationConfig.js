@@ -88,17 +88,19 @@ var ticketClassificationConfig = {
         },
 
         OnReason01Changed: function () {
-            var selectedValue = $('#Reason01Id').val();
+            var reasonListId = $('#Reason01Id').val();
 
             $('#Reason02Id').val("0");
             $('#Reason02Name').val("Opções");
             
-            if (selectedValue !== '0') {
+            if (reasonListId !== '0') {
                 const reason01Name = $('#Reason01Id option:selected').text();
                 $('#Reason01Name').val(reason01Name);
 
+                $('#Reason02ListIdParent').val(reasonListId);
+
                 $('#reason02DivId').show();
-                //$.get(`${origin_url}/TicketClassification/GetTicketClassificationReasonSonList/?id=${selectedValue}`, function (data, success) {
+                //$.get(`${origin_url}/TicketClassification/GetTicketClassificationReasonSonList/?id=${reasonListId}`, function (data, success) {
 
                 //    if (success === 'success') {
                 //        if (data !== null) {
@@ -147,5 +149,31 @@ var ticketClassificationConfig = {
             //    $('#serviceDivId').hide();
             //}
         },
+
+        OnServiceCheckChanged: function (serviceid, id) {
+            console.log('OnServiceCheckChanged', serviceid, id);
+
+            const checked = $(`#${id}`).is(':checked');
+            console.log(checked);
+
+            $.get(`${origin_url}/TicketClassification/UpdateTicketClassification/?serviceId=${serviceid}&active=${checked}`, function (data, success) {
+
+                if (success === 'success') {
+                    if (data !== null) {
+
+                        console.log(data);
+
+                        if (data > 0) {
+                            $('#messageSuccess').show();
+                        }
+                        else {
+                            $('#messageError').show();
+                        }
+                    }
+                }
+            });
+            
+        },
+
     }
 }

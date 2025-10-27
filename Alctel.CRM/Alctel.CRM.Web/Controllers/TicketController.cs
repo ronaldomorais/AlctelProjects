@@ -231,12 +231,14 @@ public class TicketController : Controller
 
                     if (item.Reasons != null && item.Reasons.Count > 0)
                     {
-                        ticketClassification.Reason01Name = item.Reasons[0].ReasonName;
+                        //ticketClassification.Reason01Name = item.Reasons[0].ReasonName;
+                        ticketClassification.Reason01ListItemName = item.Reasons[0].ReasonName;
                     }
 
                     if (item.Reasons != null && item.Reasons.Count > 1)
                     {
-                        ticketClassification.Reason02Name = item.Reasons[1].ReasonName;
+                        //ticketClassification.Reason02Name = item.Reasons[1].ReasonName;
+                        ticketClassification.Reason02ListItemName = item.Reasons[1].ReasonName;
                     }
 
                     model.TicketClassification.Add(ticketClassification);
@@ -269,26 +271,28 @@ public class TicketController : Controller
             DateTime now = DateTime.Now;
             int days = await _slaService.GetBusinessDays(model.ProtocolDate, now);
 
-            DateTime protocolDateSla = model.ProtocolDate.AddDays(days);
-            TimeSpan timeSpan = now - protocolDateSla;
-            double totalDays = timeSpan.TotalDays;
-
-            if (totalDays < 0)
+            if (days > 0)
             {
-                days--;
-            }
+                DateTime protocolDateSla = model.ProtocolDate.AddDays(days);
+                TimeSpan timeSpan = now - protocolDateSla;
+                double totalDays = timeSpan.TotalDays;
 
-            model.Sla = days;
+                if (totalDays < 0)
+                {
+                    days--;
+                }
 
-            if ((model.SlaSystemRole - model.Sla) <= 1)
-            {
-                ViewBag.SLAColor = "#FF0000";
-            }
-            else
-            {
-                ViewBag.SLAColor = "#FFFFFF";
-            }
+                model.Sla = days;
 
+                if ((model.SlaSystemRole - model.Sla) <= 1)
+                {
+                    ViewBag.SLAColor = "#FF0000";
+                }
+                else
+                {
+                    ViewBag.SLAColor = "#FFFFFF";
+                }
+            }
             return View(model);
         }
 
@@ -876,6 +880,7 @@ public class TicketController : Controller
             ticketModel.AnySolution = ongoingInteraction.AutoSaveData.AnySolution;
             ticketModel.DemandObservation = ongoingInteraction.AutoSaveData.DemandObservation ?? string.Empty;
             ticketModel.ParentTicket = ongoingInteraction.AutoSaveData.ParentTicket;
+            ticketModel.TicketCriticalityId = 1;
 
             if (ongoingInteraction.AutoSaveData.TicketClassification != null && ongoingInteraction.AutoSaveData.TicketClassification.Count > 0)
             {
@@ -1966,6 +1971,32 @@ public class TicketController : Controller
             model.TicketDataToCompareIfChanged.DemandTypeId = model.DemandTypeId;
             model.TicketDataToCompareIfChanged.DemandType = model.DemandType;
 
+
+            var ticketClassificationResult = data.TicketClassificationResult;
+
+            if (ticketClassificationResult != null && ticketClassificationResult.Count > 0)
+            {
+                foreach (var item in ticketClassificationResult)
+                {
+                    TicketClassification ticketClassification = new TicketClassification();
+                    ticketClassification.ManifestationTypeName = item.ManifestationTypeName;
+                    ticketClassification.ServiceName = item.ServiceName;
+                    ticketClassification.ServiceUnitName = item.ServiceUnitItemName;
+
+                    if (item.Reasons != null && item.Reasons.Count > 0)
+                    {
+                        ticketClassification.Reason01Name = item.Reasons[0].ReasonName;
+                    }
+
+                    if (item.Reasons != null && item.Reasons.Count > 1)
+                    {
+                        ticketClassification.Reason02Name = item.Reasons[1].ReasonName;
+                    }
+
+                    model.TicketClassification.Add(ticketClassification);
+                }
+            }
+
             return PartialView("~/Views/Ticket/_Journey.cshtml", model);
         }
 
@@ -2527,7 +2558,17 @@ public class TicketController : Controller
 
         try
         {
-            int lastpage = ((int)(totalitems / sizepage));
+            int lastpage;
+
+            if ((totalitems % sizepage)  == 0)
+            {
+                lastpage = ((int)(totalitems / sizepage));
+            }
+            else
+            {
+                lastpage = ((int)(totalitems / sizepage)) + 1;
+            }
+
             ViewBag.PreviousPage = (currentpage - 1) == 0 ? 1 : currentpage - 1;
             ViewBag.NextPage = (currentpage + 1) > lastpage ? lastpage : currentpage + 1;
             ViewBag.FirstPage = 1;

@@ -90,6 +90,45 @@ public class TicketClassificationListController : Controller
         return RedirectToAction("Index");
     }
 
+    public async Task<IActionResult> Search(string searchlistType, string searchlistText)
+    {
+        if (IsAuthenticated() == false)
+        {
+            return RedirectToAction("Create", "Login");
+        }
+
+        try
+        {
+            if (searchlistType.Contains("Tipo Filtro") || searchlistText == string.Empty)
+            {
+                ViewBag.AlertFilter = "SHOW";
+
+                var alllists = await _ticketClassificationService.GetTicketClassificationListAsync();
+
+                if (alllists != null && alllists.Any())
+                {
+                    var listsModel = _mapper.Map<List<TicketClassificationListModel>>(alllists);
+                    return View(listsModel);
+                }
+            }
+
+
+            //var users = await _userService.GetAllUserAsync();
+            var list = await _ticketClassificationService.SearchTicketClassificationListAsync(searchlistType, searchlistText);
+
+            if (list != null && list.Any())
+            {
+                var customersModel = _mapper.Map<List<TicketClassificationListModel>>(list);
+                return View(customersModel);
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+        }
+        return View();
+    }
 
     private bool IsAuthenticated()
     {

@@ -590,4 +590,60 @@ public class TicketClassificationAPIRepository : ITicketClassificationAPIReposit
 
         return apiResponse;
     }
+
+    public async Task<APIResponse<List<TicketClassificationListAPI>>> SearchTicketClassificationListAPIAsync(string searchlistType, string searchlistText)
+    {
+        APIResponse<List<TicketClassificationListAPI>> apiResponse = new APIResponse<List<TicketClassificationListAPI>>();
+        try
+        {
+            var url = _configuration.GetSection("MiddlewareTicketControl:url").Value;
+            var username = _configuration.GetSection("MiddlewareTicketControl:username").Value;
+            var password = _configuration.GetSection("MiddlewareTicketControl:password").Value;
+            var path = _configuration.GetSection("MiddlewareTicketControl:paths:ticketclassificationlistsearch").Value;
+
+            ApiContext<List<TicketClassificationListAPI>> apiContext = new ApiContext<List<TicketClassificationListAPI>>();
+
+            if (url != null && username != null && password != null)
+            {
+                apiResponse = await apiContext.PostBasicAuthAPIAsync(url, username, password, path, JsonConvert.SerializeObject(searchlistText));
+            }
+        }
+        catch (Exception ex)
+        {
+            apiResponse.IsSuccessStatusCode = false;
+            apiResponse.AdditionalMessage = ex.Message;
+            apiResponse.StatusCode = System.Net.HttpStatusCode.InternalServerError;
+        }
+
+        return apiResponse;
+    }
+
+    public async Task<APIResponse<int>> UpdateTicketClassificationAPIAsync(TicketClassificationUpdateAPI data)
+    {
+        APIResponse<int> apiResponse = new APIResponse<int>();
+        try
+        {
+            var url = _configuration.GetSection("MiddlewareTicketControl:url").Value;
+            var username = _configuration.GetSection("MiddlewareTicketControl:username").Value;
+            var password = _configuration.GetSection("MiddlewareTicketControl:password").Value;
+            var path = _configuration.GetSection("MiddlewareTicketControl:paths:ticketclassificationupdate").Value;
+
+            ApiContext<int> apiContext = new ApiContext<int>();
+
+            var json = JsonConvert.SerializeObject(data);
+
+            if (url != null && username != null && password != null)
+            {
+                apiResponse = await apiContext.PostBasicAuthAPIAsync(url, username, password, path, json);
+            }
+        }
+        catch (Exception ex)
+        {
+            apiResponse.IsSuccessStatusCode = false;
+            apiResponse.AdditionalMessage = ex.Message;
+            apiResponse.StatusCode = System.Net.HttpStatusCode.InternalServerError;
+        }
+
+        return apiResponse;
+    }
 }

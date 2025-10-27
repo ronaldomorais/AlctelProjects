@@ -387,10 +387,12 @@ public class TicketClassificationService : ITicketClassificationService
             if (apiResponse.IsSuccessStatusCode)
             {
                 responseServiceModel.Value = apiResponse.Response ?? string.Empty;
+                responseServiceModel.IsValid = true;
             }
             else
             {
                 string additionalMessage = apiResponse.AdditionalMessage ?? string.Empty;
+                responseServiceModel.IsValid = false;
 
                 if (additionalMessage.Contains("uq_classificacao_servico_manifestacao_programa_nome"))
                 {
@@ -474,5 +476,47 @@ public class TicketClassificationService : ITicketClassificationService
         }
 
         return new List<TicketClassificationUnitAPI>();
+    }
+
+    public async Task<List<TicketClassificationListAPI>> SearchTicketClassificationListAsync(string searchlistType, string searchlistText)
+    {
+        try
+        {
+            var apiResponse = await _ticketClassificationAPIRepository.SearchTicketClassificationListAPIAsync(searchlistType, searchlistText);
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                if (apiResponse.Response != null)
+                {
+                    return apiResponse.Response;
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return new List<TicketClassificationListAPI>();
+    }
+
+    public async Task<int> UpdateTicketClassificationAsync(TicketClassificationUpdateAPI data)
+    {
+        try
+        {
+            var apiResponse = await _ticketClassificationAPIRepository.UpdateTicketClassificationAPIAsync(data);
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                return apiResponse.Response;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return -1;
     }
 }

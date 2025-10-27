@@ -9,6 +9,15 @@
 	<div class="card-header">
 
 		<div class="row">
+			<div id="messageError" class="alert alert-danger" role="alert" style="display:none;">
+				Serviço Não Atualizado!
+			</div>
+			<div id="messageSuccess" class="alert alert-success" role="alert" style="display:none;">
+				Serviço Atualizado!
+			</div>
+		</div>
+
+		<div class="row">
 			<div class="col-sm-6">
 
 				<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
@@ -34,6 +43,7 @@
 							<th scope="col">Serviço</th>
 							<th scope="col">Programa</th>
 							<th scope="col">Motivos</th>
+							<th scope="col">Ativado/Desativado</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -48,6 +58,27 @@
 									<td>@item.ServiceName</td>
 									<td>@item.ProgramName</td>
 									<td>@item.Reasons</td>
+									<td>
+										@if (item.Active)
+										{
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" value="" id="serviceid_@itemcounter" checked onchange="ticketClassificationConfig.Events.OnServiceCheckChanged('@item.ServiceId', 'serviceid_@itemcounter');">
+@* 												<label class="form-check-label" for="flexCheckChecked">
+													Checked checkbox
+												</label> *@
+											</div>
+										}
+										else
+										{
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" value="" id="serviceid_@itemcounter"  onchange="ticketClassificationConfig.Events.OnServiceCheckChanged('@item.ServiceId', 'serviceid_@itemcounter');">
+												@* 												<label class="form-check-label" for="flexCheckChecked">
+													Checked checkbox
+												</label> *@
+											</div>
+										}
+
+									</td>
 								</tr>
 
 								{ itemcounter = itemcounter + 1; }
@@ -63,3 +94,6 @@
 </div>
 
 
+@section Scripts {
+	<script src="~/js/ticketClassificationConfig.js"></script>
+}

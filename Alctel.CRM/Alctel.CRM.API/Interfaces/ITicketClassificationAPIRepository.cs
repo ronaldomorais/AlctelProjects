@@ -29,4 +29,6 @@ public interface ITicketClassificationAPIRepository
     Task<APIResponse<int>> InsertTicketClassificationAPIAsync(TicketClassificationAPI data);
     Task<APIResponse<List<TicketClassficationListAPI>>> GetTicketClassificationByManifestationAPIAsync(Int64 id);
     Task<APIResponse<List<TicketClassificationUnitAPI>>> GetTicketClassificationUnitListAPIAsync(string data);
+    Task<APIResponse<List<TicketClassificationListAPI>>> SearchTicketClassificationListAPIAsync(string searchlistType, string searchlistText);
+    Task<APIResponse<int>> UpdateTicketClassificationAPIAsync(TicketClassificationUpdateAPI data);
 }
