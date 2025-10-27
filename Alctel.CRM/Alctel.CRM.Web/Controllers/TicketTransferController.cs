@@ -121,7 +121,7 @@ public class TicketTransferController : Controller
                 logController.Id = model.TicketId;
                 logController.Module = MODULE_NAME;
                 logController.Section = username == null ? string.Empty : username;
-                logController.Field = "Queue GT";
+                logController.Field = "Nível de Atendimento";
                 logController.Value = model.QueueGT ?? string.Empty;
                 logController.UserId = useridSession != null ? Int64.Parse(useridSession) : 0;
                 logController.Action = "Transferência";

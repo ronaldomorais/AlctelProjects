@@ -740,6 +740,39 @@ public class TicketController : Controller
             //model.TicketInTransfering = await _ticketTransferService.IsTicketInTransferQueueAsync(protocolo);
             model.TicketInTransfering = model.UserId == null ? true : false;
             model.User = model.UserId.ToString();
+
+            var data = await _ticketService.GetTicketAPIAsync(ticket.Id);
+
+            if (data != null)
+            {
+                var ticketClassificationResult = data.TicketClassificationResult;
+
+                if (ticketClassificationResult != null && ticketClassificationResult.Count > 0)
+                {
+                    foreach (var item in ticketClassificationResult)
+                    {
+                        TicketClassification ticketClassification = new TicketClassification();
+                        ticketClassification.ManifestationTypeName = item.ManifestationTypeName;
+                        ticketClassification.ServiceName = item.ServiceName;
+                        ticketClassification.ServiceUnitName = item.ServiceUnitItemName;
+
+                        if (item.Reasons != null && item.Reasons.Count > 0)
+                        {
+                            //ticketClassification.Reason01Name = item.Reasons[0].ReasonName;
+                            ticketClassification.Reason01ListItemName = item.Reasons[0].ReasonName;
+                        }
+
+                        if (item.Reasons != null && item.Reasons.Count > 1)
+                        {
+                            //ticketClassification.Reason02Name = item.Reasons[1].ReasonName;
+                            ticketClassification.Reason02ListItemName = item.Reasons[1].ReasonName;
+                        }
+
+                        model.TicketClassification.Add(ticketClassification);
+                    }
+                }
+            }
+
             ViewBag.TicketMessage = "Aviso: Protocolo já processado";
             await LoadListOptions(model, profileSession);
             return View(model);

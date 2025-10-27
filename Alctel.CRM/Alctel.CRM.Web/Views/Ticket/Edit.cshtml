@@ -207,7 +207,7 @@
 								<input class="standard-input" type="text" asp-for="@Model.TicketCriticality"
 									   aria-describedby="basic-addon2" readonly style="background-color:red" />
 							}
-
+							<input type="hidden" asp-for="@Model.TicketCriticalityId" />
 
 @* 							<select class="ticket_init" asp-for="@Model.TicketCriticalityId"
 									asp-items="@Model.TicketCriticalityOptions" onchange="ticketClassification.Events.OnTicketCriticalityChanged()">

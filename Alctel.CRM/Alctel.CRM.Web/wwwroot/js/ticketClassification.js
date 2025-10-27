@@ -264,15 +264,15 @@ var ticketClassification = {
 
             const manifestationid = $('#ManifestationTypeId').val();
             const serviceId = $('#ServiceId').val();
-            const reason01ListId = $('#Reason01ListId').val();
-            //const reason01ListId = $('#Reason01Id').val();
+            //const reason01ListId = $('#Reason01ListId').val();
+            const reason01ListId = $('#Reason01Id').val();
 
             if (selectedValue != "0") {
                 $.get(`${origin_url}/TicketClassification/GetTicketClassificationReasonListItems/?manifestationid=${manifestationid}&serviceid=${serviceId}&parentId=${reason01ListId}`, function (data, success) {
 
                     if (success === 'success') {
                         if (data !== null && data.length > 0) {
-                            
+                            console.log('Carregar Reason 2', data);
                             $('#Reason02ListItemId').append(
                                 $('<option>', {
                                     value: '',
@@ -282,10 +282,11 @@ var ticketClassification = {
 
                             if (data.length > 0) {
                                 $.each(data, function (index, value) {
+                                    console.log(value);
                                     $('#Reason02ListItemId').append(
                                         $('<option>', {
                                             value: value.listItemId,
-                                            text: value.Name,
+                                            text: value.listItemName,
                                         })
                                     )
                                 })

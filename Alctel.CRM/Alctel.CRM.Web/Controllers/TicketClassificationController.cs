@@ -332,15 +332,19 @@ public class TicketClassificationController : Controller
             classificationReasonModel.ProgramId = model.ProgramId;
             classificationReasonModel.ManifestationTypeId = model.ManifestationTypeId;
 
-            classificationReasonModel.ticketReason.Add(new TicketReasonCreateModel
+
+            if (model.Reason01Id != 0)
             {
-                Status = true,
-                ParentId = null,
-                //ListId = model.Reason01ListId,
-                //ReasonName = model.Reason01ListName
-                ListId = model.Reason01Id,
-                ReasonName = model.Reason01Name
-            });
+                classificationReasonModel.ticketReason.Add(new TicketReasonCreateModel
+                {
+                    Status = true,
+                    ParentId = null,
+                    //ListId = model.Reason01ListId,
+                    //ReasonName = model.Reason01ListName
+                    ListId = model.Reason01Id,
+                    ReasonName = model.Reason01Name
+                });
+            }
 
             if (model.Reason02Id != 0)
             {
