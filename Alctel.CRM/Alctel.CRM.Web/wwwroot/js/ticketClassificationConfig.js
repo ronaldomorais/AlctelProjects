@@ -163,11 +163,19 @@ var ticketClassificationConfig = {
 
                         console.log(data);
 
-                        if (data > 0) {
+                        if (data.isValid) {
                             $('#messageSuccess').show();
+                            setTimeout(() => {
+                                $('#messageSuccess').hide();
+                            }, 5000);
                         }
                         else {
+                            $('#messageError').text(data.value);
                             $('#messageError').show();
+                            $(`#${id}`).prop("checked", false);
+                            setTimeout(() => {
+                                $('#messageError').hide();
+                            }, 5000);
                         }
                     }
                 }

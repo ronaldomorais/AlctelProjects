@@ -1935,9 +1935,10 @@ var urlManager = {
         CheckOnInteractionAlertInfo: function (username, conversationid) {
 
             if (checkOnInteractionAlertInfoTimer === undefined) {
-                checkOnInteractionAlertInfoTimer = setInterval(() => {
-                    const username_timer = username;
-                    const conversationid_timer = conversationid;
+                const username_timer = username;
+                const conversationid_timer = conversationid;
+
+                checkOnInteractionAlertInfoTimer = setInterval(function () {
 
                     console.log('Conversation_Id', conversationid_timer);
                     if ($('#OnInteractionAlert').is(":hidden")) {

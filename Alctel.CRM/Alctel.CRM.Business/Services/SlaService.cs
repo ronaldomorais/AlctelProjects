@@ -133,4 +133,47 @@ public class SlaService : ISlaService
 
         return -1;
     }
+
+    public async Task<SlaTicketConfigAPI?> GetSlaTicketConfigAsync(Int64 id)
+    {
+        try
+        {
+            var apiResponse = await _slaAPIRepository.GetSlaTicketConfigAPIAsync(id);
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                if (apiResponse.Response != null && apiResponse.Response.Count > 0)
+                {
+                    return apiResponse.Response.FirstOrDefault();
+                }
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return new SlaTicketConfigAPI();
+    }
+
+    public async Task<int> UpdateSlaTicketConfigAsync(SlaTicketConfigAPI data)
+    {
+        try
+        {
+            var apiResponse = await _slaAPIRepository.UpdateSlaTicketConfigAPIAsync(data);
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                return apiResponse.Response;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return -1;
+    }
 }

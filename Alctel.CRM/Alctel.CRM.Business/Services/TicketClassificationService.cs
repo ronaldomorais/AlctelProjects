@@ -501,15 +501,21 @@ public class TicketClassificationService : ITicketClassificationService
         return new List<TicketClassificationListAPI>();
     }
 
-    public async Task<int> UpdateTicketClassificationAsync(TicketClassificationUpdateAPI data)
+    public async Task<ResponseServiceModel> UpdateTicketClassificationAsync(TicketClassificationUpdateAPI data)
     {
+        var responseService = new ResponseServiceModel();
         try
         {
             var apiResponse = await _ticketClassificationAPIRepository.UpdateTicketClassificationAPIAsync(data);
+            responseService.IsValid = apiResponse.IsSuccessStatusCode;
 
             if (apiResponse.IsSuccessStatusCode)
             {
-                return apiResponse.Response;
+                responseService.Value = apiResponse.Response ?? string.Empty;
+            }
+            else
+            {
+                responseService.Value = apiResponse.AdditionalMessage;
             }
         }
         catch (Exception ex)
@@ -517,6 +523,6 @@ public class TicketClassificationService : ITicketClassificationService
             Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
         }
 
-        return -1;
+        return responseService;
     }
 }

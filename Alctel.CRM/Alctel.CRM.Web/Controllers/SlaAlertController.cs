@@ -96,7 +96,7 @@ public class SlaAlertController : Controller
                 ViewBag.MessageInfo = ret.Value;
             }
         }
-        catch (Exception ex) 
+        catch (Exception ex)
         { }
 
         await LoadManifestationTypeOptions(model);
@@ -114,7 +114,60 @@ public class SlaAlertController : Controller
     [HttpGet]
     public async Task<IActionResult> Edit(int id)
     {
+        try
+        {
+            var data = await _slaService.GetSlaTicketConfigAsync(id);
+
+            if (data != null)
+            {
+                TicketClassificationModel ticketClassificationModel = new TicketClassificationModel();
+                ticketClassificationModel.SlaTicketId = data.SlaTicketId;
+                ticketClassificationModel.ManifestationTypeName = data.ManifestationTypeName;
+                ticketClassificationModel.ServiceName = data.ServiceName;
+                ticketClassificationModel.CriticalityIdName = data.Criticality;
+                ticketClassificationModel.CriticalityId = string.IsNullOrEmpty(data.CriticalityId) ? 0 : Int64.Parse(data.CriticalityId);
+                ticketClassificationModel.SlaInDays = string.IsNullOrEmpty(data.Sla) ? 0 : int.Parse(data.Sla);
+                ticketClassificationModel.Alarm = string.IsNullOrEmpty(data.Alarm) ? 0 : int.Parse(data.Alarm);
+                ticketClassificationModel.Reason01Name = data.Reasons;
+
+                //await LoadManifestationTypeOptions(ticketClassificationModel);
+                await LoadCriticityOptionsAsync(ticketClassificationModel);
+
+                return View(ticketClassificationModel);
+            }
+        }
+        catch (Exception ex)
+        { }
         return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Edit([FromForm] TicketClassificationModel model)
+    {
+        try
+        {
+            var data = new SlaTicketConfigAPI();
+            data.SlaTicketId = model.SlaTicketId;
+            data.CriticalityId = model.CriticalityId.ToString();
+            data.Sla = model.SlaInDays.ToString();
+            data.Alarm = model.Alarm.ToString();
+
+            int ret = await _slaService.UpdateSlaTicketConfigAsync(data);
+
+            if (ret > 0)
+            {
+                ViewBag.MessageInfo = "SLA Atualizado com Sucesso.";
+            }
+            else
+            {
+                ViewBag.MessageInfo = "Erro Atualizando SLA";
+            }
+        }
+        catch (Exception ex)
+        { }
+
+        await LoadCriticityOptionsAsync(model);
+        return View(model);
     }
 
     [HttpGet]

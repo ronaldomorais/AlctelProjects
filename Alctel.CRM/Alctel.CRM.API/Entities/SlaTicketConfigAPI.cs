@@ -29,4 +29,7 @@ public class SlaTicketConfigAPI
 
     [JsonProperty("alarme")]
     public string? Alarm{ get; set; }
+
+    [JsonProperty("idCriticidade")]
+    public string? CriticalityId { get; set; }
 }

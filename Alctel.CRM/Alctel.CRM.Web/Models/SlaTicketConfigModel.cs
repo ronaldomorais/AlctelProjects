@@ -9,6 +9,7 @@ public class SlaTicketConfigModel
     public string? ServiceName { get; set; }
 
     public string? Criticality { get; set; }
+    public string? CriticalityId { get; set; }
 
     public string? Reasons { get; set; }
 

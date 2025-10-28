@@ -170,4 +170,66 @@ public class SlaAPIRepository : ISlaAPIRepository
 
         return apiResponse;
     }
+
+    public async Task<APIResponse<List<SlaTicketConfigAPI>>> GetSlaTicketConfigAPIAsync(Int64 id)
+    {
+        APIResponse<List<SlaTicketConfigAPI>> apiResponse = new APIResponse<List<SlaTicketConfigAPI>>();
+        try
+        {
+            var url = _configuration.GetSection("MiddlewareTicketControl:url").Value;
+            var username = _configuration.GetSection("MiddlewareTicketControl:username").Value;
+            var password = _configuration.GetSection("MiddlewareTicketControl:password").Value;
+            var path = _configuration.GetSection("MiddlewareTicketControl:paths:slaticketconfigid").Value;
+
+            ApiContext<List<SlaTicketConfigAPI>> apiContext = new ApiContext<List<SlaTicketConfigAPI>>();
+
+            if (url != null && username != null && password != null)
+            {
+                apiResponse = await apiContext.PostBasicAuthAPIAsync(url, username, password, path, id.ToString());
+            }
+        }
+        catch (Exception ex)
+        {
+            apiResponse.IsSuccessStatusCode = false;
+            apiResponse.AdditionalMessage = ex.Message;
+            apiResponse.StatusCode = System.Net.HttpStatusCode.InternalServerError;
+        }
+
+        return apiResponse;
+    }
+
+    public async Task<APIResponse<int>> UpdateSlaTicketConfigAPIAsync(SlaTicketConfigAPI data)
+    {
+        APIResponse<int> apiResponse = new APIResponse<int>();
+        try
+        {
+            var url = _configuration.GetSection("MiddlewareTicketControl:url").Value;
+            var username = _configuration.GetSection("MiddlewareTicketControl:username").Value;
+            var password = _configuration.GetSection("MiddlewareTicketControl:password").Value;
+            var path = _configuration.GetSection("MiddlewareTicketControl:paths:stlaticketconfigupdate").Value;
+
+            ApiContext<int> apiContext = new ApiContext<int>();
+
+            dynamic obj = new ExpandoObject();
+            obj.idChamadoSla = data.SlaTicketId;
+            obj.idCriticidade = data.CriticalityId;
+            obj.sla = data.Sla;
+            obj.alarme = data.Alarm;
+
+            var json = JsonConvert.SerializeObject(obj);
+
+            if (url != null && username != null && password != null)
+            {
+                apiResponse = await apiContext.PostBasicAuthAPIAsync(url, username, password, path, json);
+            }
+        }
+        catch (Exception ex)
+        {
+            apiResponse.IsSuccessStatusCode = false;
+            apiResponse.AdditionalMessage = ex.Message;
+            apiResponse.StatusCode = System.Net.HttpStatusCode.InternalServerError;
+        }
+
+        return apiResponse;
+    }
 }

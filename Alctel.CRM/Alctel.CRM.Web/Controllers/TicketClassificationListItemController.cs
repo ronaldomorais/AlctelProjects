@@ -22,7 +22,7 @@ public class TicketClassificationListItemController : Controller
         _logControllerService = logControllerService;
     }
 
-    public async Task<IActionResult> Index(Int64 id)
+    public async Task<IActionResult> Index(Int64 id, string listname = "")
     {
         try
         {
@@ -42,6 +42,9 @@ public class TicketClassificationListItemController : Controller
             if (listitem != null)
             {
                 ViewBag.ListId = id.ToString();
+
+                TempData["ListName"] = listname;
+                ViewBag.ListName = listname;
                 var model = _mapper.Map<List<TicketClassificationListItemsModel>>(listitem);
                 return View(model);
             }
@@ -69,6 +72,12 @@ public class TicketClassificationListItemController : Controller
             model.ListItemDataToCompareIfChanged = new ListItemDataToCompareIfChangedLog();
             model.ListItemDataToCompareIfChanged.Id = model.Id;
             model.ListItemDataToCompareIfChanged.Active = model.Active;
+
+            if (TempData["ListName"] != null)
+            {
+                ViewBag.ListName = TempData["ListName"];
+            }
+
             return View(model);
         }
 
@@ -118,8 +127,13 @@ public class TicketClassificationListItemController : Controller
             TempData["ScreenMessage"] = $"ERRO: atualizado item.";
         }
 
+        if (TempData["ListName"] != null)
+        {
+            ViewBag.ListName = TempData["ListName"];
+        }
+
         //return RedirectToAction("EditListItem", new { id = model.ListItemId });
-        return RedirectToAction("Index", new { id = model.Id });
+        return RedirectToAction("Index", new { id = model.Id, listname = TempData["ListName"] });
 
     }
 
@@ -163,7 +177,12 @@ public class TicketClassificationListItemController : Controller
             TempData["ScreenMessage"] = $"ERRO: criando item {listItemName}.";
         }
 
-        return RedirectToAction("Index", new { id = listId });
+        if (TempData["ListName"] != null)
+        {
+            ViewBag.ListName = TempData["ListName"];
+        }
+
+        return RedirectToAction("Index", new { id = listId, listname = TempData["ListName"] });
     }
 
     private bool IsAuthenticated()

@@ -31,5 +31,5 @@ public interface ITicketClassificationService
     Task<List<TicketClassficationListAPI>> GetTicketClassificationByManifestationAsync(Int64 id);
     Task<List<TicketClassificationUnitAPI>> GetTicketClassificationUnitListAsync(string data);
     Task<List<TicketClassificationListAPI>> SearchTicketClassificationListAsync(string searchlistType, string searchlistText);
-    Task<int> UpdateTicketClassificationAsync(TicketClassificationUpdateAPI data);
+    Task<ResponseServiceModel> UpdateTicketClassificationAsync(TicketClassificationUpdateAPI data);
 }

@@ -13,7 +13,7 @@
 			</svg>
 			<button class="btn btn-title-style" type="button" data-toggle="collapse" data-bs-toggle="collapse"
 					data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-				Modificar Item da Lista
+				Modificar Item da Lista <strong><u>@ViewBag.ListName</u></strong>
 			</button>
 		</h5>
 	</div>
@@ -54,7 +54,7 @@
 				<input type="hidden" asp-for="@Model.ListItemDataToCompareIfChanged.Active" value="@Model.ListItemDataToCompareIfChanged.Active" />
 
 				<button type="submit" class="btn btn-style">Salvar</button>
-				<a href="@baseUrl/TicketClassificationListItem/Index?id=@Model.Id" class="btn btn-style">Cancelar</a>
+				<a href="@baseUrl/TicketClassificationListItem/Index?id=@Model.Id&listname=@ViewBag.ListName" class="btn btn-style">Cancelar</a>
 			</form>
 
 		</div>

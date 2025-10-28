@@ -14,4 +14,6 @@ public interface ISlaAPIRepository
     Task<APIResponse<List<SlaTicketConfigAPI>>> GetSlaTicketConfigAPIAsync();
     Task<APIResponse<string>> InsertSlaTicketConfigAPIAsync(SlaTicketCreateAPI data);
     Task<APIResponse<int>> GetBusinessDaysAPI(DateTime startTime, DateTime endTime);
+    Task<APIResponse<List<SlaTicketConfigAPI>>> GetSlaTicketConfigAPIAsync(Int64 id);
+    Task<APIResponse<int>> UpdateSlaTicketConfigAPIAsync(SlaTicketConfigAPI data);
 }

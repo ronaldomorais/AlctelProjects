@@ -618,9 +618,9 @@ public class TicketClassificationAPIRepository : ITicketClassificationAPIReposit
         return apiResponse;
     }
 
-    public async Task<APIResponse<int>> UpdateTicketClassificationAPIAsync(TicketClassificationUpdateAPI data)
+    public async Task<APIResponse<string>> UpdateTicketClassificationAPIAsync(TicketClassificationUpdateAPI data)
     {
-        APIResponse<int> apiResponse = new APIResponse<int>();
+        APIResponse<string> apiResponse = new APIResponse<string>();
         try
         {
             var url = _configuration.GetSection("MiddlewareTicketControl:url").Value;
@@ -628,7 +628,7 @@ public class TicketClassificationAPIRepository : ITicketClassificationAPIReposit
             var password = _configuration.GetSection("MiddlewareTicketControl:password").Value;
             var path = _configuration.GetSection("MiddlewareTicketControl:paths:ticketclassificationupdate").Value;
 
-            ApiContext<int> apiContext = new ApiContext<int>();
+            ApiContext<string> apiContext = new ApiContext<string>();
 
             var json = JsonConvert.SerializeObject(data);
 

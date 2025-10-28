@@ -5,6 +5,8 @@ namespace Alctel.CRM.Web.Models;
 
 public class TicketClassificationModel
 {
+    public Int64 SlaTicketId { get; set; }
+
     [DisplayName("Manifestação")]
     public Int64 ManifestationTypeId { get; set; }
     public string? ManifestationTypeName { get; set; }

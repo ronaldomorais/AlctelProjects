@@ -15,4 +15,6 @@ public interface ISlaService
     Task<List<SlaTicketConfigAPI>?> GetSlaTicketConfigAsync();
     Task<ResponseServiceModel> InsertSlaTicketConfigAsync(SlaTicketCreateAPI data);
     Task<int> GetBusinessDays(DateTime startTime, DateTime endTime);
+    Task<SlaTicketConfigAPI?> GetSlaTicketConfigAsync(Int64 id);
+    Task<int> UpdateSlaTicketConfigAsync(SlaTicketConfigAPI data);
 }

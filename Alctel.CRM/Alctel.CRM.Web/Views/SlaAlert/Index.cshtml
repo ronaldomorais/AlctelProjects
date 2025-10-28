@@ -49,6 +49,7 @@
 							<th>Motivos</th>
 							<th>SLA</th>
 							<th>Alarme</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -66,6 +67,9 @@
 									@* <td><input type="text" asp-for="@item.Sla" /></td> *@
 									<td>@item.Sla</td>
 									<td>@item.Alarm</td>
+									<td>
+										<a href="@baseUrl/SlaAlert/Edit/?id=@item.SlaTicketId">Editar</a>
+									</td>
 								</tr>
 
 								{ itemcounter = itemcounter + 1; }
