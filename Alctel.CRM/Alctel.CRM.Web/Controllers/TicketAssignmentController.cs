@@ -65,6 +65,9 @@ public class TicketAssignmentController : Controller
                     ticketClassification.ManifestationTypeName = item.ManifestationTypeName;
                     ticketClassification.ServiceName = item.ServiceName;
                     ticketClassification.ServiceUnitName = item.ServiceUnitItemName;
+                    ticketClassification.UserId = item.UserId;
+                    ticketClassification.Username = item.Username;
+
 
                     if (item.Reasons != null && item.Reasons.Count > 0)
                     {

@@ -228,6 +228,8 @@ public class TicketController : Controller
                     ticketClassification.ManifestationTypeName = item.ManifestationTypeName;
                     ticketClassification.ServiceName = item.ServiceName;
                     ticketClassification.ServiceUnitName = item.ServiceUnitItemName;
+                    ticketClassification.UserId = item.UserId;
+                    ticketClassification.Username = item.Username;
 
                     if (item.Reasons != null && item.Reasons.Count > 0)
                     {
@@ -268,31 +270,36 @@ public class TicketController : Controller
             }
 
             //SLA
-            DateTime now = DateTime.Now;
-            int days = await _slaService.GetBusinessDays(model.ProtocolDate, now);
 
-            if (days > 0)
+            if (model.TicketStatusId != 5)
             {
-                DateTime protocolDateSla = model.ProtocolDate.AddDays(days);
-                TimeSpan timeSpan = now - protocolDateSla;
-                double totalDays = timeSpan.TotalDays;
+                DateTime now = DateTime.Now;
+                int days = await _slaService.GetBusinessDays(model.ProtocolDate, now);
 
-                if (totalDays < 0)
+                if (days > 0)
                 {
-                    days--;
-                }
+                    DateTime protocolDateSla = model.ProtocolDate.AddDays(days);
+                    TimeSpan timeSpan = now - protocolDateSla;
+                    double totalDays = timeSpan.TotalDays;
 
-                model.Sla = days;
+                    if (totalDays < 0)
+                    {
+                        days--;
+                    }
 
-                if ((model.SlaSystemRole - model.Sla) <= 1)
-                {
-                    ViewBag.SLAColor = "#FF0000";
-                }
-                else
-                {
-                    ViewBag.SLAColor = "#FFFFFF";
+                    model.Sla = days;
+
+                    if ((model.SlaSystemRole - model.Sla) <= 1)
+                    {
+                        ViewBag.SLAColor = "#FF0000";
+                    }
+                    else
+                    {
+                        ViewBag.SLAColor = "#FFFFFF";
+                    }
                 }
             }
+
             return View(model);
         }
 
@@ -755,6 +762,8 @@ public class TicketController : Controller
                         ticketClassification.ManifestationTypeName = item.ManifestationTypeName;
                         ticketClassification.ServiceName = item.ServiceName;
                         ticketClassification.ServiceUnitName = item.ServiceUnitItemName;
+                        ticketClassification.UserId = item.UserId;
+                        ticketClassification.Username = item.Username;
 
                         if (item.Reasons != null && item.Reasons.Count > 0)
                         {
@@ -1240,14 +1249,14 @@ public class TicketController : Controller
                                     classificationModel.UserId = string.IsNullOrEmpty(model.User) ? 0 : Int64.Parse(model.User);
                                     classificationModel.Order = order;
 
-                                    if (item.Reason01Id != null && item.Reason01Id != 0)
+                                    if (item.Reason01Id != null && item.Reason01Id != 0 && item.Reason01ListItemId != null && item.Reason01ListItemId != 0)
                                     {
                                         TicketReasonModel reason01 = new TicketReasonModel();
                                         reason01.ReasonId = item.Reason01Id.Value;
                                         reason01.ListItemId = item.Reason01ListItemId;
                                         classificationModel.TicketReason.Add(reason01);
 
-                                        if (item.Reason02Id != null && item.Reason02Id != 0)
+                                        if (item.Reason02Id != null && item.Reason02Id != 0 && item.Reason02ListItemId != null && item.Reason02ListItemId != 0)
                                         {
                                             TicketReasonModel reason02 = new TicketReasonModel();
                                             reason02.ReasonId = item.Reason02Id.Value;
@@ -2015,6 +2024,8 @@ public class TicketController : Controller
                     ticketClassification.ManifestationTypeName = item.ManifestationTypeName;
                     ticketClassification.ServiceName = item.ServiceName;
                     ticketClassification.ServiceUnitName = item.ServiceUnitItemName;
+                    ticketClassification.UserId = item.UserId;
+                    ticketClassification.Username = item.Username;
 
                     if (item.Reasons != null && item.Reasons.Count > 0)
                     {
@@ -2775,6 +2786,8 @@ public class TicketController : Controller
                     ticketClassification.ManifestationTypeName = item.ManifestationTypeName;
                     ticketClassification.ServiceName = item.ServiceName;
                     ticketClassification.ServiceUnitName = item.ServiceUnitItemName;
+                    ticketClassification.UserId = item.UserId;
+                    ticketClassification.Username = item.Username;
 
                     if (item.Reasons != null && item.Reasons.Count > 0)
                     {

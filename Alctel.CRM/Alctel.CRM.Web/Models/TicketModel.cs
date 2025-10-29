@@ -157,6 +157,8 @@ public class TicketClassification
     public string? Reason02ListName { get; set; }
     public Int64? Reason02ListItemId { get; set; }
     public string? Reason02ListItemName { get; set; }
+    public Int64 UserId { get; set; }
+    public string? Username { get; set; }
 }
 
 

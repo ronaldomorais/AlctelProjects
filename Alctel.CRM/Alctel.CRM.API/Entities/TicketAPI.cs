@@ -132,6 +132,9 @@ public class TicketClassificationResultAPI
     [JsonProperty("idUsuario")]
     public Int64 UserId { get; set; }
 
+    [JsonProperty("NomeUsuario")]
+    public string? Username { get; set; }
+
     [JsonProperty("ordem")]
     public Int64 Order { get; set; }
 

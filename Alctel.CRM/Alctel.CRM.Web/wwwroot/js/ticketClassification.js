@@ -238,9 +238,9 @@ var ticketClassification = {
                                             })
                                         }
 
+                                        //$('#Reason01ListItemId').prop('required', true);
                                         $('#Reason01Id').val(data[0].id);
                                         $('#Reason01ListId').val(data[0].listId);
-
                                         $('#reason01DivId').show();
                                         $('#btnAddClassificationId').prop('disabled', false); 
                                     }
@@ -292,8 +292,8 @@ var ticketClassification = {
                                 })
                             }
 
+                            //$('#Reason02ListItemId').prop('required', true);
                             $('#Reason02Id').val(data[0].id);
-
                             $('#reason02DivId').show();
                         }
                     }
@@ -302,9 +302,26 @@ var ticketClassification = {
         },
 
         OnAddClassification: function () {
+            const currentUserId = $('#currentUserId').val();
+            const currentUsername = $('#currentUsername').val();
             const ticketClassificationCounter = $('#ticketClassificationTableId tbody tr').length;
 
-            if (ticketClassificationCounter >= 6) {
+            let classificationByUserCounter = 1;
+            $('#ticketClassificationTableId tbody tr').each(function () {
+                const row = $(this);
+                const target_td = row.find("td:nth-child(6)");
+                const userid_td = target_td.find('input[type="hidden"]').val();
+
+                if (userid_td === userid_td) {
+                    classificationByUserCounter++;
+                }
+            });
+
+
+            console.log(currentUserId, currentUsername, classificationByUserCounter)
+
+            //if (ticketClassificationCounter >= 6) {
+            if (classificationByUserCounter >= 6) {
                 $('#btnTicketClassificationClose').trigger('click');
                 $('#ticketClassificationMessage').show();
                 setTimeout(() => {
@@ -312,7 +329,6 @@ var ticketClassification = {
                 }, 5000);
                 return;
             }
-
 
             const manifestationTypeId = $('#ManifestationTypeId').val();
             let manifestationTypeName = $('#ManifestationTypeId option:selected').text();
@@ -331,7 +347,29 @@ var ticketClassification = {
             let reason02ListItemName = $('#Reason02ListItemId option:selected').text();
             let reason02ListItemId = $('#Reason02ListItemId').val();
 
-            console.log(reason02ListItemName, reason02ListItemId)
+            const reason01DivId = $('#reason01DivId').is(':visible');
+            const reason02DivId = $('#reason02DivId').is(':visible');
+
+            if (reason01DivId && (reason01ListItemId === '' || reason01ListItemId === undefined || reason01ListItemId === null)) {
+                $('#tickektClassificationMessage').show();
+
+                setTimeout(() => {
+                    $('#tickektClassificationMessage').hide();
+                }, 5000);
+
+                return;
+            }
+
+            
+            if (reason02DivId && (reason02ListItemId === '' || reason02ListItemId === undefined || reason02ListItemId === null)) {
+                $('#tickektClassificationMessage').show();
+
+                setTimeout(() => {
+                    $('#tickektClassificationMessage').hide();
+                }, 5000);
+
+                return;
+            }
             
             if (manifestationTypeName === 'Opções') {
                 $('#btnTicketClassificationClose').trigger('click');
@@ -401,6 +439,10 @@ var ticketClassification = {
                     <input type="hidden" name="TicketClassification[${ticketClassificationCounter}].Reason02ListItemName" value="${reason02ListItemName}" /> ${reason02ListItemName}
                     <input type="hidden" name="TicketClassification[${ticketClassificationCounter}].Reason02ListItemId" value="${reason02ListItemId}" />  
                 </td>
+                <td>
+					<input type="hidden" name="TicketClassification[${ticketClassificationCounter}].UserId" value="${currentUserId}" />
+					${currentUsername}
+                </td>
             </tr>`
 
             classificationTable.append(row);
@@ -410,29 +452,33 @@ var ticketClassification = {
             let autoSaveTable = $('#autoSaveTable').val();
             console.log(autoSaveTable);
 
-            let ticketClassificationAutoSaveArray = [];
-            let ticketClassificationAutoSave = {};
-            ticketClassificationAutoSave.ManifestationTypeId = manifestationTypeId;
-            ticketClassificationAutoSave.ManifestationTypeName = manifestationTypeName;
-            ticketClassificationAutoSave.ServiceUnitId = serviceUnitId;
-            ticketClassificationAutoSave.ServiceUnitName = serviceUnitName;
-            ticketClassificationAutoSave.ServiceId = serviceId;
-            ticketClassificationAutoSave.ServiceName = serviceName;
-            ticketClassificationAutoSave.Reason01Id = reason01Id;
-            ticketClassificationAutoSave.Reason01ListItemName = reason01ListItemName;
-            ticketClassificationAutoSave.Reason01ListItemId = reason01ListItemId;
-            ticketClassificationAutoSave.Reason02Id = reason02Id;
-            ticketClassificationAutoSave.Reason02ListItemName = reason02ListItemName;
-            ticketClassificationAutoSave.reason02ListItemId = reason02ListItemId;
+            if (autoSaveTable !== undefined) {
+               
+                let ticketClassificationAutoSaveArray = [];
+                let ticketClassificationAutoSave = {};
+                ticketClassificationAutoSave.ManifestationTypeId = manifestationTypeId;
+                ticketClassificationAutoSave.ManifestationTypeName = manifestationTypeName;
+                ticketClassificationAutoSave.ServiceUnitId = serviceUnitId;
+                ticketClassificationAutoSave.ServiceUnitName = serviceUnitName;
+                ticketClassificationAutoSave.ServiceId = serviceId;
+                ticketClassificationAutoSave.ServiceName = serviceName;
+                ticketClassificationAutoSave.Reason01Id = reason01Id;
+                ticketClassificationAutoSave.Reason01ListItemName = reason01ListItemName;
+                ticketClassificationAutoSave.Reason01ListItemId = reason01ListItemId;
+                ticketClassificationAutoSave.Reason02Id = reason02Id;
+                ticketClassificationAutoSave.Reason02ListItemName = reason02ListItemName;
+                ticketClassificationAutoSave.reason02ListItemId = reason02ListItemId;
 
-            if (autoSaveTable !== '') {
-                //console.log(autoSaveTable);
-                ticketClassificationAutoSaveArray = JSON.parse(autoSaveTable);                
+                if (autoSaveTable !== '') {
+                    //console.log(autoSaveTable);
+                    ticketClassificationAutoSaveArray = JSON.parse(autoSaveTable);
+                }
+
+                ticketClassificationAutoSaveArray.push(ticketClassificationAutoSave);
+                const ticketClassificationAutoSaveArrayStr = JSON.stringify(ticketClassificationAutoSaveArray);
+                $('#autoSaveTable').val(ticketClassificationAutoSaveArrayStr);
             }
 
-            ticketClassificationAutoSaveArray.push(ticketClassificationAutoSave);
-            const ticketClassificationAutoSaveArrayStr = JSON.stringify(ticketClassificationAutoSaveArray);
-            $('#autoSaveTable').val(ticketClassificationAutoSaveArrayStr);
         }
     }
 }

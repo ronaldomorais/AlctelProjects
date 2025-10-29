@@ -14,6 +14,12 @@
 
 	string? ticketClassificationJsonData = ViewBag.TicketClassificationJsonData;
 	ticketClassificationJsonData = ticketClassificationJsonData ?? string.Empty;
+
+	string? userId = Context.Session.GetString("UserId");
+	userId = userId ?? string.Empty;
+	string? username = Context.Session.GetString("Username");
+	username = username ?? string.Empty;
+
 }
 
 <div class="card">
@@ -188,7 +194,7 @@
 						</div>
 					</div>
 
-					<div class="col-sm-4">
+					<div class="col-sm-4" style="display:none;">
 						<label asp-for="@Model.SlaSystemRole"></label>
 						<div class="input-group input-group-sm mb-3">
 							<div>
@@ -198,12 +204,12 @@
 						</div>
 					</div>
 
-					<div class="col-sm-4">
+					<div class="col-sm-4" style="display:none;">
 						<label asp-for="@Model.Sla"></label>
 						<div class="input-group input-group-sm mb-3 @div_class_readonly">
 							<div>
 								<input class="standard-input" type="text" asp-for="@Model.Sla"
-									   aria-describedby="basic-addon2" />
+									   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
 							</div>
 						</div>
 					</div>
@@ -327,6 +333,7 @@
 									<th scope="col">Serviço</th>
 									<th scope="col">Motivo 1</th>
 									<th scope="col">Motivo 2</th>
+									<th scope="col">Usuário</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -366,6 +373,10 @@
 												<input type="hidden" name="TicketClassification[@c].Reason02ListItemId" value="@Model.TicketClassification[@c].Reason02ListItemId" />
 
 												@Model.TicketClassification[@c].Reason02ListItemName
+											</td>
+											<td>
+												<input type="hidden" name="TicketClassification[@c].UserId" value="@Model.TicketClassification[@c].UserId" />
+												@Model.TicketClassification[@c].UserId
 											</td>
 										</tr>
 									}
@@ -808,6 +819,14 @@
 					<h1 class="modal-title fs-5" id="ticketClassificationModalLabel">Classificação</h1>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
+
+				<div id="tickektClassificationMessage" style="margin-left:1%; display:none;">
+					<p style="color:red;">Motivos obrigatórios</p>
+				</div>
+
+				<input id="currentUserId" type="hidden" value="@userId" />
+				<input id="currentUsername" type="hidden" value="@username" />
+
 				<div id="ticketClassificationOpenId" class="modal-body">
 				</div>
 				<div class="modal-footer">

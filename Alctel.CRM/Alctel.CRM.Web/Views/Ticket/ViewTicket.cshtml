@@ -303,6 +303,7 @@
 							<th scope="col">Serviço</th>
 							<th scope="col">Motivo 1</th>
 							<th scope="col">Motivo 2</th>
+							<th scope="col">Usuário</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -342,6 +343,10 @@
 										<input type="hidden" name="TicketClassification[@c].Reason02ListId" value="@Model.TicketClassification[@c].Reason02ListId" />
 
 										@Model.TicketClassification[@c].Reason02Name
+									</td>
+									<td>
+										<input type="hidden" name="TicketClassification[@c].UserId" value="@Model.TicketClassification[@c].UserId" />
+										@Model.TicketClassification[@c].UserId
 									</td>
 								</tr>
 							}
