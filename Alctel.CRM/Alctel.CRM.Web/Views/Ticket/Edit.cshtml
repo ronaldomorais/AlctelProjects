@@ -99,15 +99,6 @@
 						</div>
 					</div>
 				</div>
-				@* 
-								<div class="col-sm-3">
-									<label asp-for="@Model.Customer.LastName"></label>
-									<div class="input-group input-group-sm mb-3">
-										<div>
-											<input class="standard-input" type="text" asp-for="@Model.Customer.LastName" aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
-										</div>
-									</div>
-								</div> *@
 
 				<div class="col-sm-4">
 					<label asp-for="@Model.Customer.SocialAffectionateName">Nome Social/Afetivo:</label>
@@ -171,25 +162,11 @@
 					<label asp-for="@Model.QueueGTId"></label>
 					<div class="input-group input-group-sm mb-3">
 						<div>
-							@* 							<select asp-for="@Model.QueueGTId"
-									asp-items="@Model.QueueGTOptions">
-							</select> *@
 							<input class="standard-input" type="text" asp-for="@Model.QueueGT"
 								   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
 						</div>
 					</div>
 				</div>
-
-				@* 				<div class="col-sm-4">
-					<label asp-for="@Model.DemandTypeId"></label>
-					<div class="input-group input-group-sm mb-3">
-						<div>
-							<select asp-for="@Model.DemandTypeId"
-									asp-items="@Model.DemandTypeOptions">
-							</select>
-						</div>
-					</div>
-				</div> *@
 
 				<div class="col-sm-4">
 					<label asp-for="@Model.TicketCriticalityId"></label>
@@ -295,6 +272,38 @@
 			</div>
 
 			<div class="row smal mb-3">
+
+				<div class="col-sm-4">
+					<label asp-for="@Model.FieldLink01"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.FieldLink01"
+								   aria-describedby="basic-addon2" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<label asp-for="@Model.FieldLink02"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.FieldLink02"
+								   aria-describedby="basic-addon2" />
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<label asp-for="@Model.FieldLink03"></label>
+					<div class="input-group input-group-sm mb-3">
+						<div>
+							<input class="standard-input" type="text" asp-for="@Model.FieldLink03"
+								   aria-describedby="basic-addon2" />
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="row smal mb-3">
 				@if (string.IsNullOrEmpty(Model.DemandInformation) == false)
 				{
 					<div class="col-sm-12" style="width: 99%;">
@@ -343,11 +352,11 @@
 
 				</div>
 
-				<div id="ticketClassificationDivId" class="row smal mb-3" style="margin:10px;">
+				<div id="ticketClassificationDivId" class="row smal mb-3 table-scroll-container" style="margin:10px;">
 					<div id="ticketClassificationMessage" class="alert alert-warning" role="alert" style="display:none;">
 						Classificação máxima permitida 6
 					</div>
-					<table id="ticketClassificationTableId" class="table table-striped table-sm"
+					<table id="ticketClassificationTableId" class="table table-responsive-md table-striped table-sm"
 						   style="margin-top: 50px;background-color: #f2f2f2;">
 						<thead>
 							<tr style="color: #666666 !important; font-weight: bold;">
@@ -399,7 +408,8 @@
 										</td>
 										<td>
 											<input type="hidden" name="TicketClassification[@c].UserId" value="@Model.TicketClassification[@c].UserId" />
-											@Model.TicketClassification[@c].UserId
+											<input type="hidden" name="TicketClassification[@c].Username" value="@Model.TicketClassification[@c].Username" />
+											@Model.TicketClassification[@c].Username
 										</td>
 									</tr>
 								}

@@ -335,6 +335,33 @@ public class TicketAPIRepository : ITicketAPIRepository
         return apiResponse;
     }
 
+    public async Task<APIResponse<List<TicketQueueGTAPI>>> GetAllTicketQueueGTAPIAsync()
+    {
+        APIResponse<List<TicketQueueGTAPI>> apiResponse = new APIResponse<List<TicketQueueGTAPI>>();
+        try
+        {
+            var url = _configuration.GetSection("MiddlewareTicketControl:url").Value;
+            var username = _configuration.GetSection("MiddlewareTicketControl:username").Value;
+            var password = _configuration.GetSection("MiddlewareTicketControl:password").Value;
+            var path = _configuration.GetSection("MiddlewareTicketControl:paths:ticketqueuegt").Value;
+
+            ApiContext<List<TicketQueueGTAPI>> apiContext = new ApiContext<List<TicketQueueGTAPI>>();
+
+            if (url != null && username != null && password != null)
+            {
+                apiResponse = await apiContext.PostBasicAuthAPIAsync(url, username, password, path);
+            }
+        }
+        catch (Exception ex)
+        {
+            apiResponse.IsSuccessStatusCode = false;
+            apiResponse.AdditionalMessage = ex.Message;
+            apiResponse.StatusCode = System.Net.HttpStatusCode.InternalServerError;
+        }
+
+        return apiResponse;
+    }
+
     public async Task<APIResponse<List<TicketAPI>>> GetCustomerTicketAPIAsync(Int64 id)
     {
         APIResponse<List<TicketAPI>> apiResponse = new APIResponse<List<TicketAPI>>();

@@ -12,6 +12,9 @@ public class AutoSaveDataModel
     public string? AnySolution { get; set; }
     public string? DemandObservation { get; set; }
     public string? ParentTicket { get; set; }
+    public string? FieldLink01 { get; set; }
+    public string? FieldLink02 { get; set; }
+    public string? FieldLink03 { get; set; }
     public List<AttachmentData> AttachmentDatas { get; set; } = new List<AttachmentData>();
     public List<Attachment> Attachments { get; set; } = new List<Attachment>();
     public List<IFormFile>? Files { get; set; }

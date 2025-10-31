@@ -37,7 +37,7 @@
 				<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
 					<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z" />
 				</svg>
-				<label class="label-title">Criando Serviço</label>
+				<label class="label-title">Criando SLA</label>
 
 
 			</div>
@@ -83,16 +83,18 @@
 				</div>
 
 				<div id="reason01DivId" class="col-sm-3" style="display:none;">
-					<label asp-for="@Model.Reason01Id"></label>
-					<input type="hidden" asp-for="@Model.Reason01Name" />
-					<select asp-for="@Model.Reason01Id" asp-items="@Model.Reason01Options" onchange="slaAlertConfig.Events.OnReason01Changed();">
+					<label asp-for="@Model.Reason01ListItemId"></label>
+					<input type="hidden" asp-for="@Model.Reason01Id" />
+					<input type="hidden" asp-for="@Model.Reason01ListId" />
+					<select asp-for="@Model.Reason01ListItemId" onchange="slaAlertConfig.Events.OnReason01Changed();">
 					</select>
 				</div>
 
 				<div id="reason02DivId" class="col-sm-3" style="display:none;">
-					<label asp-for="@Model.Reason02Id"></label>
-					<input type="hidden" asp-for="@Model.Reason02Name" />
-					<select asp-for="@Model.Reason02Id" asp-items="@Model.Reason02Options" onchange="slaAlertConfig.Events.OnReason02Changed();">
+					<label asp-for="@Model.Reason02ListItemId"></label>
+					<input type="hidden" asp-for="@Model.Reason02Id" />
+					<input type="hidden" asp-for="@Model.Reason02ListId" />
+					<select asp-for="@Model.Reason02ListItemId" onchange="slaAlertConfig.Events.OnReason02Changed();">
 					</select>
 				</div>
 			</div>

@@ -20,6 +20,8 @@
 	string? username = Context.Session.GetString("Username");
 	username = username ?? string.Empty;
 
+	string? profile = Context.Session.GetString("Profile");
+	profile = profile ?? string.Empty;
 }
 
 <div class="card">
@@ -77,11 +79,12 @@
 
 				<div class="row smal mb-3">
 					<div class="col-sm-4">
-						<label asp-for="@Model.Customer.FirstName">Nome:</label>
+						<label asp-for="@Model.Customer.FirstName">Nome: (<a href="@baseUrl/Customer/Edit/?id=@Model.Customer.Id">Dados Cliente</a>)</label>
 						<div class="input-group input-group-sm mb-3">
 							<div>
+								
 								<input class="standard-input" type="text" asp-for="@Model.Customer.FirstName"
-									   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+									   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />					
 							</div>
 						</div>
 					</div>
@@ -143,7 +146,6 @@
 
 				<div class="row smal mb-3">
 
-
 					<div class="col-sm-4">
 						<label asp-for="@Model.QueueGT"></label>
 						<div class="input-group input-group-sm mb-3">
@@ -156,33 +158,17 @@
 							</div>
 						</div>
 					</div>
-					@* 					<div class="col-sm-4">
-						<label asp-for="@Model.DemandTypeId"></label>
-						<div class="input-group input-group-sm mb-3 @div_class_readonly">
-							<div>
-								<select class="ticket_init" asp-for="@Model.DemandTypeId"
-										asp-items="@Model.DemandTypeOptions">
-								</select>
-							</div>
-						</div>
-					</div>
- *@
+
 					<div class="col-sm-4" style="display:none;">
 						<label asp-for="@Model.TicketCriticalityId"></label>
 						<div class="input-group input-group-sm mb-3 @div_class_readonly">
 							<div>
-@* 								<input class="standard-input" type="date" asp-for="@Model.TicketCriticalityId"
-									   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" /> *@
 								<select class="ticket_init" asp-for="@Model.TicketCriticalityId"
 										asp-items="@Model.TicketCriticalityOptions" onchange="ticketClassification.Events.OnTicketCriticalityChanged()">
 								</select>
 							</div>
 						</div>
 					</div>
-
-				</div>
-
-				<div class="row smal mb-3">
 
 					<div class="col-sm-4">
 						<label asp-for="@Model.TicketDate"></label>
@@ -194,31 +180,6 @@
 						</div>
 					</div>
 
-					<div class="col-sm-4" style="display:none;">
-						<label asp-for="@Model.SlaSystemRole"></label>
-						<div class="input-group input-group-sm mb-3">
-							<div>
-								<input class="standard-input" type="text" asp-for="@Model.SlaSystemRole"
-									   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
-							</div>
-						</div>
-					</div>
-
-					<div class="col-sm-4" style="display:none;">
-						<label asp-for="@Model.Sla"></label>
-						<div class="input-group input-group-sm mb-3 @div_class_readonly">
-							<div>
-								<input class="standard-input" type="text" asp-for="@Model.Sla"
-									   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
-							</div>
-						</div>
-					</div>
-
-
-				</div>
-
-				<div class="row smal mb-3">
-
 					<div class="col-sm-4">
 						<label asp-for="@Model.Thermometer"></label>
 						<div class="input-group input-group-sm mb-3">
@@ -229,6 +190,33 @@
 						</div>
 					</div>
 
+				</div>
+
+				<div class="row smal mb-3">
+					
+					<div class="col-sm-4">
+						<label asp-for="@Model.SlaSystemRole"></label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<input class="standard-input" type="text" asp-for="@Model.SlaSystemRole" value="@Model.SlaSystemRole"
+									   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<label asp-for="@Model.Sla"></label>
+						<div class="input-group input-group-sm mb-3 @div_class_readonly">
+							<div>
+								<input class="standard-input" type="text" asp-for="@Model.Sla"
+									   aria-describedby="basic-addon2" readonly style="background-color:#E2E8F0;" />
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="row smal mb-3">
 
 					<div class="col-sm-4">
 						<label asp-for="@Model.TicketStatusId"></label>
@@ -248,6 +236,38 @@
 								<select class="ticket_init" asp-for="@Model.AnySolution"
 										asp-items="@Model.AnySolutionOptions">
 								</select>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="row smal mb-3">
+
+					<div class="col-sm-4">
+						<label asp-for="@Model.FieldLink01"></label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<input class="standard-input" type="text" asp-for="@Model.FieldLink01"
+									   aria-describedby="basic-addon2" />
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<label asp-for="@Model.FieldLink02"></label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<input class="standard-input" type="text" asp-for="@Model.FieldLink02"
+									   aria-describedby="basic-addon2" />
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<label asp-for="@Model.FieldLink03"></label>
+						<div class="input-group input-group-sm mb-3">
+							<div>
+								<input class="standard-input" type="text" asp-for="@Model.FieldLink03"
+									   aria-describedby="basic-addon2" />
 							</div>
 						</div>
 					</div>
@@ -320,11 +340,11 @@
 						<input id="autoSaveTable" type="hidden" value="@ticketClassificationJsonData" />
 					</div>
 
-					<div id="ticketClassificationDivId" class="row smal mb-3" style="margin:10px;">
+					<div id="ticketClassificationDivId" class="row smal mb-3 table-scroll-container" style="margin:10px;">
 						<div id="ticketClassificationMessage" class="alert alert-warning" role="alert" style="display:none;">
 							Classificação máxima permitida 6
 						</div>
-						<table id="ticketClassificationTableId" class="table table-striped table-sm"
+						<table id="ticketClassificationTableId" class="table table-striped table-responsive-md table-sm"
 							   style="margin-top: 50px;background-color: #f2f2f2;">
 							<thead>
 								<tr style="color: #666666 !important; font-weight: bold;">
@@ -376,7 +396,8 @@
 											</td>
 											<td>
 												<input type="hidden" name="TicketClassification[@c].UserId" value="@Model.TicketClassification[@c].UserId" />
-												@Model.TicketClassification[@c].UserId
+												<input type="hidden" name="TicketClassification[@c].Username" value="@Model.TicketClassification[@c].Username" />
+												@Model.TicketClassification[@c].Username
 											</td>
 										</tr>
 									}
@@ -387,128 +408,6 @@
 					</div>
 
 				</div>
-
-
-				@* 			<div class="row smal mb-3">
-					<div class="col-sm-3">
-						@if (Model.ClassificationTree.ClassificationDemandOptions != null)
-						{
-							<label asp-for="@Model.ClassificationTree.ClassificationDemandId">Demanda:</label>
-							<div class="input-group input-group-sm mb-3 @div_class_readonly">
-								<div>
-									<select class="ticket_init ticket_classification"
-											asp-for="@Model.ClassificationTree.ClassificationDemandId"
-											asp-items="@Model.ClassificationTree.ClassificationDemandOptions">
-										<option>Opções</option>
-									</select>
-								</div>
-							</div>
-						}
-					</div>
-
-					<div class="col-sm-3">
-						<label asp-for="@Model.ClassificationTree.ClassificationDemandTypeId">Tipo:</label>
-						<div class="input-group input-group-sm mb-3 @div_class_readonly">
-							<div>
-								<select class="ticket_init ticket_classification ticket_types"
-										asp-for="@Model.ClassificationTree.ClassificationDemandTypeId">
-									<option>Opções</option>
-								</select>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-sm-2">
-						<div class="row">
-							<label asp-for="@Model.ClassificationTree.ClassificationReasonId">Motivo:</label>
-							<div class="input-group input-group-sm mb-3 @div_class_readonly">
-								<div>
-									<select class="ticket_init ticket_classification ticket_reasons"
-											asp-for="@Model.ClassificationTree.ClassificationReasonId">
-										<option>Opções</option>
-									</select>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<label asp-for="@Model.ClassificationTree.ClassificationReasonListItemId">
-								Itens da
-								Lista:
-							</label>
-							<div class="input-group input-group-sm mb-3 @div_class_readonly">
-								<div>
-									<select class="ticket_init ticket_classification ticket_reasons_listitem"
-											asp-for="@Model.ClassificationTree.ClassificationReasonListItemId">
-										<option>Opções</option>
-									</select>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-sm-2">
-						<div class="row">
-							<label asp-for="@Model.ClassificationTree.ClassificationSubmotive01Id">
-								SubMotivo
-								1:
-							</label>
-							<div class="input-group input-group-sm mb-3 @div_class_readonly">
-								<div>
-									<select class="ticket_init ticket_classification ticket_submotive01"
-											asp-for="@Model.ClassificationTree.ClassificationSubmotive01Id">
-										<option>Opções</option>
-									</select>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<label asp-for="@Model.ClassificationTree.ClassificationSubmotive01ListItemId">
-								Itens da
-								Lista:
-							</label>
-							<div class="input-group input-group-sm mb-3 @div_class_readonly">
-								<div>
-									<select class="ticket_init ticket_classification ticket_submotive01list"
-											asp-for="@Model.ClassificationTree.ClassificationSubmotive01ListItemId">
-										<option>Opções</option>
-									</select>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-sm-2">
-						<div class="row">
-							<label asp-for="@Model.ClassificationTree.ClassificationSubmotive02Id">
-								SubMotivo
-								2:
-							</label>
-							<div class="input-group input-group-sm mb-3 @div_class_readonly">
-								<div>
-									<select class="ticket_init ticket_classification ticket_submotive02"
-											asp-for="@Model.ClassificationTree.ClassificationSubmotive02Id">
-										<option>Opções</option>
-									</select>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<label asp-for="@Model.ClassificationTree.ClassificationSubmotive02ListItemId">
-								Itens da
-								Lista:
-							</label>
-							<div class="input-group input-group-sm mb-3 @div_class_readonly">
-								<div>
-									<select class="ticket_init ticket_classification ticket_submotive02list"
-											asp-for="@Model.ClassificationTree.ClassificationSubmotive02ListItemId">
-										<option>Opções</option>
-									</select>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
- *@
 
 				<div style="border: 1px solid #ccc; padding-left: 10px;">
 					<div class="row smal mb-3">
@@ -586,8 +485,6 @@
 					}
 				}
 
-
-
 				<div class="row smal mb-3">
 					<div id="transferSuccessMessage" class="alert alert-success" role="alert" style="display:none">
 						Chamado Transferido com Sucesso!
@@ -599,18 +496,15 @@
 
 
 				<button type="submit" class="btn btn-style ticket-save" @button_save_status>Salvar</button>
-				<button id="requestTransfer" type="button" class="btn btn-style" data-bs-toggle="modal"
-						data-bs-target="#transferModal" onclick="tools.Events.OnTransferModelOpen(@Model.Id, @Model.Protocol, @Model.User)" @button_transfer_status>
-					Transferir
-				</button>
 
-				@* 				<button type="button" class="btn btn-style" data-bs-toggle="modal"
-						data-bs-target="#transferModal" onclick="tools.Events.OnTransferModelOpen(@Model.Id, @Model.Protocol, @Model.User)" >
-					Transferir
-				</button> *@
+				@if (profile.ToUpper() != "ASSISTENTE")
+				{
+					<button id="requestTransfer" type="button" class="btn btn-style" data-bs-toggle="modal"
+							data-bs-target="#transferModal" onclick="tools.Events.OnTransferModelOpen(@Model.Id, @Model.Protocol, @Model.User)" @button_transfer_status>
+						Transferir
+					</button>
 
-				@* 				<a href="?nomeFila=&conversastionid=@Model.ConversationId&email=@Model.User&cpf=&protocolo=&navegacao=&reload=false&cancel=true"
-				   class="btn btn-style" role="button">Cancelar</a> *@
+				}
 
 				<a href="@baseUrl/Ticket/GenesysInteractionEvent/?nomeFila=&conversastionid=@Model.ConversationId&email=@Model.User&cpf=&protocolo=&navegacao=&reload=false&cancel=true"
 				   class="btn btn-style" role="button">Cancelar</a>

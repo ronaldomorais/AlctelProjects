@@ -96,8 +96,21 @@ public class TicketAPI
     [JsonProperty("observacaoDemanda")]
     public string? DemandObservation { get; set; }
 
+    [JsonProperty("nomeArea")]
+    public string? TransferAreaName { get; set; }
+
     [JsonProperty("anexo")]
     public bool HasAttachment { get; set; }
+
+    [JsonProperty("link1")]
+    public string? FieldLink01 { get; set; }
+
+    [JsonProperty("link2")]
+    public string? FieldLink02 { get; set; }
+
+    [JsonProperty("link3")]
+    public string? FieldLink03 { get; set; }
+
 
     [JsonProperty("classificacaoChamado")]
     public List<TicketClassificationResultAPI> TicketClassificationResult { get; set; } = new List<TicketClassificationResultAPI>();
@@ -132,7 +145,7 @@ public class TicketClassificationResultAPI
     [JsonProperty("idUsuario")]
     public Int64 UserId { get; set; }
 
-    [JsonProperty("NomeUsuario")]
+    [JsonProperty("nomeUsuario")]
     public string? Username { get; set; }
 
     [JsonProperty("ordem")]

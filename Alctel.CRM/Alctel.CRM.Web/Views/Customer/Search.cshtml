@@ -115,22 +115,10 @@
 				<tr>
 					<th scope="col">#</th>
 					<th scope="col">Nome</th>
-					@* <th scope="col">Nome Social</th> *@
+				 	<th scope="col">Nome Social</th> 
 					<th scope="col">CPF</th>
 					<th scope="col">Email 1</th>
-					@* 					<th scope="col">Email 2</th>
-					<th scope="col">Telefone</th>
-					<th scope="col">WhatsApp</th>
-					<th scope="col">CNPJ</th>
-					<th scope="col">Nome da Empresa</th>
-					<th scope="col">Telefone 1</th>
-					<th scope="col">Telefone 2</th>
-					<th scope="col">Categoria</th>
-					<th scope="col">SubCategoria</th>
-					<th scope="col">Matrícula</th>
-					<th scope="col">Data de Criação</th>
- *@					<th scope="col"></th>
-					<th scope="col"></th>
+					<th scope="col" align="right">Ações</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -142,41 +130,12 @@
 						<tr>
 							<th scope="row">@itemcounter</th>
 							<td>@string.Concat(item.FirstName, item.LastName)</td>
-							@* <td>@item.SocialAffectionateName</td> *@
+			 				<td>@item.SocialAffectionateName</td> 
 							<td>@item.Cpf</td>
 							<td>@item.Email1</td>
-							@* 							<td>@item.Email2</td>
-							<td>@item.PhoneNumber</td>
-							<td>@item.MobilePhone</td>
-							<td>@item.Cnpj</td>
-							<td>@item.CompanyName</td>
-							<td>@item.PhoneNumber1</td>
-							<td>@item.PhoneNumber2</td>
-							<td>@item.Category</td>
-							<td>@item.SubCategory</td>
-							<td>@item.Registration</td>
-							<td>@item.CreatedOn.ToString("dd/MM/yyyy")</td>
- *@							<td align="right">
-@* 								<form method="get" asp-action="Edit">
-									<input type="hidden" name="id" value=@item.Id />
-									<button type="submit" class="btn btn-style">
-										<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-											<path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z" />
-										</svg>
-									</button>
-								</form> *@
+							<td>
 								<a href="@baseUrl/Customer/Edit/?id=@item.Id">Editar</a>
 							</td>
-							<td>
-								@*                                 <form method="get" asp-action="Delete">
-                                    <input type="hidden" name="id" value=@item.Id />
-                                    <button type="submit" class="btn btn-style">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-trash3" viewBox="0 0 16 16">
-                                        <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
-                                        </svg>
-                                    </button>                                    
-                                </form>  *@                               
-																				                            </td>
 						</tr>
 
 						{ itemcounter = itemcounter + 1; }

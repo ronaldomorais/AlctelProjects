@@ -3,104 +3,88 @@
   "WorkspaceRootPath": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\controllers\\ticketclassificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\controllers\\ticketclassificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B25ED235-E57D-456E-A1D2-4AE6B40D1E27}|Alctel.CRM.Business\\Alctel.CRM.Business.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.business\\services\\ticketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B25ED235-E57D-456E-A1D2-4AE6B40D1E27}|Alctel.CRM.Business\\Alctel.CRM.Business.csproj|solutionrelative:alctel.crm.business\\services\\ticketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\controllers\\tickettransfercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\controllers\\tickettransfercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\wwwroot\\js\\ticket.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\wwwroot\\js\\ticket.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\views\\ticket\\_tickettransfer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\views\\ticket\\_tickettransfer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\controllers\\ticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\controllers\\ticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\views\\ticket\\genesysinteractionevent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\views\\ticket\\genesysinteractionevent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\controllers\\ticketclassificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\controllers\\ticketclassificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\views\\ticket\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\views\\ticket\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\wwwroot\\js\\slaalert.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\wwwroot\\js\\slaalert.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\wwwroot\\js\\ticketclassification.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\wwwroot\\js\\ticketclassification.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\controllers\\slaalertcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\controllers\\slaalertcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\controllers\\ticketassignmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\controllers\\ticketassignmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\views\\slaalert\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\views\\slaalert\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\views\\ticketassignment\\ticketmanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\views\\ticketassignment\\ticketmanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\models\\autosavedatamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\models\\autosavedatamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\views\\ticket\\_journey.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\views\\ticket\\_journey.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\views\\ticket\\viewticket.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\views\\ticket\\viewticket.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\models\\ticketmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\models\\ticketmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2885385E-B561-4F15-BACF-376BDFBB6377}|Alctel.CRM.API\\Alctel.CRM.API.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.api\\entities\\ticketcreateapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2885385E-B561-4F15-BACF-376BDFBB6377}|Alctel.CRM.API\\Alctel.CRM.API.csproj|solutionrelative:alctel.crm.api\\entities\\ticketcreateapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2885385E-B561-4F15-BACF-376BDFBB6377}|Alctel.CRM.API\\Alctel.CRM.API.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.api\\entities\\ticketapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2885385E-B561-4F15-BACF-376BDFBB6377}|Alctel.CRM.API\\Alctel.CRM.API.csproj|solutionrelative:alctel.crm.api\\entities\\ticketapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\views\\ticketclassification\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\views\\ticketclassification\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\views\\ticket\\genesysinteractionevent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\views\\ticket\\genesysinteractionevent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\maps\\mapconfigprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\maps\\mapconfigprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\wwwroot\\js\\ticketclassificationconfig.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\wwwroot\\js\\ticketclassificationconfig.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\views\\customer\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\views\\customer\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\views\\ticketclassification\\ticketclassificationbymanifestationindex.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\views\\ticketclassification\\ticketclassificationbymanifestationindex.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\views\\ticket\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\views\\ticket\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2885385E-B561-4F15-BACF-376BDFBB6377}|Alctel.CRM.API\\Alctel.CRM.API.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.api\\repositories\\ticketclassificationapirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2885385E-B561-4F15-BACF-376BDFBB6377}|Alctel.CRM.API\\Alctel.CRM.API.csproj|solutionrelative:alctel.crm.api\\repositories\\ticketclassificationapirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\models\\ticketmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\models\\ticketmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B25ED235-E57D-456E-A1D2-4AE6B40D1E27}|Alctel.CRM.Business\\Alctel.CRM.Business.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.business\\services\\ticketclassificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B25ED235-E57D-456E-A1D2-4AE6B40D1E27}|Alctel.CRM.Business\\Alctel.CRM.Business.csproj|solutionrelative:alctel.crm.business\\services\\ticketclassificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B25ED235-E57D-456E-A1D2-4AE6B40D1E27}|Alctel.CRM.Business\\Alctel.CRM.Business.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.business\\interfaces\\iticketclassificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B25ED235-E57D-456E-A1D2-4AE6B40D1E27}|Alctel.CRM.Business\\Alctel.CRM.Business.csproj|solutionrelative:alctel.crm.business\\interfaces\\iticketclassificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2885385E-B561-4F15-BACF-376BDFBB6377}|Alctel.CRM.API\\Alctel.CRM.API.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.api\\interfaces\\iticketclassificationapirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2885385E-B561-4F15-BACF-376BDFBB6377}|Alctel.CRM.API\\Alctel.CRM.API.csproj|solutionrelative:alctel.crm.api\\interfaces\\iticketclassificationapirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2885385E-B561-4F15-BACF-376BDFBB6377}|Alctel.CRM.API\\Alctel.CRM.API.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.api\\interfaces\\islaapirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2885385E-B561-4F15-BACF-376BDFBB6377}|Alctel.CRM.API\\Alctel.CRM.API.csproj|solutionrelative:alctel.crm.api\\interfaces\\islaapirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2885385E-B561-4F15-BACF-376BDFBB6377}|Alctel.CRM.API\\Alctel.CRM.API.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.api\\repositories\\slaapirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2885385E-B561-4F15-BACF-376BDFBB6377}|Alctel.CRM.API\\Alctel.CRM.API.csproj|solutionrelative:alctel.crm.api\\repositories\\slaapirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B25ED235-E57D-456E-A1D2-4AE6B40D1E27}|Alctel.CRM.Business\\Alctel.CRM.Business.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.business\\services\\slaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B25ED235-E57D-456E-A1D2-4AE6B40D1E27}|Alctel.CRM.Business\\Alctel.CRM.Business.csproj|solutionrelative:alctel.crm.business\\services\\slaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B25ED235-E57D-456E-A1D2-4AE6B40D1E27}|Alctel.CRM.Business\\Alctel.CRM.Business.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.business\\model\\responseservicemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B25ED235-E57D-456E-A1D2-4AE6B40D1E27}|Alctel.CRM.Business\\Alctel.CRM.Business.csproj|solutionrelative:alctel.crm.business\\model\\responseservicemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\models\\slaticketconfigmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\models\\slaticketconfigmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|d:\\dev\\alctel\\alctelprojects\\alctel.crm\\alctel.crm.web\\views\\ticket\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F498A101-E84A-4A70-9C3F-E8D16C46638E}|Alctel.CRM.Web\\Alctel.CRM.Web.csproj|solutionrelative:alctel.crm.web\\views\\ticket\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -110,7 +94,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 40,
+          "SelectedChildIndex": 35,
           "Children": [
             {
               "$type": "Bookmark",
@@ -182,315 +166,261 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TicketAssignmentController.cs",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Controllers\\TicketAssignmentController.cs",
-              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Controllers\\TicketAssignmentController.cs",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Controllers\\TicketAssignmentController.cs",
-              "RelativeToolTip": "Alctel.CRM.Web\\Controllers\\TicketAssignmentController.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAcwEUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T01:50:01.467Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "TicketManagement.cshtml",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\TicketAssignment\\TicketManagement.cshtml",
-              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Views\\TicketAssignment\\TicketManagement.cshtml",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\TicketAssignment\\TicketManagement.cshtml",
-              "RelativeToolTip": "Alctel.CRM.Web\\Views\\TicketAssignment\\TicketManagement.cshtml",
-              "ViewState": "AgIAAKABAAAAAAAAAAAawIABAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-29T01:48:33.718Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "_Journey.cshtml",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\Ticket\\_Journey.cshtml",
-              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Views\\Ticket\\_Journey.cshtml",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\Ticket\\_Journey.cshtml",
-              "RelativeToolTip": "Alctel.CRM.Web\\Views\\Ticket\\_Journey.cshtml",
-              "ViewState": "AgIAAEEBAAAAAAAAAAAawFABAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-29T01:48:09.71Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ViewTicket.cshtml",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\Ticket\\ViewTicket.cshtml",
-              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Views\\Ticket\\ViewTicket.cshtml",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\Ticket\\ViewTicket.cshtml",
-              "RelativeToolTip": "Alctel.CRM.Web\\Views\\Ticket\\ViewTicket.cshtml",
-              "ViewState": "AgIAAEgBAAAAAAAAAAAawFoBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-29T01:47:34.618Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "ticketClassification.js",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\wwwroot\\js\\ticketClassification.js",
-              "RelativeDocumentMoniker": "Alctel.CRM.Web\\wwwroot\\js\\ticketClassification.js",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\wwwroot\\js\\ticketClassification.js",
-              "RelativeToolTip": "Alctel.CRM.Web\\wwwroot\\js\\ticketClassification.js",
-              "ViewState": "AgIAACwBAAAAAAAAAAAswDIBAAAMAAAAAAAAAA==",
+              "Title": "ticket.js",
+              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\wwwroot\\js\\ticket.js",
+              "RelativeDocumentMoniker": "Alctel.CRM.Web\\wwwroot\\js\\ticket.js",
+              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\wwwroot\\js\\ticket.js",
+              "RelativeToolTip": "Alctel.CRM.Web\\wwwroot\\js\\ticket.js",
+              "ViewState": "AgIAAE4CAAAAAAAAAAAswFQCAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-10-28T22:39:49.142Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-31T00:45:19.858Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "TicketAPI.cs",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.API\\Entities\\TicketAPI.cs",
-              "RelativeDocumentMoniker": "Alctel.CRM.API\\Entities\\TicketAPI.cs",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.API\\Entities\\TicketAPI.cs",
-              "RelativeToolTip": "Alctel.CRM.API\\Entities\\TicketAPI.cs",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAywGwAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T01:04:23.058Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "TicketModel.cs",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Models\\TicketModel.cs",
-              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Models\\TicketModel.cs",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Models\\TicketModel.cs",
-              "RelativeToolTip": "Alctel.CRM.Web\\Models\\TicketModel.cs",
-              "ViewState": "AgIAAGkAAAAAAAAAAIAxwJ4AAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T01:02:08.682Z",
-              "EditorCaption": ""
+              "DocumentIndex": 5,
+              "Title": "_TicketTransfer.cshtml",
+              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\Ticket\\_TicketTransfer.cshtml",
+              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Views\\Ticket\\_TicketTransfer.cshtml",
+              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\Ticket\\_TicketTransfer.cshtml",
+              "RelativeToolTip": "Alctel.CRM.Web\\Views\\Ticket\\_TicketTransfer.cshtml",
+              "ViewState": "AgIAADoAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-31T00:44:39.951Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\Ticket\\Edit.cshtml",
-              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Views\\Ticket\\Edit.cshtml",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\Ticket\\Edit.cshtml",
-              "RelativeToolTip": "Alctel.CRM.Web\\Views\\Ticket\\Edit.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-28T22:10:03.952Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TicketController.cs",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Controllers\\TicketController.cs",
-              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Controllers\\TicketController.cs",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Controllers\\TicketController.cs",
-              "RelativeToolTip": "Alctel.CRM.Web\\Controllers\\TicketController.cs",
-              "ViewState": "AgIAAAQBAAAAAAAAAAAuwBEBAAAMAAAAAAAAAA==",
+              "Title": "TicketTransferController.cs",
+              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Controllers\\TicketTransferController.cs",
+              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Controllers\\TicketTransferController.cs",
+              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Controllers\\TicketTransferController.cs",
+              "RelativeToolTip": "Alctel.CRM.Web\\Controllers\\TicketTransferController.cs",
+              "ViewState": "AgIAAJQAAAAAAAAAAAAYwJsAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T11:51:32.406Z",
+              "WhenOpened": "2025-10-30T23:54:46.431Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "GenesysInteractionEvent.cshtml",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\Ticket\\GenesysInteractionEvent.cshtml",
-              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Views\\Ticket\\GenesysInteractionEvent.cshtml",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\Ticket\\GenesysInteractionEvent.cshtml",
-              "RelativeToolTip": "Alctel.CRM.Web\\Views\\Ticket\\GenesysInteractionEvent.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-28T22:05:37.97Z",
+              "Title": "CustomerController.cs",
+              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Controllers\\CustomerController.cs",
+              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Controllers\\CustomerController.cs",
+              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Controllers\\CustomerController.cs",
+              "RelativeToolTip": "Alctel.CRM.Web\\Controllers\\CustomerController.cs",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAYwJwAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T23:54:46.503Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "site.js",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\wwwroot\\js\\site.js",
-              "RelativeDocumentMoniker": "Alctel.CRM.Web\\wwwroot\\js\\site.js",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\wwwroot\\js\\site.js",
-              "RelativeToolTip": "Alctel.CRM.Web\\wwwroot\\js\\site.js",
-              "ViewState": "AgIAAIAHAAAAAAAAAAAcwJcHAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-10-28T18:39:51.152Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "TicketClassificationByManifestationIndex.cshtml",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\TicketClassification\\TicketClassificationByManifestationIndex.cshtml",
-              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Views\\TicketClassification\\TicketClassificationByManifestationIndex.cshtml",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\TicketClassification\\TicketClassificationByManifestationIndex.cshtml",
-              "RelativeToolTip": "Alctel.CRM.Web\\Views\\TicketClassification\\TicketClassificationByManifestationIndex.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAYAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\SlaAlert\\Create.cshtml",
+              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Views\\SlaAlert\\Create.cshtml",
+              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\SlaAlert\\Create.cshtml",
+              "RelativeToolTip": "Alctel.CRM.Web\\Views\\SlaAlert\\Create.cshtml",
+              "ViewState": "AgIAAGsAAAAAAAAAAAAAAFcAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-28T18:23:09.648Z"
+              "WhenOpened": "2025-10-30T23:12:35.617Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "ITicketClassificationService.cs",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Business\\Interfaces\\ITicketClassificationService.cs",
-              "RelativeDocumentMoniker": "Alctel.CRM.Business\\Interfaces\\ITicketClassificationService.cs",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Business\\Interfaces\\ITicketClassificationService.cs",
-              "RelativeToolTip": "Alctel.CRM.Business\\Interfaces\\ITicketClassificationService.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAUwCMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T18:18:43.761Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "TicketClassificationService.cs",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Business\\Services\\TicketClassificationService.cs",
-              "RelativeDocumentMoniker": "Alctel.CRM.Business\\Services\\TicketClassificationService.cs",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Business\\Services\\TicketClassificationService.cs",
-              "RelativeToolTip": "Alctel.CRM.Business\\Services\\TicketClassificationService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T18:16:43.286Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "ITicketClassificationAPIRepository.cs",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.API\\Interfaces\\ITicketClassificationAPIRepository.cs",
-              "RelativeDocumentMoniker": "Alctel.CRM.API\\Interfaces\\ITicketClassificationAPIRepository.cs",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.API\\Interfaces\\ITicketClassificationAPIRepository.cs",
-              "RelativeToolTip": "Alctel.CRM.API\\Interfaces\\ITicketClassificationAPIRepository.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAkwCIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T18:16:27.258Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "TicketClassificationAPIRepository.cs",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.API\\Repositories\\TicketClassificationAPIRepository.cs",
-              "RelativeDocumentMoniker": "Alctel.CRM.API\\Repositories\\TicketClassificationAPIRepository.cs",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.API\\Repositories\\TicketClassificationAPIRepository.cs",
-              "RelativeToolTip": "Alctel.CRM.API\\Repositories\\TicketClassificationAPIRepository.cs",
-              "ViewState": "AgIAAGICAAAAAAAAAAAqwA4AAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T18:15:56.602Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "ResponseServiceModel.cs",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Business\\Model\\ResponseServiceModel.cs",
-              "RelativeDocumentMoniker": "Alctel.CRM.Business\\Model\\ResponseServiceModel.cs",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Business\\Model\\ResponseServiceModel.cs",
-              "RelativeToolTip": "Alctel.CRM.Business\\Model\\ResponseServiceModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T18:08:13.763Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\TicketClassification\\Index.cshtml",
-              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Views\\TicketClassification\\Index.cshtml",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\TicketClassification\\Index.cshtml",
-              "RelativeToolTip": "Alctel.CRM.Web\\Views\\TicketClassification\\Index.cshtml",
-              "ViewState": "AgIAACUAAAAAAAAAAAAAADMAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-28T18:00:49.622Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ticketClassificationConfig.js",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\wwwroot\\js\\ticketClassificationConfig.js",
-              "RelativeDocumentMoniker": "Alctel.CRM.Web\\wwwroot\\js\\ticketClassificationConfig.js",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\wwwroot\\js\\ticketClassificationConfig.js",
-              "RelativeToolTip": "Alctel.CRM.Web\\wwwroot\\js\\ticketClassificationConfig.js",
-              "ViewState": "AgIAAJ0AAAAAAAAAAAAmwKwAAAA+AAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "slaAlert.js",
+              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\wwwroot\\js\\slaAlert.js",
+              "RelativeDocumentMoniker": "Alctel.CRM.Web\\wwwroot\\js\\slaAlert.js",
+              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\wwwroot\\js\\slaAlert.js",
+              "RelativeToolTip": "Alctel.CRM.Web\\wwwroot\\js\\slaAlert.js",
+              "ViewState": "AgIAALYAAAAAAAAAAAAAAMYAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-10-28T17:58:49.122Z"
+              "WhenOpened": "2025-10-30T22:20:37.669Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "SlaService.cs",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Business\\Services\\SlaService.cs",
-              "RelativeDocumentMoniker": "Alctel.CRM.Business\\Services\\SlaService.cs",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Business\\Services\\SlaService.cs",
-              "RelativeToolTip": "Alctel.CRM.Business\\Services\\SlaService.cs",
-              "ViewState": "AgIAAJAAAAAAAAAAAAAIwKMAAAA+AAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "TicketService.cs",
+              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Business\\Services\\TicketService.cs",
+              "RelativeDocumentMoniker": "Alctel.CRM.Business\\Services\\TicketService.cs",
+              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Business\\Services\\TicketService.cs",
+              "RelativeToolTip": "Alctel.CRM.Business\\Services\\TicketService.cs",
+              "ViewState": "AgIAAIABAAAAAAAAAAAYwJEBAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T17:03:32.271Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "ISlaAPIRepository.cs",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.API\\Interfaces\\ISlaAPIRepository.cs",
-              "RelativeDocumentMoniker": "Alctel.CRM.API\\Interfaces\\ISlaAPIRepository.cs",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.API\\Interfaces\\ISlaAPIRepository.cs",
-              "RelativeToolTip": "Alctel.CRM.API\\Interfaces\\ISlaAPIRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T17:00:23.315Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "SlaTicketConfigModel.cs",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Models\\SlaTicketConfigModel.cs",
-              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Models\\SlaTicketConfigModel.cs",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Models\\SlaTicketConfigModel.cs",
-              "RelativeToolTip": "Alctel.CRM.Web\\Models\\SlaTicketConfigModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T14:27:26.258Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "SlaAPIRepository.cs",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.API\\Repositories\\SlaAPIRepository.cs",
-              "RelativeDocumentMoniker": "Alctel.CRM.API\\Repositories\\SlaAPIRepository.cs",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.API\\Repositories\\SlaAPIRepository.cs",
-              "RelativeToolTip": "Alctel.CRM.API\\Repositories\\SlaAPIRepository.cs",
-              "ViewState": "AgIAAL8AAAAAAAAAAAAIwNgAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T14:26:21.382Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TicketClassificationController.cs",
-              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Controllers\\TicketClassificationController.cs",
-              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Controllers\\TicketClassificationController.cs",
-              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Controllers\\TicketClassificationController.cs",
-              "RelativeToolTip": "Alctel.CRM.Web\\Controllers\\TicketClassificationController.cs",
-              "ViewState": "AgIAAAIDAAAAAAAAAAAuwA8DAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T11:51:32.451Z",
+              "WhenOpened": "2025-10-30T19:57:01.888Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
+              "Title": "SlaAlertController.cs",
+              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Controllers\\SlaAlertController.cs",
+              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Controllers\\SlaAlertController.cs",
+              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Controllers\\SlaAlertController.cs",
+              "RelativeToolTip": "Alctel.CRM.Web\\Controllers\\SlaAlertController.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAwwEQAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T17:35:59.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MapConfigProfile.cs",
+              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Maps\\MapConfigProfile.cs",
+              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Maps\\MapConfigProfile.cs",
+              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Maps\\MapConfigProfile.cs",
+              "RelativeToolTip": "Alctel.CRM.Web\\Maps\\MapConfigProfile.cs",
+              "ViewState": "AgIAAMgAAAAAAAAAAAAowMwAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T19:18:46.659Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TicketClassificationController.cs",
+              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Controllers\\TicketClassificationController.cs",
+              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Controllers\\TicketClassificationController.cs",
+              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Controllers\\TicketClassificationController.cs",
+              "RelativeToolTip": "Alctel.CRM.Web\\Controllers\\TicketClassificationController.cs",
+              "ViewState": "AgIAAAIDAAAAAAAAAAAYwA8DAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T17:35:59.469Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\Customer\\Index.cshtml",
+              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Views\\Customer\\Index.cshtml",
+              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\Customer\\Index.cshtml",
+              "RelativeToolTip": "Alctel.CRM.Web\\Views\\Customer\\Index.cshtml",
+              "ViewState": "AgIAAMgAAAAAAAAAAAAAANQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-30T17:48:56.49Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "TicketAPI.cs",
+              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.API\\Entities\\TicketAPI.cs",
+              "RelativeDocumentMoniker": "Alctel.CRM.API\\Entities\\TicketAPI.cs",
+              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.API\\Entities\\TicketAPI.cs",
+              "RelativeToolTip": "Alctel.CRM.API\\Entities\\TicketAPI.cs",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAiwG4AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T17:37:45.374Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "TicketModel.cs",
+              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Models\\TicketModel.cs",
+              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Models\\TicketModel.cs",
+              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Models\\TicketModel.cs",
+              "RelativeToolTip": "Alctel.CRM.Web\\Models\\TicketModel.cs",
+              "ViewState": "AgIAAHIAAAAAAAAAAAA8wH4AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T17:20:51.184Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "TicketCreateAPI.cs",
+              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.API\\Entities\\TicketCreateAPI.cs",
+              "RelativeDocumentMoniker": "Alctel.CRM.API\\Entities\\TicketCreateAPI.cs",
+              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.API\\Entities\\TicketCreateAPI.cs",
+              "RelativeToolTip": "Alctel.CRM.API\\Entities\\TicketCreateAPI.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAiwD0AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T17:41:16.094Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AutoSaveDataModel.cs",
+              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Models\\AutoSaveDataModel.cs",
+              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Models\\AutoSaveDataModel.cs",
+              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Models\\AutoSaveDataModel.cs",
+              "RelativeToolTip": "Alctel.CRM.Web\\Models\\AutoSaveDataModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T17:34:09.346Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\Ticket\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Views\\Ticket\\Edit.cshtml",
+              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\Ticket\\Edit.cshtml",
+              "RelativeToolTip": "Alctel.CRM.Web\\Views\\Ticket\\Edit.cshtml",
+              "ViewState": "AgIAACQBAAAAAAAAAAAtwDABAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-30T17:29:16.966Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "site.js",
+              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "Alctel.CRM.Web\\wwwroot\\js\\site.js",
+              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "Alctel.CRM.Web\\wwwroot\\js\\site.js",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAowFUAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-10-30T17:27:41.533Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "GenesysInteractionEvent.cshtml",
+              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\Ticket\\GenesysInteractionEvent.cshtml",
+              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Views\\Ticket\\GenesysInteractionEvent.cshtml",
+              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\Ticket\\GenesysInteractionEvent.cshtml",
+              "RelativeToolTip": "Alctel.CRM.Web\\Views\\Ticket\\GenesysInteractionEvent.cshtml",
+              "ViewState": "AgIAAKYAAAAAAAAAAAAowL4AAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-30T17:18:12.906Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\appsettings.json",
               "RelativeDocumentMoniker": "Alctel.CRM.Web\\appsettings.json",
               "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\appsettings.json",
               "RelativeToolTip": "Alctel.CRM.Web\\appsettings.json",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAtwF0AAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAUwGAAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-28T11:51:52.695Z",
+              "WhenOpened": "2025-10-30T17:09:35.619Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\Ticket\\Index.cshtml",
+              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Views\\Ticket\\Index.cshtml",
+              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Views\\Ticket\\Index.cshtml",
+              "RelativeToolTip": "Alctel.CRM.Web\\Views\\Ticket\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-30T17:06:55.779Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TicketController.cs",
+              "DocumentMoniker": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Controllers\\TicketController.cs",
+              "RelativeDocumentMoniker": "Alctel.CRM.Web\\Controllers\\TicketController.cs",
+              "ToolTip": "D:\\Dev\\Alctel\\AlctelProjects\\Alctel.CRM\\Alctel.CRM.Web\\Controllers\\TicketController.cs",
+              "RelativeToolTip": "Alctel.CRM.Web\\Controllers\\TicketController.cs",
+              "ViewState": "AgIAAK4DAAAAAAAAAAAYwMMDAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T17:08:24.999Z",
               "EditorCaption": ""
             }
           ]

@@ -188,7 +188,7 @@ public class UserController : Controller
                 }
             }
 
-            var ticketServices = await _ticketService.GetTicketQueueGTAPIAsync();
+            var ticketServices = await _ticketService.GetAllTicketQueueGTAPIAsync();
 
             if (ticketServices != null && ticketServices.Any())
             {
@@ -231,7 +231,7 @@ public class UserController : Controller
             var userid = HttpContext.Session.GetString("UserId");
             var user = _mapper.Map<UserAPI>(model);
 
-            var ticketServices = await _ticketService.GetTicketQueueGTAPIAsync();
+            var ticketServices = await _ticketService.GetAllTicketQueueGTAPIAsync();
 
             if (ticketServices != null && ticketServices.Count > 0)
             {
@@ -392,7 +392,7 @@ public class UserController : Controller
                 }
             }
 
-            var ticketServices = await _ticketService.GetTicketQueueGTAPIAsync();
+            var ticketServices = await _ticketService.GetAllTicketQueueGTAPIAsync();
 
             if (ticketServices != null && ticketServices.Any())
             {

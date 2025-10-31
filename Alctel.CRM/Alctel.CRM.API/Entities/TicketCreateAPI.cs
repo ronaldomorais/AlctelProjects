@@ -60,4 +60,13 @@ public class TicketCreateAPI
 
     [JsonProperty("solucionado")]
     public bool AnySolution { get; set; }
+
+    [JsonProperty("link1")]
+    public string? FieldLink01 { get; set; }
+
+    [JsonProperty("link2")]
+    public string? FieldLink02 { get; set; }
+
+    [JsonProperty("link3")]
+    public string? FieldLink03 { get; set; }
 }

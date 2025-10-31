@@ -117,10 +117,10 @@ public class TicketController : Controller
                 {
                     int qtyTicket = await _ticketService.GetTicketCountAsync();
                     var dataModel = _mapper.Map<List<TicketModel>>(data);
-                    var dataModelOrdered = dataModel.OrderBy(o => o.ProtocolDate).ToList();
-                    CreateDataPagination(currentpage, dataModelOrdered.Count, SIZE_PAGE, qtyTicket, showPageControl);
+                    //var dataModelOrdered = dataModel.OrderBy(o => o.ProtocolDate).ToList();
+                    CreateDataPagination(currentpage, dataModel.Count, SIZE_PAGE, qtyTicket, showPageControl);
 
-                    return View(dataModelOrdered);
+                    return View(dataModel);
                 }
             }
         }
@@ -484,169 +484,9 @@ public class TicketController : Controller
         await LoadListOptions(model, profile);
         return View(model);
     }
-
-    //[HttpGet]
-    //public async Task<IActionResult> GenesysInteractionEvent(string nomeFila = "", string conversastionid = "", string email = "", string cpf = "", string protocolo = "", string navegacao = "", bool reload = false)
-    //{
-    //    List<TicketModel> tickets = new List<TicketModel>();
-    //    OngoingInteractions ongoingInteractionsCollection = new OngoingInteractions();
-
-    //    _logHelperService.LogMessage($"[GenesysInteractionEvent] nomeFila: {nomeFila}, conversastionid: {conversastionid}, email: {email}, cpf: {cpf}, protocolo: {protocolo}, navegacao: {navegacao}, reload: {reload}");
-
-    //    if (IsAuthenticated() == false)
-    //    {
-    //        var loginuser = email;
-    //        var logininfo = await _loginService.GetLoginPIAsync(loginuser);
-
-    //        ViewBag.Email = email;
-
-    //        if (logininfo.UserStatus && logininfo.ProfileStatus)
-    //        {
-    //            string profile = logininfo.Profile != null ? logininfo.Profile : string.Empty;
-    //            string username = logininfo.UserName != null ? logininfo.UserName : string.Empty;
-    //            Int64 userid = logininfo.UserId;
-
-    //            HttpContext.Session.SetString("Profile", profile);
-    //            HttpContext.Session.SetString("Username", username);
-    //            HttpContext.Session.SetString("LoginUser", loginuser);
-    //            HttpContext.Session.SetString("UserId", userid.ToString());
-
-    //            //List<Claim> claims = new List<Claim>();
-
-    //            //claims.Add(new Claim(ClaimTypes.Name, logininfo.UserName));
-    //            //ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-    //            //var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
-
-    //            switch (profile.ToUpper())
-    //            {
-    //                case "ADMINISTRADOR":
-    //                    HttpContext.Session.SetString("Module", "Home,Customer,User,Ticket,ServiceUnit,Area,ServiceLevel,DemandType,Configuration,ClassificationList,ReasonList,ClassificationTree");
-    //                    break;
-    //                case "AGENTE":
-    //                    HttpContext.Session.SetString("Module", "Home,Customer,Ticket");
-    //                    break;
-    //                case "ASSISTENTE":
-    //                    HttpContext.Session.SetString("Module", "Home,Customer,Ticket");
-    //                    break;
-    //                case "MONITOR":
-    //                    HttpContext.Session.SetString("Module", "Home,Customer,Ticket");
-    //                    break;
-    //            }
-
-    //            HttpContext.Session.SetString("isAuthenticated", "true");
-    //        }
-    //        else
-    //        {
-    //            return RedirectToAction("Create", "Login");
-    //        }
-    //    }
-
-    //    var ongoingInteractionsSession = HttpContext.Session.GetString("OngoingInteractions");
-
-    //    if (ongoingInteractionsSession != null)
-    //    {
-    //        var ongoingInteractions = JsonConvert.DeserializeObject<OngoingInteractions>(ongoingInteractionsSession);
-
-    //        if (ongoingInteractions != null && ongoingInteractions.Count > 0)
-    //        {
-    //            var ongoingInteractionsValid = ongoingInteractions.Where(o => string.IsNullOrEmpty(o.ConversationId) == false).ToList();
-
-    //            ongoingInteractionsCollection.AddRange(ongoingInteractionsValid);
-    //        }
-    //    }
-
-    //    if (reload == false && string.IsNullOrEmpty(conversastionid) == false)
-    //    {
-    //        var ongoingInteractionFromList = ongoingInteractionsCollection.FirstOrDefault(_ => _.ConversationId == conversastionid);
-
-    //        if (ongoingInteractionFromList == null)
-    //        {
-    //            //Random random = new Random();
-    //            //int randomNumberInRange = random.Next(1, 1000000);
-
-    //            //protocolo = System.String.Format("{0:yyyyMMdd}{1:######}", DateTime.Now, randomNumberInRange);
-
-    //            OngoingInteraction ongoingInteraction = new OngoingInteraction()
-    //            {
-    //                ConversationId = conversastionid,
-    //                Cpf = cpf,
-    //                Protocol = protocolo,
-    //                QueueName = nomeFila,
-    //                TicketDate = DateTime.Now,
-    //                CustomerNavigation = navegacao
-    //            };
-
-    //            ongoingInteractionsCollection.Add(ongoingInteraction);
-    //        }
-    //        else
-    //        {
-    //            ongoingInteractionFromList.Protocol = protocolo;
-    //            ongoingInteractionFromList.QueueName = nomeFila;
-    //            ongoingInteractionFromList.TicketDate = DateTime.Now;
-    //            ongoingInteractionFromList.CustomerNavigation = navegacao;
-    //        }
-    //    }
-
-    //    HttpContext.Session.Remove("OngoingInteractions");
-
-    //    if (ongoingInteractionsCollection.Count > 0)
-    //    {
-    //        ongoingInteractionsSession = JsonConvert.SerializeObject(ongoingInteractionsCollection);
-    //        HttpContext.Session.SetString("OngoingInteractions", ongoingInteractionsSession);
-
-    //        foreach (var interaction in ongoingInteractionsCollection)
-    //        {
-    //            TicketModel ticketModel = new TicketModel();
-    //            ticketModel.QueueGenesys = interaction.QueueName;
-    //            ticketModel.Protocol = interaction.Protocol;
-    //            ticketModel.TicketDataToCompareIfChanged = new TicketDataToCompareIfChangedLog();
-    //            ticketModel.TicketDate = interaction.TicketDate;
-    //            ticketModel.ConversationId = interaction.ConversationId;
-    //            ticketModel.CustomerNavigation = interaction.CustomerNavigation;
-    //            ticketModel.SlaSystemRole = "1";
-    //            ticketModel.ProtocolType = "Pai";
-
-    //            if (string.IsNullOrEmpty(interaction.Cpf) == false)
-    //            {
-    //                var customer = await _customerService.GetCustomerAPIAsync(interaction.Cpf);
-
-    //                if (customer != null)
-    //                {
-    //                    if (customer.Id > 0)
-    //                    {
-    //                        var customerModel = _mapper.Map<CustomerModel>(customer);
-    //                        ticketModel.Customer = customerModel;
-    //                    }
-    //                    else
-    //                    {
-    //                        ticketModel.Customer = new CustomerModel();
-    //                        ticketModel.Customer.Cpf = interaction.Cpf;
-    //                    }
-    //                }
-    //                else
-    //                {
-    //                    ticketModel.Customer = new CustomerModel();
-    //                    ticketModel.Customer.Cpf = interaction.Cpf;
-    //                }
-    //            }
-    //            else
-    //            {
-    //                ticketModel.Customer = new CustomerModel();
-    //                ticketModel.Customer.Cpf = interaction.Cpf;
-    //            }
-
-    //            await LoadListOptions(ticketModel);
-
-    //            if (tickets.Count() == 0)
-    //                tickets.Add(ticketModel);
-    //        }
-    //    }
-
-    //    return View(tickets);
-    //}
-
+  
     [HttpGet]
-    //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public async Task<IActionResult> GenesysInteractionEvent(string nomeFila = "", string conversastionid = "", string email = "", string cpf = "", string protocolo = "", string navegacao = "", string emailCliente = "", string protocolo_pai = "", bool reload = false, bool cancel = false, bool tickedSaved = false)
     {
         _logHelperService.LogMessage($"[{conversastionid}] nomeFila: {nomeFila}, conversastionid: {conversastionid}, email: {email}, cpf: {cpf}, protocolo: {protocolo}, navegacao: {navegacao}, emailCliente: {emailCliente}, protocolo_pai: {protocolo_pai}, cancel: {cancel}");
@@ -777,6 +617,7 @@ public class TicketController : Controller
                             ticketClassification.Reason02ListItemName = item.Reasons[1].ReasonName;
                         }
 
+                        model.SlaSystemRole = string.IsNullOrEmpty(data.SlaSystemRole) ? 0 : int.Parse(data.SlaSystemRole);
                         model.TicketClassification.Add(ticketClassification);
                     }
                 }
@@ -814,40 +655,7 @@ public class TicketController : Controller
             protocolo = $"{protocolPrefix}{protocolSufix.ToString()}";
         }
 
-        OngoingInteraction? ongoingInteraction = null;
-        //var ongoingInteractionSession = HttpContext.Session.GetString($"ConversationId:{conversastionid}");
-
-        //if (ongoingInteractionSession == null)
-        //{
-        //    ongoingInteraction = new OngoingInteraction()
-        //    {
-        //        userEmail = email,
-        //        MediaType = string.IsNullOrEmpty(TipoMidia) ? string.Empty : TipoMidia,
-        //        ConversationId = conversastionid,
-        //        Cpf = cpf,
-        //        Protocol = protocolo,
-        //        ProtocolType = "Pai",
-        //        QueueName = nomeFila,
-        //        TicketDate = DateTime.Now,
-        //        CustomerNavigation = navegacao,
-        //    };
-
-        //    HttpContext.Session.SetString($"ConversationId:{conversastionid}", JsonConvert.SerializeObject(ongoingInteraction));
-        //}
-        //else
-        //{
-        //    ongoingInteraction = JsonConvert.DeserializeObject<OngoingInteraction>(ongoingInteractionSession);
-        //    if (ongoingInteraction != null && reload == false)
-        //    {
-        //        ongoingInteraction.QueueName = nomeFila;
-        //        //ongoingInteraction.Protocol = protocolo;
-        //        ongoingInteraction.CustomerNavigation = navegacao;
-
-        //        HttpContext.Session.Remove($"ConversationId:{conversastionid}");
-        //        HttpContext.Session.SetString($"ConversationId:{conversastionid}", JsonConvert.SerializeObject(ongoingInteraction));
-        //    }
-        //}
-
+        OngoingInteraction? ongoingInteraction = null;        
         ongoingInteraction = ongoingInteractions.Where(_ => _.ConversationId == conversastionid).FirstOrDefault();
 
         if (ongoingInteraction == null)
@@ -899,7 +707,6 @@ public class TicketController : Controller
                 _logHelperService.LogMessage($"[{conversastionid}] Associado protocolo_pai: {ticketModel.ParentTicket}");
             }
 
-
             if (string.IsNullOrEmpty(emailCliente) == false)
             {
                 //ticketModel.DemandInformation = $"https://apps.sae1.pure.cloud/directory/#/analytics/interactions/{conversastionid}/admin";
@@ -922,6 +729,9 @@ public class TicketController : Controller
             ticketModel.AnySolution = ongoingInteraction.AutoSaveData.AnySolution;
             ticketModel.DemandObservation = ongoingInteraction.AutoSaveData.DemandObservation ?? string.Empty;
             ticketModel.ParentTicket = ongoingInteraction.AutoSaveData.ParentTicket;
+            ticketModel.FieldLink01 = ongoingInteraction.AutoSaveData.FieldLink01;
+            ticketModel.FieldLink02 = ongoingInteraction.AutoSaveData.FieldLink02;
+            ticketModel.FieldLink03 = ongoingInteraction.AutoSaveData.FieldLink03;
             ticketModel.TicketCriticalityId = 1;
 
             if (ongoingInteraction.AutoSaveData.TicketClassification != null && ongoingInteraction.AutoSaveData.TicketClassification.Count > 0)
@@ -947,47 +757,6 @@ public class TicketController : Controller
 
                 ViewBag.TicketClassificationJsonData = JsonConvert.SerializeObject(ticketModel.TicketClassification);
             }
-
-
-            //var dir = Path.Combine(Directory.GetCurrentDirectory(), "Contents", conversastionid);
-
-            //if (Directory.Exists(dir))
-            //{
-            //    DirectoryInfo directoryInfo = new DirectoryInfo(dir);
-
-            //    foreach (var file in directoryInfo.GetFiles())
-            //    {
-            //        AttachmentData attachmentData = new AttachmentData();
-            //        attachmentData.ContentDisposition = $"form-data; name=\"Files\"; filename=\"{file.Name}\"";
-            //        attachmentData.FileName = file.Name;
-
-
-            //        //byte[] fileBytes = new byte[file.Length];
-            //        //var stream = file.OpenReadStream();
-            //        //await stream.ReadAsync(fileBytes, 0, (int)file.Length);
-
-
-            //        byte[] fileBytes = System.IO.File.ReadAllBytes(Path.Combine(dir, file.Name));
-
-
-            //        attachmentData.FileContent = Convert.ToBase64String(fileBytes);
-            //        attachmentData.FileBytes = fileBytes;
-            //        //attachmentData.FileStream = new FileStream(Path.Combine(dir, file.Name), FileMode.Open, FileAccess.Read);
-
-            //        switch (file.Extension.ToUpper())
-            //        {
-            //            case ".PDF":
-            //                attachmentData.ContentType = "application/pdf";
-            //                break;
-            //        }
-
-            //        attachmentDatas.Add(attachmentData);
-            //    }
-
-            //    if (attachmentDatas.Count > 0)
-            //        return Json(new { success = true, attachments = attachmentDatas });
-            //}
-
 
             string customerData = string.Empty;
 
@@ -1079,91 +848,7 @@ public class TicketController : Controller
 
             if (ModelState.IsValid)
             {
-                string conversationid = model.ConversationId ?? string.Empty;
-
-                //var ongoingInteractionSession = HttpContext.Session.GetString($"ConversationId:{conversationid}");
-
-                //if (ongoingInteractionSession != null)
-                //{
-                //    var ongoingInteraction = JsonConvert.DeserializeObject<OngoingInteraction>(ongoingInteractionSession);
-
-                //    var useridSession = HttpContext.Session.GetString("UserId");
-                //    if (useridSession != null)
-                //    {
-                //        _logHelperService.LogMessage($"[{conversationid}] usuário da sessão: {useridSession}");
-                //        model.User = useridSession;
-                //    }
-
-                //    Int64 queueGTId = 1;
-                //    var queueGTCollection = await _ticketService.GetTicketQueueGTAPIAsync();
-
-                //    if (queueGTCollection != null && queueGTCollection.Count > 0)
-                //    {
-                //        queueGTId = queueGTCollection.FirstOrDefault(_ => _.Name == model.QueueGT) != null ? queueGTCollection.FirstOrDefault(_ => _.Name == model.QueueGT)!.Id : 1;
-                //    }
-
-                //    model.QueueGT = queueGTId.ToString();
-
-                //    var ticketCreateAPI = _mapper.Map<TicketCreateAPI>(model);
-                //    _logHelperService.LogMessage($"[{conversationid}] Ticket para ser salvo: {JsonConvert.SerializeObject(ticketCreateAPI)}");
-
-                //    var ticket_ret = await _ticketService.InsertTicketAPIAsync(ticketCreateAPI);
-                //    _logHelperService.LogMessage($"[{conversationid}] Ticket {JsonConvert.SerializeObject(ticketCreateAPI)}. RETORNO: {ticket_ret}");
-
-                //    if (ticket_ret.IsValid)
-                //    {
-                //        model.Id = Int64.Parse(ticket_ret.Value);
-
-                //        if (model.Files != null)
-                //        {
-                //            foreach (var file in model.Files)
-                //            {
-                //                var content = new MultipartFormDataContent();
-                //                var filename = Path.GetFileName(file.FileName);
-                //                var filestream = new FileStream(filename, FileMode.Create);
-                //                //var filestream = System.IO.File.Open(filename, FileMode.Open);
-                //                content.Add(new StreamContent(filestream), "file", filename);
-                //            }
-
-                //            var ticketAttachment = new TicketAttachmentAPI();
-                //            ticketAttachment.TicketId = model.Id;
-                //            await _ticketService.UploadTicketAttachmentAPIAsync(ticketAttachment);
-                //        }
-
-                //        if (Directory.Exists(model.ConversationId))
-                //        {
-                //            Directory.Delete(model.ConversationId, true);
-                //        }
-
-                //        await CreateClassification(model, conversationid);
-
-                //        HttpContext.Session.Remove($"ConversationId:{conversationid}");
-
-                //        var username = HttpContext.Session.GetString("Username");
-
-                //        LogController logController = new LogController();
-                //        logController.Id = model.Id;
-                //        logController.Module = MODULE_NAME;
-                //        logController.Section = username == null ? string.Empty : username;
-                //        logController.Field = "Todos";
-                //        logController.Value = "Todos";
-                //        logController.UserId = useridSession != null ? Int64.Parse(useridSession) : 0;
-                //        logController.Action = "Criar";
-
-                //        await _logControllerService.InsertLogAPIAsync(logController);
-
-                //        ViewBag.TicketMessage = "Chamado Criado com sucesso";
-                //        model.TicketSaved = true;
-                //        await LoadListOptions(model);
-                //        return View(model);
-                //        //return Redirect($"/Ticket/GenesysInteractionEvent/?nomeFila=${model.QueueGenesys}&conversastionid=${model.ConversationId}&email=&cpf=${model.Customer.Cpf}&protocolo=${model.Protocol}&navegacao=${model.CustomerNavigation}&reload=true&cancel=false&ticketSaved=true");
-                //    }
-                //    else
-                //    {
-                //        ViewBag.TicketMessage = $"Erro Criando Chamado: {ticket_ret.Value}";
-                //    }
-                //}
-
+                string conversationid = model.ConversationId ?? string.Empty;             
                 var ongoingInteraction = ongoingInteractions.Where(_ => _.ConversationId == conversationid).FirstOrDefault();
 
                 if (ongoingInteraction != null)
@@ -1175,8 +860,8 @@ public class TicketController : Controller
                         model.User = useridSession;
                     }
 
-                    Int64 queueGTId = 1;
-                    var queueGTCollection = await _ticketService.GetTicketQueueGTAPIAsync();
+                    Int64 queueGTId = 1; //var queueGTCollection = await _ticketService.GetTicketQueueGTAPIAsync();
+                    var queueGTCollection = await _ticketService.GetAllTicketQueueGTAPIAsync();
 
                     if (queueGTCollection != null && queueGTCollection.Count > 0)
                     {
@@ -1194,7 +879,7 @@ public class TicketController : Controller
                     if (ticket_ret.IsValid)
                     {
                         model.Id = Int64.Parse(ticket_ret.Value);
-
+                        
                         await UploadFiles(model, null, null);
 
                         var attachments = await _ticketService.DownloadTicketAttachmentAPIAsync(model.Id);
@@ -1247,6 +932,7 @@ public class TicketController : Controller
                                     classificationModel.ServiceId = item.ServiceId;
                                     classificationModel.ServiceUnitId = item.ServiceUnitId;
                                     classificationModel.UserId = string.IsNullOrEmpty(model.User) ? 0 : Int64.Parse(model.User);
+                                    classificationModel.Username = item.Username;
                                     classificationModel.Order = order;
 
                                     if (item.Reason01Id != null && item.Reason01Id != 0 && item.Reason01ListItemId != null && item.Reason01ListItemId != 0)
@@ -1271,6 +957,41 @@ public class TicketController : Controller
 
                                 order++;
                             }
+                        }
+
+                        //SLA
+
+                        if (model.TicketStatusId != 5)
+                        {
+                            var ticketWithSLA = await _ticketService.GetTicketAPIAsync(model.Id);                            
+                            model.SlaSystemRole = string.IsNullOrEmpty(ticketWithSLA.SlaSystemRole) ? 0 : int.Parse(ticketWithSLA.SlaSystemRole);
+
+                            //DateTime now = DateTime.Now;
+                            //int days = await _slaService.GetBusinessDays(model.ProtocolDate, now);
+
+                            //if (days > 0)
+                            //{
+                            //    model.SlaSystemRole = ticketWithSLA.SlaSystemRole == null ? 0 : int.Parse(ticketWithSLA.SlaSystemRole);
+                            //    DateTime protocolDateSla = model.ProtocolDate.AddDays(days);
+                            //    TimeSpan timeSpan = now - protocolDateSla;
+                            //    double totalDays = timeSpan.TotalDays;
+
+                            //    if (totalDays < 0)
+                            //    {
+                            //        days--;
+                            //    }
+
+                            //    model.Sla = days;
+
+                            //    if ((model.SlaSystemRole - model.Sla) <= 1)
+                            //    {
+                            //        ViewBag.SLAColor = "#FF0000";
+                            //    }
+                            //    else
+                            //    {
+                            //        ViewBag.SLAColor = "#FFFFFF";
+                            //    }
+                            //}
                         }
 
                         var username = HttpContext.Session.GetString("Username");
@@ -2222,7 +1943,8 @@ public class TicketController : Controller
             }
 
             List<SelectListItem> queueGTCollection = new List<SelectListItem>();
-            var queueGTList = await _ticketService.GetTicketQueueGTAPIAsync();
+            //var queueGTList = await _ticketService.GetTicketQueueGTAPIAsync();
+            var queueGTList = await _ticketService.GetAllTicketQueueGTAPIAsync();
 
             if (queueGTList != null)
             {

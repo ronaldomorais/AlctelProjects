@@ -21,6 +21,7 @@ public interface ITicketAPIRepository
     Task<APIResponse<List<TicketCriticalityAPI>>> GetTicketCriticalityAPIAsync();
     Task<APIResponse<int>> InsertTicketClassificationAPIAsync(string data);
     Task<APIResponse<List<TicketQueueGTAPI>>> GetTicketQueueGTAPIAsync();
+    Task<APIResponse<List<TicketQueueGTAPI>>> GetAllTicketQueueGTAPIAsync();
     Task<APIResponse<List<TicketAPI>>> GetCustomerTicketAPIAsync(Int64 id);
     Task<APIResponse<bool>> TicketHasSavedAPIAsync(string protocol);
     Task<APIResponse<bool>> UploadTicketAttachmentAPIAsync(TicketAttachmentCreateAPI ticketAttachment);

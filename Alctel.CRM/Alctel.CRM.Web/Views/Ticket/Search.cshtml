@@ -143,7 +143,7 @@
 					<th scope="col">#</th>
 					<th scope="col">Cliente</th>
 					<th scope="col">Protocolo</th>
-					@* <th scope="col">Protocolo Pai</th> *@
+					<th scope="col">Protocolo Pai</th>
 					<th scope="col">Data do Protocolo</th>
 					<th scope="col">Tipo de Protocolo</th>
 					@* <th scope="col">Tipo de Demanda</th> *@
@@ -155,8 +155,8 @@
 					<th scope="col">Termômetro</th>
 					@* <th scope="col">Anexo</th> *@
 					<th scope="col">Usuário</th>
-					<th scope="col"></th>
-					<th scope="col"></th>
+					<th scope="col">&nbsp;&nbsp;&nbsp; Ações</th>
+					@* <th scope="col"></th> *@
 				</tr>
 			</thead>
 			<tbody>
@@ -176,9 +176,9 @@
 
 						<tr>
 							<th scope="row">@itemcounter</th>
-							<td>@item.CustomerFullName</td>
+							<td>@item.Customer.FirstName</td>
 							<td>@item.Protocol</td>
-							@* <td>@item.ParentProtocol</td> *@
+							<td>@item.ParentProtocol</td>
 							<td>@item.ProtocolDate.ToString("dd/MM/yyyy HH:mm", new CultureInfo("pt-br"))</td>
 							<td>@item.ProtocolType</td>
 							@* <td>@item.DemandType</td> *@
@@ -190,7 +190,7 @@
 							<td>@item.Thermometer</td>
 							@* <td>@(item.HasAttachment ? "Sim" : "Não")</td> *@
 							<td>@item.User</td>
-							<td align="right">
+							<td>
 								@* 								<form method="get" asp-action="Edit">
 									<input type="hidden" name="id" value=@item.Id />
 									<button type="submit" class="btn btn-style">
@@ -200,6 +200,7 @@
 									</button>
 								</form> *@
 
+								@*Editar*@
 								@if (item.TicketStatus != null && item.TicketStatus.ToUpper() != "FINALIZADO")
 								{
 									@if (item.User != null && item.User.ToUpper() == username.ToUpper())
@@ -210,32 +211,8 @@
 										}
 									}
 								}
-
-
-							</td>
-							<td>
-								@* 								<form method="get" asp-action="Delete">
-									<input type="hidden" name="id" value=@item.Id />
-									<button type="submit" class="btn btn-style">
-										<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-trash3" viewBox="0 0 16 16">
-											<path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
-										</svg>
-									</button>
-								</form> *@
-								@* 
-								@if (string.IsNullOrEmpty(item.User))
-								{
-									
-									<button type="button" class="btn btn-style" data-bs-toggle="modal"
-											data-bs-target="#associateTicketModel" onclick="associateTicketToMe.Methods.Submit(@item.Id)">
-										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-up" viewBox="0 0 16 16">
-											<path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.354-5.854 1.5 1.5a.5.5 0 0 1-.708.708L13 11.707V14.5a.5.5 0 0 1-1 0v-2.793l-.646.647a.5.5 0 0 1-.708-.708l1.5-1.5a.5.5 0 0 1 .708 0M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
-											<path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
-										</svg>
-									</button>
-									<a href="#" data-bs-toggle="modal"
-									   data-bs-target="#associateTicketModel" onclick="associateTicketToMe.Methods.Submit(@item.Id)">Gerenciar</a>
-								} *@
+								&nbsp;&nbsp
+								@*Atribuir / Visualizar*@
 
 								@if (item.TicketStatus != null && item.TicketStatus.ToUpper() != "FINALIZADO")
 								{
@@ -281,9 +258,47 @@
 									<a href="@baseUrl/Ticket/ViewTicket/?id=@item.Id">Visualizar</a>
 								}
 
-
-
 							</td>
+							@* <td>
+
+
+								@if (item.TicketStatus != null && item.TicketStatus.ToUpper() != "FINALIZADO")
+								{
+									@if (profile.ToUpper() == "ADMINISTRADOR")
+									{
+										<a href="#" data-bs-toggle="modal"
+										   data-bs-target="#associateTicketModel" onclick="associateTicketToMe.Methods.LoadScreen(@item.Id, '@item.User')">
+											Atribuir
+										</a>
+									}
+									else if (profile.ToUpper() == "MONITOR")
+									{
+										<a href="@baseUrl/Ticket/ViewTicket/?id=@item.Id">Visualizar</a>
+									}
+									else
+									{
+										if (string.IsNullOrEmpty(item.User))
+										{
+											<a href="#" data-bs-toggle="modal"
+											   data-bs-target="#associateTicketModel" onclick="associateTicketToMe.Methods.LoadScreen(@item.Id, '@item.User')">Atribuir</a>
+										}
+										else
+										{
+											@if (item.User != null && item.User.ToUpper() != username.ToUpper())
+											{
+												<a href="@baseUrl/Ticket/ViewTicket/?id=@item.Id">Visualizar</a>
+											}
+										}
+									}
+								}
+								else
+								{
+									<a href="@baseUrl/Ticket/ViewTicket/?id=@item.Id">Visualizar</a>
+								}
+
+
+
+							</td> *@
 						</tr>
 
 						{ itemcounter = itemcounter + 1; }

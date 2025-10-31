@@ -95,6 +95,8 @@ public class TicketModel
     [Display(Name = "Informações da Demanda")]
     public string? DemandObservation { get; set; }
 
+    public string? TransferAreaName { get; set; }
+
     [Required(ErrorMessage = "Foi dada a Solução para o Cliente é obrigatório")]
     [Display(Name = "Foi dada a Solução para o Cliente?")]
     public string? AnySolution { get; set; }
@@ -120,6 +122,15 @@ public class TicketModel
     public List<IFormFile> Files { get; set; } = new List<IFormFile>();
 
     public List<TicketAttachmentModel>? Attachments { get; set; }
+
+    [Display(Name = "Campo Extra 01")]
+    public string? FieldLink01 { get; set; }
+
+    [Display(Name = "Campo Extra 02")]
+    public string? FieldLink02 { get; set; }
+
+    [Display(Name = "Campo Extra 03")]
+    public string? FieldLink03 { get; set; }
 }
 
 public class TicketDataToCompareIfChangedLog

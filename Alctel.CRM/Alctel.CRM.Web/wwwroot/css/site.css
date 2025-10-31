@@ -182,3 +182,16 @@ a:active {
 .select2-red-border {
     border: 1px solid #ff0000 !important;
 }
+
+.table-scroll-container {
+    max-height: 300px; /* Set a fixed height for the scrollable area */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Prevent horizontal scrolling if not needed */
+}
+
+.table-responsive-scroll thead th {
+    position: sticky; /* Make the table header sticky */
+    top: 0; /* Stick to the top of the scrolling container */
+    background-color: #f8f9fa; /* Optional: Add a background color to the header */
+    z-index: 1; /* Ensure the header stays above the scrolling content */
+}

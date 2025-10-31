@@ -207,6 +207,24 @@ var screenAutoSaveData = {
                 formData.append('ParentTicket', parentTicket);
             }
 
+            const fieldLink01 = $('#FieldLink01').val();
+            if (fieldLink01 !== null && fieldLink01 !== '') {
+                //autoSaveData.FieldLink01 = fieldLink01;
+                formData.append('FieldLink01', fieldLink01);
+            }
+
+            const fieldLink02 = $('#FieldLink02').val();
+            if (fieldLink02 !== null && fieldLink02 !== '') {
+                //autoSaveData.FieldLink02 = fieldLink02;
+                formData.append('FieldLink02', fieldLink02);
+            }
+
+            const fieldLink03 = $('#FieldLink03').val();
+            if (fieldLink03 !== null && fieldLink03 !== '') {
+                //autoSaveData.FieldLink03 = fieldLink03;
+                formData.append('FieldLink03', fieldLink03);
+            }
+
             if (attached_files.length > 0) {
                 console.log(attached_files)
                 Array.from(attached_files).forEach(file => {

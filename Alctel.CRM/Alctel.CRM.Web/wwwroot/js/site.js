@@ -12,6 +12,108 @@ let checkOnInteractionAlertInfoTimer = undefined;
 var tools = {
     HelpMethods: {
 
+        InputKeyPress: function () {
+            $('.input-key-pressed').on('keyup', function (event) {
+                const key = event.key;
+                const elementid = event.target.id;
+
+                if (isNaN(key) === false) {
+                    let value = $(`#${elementid}`).val();
+
+                    value = value.replace(/\D/g, '');
+                    // Limita o número de dígitos para evitar excesso
+                    if (value.length > 11) {
+                        value = value.slice(0, 11);
+                    }
+
+                    // Aplica a formatação
+                    if (value.length > 1) {
+                        let ddd = value.slice(0, 2);
+                        let parteRestante = value.slice(2);
+
+                        //console.log('parteRestante', parteRestante);
+
+                        if (parteRestante.length > 5) {
+                            // Formato para 9 dígitos no final (celular)
+                            let primeiraParte = parteRestante.slice(0, parteRestante.length - 4);
+                            let segundaParte = parteRestante.slice(-4);
+                            $(`#${elementid}`).val(`(${ddd}) ${primeiraParte}-${segundaParte}`);
+                        } else {
+                            // Formato para 8 dígitos no final (fixo ou celular com 8)
+                            $(`#${elementid}`).val(`(${ddd}) ${parteRestante}`);
+                        }
+                    } else {
+
+                        $(`#${elementid}`).val(value);
+                    }
+                }
+                else {
+                    const inputvalue = $(`#${elementid}`).val();
+                    let newvalue = '';
+                    console.log(inputvalue)
+
+                    if (inputvalue !== '') {
+                        const lastvalue = inputvalue[inputvalue.length - 1];
+
+                        if (isNaN(lastvalue)) {
+                            newvalue = inputvalue.substring(0, inputvalue.length - 1);
+                        }
+
+                        value = inputvalue.replace(/\D/g, '');
+                        // Limita o número de dígitos para evitar excesso
+                        if (value.length > 11) {
+                            value = value.slice(0, 11);
+                        }
+
+                        // Aplica a formatação
+                        if (value.length > 1) {
+                            let ddd = value.slice(0, 2);
+                            let parteRestante = value.slice(2);
+
+                            //console.log('parteRestante', parteRestante);
+
+                            if (parteRestante.length > 5) {
+                                // Formato para 9 dígitos no final (celular)
+                                let primeiraParte = parteRestante.slice(0, parteRestante.length - 4);
+                                let segundaParte = parteRestante.slice(-4);
+                                $(`#${elementid}`).val(`(${ddd}) ${primeiraParte}-${segundaParte}`);
+                            } else {
+                                // Formato para 8 dígitos no final (fixo ou celular com 8)
+                                $(`#${elementid}`).val(`(${ddd}) ${parteRestante}`);
+                            }
+                        } else {
+
+                            $(`#${elementid}`).val(value);
+                        }
+
+                        //$(`#${elementid}`).val(newvalue);
+                    }
+                }
+            });
+        },
+
+        CapitalizeText: function () {
+            $('.capitalize-text').on('input', function () {
+                const id = $(this).attr("id");
+                let text = $(`#${id}`).val();                
+                $(`#${id}`).val(text.toUpperCase());
+            })
+        },
+
+        EnableSecondFieldIfMainFieldIsNotEmpty: function (mainFieldId, secondFieldId) {
+            const mainFieldValue = $(`#${mainFieldId}`).val();
+
+            if (mainFieldValue === '' || mainFieldValue === undefined) {
+                $(`#${secondFieldId}`).val('');
+                $(`#${secondFieldId}`).prop('readonly', true);
+                $(`#${secondFieldId}`).css('background-color', '#E2E8F0');
+            }
+            else {
+                $(`#${secondFieldId}`).prop('readonly', false);
+                $(`#${secondFieldId}`).css('background-color', '#FFF');
+            }
+        },
+
         EnableFormCancelButton: function () {
             $(".cancel-form").on('click', function () {
 
@@ -97,40 +199,6 @@ var tools = {
                 let newvalue = `${value.substring(0, length - 1)}${maskchar}${lastvalue}`
                 element.value = newvalue
             }
-
-            //else {
-            //    console.log('test2')
-            //    element.value = value.substring(0, length - 1)
-            //}
-
-            //if (length > 14) {
-            //    return
-            //}
-
-            //let maskchar = mask.substring(length - 1, length)
-            //let valuechar = value.substring(length - 1, length)
-
-            //console.log(length, maskchar, valuechar, value)
-
-            //if (maskchar == '#') {
-            //    element.value = value
-            //}
-            //else {
-            //    var newvalue = ''
-            //    let i = 0
-            //    Array.from(value).forEach(char => {
-            //        i++;
-            //        if (i == length) {
-            //            if (maskchar != char) {
-            //                newvalue = `${newvalue}${maskchar}${char}`
-            //            }
-            //        }
-            //        else {
-            //            newvalue = `${newvalue}${char}`
-            //        }
-            //    })
-            //    element.value = newvalue
-            //}
         },
 
         SubmitPageControlForm: function () {
@@ -501,7 +569,7 @@ var dataTablesHandler = {
                         searchPanes: {
                             show: true
                         },
-                        targets: [0, 1, 2, 3, 4, 5]
+                        //targets: [0, 1, 2, 3, 4]
                     }
                 ]
             });
@@ -1989,6 +2057,9 @@ $(function () {
     
     urlManager.Methods.LoadConversationIdInUrl();
     fileHelper.Methods.ReloadAttachedFiles();
+
+    tools.HelpMethods.CapitalizeText();
+    tools.HelpMethods.InputKeyPress();
 });
 
 

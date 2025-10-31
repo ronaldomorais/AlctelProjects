@@ -125,8 +125,8 @@
 					<th scope="col">Data de Criação</th>
 					<th scope="col">Status</th>
 					<th scope="col">Status Desde</th>
-					<th scope="col"></th>
-					<th scope="col"></th>
+					<th scope="col">Ações</th>
+					@* <th scope="col"></th> *@
 				</tr>
 			</thead>
 			<tbody>
@@ -161,7 +161,7 @@
 								}
 							</td>
 							<td>@item.StatusSince.ToString("dd/MM/yyyy")</td>
-							<td align="right">
+							<td>
 	@* 							<form method="get" asp-action="Edit">
 									<input type="hidden" name="id" value=@item.Id />
 									<button type="submit" class="btn btn-style">

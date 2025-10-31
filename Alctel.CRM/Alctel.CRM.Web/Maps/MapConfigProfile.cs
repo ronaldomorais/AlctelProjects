@@ -4,6 +4,7 @@ using Alctel.CRM.Context.InMemory.Entities.Classification;
 using Alctel.CRM.Web.Models;
 using Alctel.CRM.Web.Models.Classification;
 using AutoMapper;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Alctel.CRM.Web.Maps;
 
@@ -63,11 +64,105 @@ public class MapConfigProfile : Profile
         CreateMap<LogDataReceived, LogDataReceivedModel>();
         CreateMap<LogDataReceivedModel, LogDataReceived>();
 
-        CreateMap<CustomerAPI, CustomerModel>();
-        CreateMap<CustomerModel, CustomerAPI>();
+        CreateMap<CustomerAPI, CustomerModel>()
+            .ForMember(
+                dest => dest.Cpf,
+                opt => opt.MapFrom(src => FormatCpf(src.Cpf))
+            )
+            .ForMember(
+                dest => dest.Cnpj,
+                opt => opt.MapFrom(src => FormatCnpf(src.Cnpj))
+            )
+            .ForMember(
+                dest => dest.PhoneNumber1,
+                opt => opt.MapFrom(src => FormatarPhone(src.PhoneNumber1))
+            )
+            .ForMember(
+                dest => dest.PhoneNumber2,
+                opt => opt.MapFrom(src => FormatarPhone(src.PhoneNumber2))
+            )
+            .ForMember(
+                dest => dest.PhoneNumberCompany,
+                opt => opt.MapFrom(src => FormatarPhone(src.PhoneNumberCompany))
+            )
+            .ForMember(
+                dest => dest.FirstName,
+                opt => opt.MapFrom(src => CapitalizeText(src.FirstName))
+            )
+            .ForMember(
+                dest => dest.LastName,
+                opt => opt.MapFrom(src => CapitalizeText(src.LastName))
+            )
+            .ForMember(
+                dest => dest.SocialAffectionateName,
+                opt => opt.MapFrom(src => CapitalizeText(src.SocialAffectionateName))
+            )
+            .ForMember(
+                dest => dest.Category,
+                opt => opt.MapFrom(src => CapitalizeText(src.Category))
+            )
+            .ForMember(
+                dest => dest.CompanyName,
+                opt => opt.MapFrom(src => CapitalizeText(src.CompanyName))
+            )
+            .ForMember(
+                dest => dest.Email1,
+                opt => opt.MapFrom(src => CapitalizeText(src.Email1))
+            )
+            .ForMember(
+                dest => dest.Email2,
+                opt => opt.MapFrom(src => CapitalizeText(src.Email2))
+            )
+            .ForMember(
+                dest => dest.SubCategory,
+                opt => opt.MapFrom(src => CapitalizeText(src.SubCategory))
+            );
+
+
+        CreateMap<CustomerModel, CustomerAPI>()
+            .ForMember(
+                dest => dest.Cpf,
+                opt => opt.MapFrom(src => ExtractOnlyNumbers(src.Cpf))
+            )
+            .ForMember(
+                dest => dest.Cnpj,
+                opt => opt.MapFrom(src => ExtractOnlyNumbers(src.Cnpj))
+            )
+            .ForMember(
+                dest => dest.PhoneNumber1,
+                opt => opt.MapFrom(src => ExtractOnlyNumbers(src.PhoneNumber1))
+            )
+            .ForMember(
+                dest => dest.PhoneNumber2,
+                opt => opt.MapFrom(src => ExtractOnlyNumbers(src.PhoneNumber2))
+            )
+            .ForMember(
+                dest => dest.PhoneNumberCompany,
+                opt => opt.MapFrom(src => ExtractOnlyNumbers(src.PhoneNumberCompany))
+            );
 
         CreateMap<CustomerCreateAPI, CustomerCreateModel>();
-        CreateMap<CustomerCreateModel, CustomerCreateAPI>();
+        CreateMap<CustomerCreateModel, CustomerCreateAPI>()
+            .ForMember(
+                dest => dest.Cpf,
+                opt => opt.MapFrom(src => ExtractOnlyNumbers(src.Cpf))
+            )
+            .ForMember(
+                dest => dest.Cnpj,
+                opt => opt.MapFrom(src => ExtractOnlyNumbers(src.Cnpj))
+            )
+            .ForMember(
+                dest => dest.PhoneNumber1,
+                opt => opt.MapFrom(src => ExtractOnlyNumbers(src.PhoneNumber1))
+            )
+            .ForMember(
+                dest => dest.PhoneNumber2,
+                opt => opt.MapFrom(src => ExtractOnlyNumbers(src.PhoneNumber2))
+            )
+            .ForMember(
+                dest => dest.PhoneNumberCompany,
+                opt => opt.MapFrom(src => ExtractOnlyNumbers(src.PhoneNumberCompany))
+            );
 
         CreateMap<ClassificationListAPI, ClassificationListModel>();
         CreateMap<ClassificationListModel, ClassificationListAPI>();
@@ -108,7 +203,7 @@ public class MapConfigProfile : Profile
 
         CreateMap<TicketModel, TicketCreateAPI>()
             .ForMember(dest => dest.CustomerId, o => o.MapFrom(s => s.Customer.Id))
-            .ForMember(dest => dest.Cpf, o => o.MapFrom(s => s.Customer.Cpf))
+            .ForMember(dest => dest.Cpf, o => o.MapFrom(s => ExtractOnlyNumbers(s.Customer.Cpf)))
             .ForMember(dest => dest.FirstName, o => o.MapFrom(s => s.Customer.FirstName))
             //.ForMember(dest => dest.TicketStatusId, o => o.MapFrom(s => s.TicketStatus != null ? Int64.Parse(s.TicketStatus) : 0))
             //.ForMember(dest => dest.TicketCriticalityId, o => o.MapFrom(s => s.TicketCriticality != null ? Int64.Parse(s.TicketCriticality) : 0))
@@ -171,5 +266,84 @@ public class MapConfigProfile : Profile
 
         CreateMap<SlaReasonModel, SlaReasonAPI>();
         CreateMap<SlaTicketCreateModel, SlaTicketCreateAPI>();
+    }
+
+    private string? FormatCpf(string? cpf)
+    {
+        if (string.IsNullOrEmpty(cpf))
+        {
+            return null;
+        }
+
+        // Clean any non-digit characters
+        var cleanCpf = new string(cpf.Where(char.IsDigit).ToArray());
+
+        // Apply the ###.###.###-## mask
+        return Convert.ToUInt64(cleanCpf).ToString(@"000\.000\.000\-00");
+    }
+
+    private string? FormatCnpf(string? cnpf)
+    {
+        if (string.IsNullOrEmpty(cnpf))
+        {
+            return null;
+        }
+
+        // Clean any non-digit characters
+        var cleanCnpf = new string(cnpf.Where(char.IsDigit).ToArray());
+
+        // Apply the ###.###.###-## mask
+        return Convert.ToUInt64(cleanCnpf).ToString(@"00\.000\.000\/0000-00");
+    }
+
+    private string? ExtractOnlyNumbers(string? data)
+    {
+        if (string.IsNullOrEmpty(data))
+        {
+            return string.Empty;
+        }
+        char[] numbers = data.Where(char.IsDigit).ToArray();
+        return new string(numbers);
+    }
+
+    private string FormatarPhone(string? numero)
+    {
+        if (string.IsNullOrEmpty(numero))
+        {
+            return string.Empty;
+        }
+
+        // Remove todos os caracteres que não sejam dígitos
+        numero = new string(numero.Where(char.IsDigit).ToArray());
+
+        if (numero.Length == 12)
+        {
+            return string.Format("{0:(000) 00000-0000}", long.Parse(numero));
+        }
+        // Se o número tem 11 dígitos (celular com 9º dígito)
+        else if (numero.Length == 11)
+        {
+            return string.Format("{0:(00) 00000-0000}", long.Parse(numero));
+        }
+        // Se o número tem 10 dígitos (telefone fixo ou celular antigo)
+        else if (numero.Length == 10)
+        {
+            return string.Format("{0:(00) 0000-0000}", long.Parse(numero));
+        }
+        else
+        {
+            // Retorna o número original se não corresponder aos formatos padrão
+            return numero;
+        }
+    }
+
+    private string CapitalizeText(string? text)
+    {
+        if (string.IsNullOrEmpty(text))
+        {
+            return string.Empty;
+        }
+
+        return text.ToUpper();
     }
 }

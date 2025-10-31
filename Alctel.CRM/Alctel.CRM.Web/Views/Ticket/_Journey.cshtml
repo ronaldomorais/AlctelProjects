@@ -283,8 +283,8 @@
 			</h5>
 		</div>
 
-		<div class="row smal mb-3" style="margin:10px;">
-			<table id="ticketClassificationTableId" class="table table-striped table-sm"
+		<div class="row smal mb-3 table-scroll-container" style="margin:10px;">
+			<table id="ticketClassificationTableId" class="table table-responsive-md table-striped table-sm"
 				   style="margin-top: 50px;background-color: #f2f2f2;">
 				<thead>
 					<tr style="color: #666666 !important; font-weight: bold;">
@@ -336,7 +336,8 @@
 								</td>
 								<td>
 									<input type="hidden" name="TicketClassification[@c].UserId" value="@Model.TicketClassification[@c].UserId" />
-									@Model.TicketClassification[@c].UserId
+									<input type="hidden" name="TicketClassification[@c].Username" value="@Model.TicketClassification[@c].Username" />
+									@Model.TicketClassification[@c].Username
 								</td>
 							</tr>
 						}

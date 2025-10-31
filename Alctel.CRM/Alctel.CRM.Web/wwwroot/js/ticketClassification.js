@@ -306,13 +306,13 @@ var ticketClassification = {
             const currentUsername = $('#currentUsername').val();
             const ticketClassificationCounter = $('#ticketClassificationTableId tbody tr').length;
 
-            let classificationByUserCounter = 1;
+            let classificationByUserCounter = 0;
             $('#ticketClassificationTableId tbody tr').each(function () {
                 const row = $(this);
                 const target_td = row.find("td:nth-child(6)");
                 const userid_td = target_td.find('input[type="hidden"]').val();
 
-                if (userid_td === userid_td) {
+                if (currentUserId === userid_td) {
                     classificationByUserCounter++;
                 }
             });
@@ -441,6 +441,7 @@ var ticketClassification = {
                 </td>
                 <td>
 					<input type="hidden" name="TicketClassification[${ticketClassificationCounter}].UserId" value="${currentUserId}" />
+                    <input type="hidden" name="TicketClassification[${ticketClassificationCounter}].Username" value="${currentUsername}" />
 					${currentUsername}
                 </td>
             </tr>`

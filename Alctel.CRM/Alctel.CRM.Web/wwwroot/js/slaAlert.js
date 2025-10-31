@@ -6,7 +6,7 @@
 var slaAlertConfig = {
     Init: {
         select2ToTree: function () {
-            const selectsArray = ['ManifestationTypeId', 'ServiceId', 'ProgramId', 'Reason01Id', 'Reason02Id', 'CriticalityId'];
+            const selectsArray = ['ManifestationTypeId', 'ServiceId', 'ProgramId', 'Reason01ListItemId', 'Reason02ListItemId', 'CriticalityId'];
 
             Array.from(selectsArray).forEach(item => {
 
@@ -23,14 +23,22 @@ var slaAlertConfig = {
         OnManifestationTypeChanged: function () {
             var selectedValue = $('#ManifestationTypeId').val();
 
-            console.log(selectedValue)
+            //$('#programDivId').hide();
+            $('#serviceDivId').hide();
+            $('#reason01DivId').hide();
+            $('#reason02DivId').hide();
+            $('#criticalityDivId').hide();
+            $('#btnSlaCreate').prop('disabled', true);
+
             $('#ServiceId').empty();
+            $('#Reason01ListItemId').empty();
+            $('#Reason02ListItemId').empty();
 
             if (selectedValue !== '0') {
                 //$('#programDivId').show();
 
                 $.get(`${origin_url}/TicketClassification/GetTicketClassificationServiceByManifestation/?id=${selectedValue}`, function (data, success) {
-                    console.log(data)
+                    
                     if (success === 'success') {
                         if (data !== null) {
 
@@ -57,34 +65,27 @@ var slaAlertConfig = {
                     }
                 });
             }
-            else {
-                //$('#programDivId').hide();
-                $('#reason01DivId').hide();
-                $('#reason02DivId').hide();
-                $('#serviceDivId').hide();
-                $('#criticalityDivId').hide();
-                $('#btnSlaCreate').prop('disabled', true);
-            }
         },
 
         OnServiceChanged: function () {
             var serviceId = $('#ServiceId').val();
             const manifestationid = $('#ManifestationTypeId').val();
 
-            $('#Reason01Id').empty();
+            $('#reason01DivId').hide();
+            $('#reason02DivId').hide();
+            $('#criticalityDivId').hide();
+            $('#btnSlaCreate').prop('disabled', true);
+
+            $('#Reason01ListItemId').empty();
+            $('#Reason02ListItemId').empty();
 
             if (serviceId !== '0') {
-                //$('#programDivId').show();
-                //$('#reason01DivId').show();
-                $('#criticalityDivId').show();
-                $('#btnAddClassificationId').prop('disabled', false);
-
+                
                 $.get(`${origin_url}/TicketClassification/GetTicketClassificationReasonListItems/?manifestationid=${manifestationid}&serviceid=${serviceId}`, function (data, success) {
                     if (success === 'success') {
                         if (data !== null && data.length > 0) {
-                            console.log(data);
 
-                            $('#Reason01Id').append(
+                            $('#Reason01ListItemId').append(
                                 $('<option>', {
                                     value: '',
                                     text: 'Opções',
@@ -93,31 +94,26 @@ var slaAlertConfig = {
 
                             if (data.length > 0) {
                                 $.each(data, function (index, value) {
-                                    $('#Reason01Id').append(
+                                    $('#Reason01ListItemId').append(
                                         $('<option>', {
-                                            value: value.id,
+                                            value: value.listItemId,
                                             text: value.listItemName,
                                         })
                                     )
                                 })
                             }
 
-                            console.log(data);
-                            console.log(data[0].idLista);
+                            $('#Reason01Id').val(data[0].id);
                             $('#Reason01ListId').val(data[0].listId);
 
                             $('#reason01DivId').show();
-                            //$('#btnAddClassificationId').prop('disabled', false);
+                        }
+                        else {
+                            $('#criticalityDivId').show();
+                            $('#btnSlaCreate').prop('disabled', false);
                         }
                     }
                 });
-            }
-            else {
-                //$('#programDivId').hide();
-                $('#reason01DivId').hide();
-                $('#reason02DivId').hide();
-                $('#criticalityDivId').hide();
-                $('#btnSlaCreate').prop('disabled', true);
             }
         },
 
@@ -142,19 +138,25 @@ var slaAlertConfig = {
             const manifestationid = $('#ManifestationTypeId').val();
             const reason01ListId = $('#Reason01ListId').val();
 
-            var selectedValue = $('#Reason01Id').val();
+            const reason01Id = $('#Reason01Id').val();
 
-            $('#Reason02Id').empty();
 
-            if (selectedValue !== '0') {
+            $('#reason02DivId').hide();
+            $('#criticalityDivId').hide();
+            $('#btnSlaCreate').prop('disabled', true);
+
+            $('#Reason02ListItemId').empty();
+
+            if (reason01Id !== '0') {
                 //$('#reason02DivId').show();
 
-                $.get(`${origin_url}/TicketClassification/GetTicketClassificationReasonListItems/?manifestationid=${manifestationid}&serviceid=${serviceId}&parentId=${reason01ListId}`, function (data, success) {
+                $.get(`${origin_url}/TicketClassification/GetTicketClassificationReasonListItems/?manifestationid=${manifestationid}&serviceid=${serviceId}&parentId=${reason01Id}`, function (data, success) {
 
                     if (success === 'success') {
+
                         if (data !== null && data.length > 0) {
 
-                            $('#Reason02Id').append(
+                            $('#Reason02ListItemId').append(
                                 $('<option>', {
                                     value: '',
                                     text: 'Opções',
@@ -163,18 +165,23 @@ var slaAlertConfig = {
 
                             if (data.length > 0) {
                                 $.each(data, function (index, value) {
-                                    $('#Reason02Id').append(
+                                    $('#Reason02ListItemId').append(
                                         $('<option>', {
-                                            value: value.Id,
-                                            text: value.Name,
+                                            value: value.listItemId,
+                                            text: value.listItemName,
                                         })
                                     )
                                 })
                             }
 
-                            $('#Reason02ListId').val(data[0].idLista);
+                            $('#Reason02Id').val(data[0].id);
+                            $('#Reason02ListId').val(data[0].listId);
 
                             $('#reason02DivId').show();
+                        }
+                        else {
+                            $('#btnSlaCreate').prop('disabled', false);
+                            $('#criticalityDivId').show();
                         }
                     }
                 });
@@ -185,14 +192,12 @@ var slaAlertConfig = {
         },
 
         OnReason02Changed: function () {
-            var selectedValue = $('#Reason02Id').val();
+            const reason02ListId = $('#Reason02ListId').val();
 
-            //if (selectedValue !== '0') {
-            //    $('#serviceDivId').show();
-            //}
-            //else {
-            //    $('#serviceDivId').hide();
-            //}
+            if (reason02ListId !== 0) {
+                $('#btnSlaCreate').prop('disabled', false);
+                $('#criticalityDivId').show();
+            }
         },
 
         OnCriticalityChanged: function () {

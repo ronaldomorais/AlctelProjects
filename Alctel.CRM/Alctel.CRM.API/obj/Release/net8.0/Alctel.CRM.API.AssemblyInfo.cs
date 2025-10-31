@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Alctel.CRM.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3332cf909128663b29fd80d9515a425a8a06b5a9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4a884adb97253f2ff06105c26e6305fc6ac1108c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Alctel.CRM.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Alctel.CRM.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -12,6 +12,7 @@ public class TicketClassificationCreateModel
     public Int64 ServiceUnitId { get; set; }
 
     public Int64 UserId { get; set; }
+    public string? Username { get; set; }
 
     public Int64 Order { get; set; }
 

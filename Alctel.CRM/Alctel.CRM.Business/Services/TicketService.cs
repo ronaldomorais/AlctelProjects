@@ -223,7 +223,7 @@ public class TicketService : ITicketService
             obj.idStatusChamado = ticketAPI.TicketStatusId;
             obj.idCriticidadeChamado = ticketAPI.TicketCriticalityId;
             obj.solucionado = ticketAPI.AnySolution == "0" ? false : true;
-            obj.idMotivoDemanda = ticketAPI.DemandTypeId;
+            //obj.idMotivoDemanda = ticketAPI.DemandTypeId;
 
             string json = JsonConvert.SerializeObject(obj, Formatting.Indented);
             var apiResponse = await _ticketAPIRepository.UpdateTicketAPIAsync(json);
@@ -360,6 +360,26 @@ public class TicketService : ITicketService
         try
         {
             var apiResponse = await _ticketAPIRepository.GetTicketQueueGTAPIAsync();
+
+            if (apiResponse.IsSuccessStatusCode)
+            {
+                if (apiResponse.Response != null)
+                    return apiResponse.Response;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}. Trace: {ex.StackTrace}");
+        }
+
+        return new List<TicketQueueGTAPI>();
+    }
+
+    public async Task<List<TicketQueueGTAPI>> GetAllTicketQueueGTAPIAsync()
+    {
+        try
+        {
+            var apiResponse = await _ticketAPIRepository.GetAllTicketQueueGTAPIAsync();
 
             if (apiResponse.IsSuccessStatusCode)
             {

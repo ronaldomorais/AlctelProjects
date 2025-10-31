@@ -78,7 +78,7 @@ var slaAlertConfig = {
                 //$('#reason01DivId').show();
                 $('#criticalityDivId').show();
                 $('#btnAddClassificationId').prop('disabled', false);
-
+                
                 $.get(`${origin_url}/TicketClassification/GetTicketClassificationReasonListItems/?manifestationid=${manifestationid}&serviceid=${serviceId}`, function (data, success) {
                     if (success === 'success') {
                         if (data !== null && data.length > 0) {
@@ -106,7 +106,7 @@ var slaAlertConfig = {
                             console.log(data[0].idLista);
                             $('#Reason01ListId').val(data[0].listId);
 
-                            $('#reason01DivId').show();
+                            //$('#reason01DivId').show();
                             //$('#btnAddClassificationId').prop('disabled', false);
                         }
                     }
