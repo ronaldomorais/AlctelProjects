@@ -98,7 +98,7 @@ public class SlaService : ISlaService
 
                 if (additionalMessage.Contains("duplicate key value violates unique constraint"))
                 {
-                    responseServiceModel.Value = "Duplicidade: Já existe um sla cadastrado com esses valores.";
+                    responseServiceModel.Value = "Erro :Duplicidade Já existe um sla cadastrado com esses valores.";
                 }
                 else
                 {

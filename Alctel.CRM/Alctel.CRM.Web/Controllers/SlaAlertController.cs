@@ -75,12 +75,24 @@ public class SlaAlertController : Controller
 
             if (model.Reason01Id != 0)
             {
-                slaTicketCreateModel.SlaReasons.Add(new SlaReasonModel { ReasonId = model.Reason01Id });
+                //slaTicketCreateModel.SlaReasons.Add(new SlaReasonModel { ReasonId = model.Reason01Id });
+                slaTicketCreateModel.SlaReasons.Add(new SlaReasonModel 
+                {
+                    ReasonId = model.Reason01Id,
+                    ListId = model.Reason01ListId ?? 0,
+                    ListItemId = model.Reason01ListItemId ?? 0
+                });
             }
 
             if (model.Reason02Id != 0)
             {
-                slaTicketCreateModel.SlaReasons.Add(new SlaReasonModel { ReasonId = model.Reason02Id });
+                //slaTicketCreateModel.SlaReasons.Add(new SlaReasonModel { ReasonId = model.Reason02Id });
+                slaTicketCreateModel.SlaReasons.Add(new SlaReasonModel
+                {
+                    ReasonId = model.Reason02Id,
+                    ListId = model.Reason02ListId ?? 0,
+                    ListItemId = model.Reason02ListItemId ?? 0
+                });
             }
 
             var data = _mapper.Map<SlaTicketCreateAPI>(slaTicketCreateModel);

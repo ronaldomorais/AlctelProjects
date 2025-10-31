@@ -33,4 +33,10 @@ public class SlaReasonAPI
 {
     [JsonProperty("idClassificacaoMotivo")]
     public Int64 ReasonId { get; set; }
+
+    [JsonProperty("idLista")]
+    public Int64 ListId { get; set; }
+
+    [JsonProperty("idListaItemMotivo")]
+    public Int64 ListItemId { get; set; }
 }

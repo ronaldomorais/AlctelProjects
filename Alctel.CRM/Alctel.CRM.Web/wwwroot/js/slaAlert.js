@@ -24,11 +24,20 @@ var slaAlertConfig = {
             var selectedValue = $('#ManifestationTypeId').val();
 
             //$('#programDivId').hide();
+            $('#slaDivId').hide();
+            $('#alarmDivId').hide();
             $('#serviceDivId').hide();
             $('#reason01DivId').hide();
             $('#reason02DivId').hide();
             $('#criticalityDivId').hide();
             $('#btnSlaCreate').prop('disabled', true);
+            $('#CriticalityId').siblings('.select2-container').css('border', '1px solid #ccc');
+
+            //$('#ManifestationTypeId').val("0");
+            //$('#ServiceId').val("0");
+            //$('#Reason01ListItemId').val("0");
+            //$('#Reason02ListItemId').val("0");
+            $('#CriticalityId').val("0").change();
 
             $('#ServiceId').empty();
             $('#Reason01ListItemId').empty();
@@ -44,7 +53,7 @@ var slaAlertConfig = {
 
                             $('#ServiceId').append(
                                 $('<option>', {
-                                    value: '',
+                                    value: '0',
                                     text: 'Opções',
                                 })
                             )
@@ -71,10 +80,19 @@ var slaAlertConfig = {
             var serviceId = $('#ServiceId').val();
             const manifestationid = $('#ManifestationTypeId').val();
 
+            $('#slaDivId').hide();
+            $('#alarmDivId').hide();
             $('#reason01DivId').hide();
             $('#reason02DivId').hide();
             $('#criticalityDivId').hide();
             $('#btnSlaCreate').prop('disabled', true);
+            $('#CriticalityId').siblings('.select2-container').css('border', '1px solid #ccc');
+
+            //$('#ServiceId').val("0");
+            //$('#Reason01ListItemId').val("0");
+            //$('#Reason02ListItemId').val("0");
+            $('#CriticalityId').val("0").change();
+
 
             $('#Reason01ListItemId').empty();
             $('#Reason02ListItemId').empty();
@@ -87,7 +105,7 @@ var slaAlertConfig = {
 
                             $('#Reason01ListItemId').append(
                                 $('<option>', {
-                                    value: '',
+                                    value: '0',
                                     text: 'Opções',
                                 })
                             )
@@ -110,7 +128,6 @@ var slaAlertConfig = {
                         }
                         else {
                             $('#criticalityDivId').show();
-                            $('#btnSlaCreate').prop('disabled', false);
                         }
                     }
                 });
@@ -137,13 +154,20 @@ var slaAlertConfig = {
             var serviceId = $('#ServiceId').val();
             const manifestationid = $('#ManifestationTypeId').val();
             const reason01ListId = $('#Reason01ListId').val();
-
             const reason01Id = $('#Reason01Id').val();
 
-
+            $('#slaDivId').hide();
+            $('#alarmDivId').hide();
             $('#reason02DivId').hide();
             $('#criticalityDivId').hide();
             $('#btnSlaCreate').prop('disabled', true);
+            $('#CriticalityId').siblings('.select2-container').css('border', '1px solid #ccc');
+
+            //$('#ManifestationTypeId').val("0");
+            //$('#ServiceId').val("0");
+            //$('#Reason01ListItemId').val("0");
+            //$('#Reason02ListItemId').val("0");
+            $('#CriticalityId').val("0").change();
 
             $('#Reason02ListItemId').empty();
 
@@ -158,7 +182,7 @@ var slaAlertConfig = {
 
                             $('#Reason02ListItemId').append(
                                 $('<option>', {
-                                    value: '',
+                                    value: '0',
                                     text: 'Opções',
                                 })
                             )
@@ -180,7 +204,6 @@ var slaAlertConfig = {
                             $('#reason02DivId').show();
                         }
                         else {
-                            $('#btnSlaCreate').prop('disabled', false);
                             $('#criticalityDivId').show();
                         }
                     }
@@ -194,8 +217,18 @@ var slaAlertConfig = {
         OnReason02Changed: function () {
             const reason02ListId = $('#Reason02ListId').val();
 
+            $('#slaDivId').hide();
+            $('#alarmDivId').hide();
+            $('#btnSlaCreate').prop('disabled', true);
+            $('#CriticalityId').siblings('.select2-container').css('border', '1px solid #ccc');
+
+            //$('#ManifestationTypeId').val("0");
+            //$('#ServiceId').val("0");
+            //$('#Reason01ListItemId').val("0");
+            //$('#Reason02ListItemId').val("0");
+            $('#CriticalityId').val("0").change();
+
             if (reason02ListId !== 0) {
-                $('#btnSlaCreate').prop('disabled', false);
                 $('#criticalityDivId').show();
             }
         },
@@ -203,20 +236,27 @@ var slaAlertConfig = {
         OnCriticalityChanged: function () {
             const selectedValue = $('#CriticalityId option:selected').text();
 
-            switch (selectedValue.toUpperCase()) {
-                case "ALTA":
-                    $('#CriticalityId').siblings('.select2-container').css('border', '3px solid red');
-                    break;
-                case "MÉDIA":
-                    $('#CriticalityId').siblings('.select2-container').css('border', '3px solid yellow');
-                    break;
-                case "BAIXA":
-                    $('#CriticalityId').siblings('.select2-container').css('border', '3px solid green');
-                    break;
+            $('#slaDivId').hide();
+            $('#alarmDivId').hide();
+            $('#btnSlaCreate').prop('disabled', true);
+            $('#CriticalityId').siblings('.select2-container').css('border', '1px solid #ccc');
+
+            if (selectedValue.toUpperCase() !== 'OPÇÕES') {
+                switch (selectedValue.toUpperCase()) {
+                    case "ALTA":
+                        $('#CriticalityId').siblings('.select2-container').css('border', '3px solid red');
+                        break;
+                    case "MÉDIA":
+                        $('#CriticalityId').siblings('.select2-container').css('border', '3px solid yellow');
+                        break;
+                    case "BAIXA":
+                        $('#CriticalityId').siblings('.select2-container').css('border', '3px solid green');
+                        break;
+                }
+                $('#btnSlaCreate').prop('disabled', false);
+                $('#slaDivId').show();
+                $('#alarmDivId').show();
             }
-            $('#btnSlaCreate').prop('disabled', false);
-            $('#slaDivId').show();
-            $('#alarmDivId').show();
         }
     }
 }

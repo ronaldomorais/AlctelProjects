@@ -1,7 +1,4 @@
-﻿using Alctel.CRM.API.Entities;
-using Newtonsoft.Json;
-
-namespace Alctel.CRM.Web.Models;
+﻿namespace Alctel.CRM.Web.Models;
 
 public class SlaTicketCreateModel
 {
@@ -21,4 +18,6 @@ public class SlaTicketCreateModel
 public class SlaReasonModel
 {
     public Int64 ReasonId { get; set; }
+    public Int64 ListId { get; set; }
+    public Int64 ListItemId { get; set; }
 }
