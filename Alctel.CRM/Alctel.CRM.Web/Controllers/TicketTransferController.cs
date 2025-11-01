@@ -30,9 +30,10 @@ public class TicketTransferController : Controller
         _configService = configService;
     }
 
-    public async Task<IActionResult> Create(string ticketid, string protocol, string userid, string queuegt = "")
+    public async Task<IActionResult> Create(string ticketid, string protocol, string userid, string queuegt = "", string screenorigin = "")
     {
         var model = new TicketTransferModel();
+        model.ScreenOrigin = screenorigin;
 
         string physicalPath = _hostingEnvironment.WebRootPath;
         ViewBag.BaseUrl = _configService.GetBaseUrl(physicalPath);

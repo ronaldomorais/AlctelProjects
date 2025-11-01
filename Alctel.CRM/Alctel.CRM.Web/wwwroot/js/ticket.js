@@ -498,7 +498,7 @@ var tools = {
 
             const queuegt = $('#QueueGT').val()
 
-            $.get(`${origin_url}/TicketTransfer/Create/?ticketid=${ticketid}&protocol=${protocol}&userid=${userid}&queuegt=${queuegt}`, function (data, status) {
+            $.get(`${origin_url}/TicketTransfer/Create/?ticketid=${ticketid}&protocol=${protocol}&userid=${userid}&queuegt=${queuegt}&screenorigin=GenesysInteractionEvent`, function (data, status) {
                 if (status === 'success') {
                     $('#transferTicketOpenId').html(data)
                     tools.Init.TicketTransfer()

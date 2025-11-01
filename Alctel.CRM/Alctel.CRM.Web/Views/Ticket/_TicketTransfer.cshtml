@@ -100,8 +100,16 @@
 					</div>
 				</div>
 			</div>
-		<button id="buttonTransferModal" type="button" onclick="tools.Events.OnTransferSubmit()" class="btn btn-style" data-bs-dismiss="modal" disabled>Transferir</button>
-			@* <button type="button" class="btn btn-style" data-bs-dismiss="modal">Cancelar</button> *@
+
+		@if (Model.ScreenOrigin == "GenesysInteractionEvent")
+		{
+			<button id="buttonTransferModal" type="button" onclick="tools.Events.OnTransferSubmit()" class="btn btn-style" data-bs-dismiss="modal" disabled>Transferir</button>
+		}
+		else if (Model.ScreenOrigin == "Edit")
+		{
+			<button id="buttonTransferModal" type="button" onclick="ticket_transfer.Events.OnTransferSubmit()" class="btn btn-style" data-bs-dismiss="modal" disabled>Transferir</button>
+		}
+		@* <button type="button" class="btn btn-style" data-bs-dismiss="modal">Cancelar</button> *@
 
 		@* </form> *@
 

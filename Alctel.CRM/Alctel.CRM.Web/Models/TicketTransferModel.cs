@@ -40,4 +40,6 @@ public class TicketTransferModel
     public string? TransferReason { get; set; }
 
     public string? QueueGT { get; set; }
+
+    public string? ScreenOrigin { get; set; }
 }
